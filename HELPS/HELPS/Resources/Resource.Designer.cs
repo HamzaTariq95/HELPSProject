@@ -271,6 +271,9 @@ namespace HELPS
 		public partial class Style
 		{
 			
+			// aapt resource value: 0x7f070002
+			public const int helpsDialogTheme = 2131165186;
+			
 			// aapt resource value: 0x7f070001
 			public const int helpsFullscreenTheme = 2131165185;
 			

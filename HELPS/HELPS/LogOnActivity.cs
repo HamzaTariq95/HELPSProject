@@ -45,6 +45,14 @@ namespace HELPS
             aboutHelpsButton.Click += (IntentSender, e) =>
             {
                 // Creates the alert displaying the "About HELPS" information
+                AlertDialog.Builder aboutHelpsAlert = new AlertDialog.Builder(this);
+
+                aboutHelpsAlert.SetTitle(GetString(Resource.String.whatHelps));
+                aboutHelpsAlert.SetMessage(GetString(Resource.String.aboutHelps));
+                aboutHelpsAlert.SetNeutralButton("OK", delegate { });
+
+                Dialog aboutHelpsDialog = aboutHelpsAlert.Create(); ;
+                aboutHelpsDialog.Show();
             };
         }
     }

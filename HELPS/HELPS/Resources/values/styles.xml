@@ -8,10 +8,19 @@
       <!-- Overrides color of UI controls -->
       <item name="android:colorAccent">@color/redDark</item>
     </style>
-    <!-- Theme for fullscreen activitied in the application. Inherits from the light Material theme -->
+    <!-- Theme for fullscreen activities in the application. Inherits from the light Material theme -->
     <style name="helpsFullscreenTheme" parent="android:Theme.Holo.Light.NoActionBar">
         <!-- Theme style definitions go here -->
-        <!-- Overrides app bar color -->
+        <!-- Overrides app background color -->
         <item name="android:background">@color/red</item>
+        <!-- Overrides dialog theme -->  
+        <item name="android:alertDialogTheme">@style/helpsDialogTheme</item>
+    </style>
+    <!-- Theme for dialogs in the application. Inherits from the light Material theme -->
+    <style name="helpsDialogTheme" parent="android:Theme.Holo.Light.Dialog">
+        <!-- Theme style definitions go here -->
+        <!-- Overrides the background color -->
+        <item name="android:background">@color/white</item>
+        <item name="android:colorPrimary">@color/red</item>
     </style>
 </resources>
