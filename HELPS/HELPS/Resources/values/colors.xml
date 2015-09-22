@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="charcoalLight">#858985</color>
-  <color name="charcoal">#1d1d1d</color>
-  <color name="red">#db0310</color>
-  <color name="redDark">#ae1302</color>
-  <color name="white">#fefefe</color>
-  <color name="whiteDark">#f0f0f0</color>
+    <color name="charcoalLight">#858985</color>
+    <color name="charcoal">#1d1d1d</color>
+    <color name="red">#db0310</color>
+    <color name="redDark">#ae1302</color>
+    <color name="white">#fefefe</color>
+    <color name="whiteDark">#f0f0f0</color>
 </resources>

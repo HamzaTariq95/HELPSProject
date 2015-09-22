@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    <!-- Main theme for the application. Inherits from the light Material theme -->
+    <style name="helpsTheme" parent="android:Theme.Material.Light">
+        <!-- Theme style definitions go here -->
+        <!-- Overrides app bar color -->
+      <item name="android:colorPrimary">@color/red</item>
+      <!-- Overrides color of UI controls -->
+      <item name="android:colorAccent">@color/redDark</item>
+    </style>
+    <!-- Theme for fullscreen activitied in the application. Inherits from the light Material theme -->
+    <style name="helpsFullscreenTheme" parent="android:Theme.Material.Light.NoActionBar">
+        <!-- Theme style definitions go here -->
+        <!-- Overrides app bar color -->
+        <item name="android:background">@color/red</item>
+    </style>
+</resources>

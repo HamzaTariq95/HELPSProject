@@ -26,10 +26,51 @@ namespace HELPS
 		
 		public static void UpdateIdValues()
 		{
+			global::com.refractored.fab.Resource.Attribute.fab_colorDisabled = global::HELPS.Resource.Attribute.fab_colorDisabled;
+			global::com.refractored.fab.Resource.Attribute.fab_colorNormal = global::HELPS.Resource.Attribute.fab_colorNormal;
+			global::com.refractored.fab.Resource.Attribute.fab_colorPressed = global::HELPS.Resource.Attribute.fab_colorPressed;
+			global::com.refractored.fab.Resource.Attribute.fab_colorRipple = global::HELPS.Resource.Attribute.fab_colorRipple;
+			global::com.refractored.fab.Resource.Attribute.fab_shadow = global::HELPS.Resource.Attribute.fab_shadow;
+			global::com.refractored.fab.Resource.Attribute.fab_size = global::HELPS.Resource.Attribute.fab_size;
+			global::com.refractored.fab.Resource.Color.fab_material_blue_500 = global::HELPS.Resource.Color.fab_material_blue_500;
+			global::com.refractored.fab.Resource.Dimension.fab_elevation_lollipop = global::HELPS.Resource.Dimension.fab_elevation_lollipop;
+			global::com.refractored.fab.Resource.Dimension.fab_scroll_threshold = global::HELPS.Resource.Dimension.fab_scroll_threshold;
+			global::com.refractored.fab.Resource.Dimension.fab_shadow_size = global::HELPS.Resource.Dimension.fab_shadow_size;
+			global::com.refractored.fab.Resource.Dimension.fab_size_mini = global::HELPS.Resource.Dimension.fab_size_mini;
+			global::com.refractored.fab.Resource.Dimension.fab_size_normal = global::HELPS.Resource.Dimension.fab_size_normal;
+			global::com.refractored.fab.Resource.Drawable.fab_shadow = global::HELPS.Resource.Drawable.fab_shadow;
+			global::com.refractored.fab.Resource.Drawable.fab_shadow_mini = global::HELPS.Resource.Drawable.fab_shadow_mini;
+			global::com.refractored.fab.Resource.Id.mini = global::HELPS.Resource.Id.mini;
+			global::com.refractored.fab.Resource.Id.normal = global::HELPS.Resource.Id.normal;
+			global::com.refractored.fab.Resource.Styleable.FloatingActionButton = global::HELPS.Resource.Styleable.FloatingActionButton;
+			global::com.refractored.fab.Resource.Styleable.FloatingActionButton_fab_colorDisabled = global::HELPS.Resource.Styleable.FloatingActionButton_fab_colorDisabled;
+			global::com.refractored.fab.Resource.Styleable.FloatingActionButton_fab_colorNormal = global::HELPS.Resource.Styleable.FloatingActionButton_fab_colorNormal;
+			global::com.refractored.fab.Resource.Styleable.FloatingActionButton_fab_colorPressed = global::HELPS.Resource.Styleable.FloatingActionButton_fab_colorPressed;
+			global::com.refractored.fab.Resource.Styleable.FloatingActionButton_fab_colorRipple = global::HELPS.Resource.Styleable.FloatingActionButton_fab_colorRipple;
+			global::com.refractored.fab.Resource.Styleable.FloatingActionButton_fab_shadow = global::HELPS.Resource.Styleable.FloatingActionButton_fab_shadow;
+			global::com.refractored.fab.Resource.Styleable.FloatingActionButton_fab_size = global::HELPS.Resource.Styleable.FloatingActionButton_fab_size;
 		}
 		
 		public partial class Attribute
 		{
+			
+			// aapt resource value: 0x7f010002
+			public const int fab_colorDisabled = 2130771970;
+			
+			// aapt resource value: 0x7f010001
+			public const int fab_colorNormal = 2130771969;
+			
+			// aapt resource value: 0x7f010000
+			public const int fab_colorPressed = 2130771968;
+			
+			// aapt resource value: 0x7f010003
+			public const int fab_colorRipple = 2130771971;
+			
+			// aapt resource value: 0x7f010004
+			public const int fab_shadow = 2130771972;
+			
+			// aapt resource value: 0x7f010005
+			public const int fab_size = 2130771973;
 			
 			static Attribute()
 			{
@@ -41,11 +82,85 @@ namespace HELPS
 			}
 		}
 		
+		public partial class Color
+		{
+			
+			// aapt resource value: 0x7f040002
+			public const int charcoal = 2130968578;
+			
+			// aapt resource value: 0x7f040001
+			public const int charcoalLight = 2130968577;
+			
+			// aapt resource value: 0x7f040000
+			public const int fab_material_blue_500 = 2130968576;
+			
+			// aapt resource value: 0x7f040003
+			public const int red = 2130968579;
+			
+			// aapt resource value: 0x7f040004
+			public const int redDark = 2130968580;
+			
+			// aapt resource value: 0x7f040005
+			public const int white = 2130968581;
+			
+			// aapt resource value: 0x7f040006
+			public const int whiteDark = 2130968582;
+			
+			static Color()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Color()
+			{
+			}
+		}
+		
+		public partial class Dimension
+		{
+			
+			// aapt resource value: 0x7f050004
+			public const int fab_elevation_lollipop = 2131034116;
+			
+			// aapt resource value: 0x7f050003
+			public const int fab_scroll_threshold = 2131034115;
+			
+			// aapt resource value: 0x7f050002
+			public const int fab_shadow_size = 2131034114;
+			
+			// aapt resource value: 0x7f050001
+			public const int fab_size_mini = 2131034113;
+			
+			// aapt resource value: 0x7f050000
+			public const int fab_size_normal = 2131034112;
+			
+			static Dimension()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Dimension()
+			{
+			}
+		}
+		
 		public partial class Drawable
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int Icon = 2130837504;
+			public const int drawEditText = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public const int fab_shadow = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public const int fab_shadow_mini = 2130837506;
+			
+			// aapt resource value: 0x7f020003
+			public const int Icon = 2130837507;
+			
+			// aapt resource value: 0x7f020004
+			public const int @lock = 2130837508;
 			
 			static Drawable()
 			{
@@ -60,8 +175,32 @@ namespace HELPS
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050000
-			public const int MyButton = 2131034112;
+			// aapt resource value: 0x7f080007
+			public const int buttonForgotPassword = 2131230727;
+			
+			// aapt resource value: 0x7f080008
+			public const int buttonWhatHelps = 2131230728;
+			
+			// aapt resource value: 0x7f080005
+			public const int editPassword = 2131230725;
+			
+			// aapt resource value: 0x7f080004
+			public const int editUtsId = 2131230724;
+			
+			// aapt resource value: 0x7f080006
+			public const int fabLogIn = 2131230726;
+			
+			// aapt resource value: 0x7f080000
+			public const int mini = 2131230720;
+			
+			// aapt resource value: 0x7f080001
+			public const int normal = 2131230721;
+			
+			// aapt resource value: 0x7f080003
+			public const int textLogOnInformation = 2131230723;
+			
+			// aapt resource value: 0x7f080002
+			public const int textUtsHelps = 2131230722;
 			
 			static Id()
 			{
@@ -77,7 +216,10 @@ namespace HELPS
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int Main = 2130903040;
+			public const int LogOn = 2130903040;
+			
+			// aapt resource value: 0x7f030001
+			public const int Main = 2130903041;
 			
 			static Layout()
 			{
@@ -92,11 +234,29 @@ namespace HELPS
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040001
-			public const int ApplicationName = 2130968577;
+			// aapt resource value: 0x7f060007
+			public const int aboutHelps = 2131099655;
 			
-			// aapt resource value: 0x7f040000
-			public const int Hello = 2130968576;
+			// aapt resource value: 0x7f060000
+			public const int applicationName = 2131099648;
+			
+			// aapt resource value: 0x7f060005
+			public const int forgotPassword = 2131099653;
+			
+			// aapt resource value: 0x7f060004
+			public const int logIn = 2131099652;
+			
+			// aapt resource value: 0x7f060001
+			public const int logOnInformation = 2131099649;
+			
+			// aapt resource value: 0x7f060003
+			public const int password = 2131099651;
+			
+			// aapt resource value: 0x7f060002
+			public const int utsId = 2131099650;
+			
+			// aapt resource value: 0x7f060006
+			public const int whatHelps = 2131099654;
 			
 			static String()
 			{
@@ -104,6 +264,64 @@ namespace HELPS
 			}
 			
 			private String()
+			{
+			}
+		}
+		
+		public partial class Style
+		{
+			
+			// aapt resource value: 0x7f070001
+			public const int helpsFullscreenTheme = 2131165185;
+			
+			// aapt resource value: 0x7f070000
+			public const int helpsTheme = 2131165184;
+			
+			static Style()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Style()
+			{
+			}
+		}
+		
+		public partial class Styleable
+		{
+			
+			public static int[] FloatingActionButton = new int[] {
+					2130771968,
+					2130771969,
+					2130771970,
+					2130771971,
+					2130771972,
+					2130771973};
+			
+			// aapt resource value: 2
+			public const int FloatingActionButton_fab_colorDisabled = 2;
+			
+			// aapt resource value: 1
+			public const int FloatingActionButton_fab_colorNormal = 1;
+			
+			// aapt resource value: 0
+			public const int FloatingActionButton_fab_colorPressed = 0;
+			
+			// aapt resource value: 3
+			public const int FloatingActionButton_fab_colorRipple = 3;
+			
+			// aapt resource value: 4
+			public const int FloatingActionButton_fab_shadow = 4;
+			
+			// aapt resource value: 5
+			public const int FloatingActionButton_fab_size = 5;
+			
+			static Styleable()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Styleable()
 			{
 			}
 		}

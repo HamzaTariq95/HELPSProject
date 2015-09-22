@@ -6,6 +6,7 @@
     android:layout_height="fill_parent"
     android:minWidth="25px"
     android:minHeight="25px">
+<!-- Application Title -->
     <TextView
         android:id="@+id/textUtsHelps"
         android:text="@string/applicationName"
@@ -16,6 +17,7 @@
         android:textColor="@color/white"
         android:paddingTop="120dp"
         android:paddingBottom="18dp" />
+<!-- Text providing log-in instructions for users -->
     <TextView
         android:id="@+id/textLogOnInformation"
         android:text="@string/logOnInformation"
@@ -25,13 +27,14 @@
         android:textSize="16dp"
         android:textColor="@color/white"
         android:paddingBottom="12dp" />
+<!-- UTS ID field -->
     <EditText
         android:id="@+id/editUtsId"
         android:hint="@string/utsId"
         android:layout_width="290dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@drawable/customEditText"
+        android:background="@drawable/drawEditText"
         android:textColorHint="@color/charcoalLight"
         android:textColor="@color/charcoal"
         android:layout_marginBottom="6dp"
@@ -39,13 +42,14 @@
         android:paddingBottom="4dp"
         android:paddingRight="8dp"
         android:paddingLeft="8dp" />
+<!-- Password field -->
     <EditText
         android:id="@+id/editPassword"
         android:hint="@string/password"
         android:layout_width="290dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@drawable/customEditText"
+        android:background="@drawable/drawEditText"
         android:textColorHint="@color/charcoalLight"
         android:textColor="@color/charcoal"
         android:fontFamily="sans-serif"
@@ -54,6 +58,7 @@
         android:paddingBottom="4dp"
         android:paddingRight="8dp"
         android:paddingLeft="8dp" />
+<!-- Log-in button -->
     <com.refractored.fab.FloatingActionButton
         android:id="@+id/fabLogIn"
         android:layout_width="wrap_content"
@@ -64,6 +69,7 @@
         fab:fab_colorNormal="@color/white"
         fab:fab_colorPressed="@color/whiteDark"
         fab:fab_colorRipple="@color/redDark" />
+<!-- Forgotten password link (to external UTS reset password page) -->
     <Button
         android:id="@+id/buttonForgotPassword"
         android:text="@string/forgotPassword"
@@ -76,6 +82,7 @@
         android:textColor="@color/white"
         android:background="@null"
         android:layout_marginBottom="6dp" />
+<!-- Link to open up dialog with HELPS information -->
     <Button
         android:id="@+id/buttonWhatHelps"
         android:text="@string/whatHelps"
