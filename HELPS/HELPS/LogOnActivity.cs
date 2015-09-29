@@ -30,6 +30,24 @@ namespace HELPS
 
             title.SetTypeface(titleFont, TypefaceStyle.Normal);
 
+            EditText username = FindViewById<EditText>(Resource.Id.editUtsId);
+            EditText password = FindViewById<EditText>(Resource.Id.editPassword);
+
+            // Works the "Log-in" button
+            com.refractored.fab.FloatingActionButton logInButton = FindViewById<com.refractored.fab.FloatingActionButton>(Resource.Id.fabLogIn);
+            logInButton.Click += delegate
+            {
+                // {Architecture} replace with log in authentication method
+
+                // {Architecture} replace with method to check if it's user's first log-in.
+                // If first log-in, go to RegisterActivity, else go to MainActivity
+                var landingPage = new Intent(this, typeof(MainActivity));
+                landingPage.PutExtra("ID", username.Text);
+                StartActivity(landingPage);
+
+                // {Architecture}
+            };
+
             // Works the "Forgotten Password" button
             Button forgottenPasswordButton = FindViewById<Button>(Resource.Id.buttonForgotPassword);
             forgottenPasswordButton.Click += delegate
