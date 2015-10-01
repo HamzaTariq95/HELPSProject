@@ -20,7 +20,7 @@ namespace HELPS
 
             // Set the "Hello User" text view to display the user's name
             // {Architecture} change the code so that it grabs the user's first name from the db
-            string helloUser = GetString(Resource.String.hello) + " " + Intent.GetStringExtra("ID");
+            string helloUser = GetString(Resource.String.hello) + " " + Intent.GetStringExtra("ID") + "!";
             TextView helloUserText = FindViewById<TextView>(Resource.Id.textHelloUser);
 
             helloUserText.Text = helloUser;
