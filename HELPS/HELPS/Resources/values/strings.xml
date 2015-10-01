@@ -23,4 +23,7 @@
         through the development of your English language and academic
         understanding, so you can reach your study and career goals.
     </string>
+
+    <!-- Home (landing) screen -->
+    <string name="hello">Hello</string>
 </resources>

@@ -196,6 +196,9 @@ namespace HELPS
 			// aapt resource value: 0x7f080001
 			public const int normal = 2131230721;
 			
+			// aapt resource value: 0x7f080009
+			public const int textHelloUser = 2131230729;
+			
 			// aapt resource value: 0x7f080003
 			public const int textLogOnInformation = 2131230723;
 			
@@ -242,6 +245,9 @@ namespace HELPS
 			
 			// aapt resource value: 0x7f060005
 			public const int forgotPassword = 2131099653;
+			
+			// aapt resource value: 0x7f060008
+			public const int hello = 2131099656;
 			
 			// aapt resource value: 0x7f060004
 			public const int logIn = 2131099652;
