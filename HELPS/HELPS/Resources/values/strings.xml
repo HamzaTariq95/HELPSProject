@@ -26,4 +26,5 @@
 
     <!-- Home (landing) screen -->
     <string name="hello">Hello</string>
+    <string name="upcoming">Your Upcoming Sessions</string>
 </resources>

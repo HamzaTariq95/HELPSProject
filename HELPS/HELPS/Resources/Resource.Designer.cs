@@ -202,6 +202,9 @@ namespace HELPS
 			// aapt resource value: 0x7f080003
 			public const int textLogOnInformation = 2131230723;
 			
+			// aapt resource value: 0x7f08000a
+			public const int textUpcoming = 2131230730;
+			
 			// aapt resource value: 0x7f080002
 			public const int textUtsHelps = 2131230722;
 			
@@ -257,6 +260,9 @@ namespace HELPS
 			
 			// aapt resource value: 0x7f060003
 			public const int password = 2131099651;
+			
+			// aapt resource value: 0x7f060009
+			public const int upcoming = 2131099657;
 			
 			// aapt resource value: 0x7f060002
 			public const int utsId = 2131099650;

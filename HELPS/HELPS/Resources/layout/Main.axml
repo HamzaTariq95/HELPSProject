@@ -8,5 +8,18 @@
         android:id="@+id/textHelloUser"
         android:text="@string/hello"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:textColor="@color/charcoal"
+        android:padding="12dp" />
+    <TextView
+        android:id="@+id/textUpcoming"
+        android:text="@string/upcoming"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="28dp"
+        android:textColor="@color/charcoal"
+        android:paddingRight="12dp"
+        android:paddingLeft="12dp"
+        android:paddingBottom="12dp" />
 </LinearLayout>
