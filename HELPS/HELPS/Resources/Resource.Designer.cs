@@ -51,6 +51,22 @@ namespace HELPS
 			global::com.refractored.fab.Resource.Styleable.FloatingActionButton_fab_size = global::HELPS.Resource.Styleable.FloatingActionButton_fab_size;
 		}
 		
+		public partial class Array
+		{
+			
+			// aapt resource value: 0x7f070000
+			public const int listTest = 2131165184;
+			
+			static Array()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Array()
+			{
+			}
+		}
+		
 		public partial class Attribute
 		{
 			
@@ -175,38 +191,41 @@ namespace HELPS
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f080007
-			public const int buttonForgotPassword = 2131230727;
+			// aapt resource value: 0x7f090007
+			public const int buttonForgotPassword = 2131296263;
 			
-			// aapt resource value: 0x7f080008
-			public const int buttonWhatHelps = 2131230728;
+			// aapt resource value: 0x7f090008
+			public const int buttonWhatHelps = 2131296264;
 			
-			// aapt resource value: 0x7f080005
-			public const int editPassword = 2131230725;
+			// aapt resource value: 0x7f090005
+			public const int editPassword = 2131296261;
 			
-			// aapt resource value: 0x7f080004
-			public const int editUtsId = 2131230724;
+			// aapt resource value: 0x7f090004
+			public const int editUtsId = 2131296260;
 			
-			// aapt resource value: 0x7f080006
-			public const int fabLogIn = 2131230726;
+			// aapt resource value: 0x7f090006
+			public const int fabLogIn = 2131296262;
 			
-			// aapt resource value: 0x7f080000
-			public const int mini = 2131230720;
+			// aapt resource value: 0x7f09000b
+			public const int listUpcoming = 2131296267;
 			
-			// aapt resource value: 0x7f080001
-			public const int normal = 2131230721;
+			// aapt resource value: 0x7f090000
+			public const int mini = 2131296256;
 			
-			// aapt resource value: 0x7f080009
-			public const int textHelloUser = 2131230729;
+			// aapt resource value: 0x7f090001
+			public const int normal = 2131296257;
 			
-			// aapt resource value: 0x7f080003
-			public const int textLogOnInformation = 2131230723;
+			// aapt resource value: 0x7f090009
+			public const int textHelloUser = 2131296265;
 			
-			// aapt resource value: 0x7f08000a
-			public const int textUpcoming = 2131230730;
+			// aapt resource value: 0x7f090003
+			public const int textLogOnInformation = 2131296259;
 			
-			// aapt resource value: 0x7f080002
-			public const int textUtsHelps = 2131230722;
+			// aapt resource value: 0x7f09000a
+			public const int textUpcoming = 2131296266;
+			
+			// aapt resource value: 0x7f090002
+			public const int textUtsHelps = 2131296258;
 			
 			static Id()
 			{
@@ -283,14 +302,14 @@ namespace HELPS
 		public partial class Style
 		{
 			
-			// aapt resource value: 0x7f070002
-			public const int helpsDialogTheme = 2131165186;
+			// aapt resource value: 0x7f080002
+			public const int helpsDialogTheme = 2131230722;
 			
-			// aapt resource value: 0x7f070001
-			public const int helpsFullscreenTheme = 2131165185;
+			// aapt resource value: 0x7f080001
+			public const int helpsFullscreenTheme = 2131230721;
 			
-			// aapt resource value: 0x7f070000
-			public const int helpsTheme = 2131165184;
+			// aapt resource value: 0x7f080000
+			public const int helpsTheme = 2131230720;
 			
 			static Style()
 			{

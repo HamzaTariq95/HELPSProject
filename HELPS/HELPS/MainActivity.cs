@@ -8,7 +8,7 @@ using Android.OS;
 
 namespace HELPS
 {
-    [Activity(Label = "UTS:HELPS", Icon = "@drawable/icon")]
+    [Activity(Label = "UTS:HELPS", Icon = "@drawable/icon", Theme = "@style/helpsTheme")]
     public class MainActivity : Activity
     {
         protected override void OnCreate(Bundle bundle)
@@ -24,6 +24,13 @@ namespace HELPS
             TextView helloUserText = FindViewById<TextView>(Resource.Id.textHelloUser);
 
             helloUserText.Text = helloUser;
+
+            // Set the "Upcoming Sessions" list view to display (upto) the three soonest sessions
+            // {Architecture} change the code to generate the list view data from the user's data
+            ListView upcomingList = FindViewById<ListView>(Resource.Id.listUpcoming);
+            ArrayAdapter<string> listAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, Resource.Array.listTest);
+
+            upcomingList.Adapter = listAdapter;
         }
     }
 }

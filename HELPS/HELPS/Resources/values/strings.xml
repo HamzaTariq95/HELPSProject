@@ -27,4 +27,10 @@
     <!-- Home (landing) screen -->
     <string name="hello">Hello</string>
     <string name="upcoming">Your Upcoming Sessions</string>
+    <!-- Test data -->
+    <string-array name="listTest">
+        <item>Session 1</item>
+        <item>Session 2</item>
+        <item>Session 3</item>
+    </string-array>
 </resources>

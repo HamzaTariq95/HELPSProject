@@ -22,4 +22,12 @@
         android:paddingRight="12dp"
         android:paddingLeft="12dp"
         android:paddingBottom="12dp" />
+    <ListView
+        android:id="@+id/listUpcoming"
+        android:minHeight="24dp"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:paddingRight="12dp"
+        android:paddingLeft="12dp"
+        android:paddingBottom="12dp" />
 </LinearLayout>
