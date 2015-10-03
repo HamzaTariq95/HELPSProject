@@ -15,7 +15,7 @@ using Android.Graphics;
 namespace HELPS
 {
     [Activity(Label = "UTS:HELPS", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, Theme = "@style/helpsFullscreenTheme")]
-    public class LogonActivity : Activity
+    public class LogOnActivity : Activity
     {
         protected override void OnCreate(Bundle bundle)
         {
@@ -41,7 +41,7 @@ namespace HELPS
 
                 // {Architecture} replace with method to check if it's user's first log-in.
                 // If first log-in, go to RegisterActivity, else go to MainActivity
-                var landingPage = new Intent(this, typeof(MainActivity));
+                var landingPage = new Intent(this, typeof(RegisterActivity));
                 landingPage.PutExtra("ID", username.Text);
                 StartActivity(landingPage);
 

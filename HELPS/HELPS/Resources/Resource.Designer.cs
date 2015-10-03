@@ -164,19 +164,25 @@ namespace HELPS
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int drawEditText = 2130837504;
+			public const int check = 2130837504;
 			
 			// aapt resource value: 0x7f020001
-			public const int fab_shadow = 2130837505;
+			public const int close = 2130837505;
 			
 			// aapt resource value: 0x7f020002
-			public const int fab_shadow_mini = 2130837506;
+			public const int drawEditText = 2130837506;
 			
 			// aapt resource value: 0x7f020003
-			public const int Icon = 2130837507;
+			public const int fab_shadow = 2130837507;
 			
 			// aapt resource value: 0x7f020004
-			public const int @lock = 2130837508;
+			public const int fab_shadow_mini = 2130837508;
+			
+			// aapt resource value: 0x7f020005
+			public const int Icon = 2130837509;
+			
+			// aapt resource value: 0x7f020006
+			public const int @lock = 2130837510;
 			
 			static Drawable()
 			{
@@ -197,11 +203,20 @@ namespace HELPS
 			// aapt resource value: 0x7f090008
 			public const int buttonWhatHelps = 2131296264;
 			
+			// aapt resource value: 0x7f090015
+			public const int checkButtons = 2131296277;
+			
 			// aapt resource value: 0x7f090005
 			public const int editPassword = 2131296261;
 			
 			// aapt resource value: 0x7f090004
 			public const int editUtsId = 2131296260;
+			
+			// aapt resource value: 0x7f090017
+			public const int fabCheckCancel = 2131296279;
+			
+			// aapt resource value: 0x7f090016
+			public const int fabCheckOk = 2131296278;
 			
 			// aapt resource value: 0x7f090006
 			public const int fabLogIn = 2131296262;
@@ -215,11 +230,41 @@ namespace HELPS
 			// aapt resource value: 0x7f090001
 			public const int normal = 2131296257;
 			
+			// aapt resource value: 0x7f090010
+			public const int textCheckCourse = 2131296272;
+			
+			// aapt resource value: 0x7f090014
+			public const int textCheckDOB = 2131296276;
+			
+			// aapt resource value: 0x7f090011
+			public const int textCheckEmail = 2131296273;
+			
+			// aapt resource value: 0x7f09000f
+			public const int textCheckFaculty = 2131296271;
+			
+			// aapt resource value: 0x7f090012
+			public const int textCheckHomePhone = 2131296274;
+			
+			// aapt resource value: 0x7f09000d
+			public const int textCheckInformation = 2131296269;
+			
+			// aapt resource value: 0x7f090013
+			public const int textCheckMobile = 2131296275;
+			
+			// aapt resource value: 0x7f09000e
+			public const int textCheckName = 2131296270;
+			
+			// aapt resource value: 0x7f090018
+			public const int textContactInformation = 2131296280;
+			
 			// aapt resource value: 0x7f090009
 			public const int textHelloUser = 2131296265;
 			
 			// aapt resource value: 0x7f090003
 			public const int textLogOnInformation = 2131296259;
+			
+			// aapt resource value: 0x7f09000c
+			public const int textRegisterCheckTitle = 2131296268;
 			
 			// aapt resource value: 0x7f09000a
 			public const int textUpcoming = 2131296266;
@@ -246,6 +291,12 @@ namespace HELPS
 			// aapt resource value: 0x7f030001
 			public const int Main = 2130903041;
 			
+			// aapt resource value: 0x7f030002
+			public const int Register = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int RegisterCheck = 2130903043;
+			
 			static Layout()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -265,11 +316,38 @@ namespace HELPS
 			// aapt resource value: 0x7f060000
 			public const int applicationName = 2131099648;
 			
+			// aapt resource value: 0x7f06000c
+			public const int checkCourse = 2131099660;
+			
+			// aapt resource value: 0x7f060010
+			public const int checkDOB = 2131099664;
+			
+			// aapt resource value: 0x7f06000d
+			public const int checkEmail = 2131099661;
+			
+			// aapt resource value: 0x7f06000b
+			public const int checkFaculty = 2131099659;
+			
+			// aapt resource value: 0x7f06000e
+			public const int checkHomePhone = 2131099662;
+			
+			// aapt resource value: 0x7f060009
+			public const int checkInformation = 2131099657;
+			
+			// aapt resource value: 0x7f06000f
+			public const int checkMobile = 2131099663;
+			
+			// aapt resource value: 0x7f06000a
+			public const int checkName = 2131099658;
+			
+			// aapt resource value: 0x7f060011
+			public const int contactInformation = 2131099665;
+			
 			// aapt resource value: 0x7f060005
 			public const int forgotPassword = 2131099653;
 			
-			// aapt resource value: 0x7f060008
-			public const int hello = 2131099656;
+			// aapt resource value: 0x7f060012
+			public const int hello = 2131099666;
 			
 			// aapt resource value: 0x7f060004
 			public const int logIn = 2131099652;
@@ -280,8 +358,11 @@ namespace HELPS
 			// aapt resource value: 0x7f060003
 			public const int password = 2131099651;
 			
-			// aapt resource value: 0x7f060009
-			public const int upcoming = 2131099657;
+			// aapt resource value: 0x7f060008
+			public const int registerTitle = 2131099656;
+			
+			// aapt resource value: 0x7f060013
+			public const int upcoming = 2131099667;
 			
 			// aapt resource value: 0x7f060002
 			public const int utsId = 2131099650;
