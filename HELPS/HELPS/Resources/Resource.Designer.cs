@@ -203,23 +203,38 @@ namespace HELPS
 			// aapt resource value: 0x7f090008
 			public const int buttonWhatHelps = 2131296264;
 			
-			// aapt resource value: 0x7f090015
-			public const int checkButtons = 2131296277;
+			// aapt resource value: 0x7f090017
+			public const int checkButtons = 2131296279;
 			
 			// aapt resource value: 0x7f090005
 			public const int editPassword = 2131296261;
 			
+			// aapt resource value: 0x7f09001f
+			public const int editPreferredName = 2131296287;
+			
+			// aapt resource value: 0x7f09001d
+			public const int editPreferredNumber = 2131296285;
+			
 			// aapt resource value: 0x7f090004
 			public const int editUtsId = 2131296260;
 			
-			// aapt resource value: 0x7f090017
-			public const int fabCheckCancel = 2131296279;
+			// aapt resource value: 0x7f090019
+			public const int fabCheckCancel = 2131296281;
 			
-			// aapt resource value: 0x7f090016
-			public const int fabCheckOk = 2131296278;
+			// aapt resource value: 0x7f090018
+			public const int fabCheckOk = 2131296280;
+			
+			// aapt resource value: 0x7f090022
+			public const int fabInputCancel = 2131296290;
+			
+			// aapt resource value: 0x7f090021
+			public const int fabInputOk = 2131296289;
 			
 			// aapt resource value: 0x7f090006
 			public const int fabLogIn = 2131296262;
+			
+			// aapt resource value: 0x7f090020
+			public const int inputButtons = 2131296288;
 			
 			// aapt resource value: 0x7f09000b
 			public const int listUpcoming = 2131296267;
@@ -230,32 +245,41 @@ namespace HELPS
 			// aapt resource value: 0x7f090001
 			public const int normal = 2131296257;
 			
-			// aapt resource value: 0x7f090010
-			public const int textCheckCourse = 2131296272;
-			
-			// aapt resource value: 0x7f090014
-			public const int textCheckDOB = 2131296276;
-			
-			// aapt resource value: 0x7f090011
-			public const int textCheckEmail = 2131296273;
-			
-			// aapt resource value: 0x7f09000f
-			public const int textCheckFaculty = 2131296271;
-			
-			// aapt resource value: 0x7f090012
-			public const int textCheckHomePhone = 2131296274;
+			// aapt resource value: 0x7f09000e
+			public const int registerView1 = 2131296270;
 			
 			// aapt resource value: 0x7f09000d
-			public const int textCheckInformation = 2131296269;
+			public const int resourceSwitch = 2131296269;
+			
+			// aapt resource value: 0x7f090012
+			public const int textCheckCourse = 2131296274;
+			
+			// aapt resource value: 0x7f090016
+			public const int textCheckDOB = 2131296278;
 			
 			// aapt resource value: 0x7f090013
-			public const int textCheckMobile = 2131296275;
+			public const int textCheckEmail = 2131296275;
 			
-			// aapt resource value: 0x7f09000e
-			public const int textCheckName = 2131296270;
+			// aapt resource value: 0x7f090011
+			public const int textCheckFaculty = 2131296273;
 			
-			// aapt resource value: 0x7f090018
-			public const int textContactInformation = 2131296280;
+			// aapt resource value: 0x7f090014
+			public const int textCheckHomePhone = 2131296276;
+			
+			// aapt resource value: 0x7f09000f
+			public const int textCheckInformation = 2131296271;
+			
+			// aapt resource value: 0x7f090015
+			public const int textCheckMobile = 2131296277;
+			
+			// aapt resource value: 0x7f090010
+			public const int textCheckName = 2131296272;
+			
+			// aapt resource value: 0x7f09001b
+			public const int textCompulsory = 2131296283;
+			
+			// aapt resource value: 0x7f09001a
+			public const int textContactInformation = 2131296282;
 			
 			// aapt resource value: 0x7f090009
 			public const int textHelloUser = 2131296265;
@@ -263,8 +287,14 @@ namespace HELPS
 			// aapt resource value: 0x7f090003
 			public const int textLogOnInformation = 2131296259;
 			
+			// aapt resource value: 0x7f09001c
+			public const int textPreferredName = 2131296284;
+			
+			// aapt resource value: 0x7f09001e
+			public const int textPreferredNumber = 2131296286;
+			
 			// aapt resource value: 0x7f09000c
-			public const int textRegisterCheckTitle = 2131296268;
+			public const int textRegisterTitle = 2131296268;
 			
 			// aapt resource value: 0x7f09000a
 			public const int textUpcoming = 2131296266;
@@ -293,9 +323,6 @@ namespace HELPS
 			
 			// aapt resource value: 0x7f030002
 			public const int Register = 2130903042;
-			
-			// aapt resource value: 0x7f030003
-			public const int RegisterCheck = 2130903043;
 			
 			static Layout()
 			{
@@ -343,11 +370,35 @@ namespace HELPS
 			// aapt resource value: 0x7f060011
 			public const int contactInformation = 2131099665;
 			
+			// aapt resource value: 0x7f060019
+			public const int female = 2131099673;
+			
 			// aapt resource value: 0x7f060005
 			public const int forgotPassword = 2131099653;
 			
+			// aapt resource value: 0x7f06001e
+			public const int hello = 2131099678;
+			
+			// aapt resource value: 0x7f060014
+			public const int hintPreferredName = 2131099668;
+			
+			// aapt resource value: 0x7f060016
+			public const int hintPreferredNumber = 2131099670;
+			
 			// aapt resource value: 0x7f060012
-			public const int hello = 2131099666;
+			public const int inputCompulsory = 2131099666;
+			
+			// aapt resource value: 0x7f06001b
+			public const int inputDegree = 2131099675;
+			
+			// aapt resource value: 0x7f060017
+			public const int inputGender = 2131099671;
+			
+			// aapt resource value: 0x7f060013
+			public const int inputPreferredName = 2131099667;
+			
+			// aapt resource value: 0x7f060015
+			public const int inputPreferredNumber = 2131099669;
 			
 			// aapt resource value: 0x7f060004
 			public const int logIn = 2131099652;
@@ -355,14 +406,26 @@ namespace HELPS
 			// aapt resource value: 0x7f060001
 			public const int logOnInformation = 2131099649;
 			
+			// aapt resource value: 0x7f060018
+			public const int male = 2131099672;
+			
+			// aapt resource value: 0x7f06001a
+			public const int other = 2131099674;
+			
 			// aapt resource value: 0x7f060003
 			public const int password = 2131099651;
+			
+			// aapt resource value: 0x7f06001d
+			public const int postgrad = 2131099677;
 			
 			// aapt resource value: 0x7f060008
 			public const int registerTitle = 2131099656;
 			
-			// aapt resource value: 0x7f060013
-			public const int upcoming = 2131099667;
+			// aapt resource value: 0x7f06001c
+			public const int undergrad = 2131099676;
+			
+			// aapt resource value: 0x7f06001f
+			public const int upcoming = 2131099679;
 			
 			// aapt resource value: 0x7f060002
 			public const int utsId = 2131099650;

@@ -7,7 +7,7 @@
     android:installLocation="auto">
     <uses-sdk />
     <application
-        android:label="helps"
+        android:label="UTS:HELPS"
         android:icon="@drawable/Icon"
         android:theme="@style/helpsTheme">
     </application>
