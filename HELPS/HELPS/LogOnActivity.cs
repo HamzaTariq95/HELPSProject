@@ -41,9 +41,8 @@ namespace HELPS
 
                 // {Architecture} replace with method to check if it's user's first log-in.
                 // If first log-in, go to RegisterActivity, else go to MainActivity
-                var landingPage = new Intent(this, typeof(RegisterActivity));
-                landingPage.PutExtra("ID", username.Text);
-                StartActivity(landingPage);
+                StartActivity(typeof(RegisterActivity));
+                Finish();
 
                 // {Architecture}
             };

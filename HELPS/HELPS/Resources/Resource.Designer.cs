@@ -197,47 +197,65 @@ namespace HELPS
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f090007
-			public const int buttonForgotPassword = 2131296263;
-			
-			// aapt resource value: 0x7f090008
-			public const int buttonWhatHelps = 2131296264;
-			
-			// aapt resource value: 0x7f090017
-			public const int checkButtons = 2131296279;
+			// aapt resource value: 0x7f090004
+			public const int bookedSessionDate = 2131296260;
 			
 			// aapt resource value: 0x7f090005
-			public const int editPassword = 2131296261;
+			public const int bookedSessionLocation = 2131296261;
 			
-			// aapt resource value: 0x7f09001f
-			public const int editPreferredName = 2131296287;
+			// aapt resource value: 0x7f090003
+			public const int bookedSessionStatus = 2131296259;
 			
-			// aapt resource value: 0x7f09001d
-			public const int editPreferredNumber = 2131296285;
-			
-			// aapt resource value: 0x7f090004
-			public const int editUtsId = 2131296260;
-			
-			// aapt resource value: 0x7f090019
-			public const int fabCheckCancel = 2131296281;
-			
-			// aapt resource value: 0x7f090018
-			public const int fabCheckOk = 2131296280;
-			
-			// aapt resource value: 0x7f090022
-			public const int fabInputCancel = 2131296290;
-			
-			// aapt resource value: 0x7f090021
-			public const int fabInputOk = 2131296289;
+			// aapt resource value: 0x7f090002
+			public const int bookedSessionTitle = 2131296258;
 			
 			// aapt resource value: 0x7f090006
-			public const int fabLogIn = 2131296262;
+			public const int bookedSessionTutor = 2131296262;
 			
-			// aapt resource value: 0x7f090020
-			public const int inputButtons = 2131296288;
+			// aapt resource value: 0x7f090007
+			public const int bookedSessionType = 2131296263;
+			
+			// aapt resource value: 0x7f09000d
+			public const int buttonForgotPassword = 2131296269;
+			
+			// aapt resource value: 0x7f09000e
+			public const int buttonWhatHelps = 2131296270;
+			
+			// aapt resource value: 0x7f09001d
+			public const int checkButtons = 2131296285;
 			
 			// aapt resource value: 0x7f09000b
-			public const int listUpcoming = 2131296267;
+			public const int editPassword = 2131296267;
+			
+			// aapt resource value: 0x7f090023
+			public const int editPreferredName = 2131296291;
+			
+			// aapt resource value: 0x7f090025
+			public const int editPreferredNumber = 2131296293;
+			
+			// aapt resource value: 0x7f09000a
+			public const int editUtsId = 2131296266;
+			
+			// aapt resource value: 0x7f09001f
+			public const int fabCheckCancel = 2131296287;
+			
+			// aapt resource value: 0x7f09001e
+			public const int fabCheckOk = 2131296286;
+			
+			// aapt resource value: 0x7f090028
+			public const int fabInputCancel = 2131296296;
+			
+			// aapt resource value: 0x7f090027
+			public const int fabInputOk = 2131296295;
+			
+			// aapt resource value: 0x7f09000c
+			public const int fabLogIn = 2131296268;
+			
+			// aapt resource value: 0x7f090026
+			public const int inputButtons = 2131296294;
+			
+			// aapt resource value: 0x7f090011
+			public const int listUpcoming = 2131296273;
 			
 			// aapt resource value: 0x7f090000
 			public const int mini = 2131296256;
@@ -245,62 +263,62 @@ namespace HELPS
 			// aapt resource value: 0x7f090001
 			public const int normal = 2131296257;
 			
-			// aapt resource value: 0x7f09000e
-			public const int registerView1 = 2131296270;
-			
-			// aapt resource value: 0x7f09000d
-			public const int resourceSwitch = 2131296269;
-			
-			// aapt resource value: 0x7f090012
-			public const int textCheckCourse = 2131296274;
-			
-			// aapt resource value: 0x7f090016
-			public const int textCheckDOB = 2131296278;
+			// aapt resource value: 0x7f090014
+			public const int registerView1 = 2131296276;
 			
 			// aapt resource value: 0x7f090013
-			public const int textCheckEmail = 2131296275;
+			public const int resourceSwitch = 2131296275;
 			
-			// aapt resource value: 0x7f090011
-			public const int textCheckFaculty = 2131296273;
-			
-			// aapt resource value: 0x7f090014
-			public const int textCheckHomePhone = 2131296276;
-			
-			// aapt resource value: 0x7f09000f
-			public const int textCheckInformation = 2131296271;
-			
-			// aapt resource value: 0x7f090015
-			public const int textCheckMobile = 2131296277;
-			
-			// aapt resource value: 0x7f090010
-			public const int textCheckName = 2131296272;
-			
-			// aapt resource value: 0x7f09001b
-			public const int textCompulsory = 2131296283;
-			
-			// aapt resource value: 0x7f09001a
-			public const int textContactInformation = 2131296282;
-			
-			// aapt resource value: 0x7f090009
-			public const int textHelloUser = 2131296265;
-			
-			// aapt resource value: 0x7f090003
-			public const int textLogOnInformation = 2131296259;
+			// aapt resource value: 0x7f090018
+			public const int textCheckCourse = 2131296280;
 			
 			// aapt resource value: 0x7f09001c
-			public const int textPreferredName = 2131296284;
+			public const int textCheckDOB = 2131296284;
 			
-			// aapt resource value: 0x7f09001e
-			public const int textPreferredNumber = 2131296286;
+			// aapt resource value: 0x7f090019
+			public const int textCheckEmail = 2131296281;
 			
-			// aapt resource value: 0x7f09000c
-			public const int textRegisterTitle = 2131296268;
+			// aapt resource value: 0x7f090017
+			public const int textCheckFaculty = 2131296279;
 			
-			// aapt resource value: 0x7f09000a
-			public const int textUpcoming = 2131296266;
+			// aapt resource value: 0x7f09001a
+			public const int textCheckHomePhone = 2131296282;
 			
-			// aapt resource value: 0x7f090002
-			public const int textUtsHelps = 2131296258;
+			// aapt resource value: 0x7f090015
+			public const int textCheckInformation = 2131296277;
+			
+			// aapt resource value: 0x7f09001b
+			public const int textCheckMobile = 2131296283;
+			
+			// aapt resource value: 0x7f090016
+			public const int textCheckName = 2131296278;
+			
+			// aapt resource value: 0x7f090021
+			public const int textCompulsory = 2131296289;
+			
+			// aapt resource value: 0x7f090020
+			public const int textContactInformation = 2131296288;
+			
+			// aapt resource value: 0x7f09000f
+			public const int textHelloUser = 2131296271;
+			
+			// aapt resource value: 0x7f090009
+			public const int textLogOnInformation = 2131296265;
+			
+			// aapt resource value: 0x7f090022
+			public const int textPreferredName = 2131296290;
+			
+			// aapt resource value: 0x7f090024
+			public const int textPreferredNumber = 2131296292;
+			
+			// aapt resource value: 0x7f090012
+			public const int textRegisterTitle = 2131296274;
+			
+			// aapt resource value: 0x7f090010
+			public const int textUpcoming = 2131296272;
+			
+			// aapt resource value: 0x7f090008
+			public const int textUtsHelps = 2131296264;
 			
 			static Id()
 			{
@@ -316,13 +334,16 @@ namespace HELPS
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int LogOn = 2130903040;
+			public const int BookedSessionsRow = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int Main = 2130903041;
+			public const int LogOn = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int Register = 2130903042;
+			public const int Main = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int Register = 2130903043;
 			
 			static Layout()
 			{

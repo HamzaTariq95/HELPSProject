@@ -47,21 +47,24 @@ namespace HELPS
                 StartActivity(typeof(LogOnActivity));
             };
 
-            // Works the buttons on the "Input" view
+            // Works the buttons on the "Input" view.
             com.refractored.fab.FloatingActionButton inputOkButton = FindViewById<com.refractored.fab.FloatingActionButton>(Resource.Id.fabInputOk);
             com.refractored.fab.FloatingActionButton inputCancelButton = FindViewById<com.refractored.fab.FloatingActionButton>(Resource.Id.fabInputCancel);
 
-            // Works the "OK" button
+            // Works the "OK" button.
             inputOkButton.Click += delegate
             {
-                // {Architecture} Save user input to the database and change user to registered
-                // Sends user to the landing page
+                // {Architecture} Save user input to the database and change user to registered.
+                // Sends user to the landing page.
+                // Stops user from re-entering the register page with the back button.
+                
                 StartActivity(typeof(MainActivity));
+                Finish();
             };
-            // Works the cancel button
+            // Works the cancel button.
             inputCancelButton.Click += delegate
             {
-                // Returns user to the "Log On" activity
+                // Returns user to the "Log On" activity.
                 StartActivity(typeof(LogOnActivity));
             };
         }

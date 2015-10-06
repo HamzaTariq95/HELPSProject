@@ -5,6 +5,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Java.Util;
+using System.Collections.Generic;
 
 namespace HELPS
 {
@@ -25,12 +27,16 @@ namespace HELPS
 
             helloUserText.Text = helloUser;
 
-            // Set the "Upcoming Sessions" list view to display (upto) the three soonest sessions
+            // Set the "Upcoming Sessions" list view to display (upto) the three closest sessions
             // {Architecture} change the code to generate the list view data from the user's data
-            ListView upcomingList = FindViewById<ListView>(Resource.Id.listUpcoming);
-            ArrayAdapter<string> listAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, Resource.Array.listTest);
+            List<Session> testList = new List<Session>();
+            testList.Add(new Session("Session 1", "Booked", "01/01/2015", "All Students", "B1.05.202", "Mr Tutor", "Session", "Testing"));
+            testList.Add(new Session("Session 2", "Booked", "01/01/2015", "All Students", "B1.05.202", "Mr Tutor", "Session", "Testing"));
+            testList.Add(new Session("Session 3", "Booked", "01/01/2015", "All Students", "B1.05.202", "Mr Tutor", "Session", "Testing"));
 
-            upcomingList.Adapter = listAdapter;
+            ListView upcomingList = FindViewById<ListView>(Resource.Id.listUpcoming);
+
+            upcomingList.Adapter = new BookedSessionsBaseAdapter(this, testList);
         }
     }
 }
