@@ -17,7 +17,7 @@
         android:text="@string/upcoming"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="28dp"
+        android:textSize="24dp"
         android:textColor="@color/charcoal"
         android:paddingRight="12dp"
         android:paddingLeft="12dp"
