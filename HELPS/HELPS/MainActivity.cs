@@ -7,18 +7,29 @@ using Android.Widget;
 using Android.OS;
 using Java.Util;
 using System.Collections.Generic;
+using Android.Support.V4.Widget;
 
 namespace HELPS
 {
-    [Activity(Label = "UTS:HELPS", Icon = "@drawable/icon", Theme = "@style/helpsTheme")]
+    [Activity(Label = "UTS:HELPS", Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
+        private DrawerLayout _Layout;
+        private ArrayAdapter _MenuAdapter;
+        private ListView _Menu;
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
-            // Set our view from the "main" layout resource
+            // Set our view from the "main" layout resource.
             SetContentView(Resource.Layout.Main);
+            // Set up the menu layout.
+            _Layout = FindViewById<DrawerLayout>(Resource.Id.drawerMain);
+            _Menu = FindViewById<ListView>(Resource.Id.listMenu);
+
+            _MenuAdapter = ArrayAdapter<string>.CreateFromResource(this, Resource.Array.menu, Android.Resource.Layout.SimpleListItem1);
+            _Menu.Adapter = _MenuAdapter;
 
             // Set the "Hello User" text view to display the user's name
             // {Architecture} change the code so that it grabs the user's first name from the db
