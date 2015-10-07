@@ -184,6 +184,9 @@ namespace HELPS
 			// aapt resource value: 0x7f020006
 			public const int @lock = 2130837510;
 			
+			// aapt resource value: 0x7f020007
+			public const int monoandroidsplash = 2130837511;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -484,6 +487,9 @@ namespace HELPS
 		
 		public partial class Style
 		{
+			
+			// aapt resource value: 0x7f080003
+			public const int Mono_Android_Theme_Splash = 2131230723;
 			
 			// aapt resource value: 0x7f080002
 			public const int helpsDialogTheme = 2131230722;
