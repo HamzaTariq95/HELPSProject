@@ -1,33 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawerMain"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-<!-- User name display -->
-    <TextView
-        android:id="@+id/textHelloUser"
-        android:text="@string/hello"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18dp"
-        android:textColor="@color/charcoal"
-        android:padding="12dp" />
-    <TextView
-        android:id="@+id/textUpcoming"
-        android:text="@string/upcoming"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="28dp"
-        android:textColor="@color/charcoal"
-        android:paddingRight="12dp"
-        android:paddingLeft="12dp"
-        android:paddingBottom="12dp" />
-    <ListView
-        android:id="@+id/listUpcoming"
-        android:minHeight="24dp"
+<!-- Activity content layout -->
+    <FrameLayout
+        android:id="@+id/mainContentFrame"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:paddingRight="12dp"
-        android:paddingLeft="12dp"
-        android:paddingBottom="12dp" />
-</LinearLayout>
+        android:layout_height="fill_parent">
+        <include
+            layout="@layout/MainLayout" />
+    </FrameLayout>
+<!-- Menu layout -->
+    <include
+        layout="@layout/Menu" />
+</android.support.v4.widget.DrawerLayout>

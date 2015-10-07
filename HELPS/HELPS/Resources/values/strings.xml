@@ -23,14 +23,68 @@
         through the development of your English language and academic
         understanding, so you can reach your study and career goals.
     </string>
+  
+    <!-- Register: Check information screen -->
+    <string name="registerTitle">UTS:HELPS Registration</string>
+    <string name="checkInformation">Please check if this information is correct.</string>
+    <string name="checkName">
+        <b>Student Name:</b>
+    </string>
+    <string name="checkFaculty">
+        <b>Faculty:</b>
+    </string>
+    <string name="checkCourse">
+        <b>Course:</b>
+    </string>
+    <string name="checkEmail">
+        <b>Email:</b>
+    </string>
+    <string name="checkHomePhone">
+        <b>Home Phone:</b>
+    </string>
+    <string name="checkMobile">
+        <b>Mobile Phone:</b>
+    </string>
+    <string name="checkDOB">
+        <b>D.O.B.:</b>
+    </string>
+    <string name="contactInformation">Information incorrect? Please contact UTS administration.</string>
+  
+    <!-- Register: Input screen -->
+    <string name="inputCompulsory">Fields marked with an asterisk (*) are compulsory.</string>
+    <string name="inputPreferredName">
+        <b>Preferred first name:</b>
+    </string>
+    <string name="hintPreferredName">Preferred first name</string>
+    <string name="inputPreferredNumber">
+        <b>Preferred contact number*:</b>
+    </string>
+    <string name="hintPreferredNumber">Preferred contact number</string>
+    <string name="inputGender">
+        <b>Gender:</b>
+    </string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="other">Other</string>
+    <string name="inputDegree">
+        <b>Degree*:</b>
+    </string>
+    <string name="undergrad">Undergrad</string>
+    <string name="postgrad">Postgrad</string>
 
     <!-- Home (landing) screen -->
     <string name="hello">Hello</string>
     <string name="upcoming">Your Upcoming Sessions</string>
-    <!-- Test data -->
-    <string-array name="listTest">
-        <item>Session 1</item>
-        <item>Session 2</item>
-        <item>Session 3</item>
+  
+    <!-- Menu -->
+    <string name="menuTitle">UTS:HELPS Menu</string>
+    <string-array name="menu">
+        <item name="menuProfile">My HELPS Profile</item>
+        <item name="menuSearch">Search Open Sessions</item>
+        <item name="menuFuture">My Future Bookings</item>
+        <item name="menuPast">My Past Bookings</item>
+        <item name="menuNotes">Record Notes</item>
+        <item name="menuSettings">Settings</item>
+        <item name="menuLogOut">Log Out</item>
     </string-array>
 </resources>
