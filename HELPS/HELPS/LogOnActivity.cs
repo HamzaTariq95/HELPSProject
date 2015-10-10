@@ -12,6 +12,7 @@ using Android.Widget;
 using Android.Content.PM;
 using Android.Graphics;
 
+
 namespace HELPS
 {
     [Activity(Label = "UTS:HELPS", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, Theme = "@style/helpsFullscreenTheme")]
@@ -37,12 +38,25 @@ namespace HELPS
             com.refractored.fab.FloatingActionButton logInButton = FindViewById<com.refractored.fab.FloatingActionButton>(Resource.Id.fabLogIn);
             logInButton.Click += delegate
             {
+
                 // {Architecture} replace with log in authentication method
+
+                HomeController homeController = new HomeController();
+                
+                if(homeController.login(username.Text ,  password.Text))
+                {
+                    StartActivity(typeof(MainActivity));
+                }
+
+                else 
+                {
+                    StartActivity(typeof(RegisterActivity));
+                }
 
                 // {Architecture} replace with method to check if it's user's first log-in.
                 // If first log-in, go to RegisterActivity, else go to MainActivity
-                StartActivity(typeof(RegisterActivity));
-                Finish();
+               // StartActivity(typeof(RegisterActivity));
+                //Finish();
 
                 // {Architecture}
             };
