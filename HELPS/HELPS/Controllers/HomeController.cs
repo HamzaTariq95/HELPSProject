@@ -54,11 +54,11 @@ namespace HELPS
                     {
                         String json = sr.ReadToEnd();
 
-                        Employee emp = null;
+                        Students emp = null;
                         try
                         {     
                   
-                            emp = JsonConvert.DeserializeObject<Employee>(json);
+                            emp = JsonConvert.DeserializeObject<Students>(json);
                              Log.Info("TEST", emp.studentID);
                         }
                         catch(Exception e)
@@ -82,4 +82,10 @@ namespace HELPS
     }
 
         
+}
+
+public class DataJsonAttributeContainer
+{
+    [JsonProperty("My Book List")]
+    public List<Students> attributes { get; set; }
 }

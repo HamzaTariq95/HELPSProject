@@ -10,10 +10,11 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Newtonsoft.Json;
+using HELPS.Model;
 
 namespace HELPS.Model
 {
-    class Employee
+    class Students
     {
 
         [JsonProperty("studentID")]
@@ -102,11 +103,11 @@ namespace HELPS.Model
 
         [JsonProperty("preferred_name")]
         public string preferred_name { get; set; }
-
-       
-
-
-
-
     }
+}
+
+public class DataJsonAttributeContainer
+{
+    [JsonProperty("Result")]
+    public List<Students> attributes { get; set; }
 }

@@ -72,7 +72,7 @@
     <Compile Include="Controllers\WorkshopController.cs" />
     <Compile Include="LogOnActivity.cs" />
     <Compile Include="MainActivity.cs" />
-    <Compile Include="Model\Employee.cs" />
+    <Compile Include="Model\Students.cs" />
     <Compile Include="Model\Workshop.cs" />
     <Compile Include="Model\WorkshopBooking.cs" />
     <Compile Include="RegisterActivity.cs" />
