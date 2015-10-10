@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using Android.Content.PM;
 using Android.Graphics;
+using HELPS.Model;
 
 
 namespace HELPS
@@ -42,15 +43,20 @@ namespace HELPS
                 // {Architecture} replace with log in authentication method
 
                 HomeController homeController = new HomeController();
-                
-                if(homeController.login(username.Text ,  password.Text))
+
+                StudentData studentData = homeController.login(username.Text, password.Text);
+
+                if(studentData != null)
                 {
                     StartActivity(typeof(MainActivity));
+                    // need to pass the studentData Object
+                   
                 }
 
                 else 
                 {
                     StartActivity(typeof(RegisterActivity));
+                    // need to pass the local student data
                 }
 
                 // {Architecture} replace with method to check if it's user's first log-in.

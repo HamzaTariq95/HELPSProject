@@ -27,56 +27,68 @@ namespace HELPS
 {
     public class HomeController {
 
-        public bool login(String username, String password)
+        public  StudentData login(String username, String password)
         {
 
-            if(username == null)
-            {
-                return false;
-            }
+       
 
+            // Request Address of the API
             String url = "http://GroupThirteen.cloudapp.net/api/student/" + username;
 
+
+            // Setting Request Properties
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "GET";
             request.ContentType = "application/json; charset=utf-8";
             request.Headers["AppKey"] = "66666";
 
+            StudentData studentData = null;
+            
 
-
+            // Generating JSON Response and Converting it to Student Object.
             using (WebResponse response = request.GetResponse())
             {
                 // Get a stream representation of the HTTP web response:
                 using (Stream stream = response.GetResponseStream())
                 {
                 
+
                     using (StreamReader sr = new StreamReader(stream))
                     {
                         String json = sr.ReadToEnd();
-
-                        Students emp = null;
-                        try
-                        {     
-                  
-                            emp = JsonConvert.DeserializeObject<Students>(json);
-                             Log.Info("TEST", emp.studentID);
-                        }
-                        catch(Exception e)
-                        {
-
-                            Log.Info("ERROR", e.ToString());
-                        }
-               
-                        Log.Info("TEST", json);
-                      //  Log.Info("OBJECT ID", emp.studentID);                  
-                       
+                    
+                              // Convert JSON Response to Student Object
+                             studentData = JsonConvert.DeserializeObject<StudentData>(json);                 
                     }
+
+                    try
+                    {
+                        if (studentData == null)
+                        {
+                            Log.Info("TEST", "This student Does not Exists");
+
+                        }
+
+                        else
+                        {
+                            Log.Info("TEST", studentData.attributes.studentID);
+                        }
+                    }
+
+                catch (NullReferenceException ex)
+                    {
+                        Log.Info("TEST", "This student Does not Exists");
+                        studentData = null;
+                    }
+                   
               
                 }
+
+
+               
             }
 
-
-            return true;
+            return studentData;
         }
 
     }
