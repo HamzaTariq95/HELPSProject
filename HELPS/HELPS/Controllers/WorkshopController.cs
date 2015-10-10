@@ -25,11 +25,8 @@ namespace HELPS.Controllers
             request.ContentType = "application/json; charset=utf-8";
             request.Headers.Add("Key: AppKey");
             request.Headers.Add("value: 66666");
-
-            
-            
-
-           
+                   
+              
 
                 
 

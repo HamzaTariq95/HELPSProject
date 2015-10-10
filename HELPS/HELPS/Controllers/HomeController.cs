@@ -4,6 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Json;
+using Newtonsoft.Json;
+
 
 using Android.App;
 using Android.Content;
@@ -17,6 +20,7 @@ using System.Net;
 using Android.Util;
 using System.IO;
 using System.Threading.Tasks;
+using HELPS.Model;
 
 namespace HELPS
 {
@@ -37,13 +41,8 @@ namespace HELPS
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "GET";
             request.ContentType = "application/json; charset=utf-8";
-
-            //request.Headers.Add("Key: AppKey");
-            //request.Headers.Add("value: 66666");
-
             request.Headers["AppKey"] = "66666";
 
-           // WebResponse response = request.GetResponse();
 
 
             using (WebResponse response = request.GetResponse())
@@ -51,33 +50,27 @@ namespace HELPS
                 // Get a stream representation of the HTTP web response:
                 using (Stream stream = response.GetResponseStream())
                 {
-                    int numBytesRead = 0;
-                    byte[] bytes = new byte[stream.Length + 10];
-                    int numBytesToRead = (int)stream.Length;
-                    int n = stream.Read(bytes, numBytesRead, 10);
+
                    
-                    do
+
+                    using (StreamReader sr = new StreamReader(stream))
                     {
-                        // Read may return anything from 0 to 10.
 
-                        numBytesRead += n;
-                        numBytesToRead -= n;
-                    } while (numBytesToRead > 0);
-                    stream.Close();
+                       // String json = sr.ReadToEnd();
 
-                    //Log.Info("TEST", numBytesRead);
+                       // Employee emp = JsonConvert.DeserializeObject<Employee>(json);
+                    
 
-                   
-                    // Use this stream to build a JSON document object:
-                    //JsonValue jsonDoc = Task.Run(() => JsonObject.Load(stream));
-                 //   Console.Out.WriteLine("Response: {0}", jsonDoc.ToString());
-
-                    // Return the JSON document:
-                   // return jsonDoc;
+                        Log.Info("TEST", sr.ReadToEnd());
+                      //  Log.Info("OBJECT ID", emp.studentID);
+                      
+                       
+                    }
+              
                 }
             }
 
-            Log.Info("TEST" , response.GetResponseStream);
+            
 
 
 
@@ -85,21 +78,9 @@ namespace HELPS
 
 
 
-        /*    if(username.Equals("hamza")  && password.Equals("password"))
-            {
+       
 
-                return true;
-            }
-
-            else
-            {
-                return false;   
-             
-            } */
-
-           
-
-
+         
         }
 
     }
