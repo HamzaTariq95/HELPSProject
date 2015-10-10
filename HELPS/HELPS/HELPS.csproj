@@ -53,6 +53,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Json" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="Xamarin.Android.Support.v4, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -72,6 +73,8 @@
     <Compile Include="LogOnActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Model\Employee.cs" />
+    <Compile Include="Model\Workshop.cs" />
+    <Compile Include="Model\WorkshopBooking.cs" />
     <Compile Include="RegisterActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

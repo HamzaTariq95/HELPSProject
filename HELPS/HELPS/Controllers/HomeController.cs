@@ -8,6 +8,7 @@ using System.Json;
 using Newtonsoft.Json;
 
 
+
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -29,8 +30,6 @@ namespace HELPS
         public bool login(String username, String password)
         {
 
-            Log.Info("Test"  , "Mai andar hu");
-
             if(username == null)
             {
                 return false;
@@ -50,37 +49,34 @@ namespace HELPS
                 // Get a stream representation of the HTTP web response:
                 using (Stream stream = response.GetResponseStream())
                 {
-
-                   
-
+                
                     using (StreamReader sr = new StreamReader(stream))
                     {
+                        String json = sr.ReadToEnd();
 
-                       // String json = sr.ReadToEnd();
+                        Employee emp = null;
+                        try
+                        {     
+                  
+                            emp = JsonConvert.DeserializeObject<Employee>(json);
+                             Log.Info("TEST", emp.studentID);
+                        }
+                        catch(Exception e)
+                        {
 
-                       // Employee emp = JsonConvert.DeserializeObject<Employee>(json);
-                    
-
-                        Log.Info("TEST", sr.ReadToEnd());
-                      //  Log.Info("OBJECT ID", emp.studentID);
-                      
+                            Log.Info("ERROR", e.ToString());
+                        }
+               
+                        Log.Info("TEST", json);
+                      //  Log.Info("OBJECT ID", emp.studentID);                  
                        
                     }
               
                 }
             }
 
-            
-
-
 
             return true;
-
-
-
-       
-
-         
         }
 
     }
