@@ -105,9 +105,3 @@ namespace HELPS.Model
         public string preferred_name { get; set; }
     }
 }
-
-public class DataJsonAttributeContainer
-{
-    [JsonProperty("Result")]
-    public List<Students> attributes { get; set; }
-}

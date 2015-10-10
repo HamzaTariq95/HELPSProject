@@ -84,8 +84,3 @@ namespace HELPS
         
 }
 
-public class DataJsonAttributeContainer
-{
-    [JsonProperty("My Book List")]
-    public List<Students> attributes { get; set; }
-}
