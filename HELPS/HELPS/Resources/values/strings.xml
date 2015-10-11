@@ -72,12 +72,7 @@
     <string name="undergrad">Undergrad</string>
     <string name="postgrad">Postgrad</string>
 
-    <!-- Home (landing) screen -->
-    <string name="hello">Hello</string>
-    <string name="upcoming">Your Upcoming Sessions</string>
-  
     <!-- Menu -->
-    <string name="menuTitle">UTS:HELPS Menu</string>
     <string-array name="menu">
         <item name="menuProfile">My HELPS Profile</item>
         <item name="menuSearch">Search Open Sessions</item>
@@ -87,4 +82,8 @@
         <item name="menuSettings">Settings</item>
         <item name="menuLogOut">Log Out</item>
     </string-array>
+  
+    <!-- Home (landing) screen -->
+    <string name="hello">Hello</string>
+    <string name="upcoming">Your Upcoming Sessions</string>
 </resources>

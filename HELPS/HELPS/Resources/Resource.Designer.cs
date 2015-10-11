@@ -448,9 +448,6 @@ namespace HELPS
 			// aapt resource value: 0x7f060018
 			public const int male = 2131099672;
 			
-			// aapt resource value: 0x7f060020
-			public const int menuTitle = 2131099680;
-			
 			// aapt resource value: 0x7f06001a
 			public const int other = 2131099674;
 			
