@@ -46,9 +46,15 @@ namespace HELPS
 
             _DrawerToggle.SyncState();
 
+            // Not the first time activity has been run.
             if (bundle != null)
             {
 
+            }
+            // First time activity has been run.
+            else
+            {
+                SupportActionBar.SetTitle(Resource.String.applicationName);
             }
 
             // Set up the menu layout.
