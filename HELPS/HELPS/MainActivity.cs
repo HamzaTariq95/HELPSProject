@@ -72,7 +72,8 @@ namespace HELPS
 
 
             string helloUser = GetString(Resource.String.hello) + " " + studentData.attributes.studentID + "!";
-            TextView helloUserText = FindViewById<TextView>(Resource.Id.textHelloUser);
+            TextView helloUserText = FindViewById<TextView>(Resource.Id.textCheckMobile);
+
 
             helloUserText.Text = helloUser;
 

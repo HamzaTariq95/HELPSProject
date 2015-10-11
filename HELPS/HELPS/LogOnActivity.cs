@@ -2,7 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Reflection;
+using System.IO;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -15,6 +16,7 @@ using HELPS.Model;
 using Android.Util;
 using Newtonsoft.Json;
 using System.IO;
+using CsvHelper;
 
 
 namespace HELPS
@@ -59,13 +61,44 @@ namespace HELPS
 
                     StartActivity(mainActivity);
                  
-                }
+                } 
 
                 // If new user
                 else 
                 {
-                    //Need to fetch data fro UTSstudentData.csv and pass that on to the next Intent.
-                    StartActivity(typeof(RegisterActivity));
+
+                    var assembly = typeof(LogOnActivity).GetTypeInfo().Assembly;
+                    Stream stream = assembly.GetManifestResourceStream("HELPS.utsData.csv");
+
+                    UtsData studentRecord = null;
+
+                    // Extracts data from the utsData.csv
+                    using (TextReader reader = new System.IO.StreamReader(stream))
+                    {
+                       
+                        var csv = new CsvReader(reader);
+                        csv.Configuration.HasHeaderRecord = false;
+
+                        var records = csv.GetRecords<UtsData>().ToList();
+                    
+                        // Searches for the Student Details.
+                        foreach(UtsData data in records)
+                        {
+                            if(data.StudentID.Trim().Equals(username.Text))
+                            {
+                                studentRecord = data; 
+
+                            }
+                        }
+
+                    }
+
+                    Intent registerActivity = new Intent(Application.Context, typeof(RegisterActivity));
+
+                    // Passing the Student object to the next Activity
+                    registerActivity.PutExtra("student", JsonConvert.SerializeObject(studentRecord));
+
+                   StartActivity(registerActivity);
                   
                 }
 

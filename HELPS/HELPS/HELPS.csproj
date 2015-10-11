@@ -41,6 +41,9 @@
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CsvHelper">
+      <HintPath>..\packages\CsvHelper.2.13.2.0\lib\portable-net40+sl5+win8+wpa+wp8\CsvHelper.dll</HintPath>
+    </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
     <Reference Include="Newtonsoft.Json">
@@ -75,6 +78,7 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Model\StudentData.cs" />
     <Compile Include="Model\Students.cs" />
+    <Compile Include="Model\UtsData.cs" />
     <Compile Include="Model\Workshop.cs" />
     <Compile Include="Model\WorkshopBooking.cs" />
     <Compile Include="RegisterActivity.cs" />
@@ -146,7 +150,7 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="UTSstudentData.csv" />
+    <EmbeddedResource Include="utsData.csv" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

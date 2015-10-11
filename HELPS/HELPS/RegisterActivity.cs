@@ -10,6 +10,10 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.Graphics;
+using Newtonsoft.Json;
+using HELPS.Model;
+using Android.Util;
+using HELPS.Controllers;
 
 namespace HELPS
 {
@@ -32,6 +36,19 @@ namespace HELPS
             // Works the buttons on the "Check" view
             com.refractored.fab.FloatingActionButton checkOkButton = FindViewById<com.refractored.fab.FloatingActionButton>(Resource.Id.fabCheckOk);
             com.refractored.fab.FloatingActionButton checkCancelButton = FindViewById<com.refractored.fab.FloatingActionButton>(Resource.Id.fabCheckCancel);
+
+
+            // Receives the Student object from Login Activity
+            var studentData = JsonConvert.DeserializeObject<UtsData>(Intent.GetStringExtra("student"));
+
+            TextView textDOB = FindViewById<TextView>(Resource.Id.textCheckDOB);
+            TextView contact = FindViewById<TextView>(Resource.Id.textHelloUser);
+            TextView name = FindViewById<TextView>(Resource.Id.textCheckName);
+
+            textDOB.Text = "DOB: " + studentData.DateOfBirth;
+            name.Text = "Name: " + studentData.PreferredName;
+
+
 
             // Works the "OK" button
             checkOkButton.Click += delegate
@@ -57,9 +74,12 @@ namespace HELPS
                 // {Architecture} Save user input to the database and change user to registered.
                 // Sends user to the landing page.
                 // Stops user from re-entering the register page with the back button.
-                
-                StartActivity(typeof(MainActivity));
-                Finish();
+
+                RegisterController registerController = new RegisterController();
+                registerController.Register(studentData);
+
+                //StartActivity(typeof(MainActivity));
+                //Finish();
             };
             // Works the cancel button.
             inputCancelButton.Click += delegate
