@@ -69,8 +69,6 @@ namespace HELPS
 
             var studentData = JsonConvert.DeserializeObject<StudentData>(Intent.GetStringExtra("student"));
 
-
-
             string helloUser = GetString(Resource.String.hello) + " " + studentData.attributes.studentID + "!";
             TextView helloUserText = FindViewById<TextView>(Resource.Id.textCheckMobile);
 

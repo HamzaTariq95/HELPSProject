@@ -38,10 +38,10 @@ namespace HELPS
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "GET";
             request.ContentType = "application/json; charset=utf-8";
-            request.Headers["AppKey"] = "66666";
+            request.Headers["AppKey"] = "66666"; 
 
             StudentData studentData = null;
-            
+           
 
             // Generating JSON Response and Converting it to Student Object.
             using (WebResponse response = request.GetResponse())
@@ -53,15 +53,15 @@ namespace HELPS
                     {
                         String json = sr.ReadToEnd();
                     
-                              // Convert JSON Response to Student Object
+                             // Convert JSON Response to Student Object
                              studentData = JsonConvert.DeserializeObject<StudentData>(json);                 
                     }
 
                     try
                     {
-                        if (studentData == null)
+                        if (studentData != null)
                         {
-                            Log.Info("HELPS", "This student Does not Exists");
+                            Log.Info("HELPS", studentData.attributes.studentID);
 
                         }
                     }

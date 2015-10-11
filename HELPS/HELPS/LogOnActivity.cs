@@ -58,7 +58,7 @@ namespace HELPS
 
                     // Passing the Student object to the next Activity
                     mainActivity.PutExtra("student", JsonConvert.SerializeObject(studentData));
-
+                    Log.Info("HELPS", studentData.attributes.studentID);
                     StartActivity(mainActivity);
                  
                 } 
