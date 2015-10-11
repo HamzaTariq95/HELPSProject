@@ -8,7 +8,8 @@ using Android.OS;
 using Java.Util;
 using System.Collections.Generic;
 using Android.Support.V4.Widget;
-using Java.Lang;
+using Newtonsoft.Json;
+using HELPS.Model;
 
 namespace HELPS
 {
@@ -65,7 +66,12 @@ namespace HELPS
 
             // Set the "Hello User" text view to display the user's name
             // {Architecture} change the code so that it grabs the user's first name from the db
-            string helloUser = GetString(Resource.String.hello) + " " + Intent.GetStringExtra("ID") + "!";
+
+            var studentData = JsonConvert.DeserializeObject<StudentData>(Intent.GetStringExtra("student"));
+
+
+
+            string helloUser = GetString(Resource.String.hello) + " " + studentData.attributes.studentID + "!";
             TextView helloUserText = FindViewById<TextView>(Resource.Id.textHelloUser);
 
             helloUserText.Text = helloUser;

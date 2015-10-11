@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Json;
@@ -28,9 +26,7 @@ namespace HELPS
     public class HomeController {
 
         public  StudentData login(String username, String password)
-        {
-
-       
+        {       
 
             // Request Address of the API
             String url = "http://GroupThirteen.cloudapp.net/api/student/" + username;
@@ -51,8 +47,6 @@ namespace HELPS
                 // Get a stream representation of the HTTP web response:
                 using (Stream stream = response.GetResponseStream())
                 {
-                
-
                     using (StreamReader sr = new StreamReader(stream))
                     {
                         String json = sr.ReadToEnd();
@@ -65,34 +59,25 @@ namespace HELPS
                     {
                         if (studentData == null)
                         {
-                            Log.Info("TEST", "This student does not exist");
-
+                            Log.Info("HELPS", "This student does not exist");
                         }
 
                         else
                         {
-                            Log.Info("TEST", studentData.attributes.studentID);
+                            Log.Info("HELPS", studentData.attributes.studentID);
                         }
                     }
 
-                catch (NullReferenceException ex)
+                    catch (NullReferenceException ex)
                     {
-                        Log.Info("TEST", "Exception: This student does not exist");
+                        Log.Info("HELPS", "Exception: This student does not exist");
                         studentData = null;
                     }
-                   
-              
                 }
-
-
-               
             }
 
             return studentData;
         }
-
-    }
-
-        
+    }  
 }
 

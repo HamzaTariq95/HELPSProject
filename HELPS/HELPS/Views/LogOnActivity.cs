@@ -12,6 +12,9 @@ using Android.Widget;
 using Android.Content.PM;
 using Android.Graphics;
 using HELPS.Model;
+using Android.Util;
+using Newtonsoft.Json;
+using System.IO;
 
 
 namespace HELPS
@@ -41,12 +44,12 @@ namespace HELPS
             wrongInput = FindViewById<TextView>(Resource.Id.textWrongInput);
             wrongInput.Visibility = ViewStates.Gone;
 
-            // Works the "Log-in" button
             com.refractored.fab.FloatingActionButton logInButton = FindViewById<com.refractored.fab.FloatingActionButton>(Resource.Id.fabLogIn);
 
+            // Works the "Log-in" button
             logInButton.Click += delegate
             {
-                LogIn(username.Text, password.Text);                
+                LogIn(username.Text, password.Text);
             };
 
             // Works the "Forgotten Password" button
@@ -79,14 +82,18 @@ namespace HELPS
             // If the information doesn't exist in the database, display message to user.
             if (studentData != null)
             {
-                StartActivity(typeof(MainActivity));
-                // need to pass the studentData Object
+                Intent mainActivity = new Intent(Application.Context, typeof(MainActivity));
+
+                // Passing the Student object to the next Activity
+                mainActivity.PutExtra("student", JsonConvert.SerializeObject(studentData));
+
+                StartActivity(mainActivity);
 
             }
 
             // {Architecture} If case for when it is the user's first log-in
             // Go to the Register Activity
-            // need to pass the local student data
+            // Need to fetch data from UTSstudentData.csv and pass that on to the next Intent.
 
             // Else the user's creditials are not in the database or wrong
             else
@@ -115,6 +122,15 @@ namespace HELPS
 
             Dialog aboutHelpsDialog = aboutHelpsAlert.Create(); ;
             aboutHelpsDialog.Show();
+        }
+
+
+        static List<string> SplitRow(string Row)
+        {
+            List<string> result = new List<string>();
+            string[] splitRow = Row.Split(",".ToCharArray());
+            result = splitRow.ToList<string>();
+            return result;
         }
     }
 }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
