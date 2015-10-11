@@ -58,6 +58,18 @@
         android:paddingBottom="4dp"
         android:paddingRight="8dp"
         android:paddingLeft="8dp" />
+<!-- Text providing log-in instructions for users -->
+    <TextView
+        android:id="@+id/textWrongInput"
+        android:text="@string/wrongInformation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="290dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="16dp"
+        android:textColor="@color/white"
+        android:paddingBottom="12dp" />
 <!-- Log-in button -->
     <com.refractored.fab.FloatingActionButton
         android:id="@+id/fabLogIn"
@@ -68,7 +80,8 @@
         android:src="@drawable/lock"
         fab:fab_colorNormal="@color/white"
         fab:fab_colorPressed="@color/whiteDark"
-        fab:fab_colorRipple="@color/redDark" />
+        fab:fab_colorRipple="@color/redDark"
+        fab:fab_colorDisabled="@color/charcoalLight" />
 <!-- Forgotten password link (to external UTS reset password page) -->
     <Button
         android:id="@+id/buttonForgotPassword"

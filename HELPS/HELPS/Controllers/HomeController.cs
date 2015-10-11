@@ -65,7 +65,7 @@ namespace HELPS
                     {
                         if (studentData == null)
                         {
-                            Log.Info("TEST", "This student Does not Exists");
+                            Log.Info("TEST", "This student does not exist");
 
                         }
 
@@ -77,7 +77,7 @@ namespace HELPS
 
                 catch (NullReferenceException ex)
                     {
-                        Log.Info("TEST", "This student Does not Exists");
+                        Log.Info("TEST", "Exception: This student does not exist");
                         studentData = null;
                     }
                    

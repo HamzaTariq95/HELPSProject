@@ -44,7 +44,7 @@ namespace HELPS
             checkCancelButton.Click += delegate
             {
                 // Returns user to the "Log On" activity
-                StartActivity(typeof(LogOnActivity));
+                Cancel();
             };
 
             // Works the buttons on the "Input" view.
@@ -65,8 +65,15 @@ namespace HELPS
             inputCancelButton.Click += delegate
             {
                 // Returns user to the "Log On" activity.
-                StartActivity(typeof(LogOnActivity));
+                Cancel();
             };
+        }
+
+        // Controls sending the user back to the "Log On" activity.
+        void Cancel()
+        {
+            StartActivity(typeof(LogOnActivity));
+            Finish();
         }
     }
 }
