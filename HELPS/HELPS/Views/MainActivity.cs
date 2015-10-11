@@ -49,7 +49,14 @@ namespace HELPS
             // Not the first time activity has been run.
             if (bundle != null)
             {
-
+                if (bundle.GetString("DrawerState") == "Opened")
+                {
+                    SupportActionBar.SetTitle(Resource.String.menuTitle);
+                }
+                else
+                {
+                    SupportActionBar.SetTitle(Resource.String.applicationName);
+                }
             }
             // First time activity has been run.
             else
@@ -93,7 +100,7 @@ namespace HELPS
             };
 
             // Set the "Hello User" text view to display the user's name
-            // {Architecture} change the code so that it grabs the user's first name from the db
+            // {Architecture} change the code so that it grabs the user's preferred name from the db
             var studentData = JsonConvert.DeserializeObject<StudentData>(Intent.GetStringExtra("student"));
 
             string helloUser = GetString(Resource.String.hello) + " " + studentData.attributes.studentID + "!";
@@ -117,6 +124,25 @@ namespace HELPS
         {
             _DrawerToggle.OnOptionsItemSelected(item);
             return base.OnOptionsItemSelected(item);
+        }
+
+        protected override void OnSaveInstanceState(Bundle outState)
+        {
+            if (_DrawerLayout.IsDrawerOpen((int)GravityFlags.Left))
+            {
+                outState.PutString("DrawerState", "Opened");
+            }
+            else
+            {
+                outState.PutString("DrawerState", "Closed");
+            }
+            base.OnSaveInstanceState(outState);
+        }
+
+        protected override void OnPostCreate(Bundle savedInstanceState)
+        {
+            base.OnPostCreate(savedInstanceState);
+            _DrawerToggle.SyncState();
         }
     }
 }

@@ -16,9 +16,6 @@ namespace HELPS.Model
 {
     public class Students
     {
-
-
-
         public string studentID { get; set; }
         public object dob { get; set; }
         public string gender { get; set; }
