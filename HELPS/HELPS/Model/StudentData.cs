@@ -11,12 +11,14 @@ using Android.Views;
 using Android.Widget;
 using Newtonsoft.Json;
 using System.Runtime.Serialization;
+using Java.Interop;
 
 namespace HELPS.Model
 {
-    [Serializable]
-    public class StudentData 
-    {
+    
+    public class StudentData {
+
+        
         [JsonProperty("Result")]
         public Students attributes { get; set; }
 
@@ -27,9 +29,12 @@ namespace HELPS.Model
         public object DisplayMessage { get; set; }
 
 
-      
 
-      
+        public int DescribeContents()
+        {
+            return 0;
+        }
+
      }
 
     }

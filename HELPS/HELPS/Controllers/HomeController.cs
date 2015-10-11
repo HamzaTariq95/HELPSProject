@@ -28,9 +28,7 @@ namespace HELPS
     public class HomeController {
 
         public  StudentData login(String username, String password)
-        {
-
-       
+        {       
 
             // Request Address of the API
             String url = "http://GroupThirteen.cloudapp.net/api/student/" + username;
@@ -51,8 +49,6 @@ namespace HELPS
                 // Get a stream representation of the HTTP web response:
                 using (Stream stream = response.GetResponseStream())
                 {
-                
-
                     using (StreamReader sr = new StreamReader(stream))
                     {
                         String json = sr.ReadToEnd();
@@ -65,13 +61,8 @@ namespace HELPS
                     {
                         if (studentData == null)
                         {
-                            Log.Info("TEST", "This student Does not Exists");
+                            Log.Info("HELPS", "This student Does not Exists");
 
-                        }
-
-                        else
-                        {
-                            Log.Info("TEST", studentData.attributes.studentID);
                         }
                     }
 

@@ -12,6 +12,9 @@ using Android.Widget;
 using Android.Content.PM;
 using Android.Graphics;
 using HELPS.Model;
+using Android.Util;
+using Newtonsoft.Json;
+using System.IO;
 
 
 namespace HELPS
@@ -40,23 +43,30 @@ namespace HELPS
             logInButton.Click += delegate
             {
 
-                // {Architecture} replace with log in authentication method
-
                 HomeController homeController = new HomeController();
 
+                // Calles the Login Controller and Returns a Student Object
                 StudentData studentData = homeController.login(username.Text, password.Text);
 
+                // If Login is Successful. 
                 if(studentData != null)
                 {
-                    StartActivity(typeof(MainActivity));
-                    // need to pass the studentData Object
-                   
+                                               
+                    Intent mainActivity = new Intent(Application.Context, typeof(MainActivity));
+
+                    // Passing the Student object to the next Activity
+                    mainActivity.PutExtra("student", JsonConvert.SerializeObject(studentData));
+
+                    StartActivity(mainActivity);
+                 
                 }
 
+                // If new user
                 else 
                 {
+                    //Need to fetch data fro UTSstudentData.csv and pass that on to the next Intent.
                     StartActivity(typeof(RegisterActivity));
-                    // need to pass the local student data
+                  
                 }
 
                 // {Architecture} replace with method to check if it's user's first log-in.
@@ -91,6 +101,15 @@ namespace HELPS
                 Dialog aboutHelpsDialog = aboutHelpsAlert.Create(); ;
                 aboutHelpsDialog.Show();
             };
+        }
+
+
+        static List<string> SplitRow(string Row)
+        {
+            List<string> result = new List<string>();
+            string[] splitRow = Row.Split(",".ToCharArray());
+            result = splitRow.ToList<string>();
+            return result;
         }
     }
 }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           

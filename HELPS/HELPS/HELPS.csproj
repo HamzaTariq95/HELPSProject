@@ -69,6 +69,7 @@
     <Compile Include="BookedSessionsBaseAdapter.cs" />
     <Compile Include="BookedSessionsViewHolder.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\WorkshopController.cs" />
     <Compile Include="LogOnActivity.cs" />
     <Compile Include="MainActivity.cs" />
@@ -143,6 +144,9 @@
     <AndroidResource Include="Resources\values\styles.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="UTSstudentData.csv" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
