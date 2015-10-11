@@ -76,6 +76,7 @@
     <string name="postgrad">Postgrad</string>
 
     <!-- Menu -->
+    <string name="menuTitle">Menu</string>
     <string-array name="menu">
         <item name="menuProfile">My HELPS Profile</item>
         <item name="menuSearch">Search Open Sessions</item>

@@ -1,18 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/drawerMain"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-<!-- Activity content layout -->
-    <FrameLayout
-        android:id="@+id/mainContentFrame"
+    android:layout_height="fill_parent" >
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?android:attr/actionBarSize"
+        android:background="@color/red"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawerMain"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
+        <!-- Activity content layout -->
+        <FrameLayout
+            android:id="@+id/mainContentFrame"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <include
+                layout="@layout/MainLayout" />
+        </FrameLayout>
+        <!-- Menu layout -->
         <include
-            layout="@layout/MainLayout" />
-    </FrameLayout>
-<!-- Menu layout -->
-    <include
-        layout="@layout/Menu" />
-</android.support.v4.widget.DrawerLayout>
+            layout="@layout/Menu" />
+    </android.support.v4.widget.DrawerLayout>
+</LinearLayout>

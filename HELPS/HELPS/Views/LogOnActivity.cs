@@ -19,7 +19,7 @@ using System.IO;
 
 namespace HELPS
 {
-    [Activity(Label = "UTS:HELPS", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, Theme = "@style/helpsFullscreenTheme")]
+    [Activity(Label = "UTS:HELPS", MainLauncher = true, ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait, Theme = "@style/helpsFullscreenTheme")]
     public class LogOnActivity : Activity
     {
         private TextView _WrongInput;

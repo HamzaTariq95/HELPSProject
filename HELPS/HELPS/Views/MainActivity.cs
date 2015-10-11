@@ -10,13 +10,19 @@ using System.Collections.Generic;
 using Android.Support.V4.Widget;
 using Newtonsoft.Json;
 using HELPS.Model;
+using SupportToolbar = Android.Support.V7.Widget.Toolbar;
+using Android.Support.V7.App;
+using HELPS.Views;
+using Android.Content.PM;
 
 namespace HELPS
 {
     [Activity(Label = "UTS:HELPS", Icon = "@drawable/icon")]
-    public class MainActivity : Activity
+    public class MainActivity : AppCompatActivity
     {
-        private DrawerLayout _Layout;
+        private SupportToolbar _Toolbar;
+        private HelpsAppCompatDrawerToggle _DrawerToggle;
+        private DrawerLayout _DrawerLayout;
         private ArrayAdapter _MenuAdapter;
         private ListView _Menu;
 
@@ -26,17 +32,35 @@ namespace HELPS
 
             // Set our view from the "main" layout resource.
             SetContentView(Resource.Layout.Main);
+            _DrawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawerMain);
+
+            // Set the toolbar
+            _Toolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
+            _DrawerToggle = new HelpsAppCompatDrawerToggle(this, _DrawerLayout, Resource.String.menuTitle, Resource.String.applicationName);
+
+            _DrawerLayout.SetDrawerListener(_DrawerToggle);
+
+            SetSupportActionBar(_Toolbar);
+            SupportActionBar.SetHomeButtonEnabled(true);
+            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+
+            _DrawerToggle.SyncState();
+
+            if (bundle != null)
+            {
+
+            }
 
             // Set up the menu layout.
-            _Layout = FindViewById<DrawerLayout>(Resource.Id.drawerMain);
             _Menu = FindViewById<ListView>(Resource.Id.listMenu);
-            
-            _Menu.Adapter = ArrayAdapter<string>.CreateFromResource(this, Resource.Array.menu, Android.Resource.Layout.SimpleListItem1);
+
+            _MenuAdapter = ArrayAdapter<string>.CreateFromResource(this, Resource.Array.menu, Resource.Layout.MenuRow);
+            _Menu.Adapter = _MenuAdapter;
 
             // Set up ability to click menu items
             _Menu.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) =>
             {
-                switch(e.Position)
+                switch (e.Position)
                 {
                     // Profile/Landing page.
                     case 0:
@@ -58,13 +82,12 @@ namespace HELPS
                         // {Architecture} Log Out function
                         StartActivity(typeof(LogOnActivity));
                         Finish();
-                        break; 
+                        break;
                 }
             };
 
             // Set the "Hello User" text view to display the user's name
             // {Architecture} change the code so that it grabs the user's first name from the db
-
             var studentData = JsonConvert.DeserializeObject<StudentData>(Intent.GetStringExtra("student"));
 
             string helloUser = GetString(Resource.String.hello) + " " + studentData.attributes.studentID + "!";
@@ -82,6 +105,12 @@ namespace HELPS
             ListView upcomingList = FindViewById<ListView>(Resource.Id.listUpcoming);
 
             upcomingList.Adapter = new BookedSessionsBaseAdapter(this, testList);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            _DrawerToggle.OnOptionsItemSelected(item);
+            return base.OnOptionsItemSelected(item);
         }
     }
 }
