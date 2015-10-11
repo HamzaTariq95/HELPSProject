@@ -22,7 +22,7 @@ namespace HELPS
     [Activity(Label = "UTS:HELPS", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, Theme = "@style/helpsFullscreenTheme")]
     public class LogOnActivity : Activity
     {
-        private TextView wrongInput;
+        private TextView _WrongInput;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -41,8 +41,8 @@ namespace HELPS
             EditText password = FindViewById<EditText>(Resource.Id.editPassword);
 
             // Sets the text telling the user that their information is incorrect to invisible
-            wrongInput = FindViewById<TextView>(Resource.Id.textWrongInput);
-            wrongInput.Visibility = ViewStates.Gone;
+            _WrongInput = FindViewById<TextView>(Resource.Id.textWrongInput);
+            _WrongInput.Visibility = ViewStates.Gone;
 
             com.refractored.fab.FloatingActionButton logInButton = FindViewById<com.refractored.fab.FloatingActionButton>(Resource.Id.fabLogIn);
 
@@ -98,7 +98,7 @@ namespace HELPS
             // Else the user's creditials are not in the database or wrong
             else
             {
-                wrongInput.Visibility = ViewStates.Visible;
+                _WrongInput.Visibility = ViewStates.Visible;
             }
         }
 

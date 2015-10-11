@@ -30,9 +30,8 @@ namespace HELPS
             // Set up the menu layout.
             _Layout = FindViewById<DrawerLayout>(Resource.Id.drawerMain);
             _Menu = FindViewById<ListView>(Resource.Id.listMenu);
-
-            _MenuAdapter = ArrayAdapter<string>.CreateFromResource(this, Resource.Array.menu, Android.Resource.Layout.SimpleListItem1);
-            _Menu.Adapter = _MenuAdapter;
+            
+            _Menu.Adapter = ArrayAdapter<string>.CreateFromResource(this, Resource.Array.menu, Android.Resource.Layout.SimpleListItem1);
 
             // Set up ability to click menu items
             _Menu.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) =>
@@ -41,7 +40,6 @@ namespace HELPS
                 {
                     // Profile/Landing page.
                     case 0:
-                        StartActivity(typeof(MainActivity));
                         break;
                     // Search sessions.
                     case 1:
@@ -68,8 +66,6 @@ namespace HELPS
             // {Architecture} change the code so that it grabs the user's first name from the db
 
             var studentData = JsonConvert.DeserializeObject<StudentData>(Intent.GetStringExtra("student"));
-
-
 
             string helloUser = GetString(Resource.String.hello) + " " + studentData.attributes.studentID + "!";
             TextView helloUserText = FindViewById<TextView>(Resource.Id.textHelloUser);
