@@ -13,7 +13,7 @@ using Android.Graphics;
 
 namespace HELPS
 {
-    [Activity(Label = "RegisterActivity", Icon = "@drawable/icon", Theme = "@style/helpsFullscreenTheme")]
+    [Activity(Label = "RegisterActivity", ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait, Icon = "@drawable/icon", Theme = "@style/helpsFullscreenTheme")]
     public class RegisterActivity : Activity
     {
         protected override void OnCreate(Bundle bundle)
