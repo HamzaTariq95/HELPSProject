@@ -8,6 +8,7 @@ using Android.OS;
 using Java.Util;
 using System.Collections.Generic;
 using Android.Support.V4.Widget;
+using Java.Lang;
 
 namespace HELPS
 {
@@ -24,12 +25,43 @@ namespace HELPS
 
             // Set our view from the "main" layout resource.
             SetContentView(Resource.Layout.Main);
+
             // Set up the menu layout.
             _Layout = FindViewById<DrawerLayout>(Resource.Id.drawerMain);
             _Menu = FindViewById<ListView>(Resource.Id.listMenu);
 
             _MenuAdapter = ArrayAdapter<string>.CreateFromResource(this, Resource.Array.menu, Android.Resource.Layout.SimpleListItem1);
             _Menu.Adapter = _MenuAdapter;
+
+            // Set up ability to click menu items
+            _Menu.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) =>
+            {
+                switch(e.Position)
+                {
+                    // Profile/Landing page.
+                    case 0:
+                        StartActivity(typeof(MainActivity));
+                        break;
+                    // Search sessions.
+                    case 1:
+                    // Future bookings.
+                    case 2:
+                    // Past bookings.
+                    case 3:
+                    // Record notes.
+                    case 4:
+                    // Settings.
+                    case 5:
+                        Console.WriteLine("Not implemented");
+                        break;
+                    // Log out.
+                    case 6:
+                        // {Architecture} Log Out function
+                        StartActivity(typeof(LogOnActivity));
+                        Finish();
+                        break; 
+                }
+            };
 
             // Set the "Hello User" text view to display the user's name
             // {Architecture} change the code so that it grabs the user's first name from the db
