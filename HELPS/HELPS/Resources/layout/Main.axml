@@ -1,25 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-<!-- User name display -->
-    <TextView
-        android:id="@+id/textHelloUser"
-        android:text="@string/hello"
-        android:layout_width="match_parent"
+    android:layout_height="fill_parent" >
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="18dp"
-        android:textColor="@color/charcoal"
-        android:padding="12dp" />
-    <TextView
-        android:id="@+id/textUpcoming"
-        android:text="@string/upcoming"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="28dp"
-        android:textColor="@color/charcoal"
-        android:paddingRight="12dp"
-        android:paddingLeft="12dp"
-        android:paddingBottom="12dp" />
+        android:minHeight="?android:attr/actionBarSize"
+        android:background="@color/red"
+        android:textSize="24dp"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawerMain"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <!-- Activity content layout -->
+        <FrameLayout
+            android:id="@+id/mainContentFrame"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <include
+                layout="@layout/MainLayout" />
+        </FrameLayout>
+        <!-- Menu layout -->
+        <include
+            layout="@layout/Menu" />
+    </android.support.v4.widget.DrawerLayout>
 </LinearLayout>

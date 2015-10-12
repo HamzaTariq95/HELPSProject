@@ -1,26 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <resources>
-    <!-- Main theme for the application. Inherits from the light Material theme -->
-    <style name="helpsTheme" parent="android:Theme.Holo.Light">
-        <!-- Theme style definitions go here -->
-        <!-- Overrides app bar color -->
+    <!-- Main style for the application. Inherits from the light AppCompat theme -->
+    <style name="helpsTheme" parent="Theme.AppCompat.Light.NoActionBar">
       <item name="android:colorPrimary">@color/red</item>
-      <!-- Overrides color of UI controls -->
       <item name="android:colorAccent">@color/redDark</item>
+      <item name="drawerArrowStyle">@style/helpsDrawerArrowStyle</item>
     </style>
-    <!-- Theme for fullscreen activities in the application. Inherits from the light Material theme -->
-    <style name="helpsFullscreenTheme" parent="android:Theme.Holo.Light.NoActionBar">
-        <!-- Theme style definitions go here -->
-        <!-- Overrides app background color -->
+  
+    <!-- Style for fullscreen activities in the application. Inherits from the light AppCompat theme -->
+    <style name="helpsFullscreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:background">@color/red</item>
-        <!-- Overrides dialog theme -->  
-        <item name="android:alertDialogTheme">@style/helpsDialogTheme</item>
     </style>
-    <!-- Theme for dialogs in the application. Inherits from the light Material theme -->
-    <style name="helpsDialogTheme" parent="android:Theme.Holo.Light.Dialog">
-        <!-- Theme style definitions go here -->
-        <!-- Overrides the background color -->
-        <item name="android:background">@color/white</item>
-        <item name="android:colorPrimary">@color/red</item>
+
+    <style name="helpsDrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@color/white</item>
+        <item name="spinBars">true</item>
     </style>
 </resources>

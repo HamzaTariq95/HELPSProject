@@ -2,6 +2,7 @@
 <resources>
     <color name="charcoalLight">#858985</color>
     <color name="charcoal">#1d1d1d</color>
+    <color name="charcoalDark">#151515</color>
     <color name="red">#db0310</color>
     <color name="redDark">#ae1302</color>
     <color name="white">#fefefe</color>
