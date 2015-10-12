@@ -36,15 +36,58 @@ namespace HELPS
 
             // Set the toolbar
             _Toolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
-            _DrawerToggle = new HelpsAppCompatDrawerToggle(this, _DrawerLayout, Resource.String.menuTitle, Resource.String.applicationName);
 
+            _DrawerToggle = new HelpsAppCompatDrawerToggle(this, _DrawerLayout, Resource.String.menuTitle, Resource.String.applicationName);
             _DrawerLayout.SetDrawerListener(_DrawerToggle);
 
+            // Set up action bar
+            SetUpSupportActionBar(bundle);
+            
+            _DrawerToggle.SyncState();
+
+            // Set up the menu layout.
+            SetUpMenu();
+
+            // Set the "Hello User" text view to display the user's name
+            DisplayUserName();
+
+            // Set the "Upcoming Sessions" list view to display (upto) the four closest sessions
+            DisplayUpcommingSessions();
+        }
+
+        private void DisplayUpcommingSessions()
+        {
+            // {Architecture} change the code to generate the list view data from the user's data
+            List<Booking> sessionsList = new List<Booking>();
+            
+            sessionsList.Add(new SessionBooking(false, Convert.ToDateTime("01/01/2015"), "B1.05.202", "Mr Tutor", "type"));
+            sessionsList.Add(new SessionBooking(false, Convert.ToDateTime("01/01/2015"), "B1.05.202", "Mr Tutor", "type"));
+            sessionsList.Add(new SessionBooking(false, Convert.ToDateTime("01/01/2015"), "B1.05.202", "Mr Tutor", "type"));
+
+            sessionsList.Add(new WorkshopBooking(1, Convert.ToDateTime("01/01/2015"), 123, 456));
+            sessionsList.Add(new WorkshopBooking(1, Convert.ToDateTime("01/01/2015"), 123, 456));
+            sessionsList.Add(new WorkshopBooking(1, Convert.ToDateTime("01/01/2015"), 123, 456));
+
+            ListView upcomingList = FindViewById<ListView>(Resource.Id.listUpcoming);
+
+            upcomingList.Adapter = new BookingBaseAdapter(this, sessionsList);
+        }
+
+        private void DisplayUserName()
+        {
+            var studentData = JsonConvert.DeserializeObject<StudentData>(Intent.GetStringExtra("student"));
+
+            string helloUser = GetString(Resource.String.hello) + " " + studentData.attributes.studentID + "!";
+            TextView helloUserText = FindViewById<TextView>(Resource.Id.textHelloUser);
+
+            helloUserText.Text = helloUser;
+        }
+
+        private void SetUpSupportActionBar(Bundle bundle)
+        {
             SetSupportActionBar(_Toolbar);
             SupportActionBar.SetHomeButtonEnabled(true);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
-
-            _DrawerToggle.SyncState();
 
             // Not the first time activity has been run.
             if (bundle != null)
@@ -63,14 +106,15 @@ namespace HELPS
             {
                 SupportActionBar.SetTitle(Resource.String.applicationName);
             }
+        }
 
-            // Set up the menu layout.
+        private void SetUpMenu()
+        {
             _Menu = FindViewById<ListView>(Resource.Id.listMenu);
 
             _MenuAdapter = ArrayAdapter<string>.CreateFromResource(this, Resource.Array.menu, Resource.Layout.MenuRow);
             _Menu.Adapter = _MenuAdapter;
 
-            // Set up ability to click menu items
             _Menu.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) =>
             {
                 switch (e.Position)
@@ -98,26 +142,6 @@ namespace HELPS
                         break;
                 }
             };
-
-            // Set the "Hello User" text view to display the user's name
-            // {Architecture} change the code so that it grabs the user's preferred name from the db
-            var studentData = JsonConvert.DeserializeObject<StudentData>(Intent.GetStringExtra("student"));
-
-            string helloUser = GetString(Resource.String.hello) + " " + studentData.attributes.studentID + "!";
-            TextView helloUserText = FindViewById<TextView>(Resource.Id.textHelloUser);
-
-            helloUserText.Text = helloUser;
-
-            // Set the "Upcoming Sessions" list view to display (upto) the three closest sessions
-            // {Architecture} change the code to generate the list view data from the user's data
-            List<Session> testList = new List<Session>();
-            testList.Add(new Session("Session 1", "Booked", "01/01/2015", "All Students", "B1.05.202", "Mr Tutor", "Session", "Testing"));
-            testList.Add(new Session("Session 2", "Booked", "01/01/2015", "All Students", "B1.05.202", "Mr Tutor", "Session", "Testing"));
-            testList.Add(new Session("Session 3", "Booked", "01/01/2015", "All Students", "B1.05.202", "Mr Tutor", "Session", "Testing"));
-
-            ListView upcomingList = FindViewById<ListView>(Resource.Id.listUpcoming);
-
-            upcomingList.Adapter = new BookedSessionsBaseAdapter(this, testList);
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)

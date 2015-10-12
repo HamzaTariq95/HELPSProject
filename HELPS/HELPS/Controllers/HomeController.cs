@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Json;
 using Newtonsoft.Json;
-
-
+using System.Net;
 
 using Android.App;
 using Android.Content;
@@ -15,7 +14,7 @@ using Android.Views;
 using Android.Widget;
 using Android.Content.PM;
 using Android.Graphics;
-using System.Net;
+
 using Android.Util;
 using System.IO;
 using System.Threading.Tasks;
@@ -25,11 +24,11 @@ namespace HELPS
 {
     public class HomeController {
 
-        public  StudentData login(String username, String password)
+        public  StudentData login(String studentID, String password)
         {       
-
+           
             // Request Address of the API
-            String url = "http://GroupThirteen.cloudapp.net/api/student/" + username;
+            String url = "http://GroupThirteen.cloudapp.net/api/student/" + studentID;
 
 
             // Setting Request Properties
