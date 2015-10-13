@@ -48,7 +48,6 @@ namespace HELPS
             _Future = new FutureBookingsFragment();
 
             // Set up the landing page
-            _FragmentManager = FragmentManager.BeginTransaction();
             SetView(Resource.Id.fragmentContainer, _Landing, false);
 
             // Set up action bar
@@ -157,6 +156,7 @@ namespace HELPS
 
         private void SetView(int fragmentResource, Fragment view, bool retainView)
         {
+            _FragmentManager = FragmentManager.BeginTransaction();
             _FragmentManager.Replace(fragmentResource, view);
 
             // If true, allows the user to return to that fragment.
