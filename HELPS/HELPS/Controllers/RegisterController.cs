@@ -31,19 +31,25 @@ namespace HELPS.Controllers
             Log.Info("Register", json);
 
 
-         /*   // Request Address of the API
+           // Request Address of the API
             String url = "http://GroupThirteen.cloudapp.net/api/student/resigter";
 
-            // Setting Request Properties
+            WebClient myService = new WebClient();
+            myService.Headers[HttpRequestHeader.ContentType] = "application/json";
+            string response = myService.UploadString(url, json);
+            Log.Info("REGISTER", response);
+          
+         /*   // Setting Request Properties
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "POST";
             request.ContentType = "application/json; charset=utf-8";
             request.Headers["AppKey"] = "66666";
 
             using (var streamWriter = new StreamWriter(request.GetRequestStream()))
-            {oo655
+            {
                 streamWriter.Write(json);
                 streamWriter.Flush();
+                streamWriter.Close();
             }
 
             var httpResponse = (HttpWebResponse)request.GetResponse();
@@ -51,9 +57,7 @@ namespace HELPS.Controllers
             {
                 var result = streamReader.ReadToEnd();
                 Log.Info("REGISTER", result);
-            }
-
-          * */
+            }  */
 
         }
     }

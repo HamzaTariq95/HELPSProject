@@ -82,6 +82,9 @@ namespace HELPS
         protected override void OnPostCreate(Bundle savedInstanceState)
         {
 
+            base.OnPostCreate(savedInstanceState);
+
+
             StudentData studentData = JsonConvert.DeserializeObject<StudentData>(Intent.GetStringExtra("student"));
             string helloUser = GetString(Resource.String.hello) + " " + studentData.attributes.studentID + "!";
             TextView helloUserText = FindViewById<TextView>(Resource.Id.textHelloUser);
@@ -91,8 +94,6 @@ namespace HELPS
 
             // Set the "Hello User" text view to display the user's name
             // {Architecture} change the code so that it grabs the user's first name from the db
-
-
 
         }
 
