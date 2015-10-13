@@ -6,6 +6,9 @@
     <string name="logOnInformation">Use your UTS ID and password to log-in.</string>
     <string name="utsId">UTS ID</string>
     <string name="password">UTS Password</string>
+    <string name="wrongInformation">
+        <b>The ID and/or the password you have entered is incorrect.</b>
+    </string>
     <string name="logIn">Log-in</string>
     <string name="forgotPassword">
         <u>Forgot/Reset your UTS password?</u>
@@ -23,7 +26,77 @@
         through the development of your English language and academic
         understanding, so you can reach your study and career goals.
     </string>
+  
+    <!-- Register: Check information screen -->
+    <string name="registerTitle">UTS:HELPS Registration</string>
+    <string name="checkInformation">Please check if this information is correct.</string>
+    <string name="checkName">
+        <b>Student Name:</b>
+    </string>
+    <string name="checkFaculty">
+        <b>Faculty:</b>
+    </string>
+    <string name="checkCourse">
+        <b>Course:</b>
+    </string>
+    <string name="checkEmail">
+        <b>Email:</b>
+    </string>
+    <string name="checkHomePhone">
+        <b>Home Phone:</b>
+    </string>
+    <string name="checkMobile">
+        <b>Mobile Phone:</b>
+    </string>
+    <string name="checkDOB">
+        <b>D.O.B.:</b>
+    </string>
+    <string name="contactInformation">Information incorrect? Please contact UTS administration.</string>
+  
+    <!-- Register: Input screen -->
+    <string name="inputCompulsory">Fields marked with an asterisk (*) are compulsory.</string>
+    <string name="inputPreferredName">
+        <b>Preferred first name:</b>
+    </string>
+    <string name="hintPreferredName">Preferred first name</string>
+    <string name="inputPreferredNumber">
+        <b>Preferred contact number*:</b>
+    </string>
+    <string name="hintPreferredNumber">Preferred contact number</string>
+    <string name="inputGender">
+        <b>Gender:</b>
+    </string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="other">Other</string>
+    <string name="inputDegree">
+        <b>Degree*:</b>
+    </string>
+    <string name="undergrad">Undergrad</string>
+    <string name="postgrad">Postgrad</string>
 
+    <!-- Menu -->
+    <string name="menuTitle">Menu</string>
+    <string-array name="menu">
+        <item name="menuProfile">My HELPS Profile</item>
+        <item name="menuSearch">Search Workshops</item>
+        <item name="menuFuture">My Future Bookings</item>
+        <item name="menuPast">My Past Bookings</item>
+        <item name="menuNotes">Record Notes</item>
+        <item name="menuSettings">Settings</item>
+        <item name="menuLogOut">Log Out</item>
+    </string-array>
+  
     <!-- Home (landing) screen -->
     <string name="hello">Hello</string>
+    <string name="upcoming">Your Upcoming Bookings</string>
+
+    <!-- Search Workshops -->
+    <string name="searchTitle">Search Workshops</string>
+  
+    <!-- Future Bookings -->
+    <string name="futureBookingsTitle">My Future Bookings</string>
+
+    <!-- Past Bookings -->
+    <string name="pastBookingsTitle">My Past Bookings</string>
 </resources>
