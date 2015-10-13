@@ -106,6 +106,7 @@
     <Compile Include="Model\UtsData.cs" />
     <Compile Include="Model\Workshop.cs" />
     <Compile Include="Model\WorkshopBooking.cs" />
+    <Compile Include="Views\PastBookingsFragment.cs" />
     <Compile Include="Views\RegisterActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

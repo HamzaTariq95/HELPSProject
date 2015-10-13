@@ -19,6 +19,9 @@ namespace HELPS
     public class LandingFragment : Fragment
     {
         private StudentData studentData;
+        private int maxBookings = 0;
+        private int sessionBookings = 0;
+        private int workShopBookings = 0;
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -46,34 +49,41 @@ namespace HELPS
             SessionBookingData sessionBookingData = sessionController.GetSessionBookingData(studentData.attributes.studentID);
             List<Booking> bookings = new List<Booking>();
 
-            if (sessionBookingData == null)
+            if (sessionBookingData == null /* && workShopBookingData == null*/)
             {
                 //Display on screen: no bookings found
             }
             else
             {
-                addSessionBookingToList(sessionBookingData, bookings);
+                addBookingsToList(bookings, sessionBookingData /*,workShopBookingData*/);
             }
-            // {Architecture} change the code to generate the list view data from the user's data
-
-
-
-            //bookings.Add(new SessionBooking(false, Convert.ToDateTime("01/01/2015"), "B1.05.202", "Mr Tutor", "type"));
-            //bookings.Add(new SessionBooking(false, Convert.ToDateTime("01/01/2015"), "B1.05.202", "Mr Tutor", "type"));
-
-            bookings.Add(new WorkshopBooking(1, Convert.ToDateTime("01/01/2015"), 123, 456));
-            bookings.Add(new WorkshopBooking(1, Convert.ToDateTime("01/01/2015"), 123, 456));
-            bookings.Add(new WorkshopBooking(1, Convert.ToDateTime("01/01/2015"), 123, 456));
-
+         
             ListView upcomingList = view.FindViewById<ListView>(Resource.Id.listUpcoming);
             upcomingList.Adapter = new BookingBaseAdapter(Activity, bookings);
         }
 
-        private void addSessionBookingToList(SessionBookingData sessionBookingData, List<Booking> bookings)
+        private void addBookingsToList(List<Booking> bookings, SessionBookingData sessionBookingData)
+        {
+            addSessionBookingsToList(sessionBookingData, bookings);
+            addWorkshopBookingsToList(/*sessionBookingData,*/ bookings);
+        }
+
+        private void addWorkshopBookingsToList(/*sessionBookingData,*/ List<Booking> bookings)
+        {
+            /*foreach (SessionBooking sessionBooking in sessionBookingData.attributes)
+            {
+                if (sessionBooking.StartDate > DateTime.Now && sessionBooking.Status().Equals("Booked"))
+                    bookings.Add(sessionBooking);
+            }*/
+            bookings.Add(new WorkshopBooking(1, Convert.ToDateTime("01/01/2015"), 123, 456));
+        }
+
+        private void addSessionBookingsToList(SessionBookingData sessionBookingData, List<Booking> bookings)
         {
             foreach (SessionBooking sessionBooking in sessionBookingData.attributes)
             {
-                bookings.Add(sessionBooking);
+                if (sessionBooking.StartDate > DateTime.Now && sessionBooking.Status().Equals("Booked"))
+                    bookings.Add(sessionBooking);
             }
         }
 

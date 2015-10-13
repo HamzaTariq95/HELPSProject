@@ -47,6 +47,7 @@ namespace HELPS
             // Set up the views
             _Landing = new LandingFragment();
             _Future = new FutureBookingsFragment();
+            _Past = new PastBookingsFragment();
 
             // Set up the landing page
             SetView(Resource.Id.fragmentContainer, _Landing, false);
@@ -149,6 +150,7 @@ namespace HELPS
                         break;
                     // Past bookings.
                     case 3:
+                         SetView(Resource.Id.fragmentContainer, _Past, true);
                         _CurrentViewTitle = Resource.String.pastBookingsTitle;
                         break;
                     // Record notes.

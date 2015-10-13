@@ -64,7 +64,7 @@ namespace HELPS.Model
             if (!Cancel)
                 return "Booked";
 
-            return "Cancelled";
+            return "Canceled";
         }
 
         public override DateTime? Date()
