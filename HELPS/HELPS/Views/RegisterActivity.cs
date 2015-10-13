@@ -14,10 +14,11 @@ using Newtonsoft.Json;
 using HELPS.Model;
 using Android.Util;
 using HELPS.Controllers;
+using Android.Content.PM;
 
 namespace HELPS
 {
-    [Activity(Label = "RegisterActivity", Icon = "@drawable/icon", Theme = "@style/helpsFullscreenTheme")]
+    [Activity(Label = "RegisterActivity", ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait, Icon = "@drawable/icon", Theme = "@style/helpsFullscreenTheme")]
     public class RegisterActivity : Activity
     {
         protected override void OnCreate(Bundle bundle)
@@ -74,7 +75,7 @@ namespace HELPS
             checkCancelButton.Click += delegate
             {
                 // Returns user to the "Log On" activity
-                StartActivity(typeof(LogOnActivity));
+                Cancel();
             };
 
             // Works the buttons on the "Input" view.
@@ -87,7 +88,7 @@ namespace HELPS
                 // {Architecture} Save user input to the database and change user to registered.
                 // Sends user to the landing page.
                 // Stops user from re-entering the register page with the back button.
-
+                
                 RegisterController registerController = new RegisterController();
                 registerController.Register(studentData);
 
@@ -98,8 +99,15 @@ namespace HELPS
             inputCancelButton.Click += delegate
             {
                 // Returns user to the "Log On" activity.
-                StartActivity(typeof(LogOnActivity));
+                Cancel();
             };
+        }
+
+        // Controls sending the user back to the "Log On" activity.
+        void Cancel()
+        {
+                StartActivity(typeof(LogOnActivity));
+            Finish();
         }
     }
 }

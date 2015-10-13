@@ -6,6 +6,9 @@
     <string name="logOnInformation">Use your UTS ID and password to log-in.</string>
     <string name="utsId">UTS ID</string>
     <string name="password">UTS Password</string>
+    <string name="wrongInformation">
+        <b>The ID and/or the password you have entered is incorrect.</b>
+    </string>
     <string name="logIn">Log-in</string>
     <string name="forgotPassword">
         <u>Forgot/Reset your UTS password?</u>
@@ -73,6 +76,7 @@
     <string name="postgrad">Postgrad</string>
 
     <!-- Menu -->
+    <string name="menuTitle">Menu</string>
     <string-array name="menu">
         <item name="menuProfile">My HELPS Profile</item>
         <item name="menuSearch">Search Open Sessions</item>
