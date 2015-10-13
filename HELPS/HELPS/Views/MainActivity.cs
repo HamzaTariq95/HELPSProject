@@ -88,7 +88,7 @@ namespace HELPS
 
             helloUserText.Text = helloUser;
 
-              
+
             // Set the "Hello User" text view to display the user's name
             // {Architecture} change the code so that it grabs the user's first name from the db
 
