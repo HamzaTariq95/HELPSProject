@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace HELPS.Model
 {
-    class SessionBooking : Booking
+    public class SessionBooking : Booking
     {
 
         public string LecturerFirstName { get; set; }
