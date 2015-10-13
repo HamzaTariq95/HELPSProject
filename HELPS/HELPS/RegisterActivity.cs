@@ -44,9 +44,22 @@ namespace HELPS
             TextView textDOB = FindViewById<TextView>(Resource.Id.textCheckDOB);
             TextView contact = FindViewById<TextView>(Resource.Id.textHelloUser);
             TextView name = FindViewById<TextView>(Resource.Id.textCheckName);
+            TextView faculty = FindViewById<TextView>(Resource.Id.textCheckFaculty);
+            TextView course = FindViewById<TextView>(Resource.Id.textCheckCourse);
+            TextView email = FindViewById<TextView>(Resource.Id.textCheckEmail);
+            TextView phoneNumber = FindViewById<TextView>(Resource.Id.textCheckHomePhone);
+            TextView Mobile = FindViewById<TextView>(Resource.Id.textCheckMobile);
+
 
             textDOB.Text = "DOB: " + studentData.DateOfBirth;
             name.Text = "Name: " + studentData.PreferredName;
+            faculty.Text = "Faculty: " + studentData.Faculty;
+            course.Text = "Course: " + studentData.Course;
+            email.Text = "Email: " + studentData.Email;
+            phoneNumber.Text += studentData.AltContact;
+            Mobile.Text += studentData.AltContact;
+         
+
 
 
 

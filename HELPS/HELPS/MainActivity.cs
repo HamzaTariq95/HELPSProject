@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using Android.Support.V4.Widget;
 using Newtonsoft.Json;
 using HELPS.Model;
-
+using Android.Util;
 namespace HELPS
 {
     [Activity(Label = "UTS:HELPS", Icon = "@drawable/icon")]
@@ -67,10 +67,15 @@ namespace HELPS
             // Set the "Hello User" text view to display the user's name
             // {Architecture} change the code so that it grabs the user's first name from the db
 
-            var studentData = JsonConvert.DeserializeObject<StudentData>(Intent.GetStringExtra("student"));
+            var JsonString = Intent.GetStringExtra("student");
+            Log.Info("Json String", JsonString);
 
-            string helloUser = GetString(Resource.String.hello) + " " + studentData.attributes.studentID + "!";
-            TextView helloUserText = FindViewById<TextView>(Resource.Id.textCheckMobile);
+            StudentData studentData = JsonConvert.DeserializeObject<StudentData>(Intent.GetStringExtra("student"));
+
+            Log.Info("Inside Main Activity", studentData.attributes.studentID);
+
+            string helloUser = GetString(Resource.String.hello) + " " + studentData.attributes.studentID.Trim() + "!";
+            TextView helloUserText = FindViewById<TextView>(Resource.Id.textHelloUser);
 
 
             helloUserText.Text = helloUser;

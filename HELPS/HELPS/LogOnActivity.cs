@@ -58,7 +58,7 @@ namespace HELPS
 
                     // Passing the Student object to the next Activity
                     mainActivity.PutExtra("student", JsonConvert.SerializeObject(studentData));
-                    Log.Info("HELPS", studentData.attributes.studentID);
+                    Log.Info("LogOn Activity", studentData.attributes.studentID);
                     StartActivity(mainActivity);
                  
                 } 
@@ -91,6 +91,11 @@ namespace HELPS
                             }
                         }
 
+                    }
+
+                    if(studentRecord == null)
+                    {
+                        // Display Wrong credentials error. 
                     }
 
                     Intent registerActivity = new Intent(Application.Context, typeof(RegisterActivity));

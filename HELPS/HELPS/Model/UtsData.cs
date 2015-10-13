@@ -31,6 +31,8 @@ namespace HELPS.Model
         public string PreferredName { get; set; }
         public string AltContact { get; set; }
         public string CreatorId { get; set; }
-       
-    }
+        public string Faculty { get; set; }
+        public string Course {get; set;}
+        public string Email { get; set; }
+     }
 }
