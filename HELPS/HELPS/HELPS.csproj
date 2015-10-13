@@ -86,6 +86,9 @@
     <Compile Include="LandingFragment.cs" />
     <Compile Include="Model\Booking.cs" />
     <Compile Include="Model\SessionBooking.cs" />
+    <Compile Include="Model\SessionBookingData.cs" />
+    <Compile Include="Model\WorkshopBookingData.cs" />
+    <Compile Include="Model\WorkshopData.cs" />
     <Compile Include="Views\BookedSessionsBaseAdapter.cs" />
     <Compile Include="Views\BookedSessionsViewHolder.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -98,14 +101,13 @@
     <Compile Include="Views\LogOnActivity.cs" />
     <Compile Include="Views\MainActivity.cs" />
     <Compile Include="Model\StudentData.cs" />
-    <Compile Include="Model\Students.cs" />
+    <Compile Include="Model\Student.cs" />
     <Compile Include="Model\UtsData.cs" />
     <Compile Include="Model\Workshop.cs" />
     <Compile Include="Model\WorkshopBooking.cs" />
     <Compile Include="Views\RegisterActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Model\Session.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\fonts\din-bold.ttf" />

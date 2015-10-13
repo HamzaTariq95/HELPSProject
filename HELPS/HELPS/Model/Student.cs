@@ -14,7 +14,7 @@ using HELPS.Model;
 
 namespace HELPS.Model
 {
-    public class Students
+    public class Student
     {
         public string studentID { get; set; }
         public object dob { get; set; }
