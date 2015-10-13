@@ -79,7 +79,7 @@
     <string name="menuTitle">Menu</string>
     <string-array name="menu">
         <item name="menuProfile">My HELPS Profile</item>
-        <item name="menuSearch">Search Open Sessions</item>
+        <item name="menuSearch">Search Workshops</item>
         <item name="menuFuture">My Future Bookings</item>
         <item name="menuPast">My Past Bookings</item>
         <item name="menuNotes">Record Notes</item>
@@ -89,5 +89,14 @@
   
     <!-- Home (landing) screen -->
     <string name="hello">Hello</string>
-    <string name="upcoming">Your Upcoming Sessions</string>
+    <string name="upcoming">Your Upcoming Bookings</string>
+
+    <!-- Search Workshops -->
+    <string name="searchTitle">Search Workshops</string>
+  
+    <!-- Future Bookings -->
+    <string name="futureBookingsTitle">My Future Bookings</string>
+
+    <!-- Past Bookings -->
+    <string name="pastBookingsTitle">My Past Bookings</string>
 </resources>

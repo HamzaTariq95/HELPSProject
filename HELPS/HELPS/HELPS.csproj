@@ -70,6 +70,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LandingFragment.cs" />
     <Compile Include="Model\Booking.cs" />
     <Compile Include="Model\SessionBooking.cs" />
     <Compile Include="Views\BookedSessionsBaseAdapter.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Controllers\WorkshopController.cs" />
     <Compile Include="Views\BookingBaseAdapter.cs" />
     <Compile Include="Views\BookingViewHolder.cs" />
+    <Compile Include="Views\FutureBookingsFragment.cs" />
     <Compile Include="Views\HelpsAppCompatDrawerToggle.cs" />
     <Compile Include="Views\LogOnActivity.cs" />
     <Compile Include="Views\MainActivity.cs" />

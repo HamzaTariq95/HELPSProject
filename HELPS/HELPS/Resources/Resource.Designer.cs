@@ -1438,10 +1438,7 @@ namespace HELPS
 			public const int @lock = 2130837569;
 			
 			// aapt resource value: 0x7f020042
-			public const int monoandroidsplash = 2130837570;
-			
-			// aapt resource value: 0x7f020043
-			public const int notification_template_icon_bg = 2130837571;
+			public const int notification_template_icon_bg = 2130837570;
 			
 			static Drawable()
 			{
@@ -1624,6 +1621,9 @@ namespace HELPS
 			// aapt resource value: 0x7f0b005b
 			public const int fabLogIn = 2131427419;
 			
+			// aapt resource value: 0x7f0b0060
+			public const int fragmentContainer = 2131427424;
+			
 			// aapt resource value: 0x7f0b0004
 			public const int home = 2131427332;
 			
@@ -1662,9 +1662,6 @@ namespace HELPS
 			
 			// aapt resource value: 0x7f0b002b
 			public const int list_item = 2131427371;
-			
-			// aapt resource value: 0x7f0b0060
-			public const int mainContentFrame = 2131427424;
 			
 			// aapt resource value: 0x7f0b0068
 			public const int media_actions = 2131427432;
@@ -2143,6 +2140,9 @@ namespace HELPS
 			// aapt resource value: 0x7f050018
 			public const int forgotPassword = 2131034136;
 			
+			// aapt resource value: 0x7f050035
+			public const int futureBookingsTitle = 2131034165;
+			
 			// aapt resource value: 0x7f050032
 			public const int hello = 2131034162;
 			
@@ -2185,11 +2185,17 @@ namespace HELPS
 			// aapt resource value: 0x7f050015
 			public const int password = 2131034133;
 			
+			// aapt resource value: 0x7f050036
+			public const int pastBookingsTitle = 2131034166;
+			
 			// aapt resource value: 0x7f050030
 			public const int postgrad = 2131034160;
 			
 			// aapt resource value: 0x7f05001b
 			public const int registerTitle = 2131034139;
+			
+			// aapt resource value: 0x7f050034
+			public const int searchTitle = 2131034164;
 			
 			// aapt resource value: 0x7f050011
 			public const int status_bar_notification_info_overflow = 2131034129;
@@ -2629,9 +2635,6 @@ namespace HELPS
 			
 			// aapt resource value: 0x7f070070
 			public const int Base_Widget_AppCompat_Toolbar_Button_Navigation = 2131165296;
-			
-			// aapt resource value: 0x7f070127
-			public const int Mono_Android_Theme_Splash = 2131165479;
 			
 			// aapt resource value: 0x7f070010
 			public const int Platform_AppCompat = 2131165200;

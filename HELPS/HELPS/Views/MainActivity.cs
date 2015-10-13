@@ -21,10 +21,13 @@ namespace HELPS
     public class MainActivity : AppCompatActivity
     {
         private SupportToolbar _Toolbar;
+        private int _CurrentViewTitle = Resource.String.applicationName;
         private HelpsAppCompatDrawerToggle _DrawerToggle;
         private DrawerLayout _DrawerLayout;
         private ArrayAdapter _MenuAdapter;
         private ListView _Menu;
+        private FragmentTransaction _FragmentManager;
+        private Fragment _Landing, _Future, _Past;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -37,8 +40,16 @@ namespace HELPS
             // Set the toolbar
             _Toolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
 
-            _DrawerToggle = new HelpsAppCompatDrawerToggle(this, _DrawerLayout, Resource.String.menuTitle, Resource.String.applicationName);
+            _DrawerToggle = new HelpsAppCompatDrawerToggle(this, _DrawerLayout, Resource.String.menuTitle, _CurrentViewTitle);
             _DrawerLayout.SetDrawerListener(_DrawerToggle);
+
+            // Set up the views
+            _Landing = new LandingFragment();
+            _Future = new FutureBookingsFragment();
+
+            // Set up the landing page
+            _FragmentManager = FragmentManager.BeginTransaction();
+            SetView(Resource.Id.fragmentContainer, _Landing, false);
 
             // Set up action bar
             SetUpSupportActionBar(bundle);
@@ -47,101 +58,6 @@ namespace HELPS
 
             // Set up the menu layout.
             SetUpMenu();
-
-            // Set the "Hello User" text view to display the user's name
-            DisplayUserName();
-
-            // Set the "Upcoming Sessions" list view to display (upto) the four closest sessions
-            DisplayUpcommingSessions();
-        }
-
-        private void DisplayUpcommingSessions()
-        {
-            // {Architecture} change the code to generate the list view data from the user's data
-            List<Booking> sessionsList = new List<Booking>();
-            
-            sessionsList.Add(new SessionBooking(false, Convert.ToDateTime("01/01/2015"), "B1.05.202", "Mr Tutor", "type"));
-            sessionsList.Add(new SessionBooking(false, Convert.ToDateTime("01/01/2015"), "B1.05.202", "Mr Tutor", "type"));
-            sessionsList.Add(new SessionBooking(false, Convert.ToDateTime("01/01/2015"), "B1.05.202", "Mr Tutor", "type"));
-
-            sessionsList.Add(new WorkshopBooking(1, Convert.ToDateTime("01/01/2015"), 123, 456));
-            sessionsList.Add(new WorkshopBooking(1, Convert.ToDateTime("01/01/2015"), 123, 456));
-            sessionsList.Add(new WorkshopBooking(1, Convert.ToDateTime("01/01/2015"), 123, 456));
-
-            ListView upcomingList = FindViewById<ListView>(Resource.Id.listUpcoming);
-
-            upcomingList.Adapter = new BookingBaseAdapter(this, sessionsList);
-        }
-
-        private void DisplayUserName()
-        {
-            var studentData = JsonConvert.DeserializeObject<StudentData>(Intent.GetStringExtra("student"));
-
-            string helloUser = GetString(Resource.String.hello) + " " + studentData.attributes.studentID + "!";
-            TextView helloUserText = FindViewById<TextView>(Resource.Id.textHelloUser);
-
-            helloUserText.Text = helloUser;
-        }
-
-        private void SetUpSupportActionBar(Bundle bundle)
-        {
-            SetSupportActionBar(_Toolbar);
-            SupportActionBar.SetHomeButtonEnabled(true);
-            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
-
-            // Not the first time activity has been run.
-            if (bundle != null)
-            {
-                if (bundle.GetString("DrawerState") == "Opened")
-                {
-                    SupportActionBar.SetTitle(Resource.String.menuTitle);
-                }
-                else
-                {
-                    SupportActionBar.SetTitle(Resource.String.applicationName);
-                }
-            }
-            // First time activity has been run.
-            else
-            {
-                SupportActionBar.SetTitle(Resource.String.applicationName);
-            }
-        }
-
-        private void SetUpMenu()
-        {
-            _Menu = FindViewById<ListView>(Resource.Id.listMenu);
-
-            _MenuAdapter = ArrayAdapter<string>.CreateFromResource(this, Resource.Array.menu, Resource.Layout.MenuRow);
-            _Menu.Adapter = _MenuAdapter;
-
-            _Menu.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) =>
-            {
-                switch (e.Position)
-                {
-                    // Profile/Landing page.
-                    case 0:
-                        break;
-                    // Search sessions.
-                    case 1:
-                    // Future bookings.
-                    case 2:
-                    // Past bookings.
-                    case 3:
-                    // Record notes.
-                    case 4:
-                    // Settings.
-                    case 5:
-                        Console.WriteLine("Not implemented");
-                        break;
-                    // Log out.
-                    case 6:
-                        // {Architecture} Log Out function
-                        StartActivity(typeof(LogOnActivity));
-                        Finish();
-                        break;
-                }
-            };
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
@@ -167,6 +83,90 @@ namespace HELPS
         {
             base.OnPostCreate(savedInstanceState);
             _DrawerToggle.SyncState();
+        }
+
+        private void SetUpSupportActionBar(Bundle bundle)
+        {
+            SetSupportActionBar(_Toolbar);
+            SupportActionBar.SetHomeButtonEnabled(true);
+            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+
+            // Not the first time activity has been run.
+            if (bundle != null)
+            {
+                if (bundle.GetString("DrawerState") == "Opened")
+                {
+                    SupportActionBar.SetTitle(Resource.String.menuTitle);
+                }
+                else
+                {
+                    SupportActionBar.SetTitle(_CurrentViewTitle);
+                }
+            }
+            // First time activity has been run.
+            else
+            {
+                SupportActionBar.SetTitle(_CurrentViewTitle);
+            }
+        }
+
+        private void SetUpMenu()
+        {
+            _Menu = FindViewById<ListView>(Resource.Id.listMenu);
+
+            _MenuAdapter = ArrayAdapter<string>.CreateFromResource(this, Resource.Array.menu, Resource.Layout.MenuRow);
+            _Menu.Adapter = _MenuAdapter;
+
+            _Menu.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) =>
+            {
+                switch (e.Position)
+                {
+                    // Profile/Landing page.
+                    case 0:
+                        _CurrentViewTitle = Resource.String.applicationName;
+                        break;
+                    // Search workshops.
+                    case 1:
+                        _CurrentViewTitle = Resource.String.searchTitle;
+                        break;
+                    // Future bookings.
+                    case 2:
+                        SetView(Resource.Id.fragmentContainer, _Future, true);
+
+                        _CurrentViewTitle = Resource.String.futureBookingsTitle;
+                        break;
+                    // Past bookings.
+                    case 3:
+                        _CurrentViewTitle = Resource.String.pastBookingsTitle;
+                        break;
+                    // Record notes.
+                    case 4:
+                    // Settings.
+                    case 5:
+                        Console.WriteLine("Not implemented");
+                        break;
+                    // Log out.
+                    case 6:
+                        // {Architecture} Log Out function
+                        StartActivity(typeof(LogOnActivity));
+                        Finish();
+                        break;
+                }
+            };
+        }
+
+        private void SetView(int fragmentResource, Fragment view, bool retainView)
+        {
+            _FragmentManager.Replace(fragmentResource, view);
+
+            // If true, allows the user to return to that fragment.
+            // Otherwise it is destroyed.
+            if(retainView)
+            {
+                _FragmentManager.AddToBackStack(null);
+            }
+
+            _FragmentManager.Commit();
         }
     }
 }
