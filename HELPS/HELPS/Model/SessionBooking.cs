@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace HELPS.Model
 {
-    class SessionBooking : Booking
+    public class SessionBooking : Booking
     {
 
         public string LecturerFirstName { get; set; }
@@ -64,7 +64,7 @@ namespace HELPS.Model
             if (!Cancel)
                 return "Booked";
 
-            return "Cancelled";
+            return "Canceled";
         }
 
         public override DateTime? Date()

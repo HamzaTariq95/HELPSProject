@@ -47,6 +47,7 @@ namespace HELPS
             // Set up the views
             _Landing = new LandingFragment();
             _Future = new FutureBookingsFragment();
+            _Past = new PastBookingsFragment();
 
             // Set up the landing page
             SetView(Resource.Id.fragmentContainer, _Landing, false);
@@ -82,6 +83,9 @@ namespace HELPS
         protected override void OnPostCreate(Bundle savedInstanceState)
         {
 
+            base.OnPostCreate(savedInstanceState);
+
+
             StudentData studentData = JsonConvert.DeserializeObject<StudentData>(Intent.GetStringExtra("student"));
             string helloUser = GetString(Resource.String.hello) + " " + studentData.attributes.studentID + "!";
             TextView helloUserText = FindViewById<TextView>(Resource.Id.textHelloUser);
@@ -91,8 +95,6 @@ namespace HELPS
 
             // Set the "Hello User" text view to display the user's name
             // {Architecture} change the code so that it grabs the user's first name from the db
-
-
 
         }
 
@@ -148,6 +150,7 @@ namespace HELPS
                         break;
                     // Past bookings.
                     case 3:
+                         SetView(Resource.Id.fragmentContainer, _Past, true);
                         _CurrentViewTitle = Resource.String.pastBookingsTitle;
                         break;
                     // Record notes.

@@ -15,9 +15,9 @@ using Java.Interop;
 
 namespace HELPS.Model
 {
-    class SessionBookingData
+    public class SessionBookingData
     {
-        [JsonProperty("Result")]
+        [JsonProperty("Results")]
         public List<SessionBooking> attributes { get; set; }
 
 

@@ -130,15 +130,20 @@ namespace HELPS
 
                 if (studentRecord == null)
                 {
+
                     // Display Wrong credentials error. 
+                    _WrongInput.Visibility = ViewStates.Visible;
+                
+                }
+                else
+                {
+                    // Passing the Student object to the next Activity
+                    Intent registerActivity = new Intent(Application.Context, typeof(RegisterActivity));                  
+                    registerActivity.PutExtra("student", JsonConvert.SerializeObject(studentRecord));
+                    StartActivity(registerActivity);
                 }
 
-                Intent registerActivity = new Intent(Application.Context, typeof(RegisterActivity));
-
-                // Passing the Student object to the next Activity
-                registerActivity.PutExtra("student", JsonConvert.SerializeObject(studentRecord));
-
-                StartActivity(registerActivity);
+               
 
             }
         }

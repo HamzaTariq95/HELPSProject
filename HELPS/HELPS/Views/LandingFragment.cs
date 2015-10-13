@@ -10,19 +10,21 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
-using Newtonsoft.Json;
 using HELPS.Model;
+using Newtonsoft.Json;
+using HELPS.Views;
 
-namespace HELPS.Views
+namespace HELPS
 {
-    public class FutureBookingsFragment : Fragment
+    public class LandingFragment : Fragment
     {
         private StudentData studentData;
+        private int maxBookings = 0;
+        private int sessionBookings = 0;
+        private int workShopBookings = 0;
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
-            // Create your fragment here
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -32,10 +34,11 @@ namespace HELPS.Views
             //Get student data from intent in parent activity
             studentData = JsonConvert.DeserializeObject<StudentData>(this.Activity.Intent.GetStringExtra("student"));
 
+            // Set the "Hello User" text view to display the user's name
+            DisplayUserName(view);
+
             // Set the "Upcoming Sessions" list view to display (upto) the four closest sessions
             DisplayUpcomingBookings(view);
-
-            DisplayUserName(view);
 
             return view;
         }
@@ -46,30 +49,36 @@ namespace HELPS.Views
             SessionBookingData sessionBookingData = sessionController.GetSessionBookingData(studentData.attributes.studentID);
             List<Booking> bookings = new List<Booking>();
 
-            if (sessionBookingData == null)
+            if (sessionBookingData == null /* && workShopBookingData == null*/)
             {
                 //Display on screen: no bookings found
             }
             else
             {
-                addSessionBookingToList(sessionBookingData, bookings);
+                addBookingsToList(bookings, sessionBookingData /*,workShopBookingData*/);
             }
-            // {Architecture} change the code to generate the list view data from the user's data
-
-
-
-            //bookings.Add(new SessionBooking(false, Convert.ToDateTime("01/01/2015"), "B1.05.202", "Mr Tutor", "type"));
-            //bookings.Add(new SessionBooking(false, Convert.ToDateTime("01/01/2015"), "B1.05.202", "Mr Tutor", "type"));
-
-            bookings.Add(new WorkshopBooking(1, Convert.ToDateTime("01/01/2015"), 123, 456));
-            bookings.Add(new WorkshopBooking(1, Convert.ToDateTime("01/01/2015"), 123, 456));
-            bookings.Add(new WorkshopBooking(1, Convert.ToDateTime("01/01/2015"), 123, 456));
-
+         
             ListView upcomingList = view.FindViewById<ListView>(Resource.Id.listUpcoming);
             upcomingList.Adapter = new BookingBaseAdapter(Activity, bookings);
         }
 
-        private void addSessionBookingToList(SessionBookingData sessionBookingData, List<Booking> bookings)
+        private void addBookingsToList(List<Booking> bookings, SessionBookingData sessionBookingData)
+        {
+            addSessionBookingsToList(sessionBookingData, bookings);
+            addWorkshopBookingsToList(/*sessionBookingData,*/ bookings);
+        }
+
+        private void addWorkshopBookingsToList(/*sessionBookingData,*/ List<Booking> bookings)
+        {
+            /*foreach (SessionBooking sessionBooking in sessionBookingData.attributes)
+            {
+                if (sessionBooking.StartDate > DateTime.Now && sessionBooking.Status().Equals("Booked"))
+                    bookings.Add(sessionBooking);
+            }*/
+            bookings.Add(new WorkshopBooking(1, Convert.ToDateTime("01/01/2015"), 123, 456));
+        }
+
+        private void addSessionBookingsToList(SessionBookingData sessionBookingData, List<Booking> bookings)
         {
             foreach (SessionBooking sessionBooking in sessionBookingData.attributes)
             {

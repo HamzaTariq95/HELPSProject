@@ -15,7 +15,7 @@ using HELPS.Model;
 
 namespace HELPS.Views
 {
-    public class FutureBookingsFragment : Fragment
+    public class PastBookingsFragment : Fragment
     {
         private StudentData studentData;
         public override void OnCreate(Bundle savedInstanceState)
@@ -73,7 +73,7 @@ namespace HELPS.Views
         {
             foreach (SessionBooking sessionBooking in sessionBookingData.attributes)
             {
-                if (sessionBooking.StartDate > DateTime.Now && sessionBooking.Status().Equals("Booked"))
+                if (sessionBooking.EndDate < DateTime.Now)
                     bookings.Add(sessionBooking);
             }
         }

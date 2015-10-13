@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace HELPS.Model
 {
-    abstract class Booking
+    public abstract class Booking
     {
         public abstract string Title();
         public abstract string Status();
