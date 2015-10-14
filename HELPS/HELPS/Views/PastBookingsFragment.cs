@@ -39,13 +39,21 @@ namespace HELPS.Views
         {
             View view = inflater.Inflate(Resource.Layout.BookingsLayout, container, false);
 
+<<<<<<< HEAD
             // Set the "Upcoming Sessions" list view to display (upto) the four closest sessions
             DisplayUpcomingBookings(view);
+=======
+            //Get student data from intent in parent activity
+            studentData = JsonConvert.DeserializeObject<StudentData>(this.Activity.Intent.GetStringExtra("student"));
+
+            // Set the "Past Bookings" list view to display (upto) the four closest sessions
+            DisplayPastBookings(view);
+>>>>>>> origin/Imogen
 
             return view;
         }
 
-        private void DisplayUpcomingBookings(View view)
+        private void DisplayPastBookings(View view)
         {
             List<Booking> bookings = new List<Booking>();
 

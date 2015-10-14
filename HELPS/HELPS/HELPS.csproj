@@ -120,6 +120,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\SearchViewHolder.cs" />
     <Compile Include="Views\SearchWorkshopsBaseAdapter.cs" />
+    <Compile Include="Views\SearchWorkshopsFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\fonts\din-bold.ttf" />
@@ -151,6 +152,9 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\BookingsLayout.axml" />
+    <AndroidResource Include="Resources\layout\SearchLayout.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\MainLayout.axml" />
