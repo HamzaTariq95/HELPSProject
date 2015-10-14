@@ -20,7 +20,7 @@ using System.IO;
 using System.Threading.Tasks;
 using HELPS.Model;
 
-namespace HELPS
+namespace HELPS.Controllers
 {
     public class SessionController
     {
