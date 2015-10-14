@@ -13,18 +13,25 @@ using HELPS.Model;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 using Android.Support.V7.App;
 using HELPS.Views;
-using Android.Content.PM;
+using HELPS.Controllers;
 
 namespace HELPS
 {
     [Activity(Label = "UTS:HELPS", Icon = "@drawable/icon")]
     public class MainActivity : AppCompatActivity
     {
+        private SessionBookingData sessionBookingData;
+        private WorkshopBookingData workshopBookingData;
+        private StudentData studentData;
+
         private SupportToolbar _Toolbar;
+        private int _CurrentViewTitle = Resource.String.applicationName;
         private HelpsAppCompatDrawerToggle _DrawerToggle;
         private DrawerLayout _DrawerLayout;
         private ArrayAdapter _MenuAdapter;
         private ListView _Menu;
+        private FragmentTransaction _FragmentManager;
+        private Fragment _Landing, _Future, _Past;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -36,15 +43,82 @@ namespace HELPS
 
             // Set the toolbar
             _Toolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
-            _DrawerToggle = new HelpsAppCompatDrawerToggle(this, _DrawerLayout, Resource.String.menuTitle, Resource.String.applicationName);
 
+            _DrawerToggle = new HelpsAppCompatDrawerToggle(this, _DrawerLayout, Resource.String.menuTitle, _CurrentViewTitle);
             _DrawerLayout.SetDrawerListener(_DrawerToggle);
 
+            //Fetch booking data
+            FetchBookingData();
+
+            // Set up the views
+            _Landing = new LandingFragment(sessionBookingData, workshopBookingData, studentData);
+            _Future = new FutureBookingsFragment(sessionBookingData, workshopBookingData, studentData);
+            _Past = new PastBookingsFragment(sessionBookingData, workshopBookingData, studentData);
+
+            // Set up the landing page
+            SetView(Resource.Id.fragmentContainer, _Landing, false);
+
+            // Set up action bar
+            SetUpSupportActionBar(bundle);
+            
+            _DrawerToggle.SyncState();
+
+            // Set up the menu layout.
+            SetUpMenu();
+        }
+
+        private void FetchBookingData()
+        {
+            studentData = JsonConvert.DeserializeObject<StudentData>(Intent.GetStringExtra("student"));
+
+            SessionController sessionController = new SessionController();
+            sessionBookingData = sessionController.GetSessionBookingData(studentData.attributes.studentID);
+
+            WorkshopController workshopController = new WorkshopController();
+            workshopBookingData = workshopController.GetWorkshopBookingData(studentData.attributes.studentID);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            _DrawerToggle.OnOptionsItemSelected(item);
+            return base.OnOptionsItemSelected(item);
+        }
+        protected override void OnSaveInstanceState(Bundle outState)
+        {
+            if (_DrawerLayout.IsDrawerOpen((int)GravityFlags.Left))
+            {
+                outState.PutString("DrawerState", "Opened");
+        }
+            else
+            {
+                outState.PutString("DrawerState", "Closed");
+            }
+            base.OnSaveInstanceState(outState);
+        }
+
+        protected override void OnPostCreate(Bundle savedInstanceState)
+        {
+
+            base.OnPostCreate(savedInstanceState);
+
+
+            StudentData studentData = JsonConvert.DeserializeObject<StudentData>(Intent.GetStringExtra("student"));
+            string helloUser = GetString(Resource.String.hello) + " " + studentData.attributes.studentID + "!";
+            TextView helloUserText = FindViewById<TextView>(Resource.Id.textHelloUser);
+
+            helloUserText.Text = helloUser;
+
+
+            // Set the "Hello User" text view to display the user's name
+            // {Architecture} change the code so that it grabs the user's first name from the db
+
+        }
+
+        private void SetUpSupportActionBar(Bundle bundle)
+        {
             SetSupportActionBar(_Toolbar);
             SupportActionBar.SetHomeButtonEnabled(true);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
-
-            _DrawerToggle.SyncState();
 
             // Not the first time activity has been run.
             if (bundle != null)
@@ -55,35 +129,46 @@ namespace HELPS
                 }
                 else
                 {
-                    SupportActionBar.SetTitle(Resource.String.applicationName);
+                    SupportActionBar.SetTitle(_CurrentViewTitle);
                 }
             }
             // First time activity has been run.
             else
             {
-                SupportActionBar.SetTitle(Resource.String.applicationName);
+                SupportActionBar.SetTitle(_CurrentViewTitle);
             }
+        }
 
-            // Set up the menu layout.
+        private void SetUpMenu()
+        {
             _Menu = FindViewById<ListView>(Resource.Id.listMenu);
 
             _MenuAdapter = ArrayAdapter<string>.CreateFromResource(this, Resource.Array.menu, Resource.Layout.MenuRow);
             _Menu.Adapter = _MenuAdapter;
 
-            // Set up ability to click menu items
             _Menu.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) =>
             {
                 switch (e.Position)
                 {
                     // Profile/Landing page.
                     case 0:
+                        _CurrentViewTitle = Resource.String.applicationName;
                         break;
-                    // Search sessions.
+                    // Search workshops.
                     case 1:
+                        _CurrentViewTitle = Resource.String.searchTitle;
+                        break;
                     // Future bookings.
                     case 2:
+                        SetView(Resource.Id.fragmentContainer, _Future, true);
+
+                        _CurrentViewTitle = Resource.String.futureBookingsTitle;
+                        break;
                     // Past bookings.
                     case 3:
+                         SetView(Resource.Id.fragmentContainer, _Past, true);
+                        _CurrentViewTitle = Resource.String.pastBookingsTitle;
+                        break;
                     // Record notes.
                     case 4:
                     // Settings.
@@ -99,51 +184,22 @@ namespace HELPS
                 }
             };
 
-            // Set the "Hello User" text view to display the user's name
-            // {Architecture} change the code so that it grabs the user's preferred name from the db
-            var studentData = JsonConvert.DeserializeObject<StudentData>(Intent.GetStringExtra("student"));
-
-            string helloUser = GetString(Resource.String.hello) + " " + studentData.attributes.studentID + "!";
-            TextView helloUserText = FindViewById<TextView>(Resource.Id.textHelloUser);
-
-            helloUserText.Text = helloUser;
-
-            // Set the "Upcoming Sessions" list view to display (upto) the three closest sessions
-            // {Architecture} change the code to generate the list view data from the user's data
-            List<Session> testList = new List<Session>();
-            testList.Add(new Session("Session 1", "Booked", "01/01/2015", "All Students", "B1.05.202", "Mr Tutor", "Session", "Testing"));
-            testList.Add(new Session("Session 2", "Booked", "01/01/2015", "All Students", "B1.05.202", "Mr Tutor", "Session", "Testing"));
-            testList.Add(new Session("Session 3", "Booked", "01/01/2015", "All Students", "B1.05.202", "Mr Tutor", "Session", "Testing"));
-
-            ListView upcomingList = FindViewById<ListView>(Resource.Id.listUpcoming);
-
-            upcomingList.Adapter = new BookedSessionsBaseAdapter(this, testList);
+        
         }
 
-        public override bool OnOptionsItemSelected(IMenuItem item)
+        private void SetView(int fragmentResource, Fragment view, bool retainView)
         {
-            _DrawerToggle.OnOptionsItemSelected(item);
-            return base.OnOptionsItemSelected(item);
-        }
+            _FragmentManager = FragmentManager.BeginTransaction();
+            _FragmentManager.Replace(fragmentResource, view);
 
-        protected override void OnSaveInstanceState(Bundle outState)
-        {
-            if (_DrawerLayout.IsDrawerOpen((int)GravityFlags.Left))
+            // If true, allows the user to return to that fragment.
+            // Otherwise it is destroyed.
+            if(retainView)
             {
-                outState.PutString("DrawerState", "Opened");
-            }
-            else
-            {
-                outState.PutString("DrawerState", "Closed");
-            }
-            base.OnSaveInstanceState(outState);
+                _FragmentManager.AddToBackStack(null);
         }
 
-        protected override void OnPostCreate(Bundle savedInstanceState)
-        {
-            base.OnPostCreate(savedInstanceState);
-            _DrawerToggle.SyncState();
+            _FragmentManager.Commit();
         }
     }
 }
-

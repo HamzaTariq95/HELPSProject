@@ -15,12 +15,10 @@ using Java.Interop;
 
 namespace HELPS.Model
 {
-    
-    public class StudentData {
-
-        
+    class WorkshopData
+    {
         [JsonProperty("Result")]
-        public Student attributes { get; set; }
+        public Workshop attributes { get; set; }
 
 
         public bool IsSuccess { get; set; }
@@ -34,11 +32,5 @@ namespace HELPS.Model
         {
             return 0;
         }
-
-     }
-
     }
-
-
-   
-    
+}

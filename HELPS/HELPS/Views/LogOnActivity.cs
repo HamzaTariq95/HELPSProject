@@ -2,7 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Reflection;
+using System.IO;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -15,6 +16,7 @@ using HELPS.Model;
 using Android.Util;
 using Newtonsoft.Json;
 using System.IO;
+using CsvHelper;
 
 
 namespace HELPS
@@ -82,11 +84,11 @@ namespace HELPS
             // If the information doesn't exist in the database, display message to user.
             if (studentData != null)
             {
-                Intent mainActivity = new Intent(Application.Context, typeof(MainActivity));
+                Log.Info("Inside LogOnActvitity", "Student Data is not Null");
 
+                Intent mainActivity = new Intent(Application.Context, typeof(MainActivity));
                 // Passing the Student object to the next Activity
                 mainActivity.PutExtra("student", JsonConvert.SerializeObject(studentData));
-
                 StartActivity(mainActivity);
 
             }
@@ -98,34 +100,82 @@ namespace HELPS
             // Else the user's creditials are not in the database or wrong
             else
             {
-                _WrongInput.Visibility = ViewStates.Visible;
+                Log.Info("Inside LogOnActvitity", "New STUDENT!");
+
+                var assembly = typeof(LogOnActivity).GetTypeInfo().Assembly;
+                Stream stream = assembly.GetManifestResourceStream("HELPS.utsData.csv");
+
+                UtsData studentRecord = null;
+
+                // Extracts data from the utsData.csv
+                using (TextReader reader = new System.IO.StreamReader(stream))
+                {
+
+                    var csv = new CsvReader(reader);
+                    csv.Configuration.HasHeaderRecord = false;
+
+                    var records = csv.GetRecords<UtsData>().ToList();
+
+                    // Searches for the Student Details.
+                    foreach (UtsData data in records)
+                    {
+                        if (data.StudentId.Trim().Equals(username.Trim()))
+                        {
+                            studentRecord = data;
+                        }
+                    }
+
+                }
+
+                if (studentRecord == null)
+                {
+
+                    // Display Wrong credentials error. 
+                    _WrongInput.Visibility = ViewStates.Visible;
+                
+                }
+                else
+                {
+                    // Passing the Student object to the next Activity
+                    Intent registerActivity = new Intent(Application.Context, typeof(RegisterActivity));                  
+                    registerActivity.PutExtra("student", JsonConvert.SerializeObject(studentRecord));
+                    StartActivity(registerActivity);
+                }
+
+               
+
             }
         }
 
         // Controls opening the external UTS website where users can change their password
-        void SendToUtsResetPassword()
-        {
-            Android.Net.Uri uri = Android.Net.Uri.Parse("https://email.itd.uts.edu.au/webapps/myaccount/passwordreset/");
-            Intent intent = Intent.CreateChooser(new Intent(Intent.ActionView, uri), "Open with");
-            StartActivity(intent);
+        private void SendToUtsResetPassword()
+            {
+                Android.Net.Uri uri = Android.Net.Uri.Parse("https://email.itd.uts.edu.au/webapps/myaccount/passwordreset/");
+                Intent intent = Intent.CreateChooser(new Intent(Intent.ActionView, uri), "Open with");
+                StartActivity(intent);
         }
 
         // Controls opening the dialog that displays the "About HELPS" information
-        void ShowAboutHelps()
-        {
-            // Creates the alert displaying the "About HELPS" information
-            AlertDialog.Builder aboutHelpsAlert = new AlertDialog.Builder(this);
+        private void ShowAboutHelps()
+            {
+                // Creates the alert displaying the "About HELPS" information
+                AlertDialog.Builder aboutHelpsAlert = new AlertDialog.Builder(this);
 
-            aboutHelpsAlert.SetTitle(GetString(Resource.String.whatHelps));
-            aboutHelpsAlert.SetMessage(GetString(Resource.String.aboutHelps));
-            aboutHelpsAlert.SetNeutralButton("OK", delegate { });
+                aboutHelpsAlert.SetTitle(GetString(Resource.String.whatHelps));
+                aboutHelpsAlert.SetMessage(GetString(Resource.String.aboutHelps));
+                aboutHelpsAlert.SetNeutralButton("OK", delegate { });
 
-            Dialog aboutHelpsDialog = aboutHelpsAlert.Create(); ;
-            aboutHelpsDialog.Show();
+                Dialog aboutHelpsDialog = aboutHelpsAlert.Create(); ;
+                aboutHelpsDialog.Show();
         }
 
+        private void ShowLoadingDialog()
+        {
+            ProgressDialog progressDialog = new ProgressDialog(this);
 
-        static List<string> SplitRow(string Row)
+        }
+
+        private static List<string> SplitRow(string Row)
         {
             List<string> result = new List<string>();
             string[] splitRow = Row.Split(",".ToCharArray());

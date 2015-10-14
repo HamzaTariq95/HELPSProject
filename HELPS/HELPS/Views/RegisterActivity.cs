@@ -10,6 +10,10 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.Graphics;
+using Newtonsoft.Json;
+using HELPS.Model;
+using Android.Util;
+using HELPS.Controllers;
 using Android.Content.PM;
 
 namespace HELPS
@@ -33,6 +37,32 @@ namespace HELPS
             // Works the buttons on the "Check" view
             com.refractored.fab.FloatingActionButton checkOkButton = FindViewById<com.refractored.fab.FloatingActionButton>(Resource.Id.fabCheckOk);
             com.refractored.fab.FloatingActionButton checkCancelButton = FindViewById<com.refractored.fab.FloatingActionButton>(Resource.Id.fabCheckCancel);
+
+
+            // Receives the Student object from Login Activity
+            var studentData = JsonConvert.DeserializeObject<UtsData>(Intent.GetStringExtra("student"));
+
+            TextView textDOB = FindViewById<TextView>(Resource.Id.textCheckDOB);
+            TextView contact = FindViewById<TextView>(Resource.Id.textHelloUser);
+            TextView name = FindViewById<TextView>(Resource.Id.textCheckName);
+            TextView faculty = FindViewById<TextView>(Resource.Id.textCheckFaculty);
+            TextView course = FindViewById<TextView>(Resource.Id.textCheckCourse);
+            TextView email = FindViewById<TextView>(Resource.Id.textCheckEmail);
+            TextView phoneNumber = FindViewById<TextView>(Resource.Id.textCheckHomePhone);
+            TextView Mobile = FindViewById<TextView>(Resource.Id.textCheckMobile);
+
+
+            textDOB.Text = "DOB: " + studentData.DateOfBirth;
+            name.Text = "Name: " + studentData.PreferredName;
+            faculty.Text = "Faculty: " + studentData.Faculty;
+            course.Text = "Course: " + studentData.Course;
+            email.Text = "Email: " + studentData.Email;
+            phoneNumber.Text += studentData.AltContact;
+            Mobile.Text += studentData.AltContact;
+         
+
+
+
 
             // Works the "OK" button
             checkOkButton.Click += delegate
@@ -59,8 +89,11 @@ namespace HELPS
                 // Sends user to the landing page.
                 // Stops user from re-entering the register page with the back button.
                 
-                StartActivity(typeof(MainActivity));
-                Finish();
+                RegisterController registerController = new RegisterController();
+                registerController.Register(studentData);
+
+                //StartActivity(typeof(MainActivity));
+                //Finish();
             };
             // Works the cancel button.
             inputCancelButton.Click += delegate
@@ -73,7 +106,7 @@ namespace HELPS
         // Controls sending the user back to the "Log On" activity.
         void Cancel()
         {
-            StartActivity(typeof(LogOnActivity));
+                StartActivity(typeof(LogOnActivity));
             Finish();
         }
     }

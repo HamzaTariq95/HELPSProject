@@ -1,5 +1,5 @@
 using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -9,37 +9,34 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Java.Lang;
-using Java.Util;
-using System.Collections.Generic;
 using HELPS.Model;
 
-namespace HELPS
+namespace HELPS.Views
 {
-    class BookedSessionsBaseAdapter : BaseAdapter<SessionBooking>
+    class BookingBaseAdapter : BaseAdapter<Booking>
     {
         private Activity _Context;
-        private List<SessionBooking> _Sessions;
-        
-        public BookedSessionsBaseAdapter(Activity context, List<SessionBooking> sessions)
+        private List<Booking> _Bookings;
+
+        public BookingBaseAdapter(Activity context, List<Booking> bookings)
         {
             _Context = context;
-            _Sessions = sessions;
+            _Bookings = bookings;
         }
 
         public override int Count
         {
             get
             {
-                return _Sessions.Count;
+                return _Bookings.Count;
             }
         }
 
-        public override SessionBooking this[int position]
+        public override Booking this[int position]
         {
             get
             {
-                return _Sessions[position];
+                return _Bookings[position];
             }
         }
 
@@ -74,13 +71,13 @@ namespace HELPS
             }
 
             // Sets the list row to display the session data.
-            holder.bookedSessionTitle.Text = _Sessions[position].Title();
-            holder.bookedSessionStatus.Text = _Sessions[position].Status();
-            DateTime? date = _Sessions[position].Date();
-            holder.bookedSessionDate.Text = (date == null) ? "Not available" : date.ToString();
-            holder.bookedSessionLocation.Text = _Sessions[position].Location();
-            holder.bookedSessionTutor.Text = _Sessions[position].Tutor();
-            holder.bookedSessionType.Text = _Sessions[position].Type();
+            holder.bookedSessionTitle.Text = _Bookings[position].Title();
+            holder.bookedSessionStatus.Text = _Bookings[position].Status();
+            DateTime? date = _Bookings[position].Date();
+            holder.bookedSessionDate.Text = (date == null) ? "Not available":date.ToString();
+            holder.bookedSessionLocation.Text = _Bookings[position].Location();
+            holder.bookedSessionTutor.Text = _Bookings[position].Tutor();
+            holder.bookedSessionType.Text = _Bookings[position].Type();
 
             return view;
         }
