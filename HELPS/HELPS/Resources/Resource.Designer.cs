@@ -1438,10 +1438,7 @@ namespace HELPS
 			public const int @lock = 2130837569;
 			
 			// aapt resource value: 0x7f020042
-			public const int monoandroidsplash = 2130837570;
-			
-			// aapt resource value: 0x7f020043
-			public const int notification_template_icon_bg = 2130837571;
+			public const int notification_template_icon_bg = 2130837570;
 			
 			static Drawable()
 			{
@@ -1531,14 +1528,14 @@ namespace HELPS
 			// aapt resource value: 0x7f0b0055
 			public const int bookedSessionType = 2131427413;
 			
-			// aapt resource value: 0x7f0b005c
-			public const int buttonForgotPassword = 2131427420;
+			// aapt resource value: 0x7f0b005d
+			public const int buttonForgotPassword = 2131427421;
 			
 			// aapt resource value: 0x7f0b0037
 			public const int buttonPanel = 2131427383;
 			
-			// aapt resource value: 0x7f0b005d
-			public const int buttonWhatHelps = 2131427421;
+			// aapt resource value: 0x7f0b005e
+			public const int buttonWhatHelps = 2131427422;
 			
 			// aapt resource value: 0x7f0b0066
 			public const int cancel_action = 2131427430;
@@ -1576,14 +1573,14 @@ namespace HELPS
 			// aapt resource value: 0x7f0b000c
 			public const int disableHome = 2131427340;
 			
-			// aapt resource value: 0x7f0b005f
-			public const int drawerMain = 2131427423;
+			// aapt resource value: 0x7f0b0060
+			public const int drawerMain = 2131427424;
 			
 			// aapt resource value: 0x7f0b001c
 			public const int dropdown = 2131427356;
 			
-			// aapt resource value: 0x7f0b0059
-			public const int editPassword = 2131427417;
+			// aapt resource value: 0x7f0b005a
+			public const int editPassword = 2131427418;
 			
 			// aapt resource value: 0x7f0b0083
 			public const int editPreferredName = 2131427459;
@@ -1591,8 +1588,8 @@ namespace HELPS
 			// aapt resource value: 0x7f0b0085
 			public const int editPreferredNumber = 2131427461;
 			
-			// aapt resource value: 0x7f0b0058
-			public const int editUtsId = 2131427416;
+			// aapt resource value: 0x7f0b0059
+			public const int editUtsId = 2131427417;
 			
 			// aapt resource value: 0x7f0b0043
 			public const int edit_query = 2131427395;
@@ -1621,11 +1618,11 @@ namespace HELPS
 			// aapt resource value: 0x7f0b0087
 			public const int fabInputOk = 2131427463;
 			
-			// aapt resource value: 0x7f0b005b
-			public const int fabLogIn = 2131427419;
+			// aapt resource value: 0x7f0b005c
+			public const int fabLogIn = 2131427420;
 			
-			// aapt resource value: 0x7f0b0060
-			public const int fragmentContainer = 2131427424;
+			// aapt resource value: 0x7f0b0061
+			public const int fragmentContainer = 2131427425;
 			
 			// aapt resource value: 0x7f0b0004
 			public const int home = 2131427332;
@@ -1660,8 +1657,8 @@ namespace HELPS
 			// aapt resource value: 0x7f0b0009
 			public const int listMode = 2131427337;
 			
-			// aapt resource value: 0x7f0b0063
-			public const int listUpcoming = 2131427427;
+			// aapt resource value: 0x7f0b0056
+			public const int listUpcoming = 2131427414;
 			
 			// aapt resource value: 0x7f0b002b
 			public const int list_item = 2131427371;
@@ -1710,6 +1707,24 @@ namespace HELPS
 			
 			// aapt resource value: 0x7f0b0033
 			public const int scrollView = 2131427379;
+			
+			// aapt resource value: 0x7f0b008b
+			public const int searchWorkshopDate = 2131427467;
+			
+			// aapt resource value: 0x7f0b008a
+			public const int searchWorkshopStatus = 2131427466;
+			
+			// aapt resource value: 0x7f0b008c
+			public const int searchWorkshopTarget = 2131427468;
+			
+			// aapt resource value: 0x7f0b0089
+			public const int searchWorkshopTitle = 2131427465;
+			
+			// aapt resource value: 0x7f0b008d
+			public const int searchWorkshopTutor = 2131427469;
+			
+			// aapt resource value: 0x7f0b008e
+			public const int searchWorkshopType = 2131427470;
 			
 			// aapt resource value: 0x7f0b0045
 			public const int search_badge = 2131427397;
@@ -1813,11 +1828,11 @@ namespace HELPS
 			// aapt resource value: 0x7f0b0080
 			public const int textContactInformation = 2131427456;
 			
-			// aapt resource value: 0x7f0b0061
-			public const int textHelloUser = 2131427425;
+			// aapt resource value: 0x7f0b0062
+			public const int textHelloUser = 2131427426;
 			
-			// aapt resource value: 0x7f0b0057
-			public const int textLogOnInformation = 2131427415;
+			// aapt resource value: 0x7f0b0058
+			public const int textLogOnInformation = 2131427416;
 			
 			// aapt resource value: 0x7f0b0082
 			public const int textPreferredName = 2131427458;
@@ -1831,14 +1846,14 @@ namespace HELPS
 			// aapt resource value: 0x7f0b0034
 			public const int textSpacerNoButtons = 2131427380;
 			
-			// aapt resource value: 0x7f0b0062
-			public const int textUpcoming = 2131427426;
+			// aapt resource value: 0x7f0b0063
+			public const int textUpcoming = 2131427427;
 			
-			// aapt resource value: 0x7f0b0056
-			public const int textUtsHelps = 2131427414;
+			// aapt resource value: 0x7f0b0057
+			public const int textUtsHelps = 2131427415;
 			
-			// aapt resource value: 0x7f0b005a
-			public const int textWrongInput = 2131427418;
+			// aapt resource value: 0x7f0b005b
+			public const int textWrongInput = 2131427419;
 			
 			// aapt resource value: 0x7f0b006b
 			public const int time = 2131427435;
@@ -1849,8 +1864,8 @@ namespace HELPS
 			// aapt resource value: 0x7f0b0030
 			public const int title_template = 2131427376;
 			
-			// aapt resource value: 0x7f0b005e
-			public const int toolbar = 2131427422;
+			// aapt resource value: 0x7f0b005f
+			public const int toolbar = 2131427423;
 			
 			// aapt resource value: 0x7f0b002f
 			public const int topPanel = 2131427375;
@@ -1987,58 +2002,64 @@ namespace HELPS
 			public const int BookedSessionsRow = 2130903065;
 			
 			// aapt resource value: 0x7f03001a
-			public const int LogOn = 2130903066;
+			public const int BookingsLayout = 2130903066;
 			
 			// aapt resource value: 0x7f03001b
-			public const int Main = 2130903067;
+			public const int LogOn = 2130903067;
 			
 			// aapt resource value: 0x7f03001c
-			public const int MainLayout = 2130903068;
+			public const int Main = 2130903068;
 			
 			// aapt resource value: 0x7f03001d
-			public const int Menu = 2130903069;
+			public const int MainLayout = 2130903069;
 			
 			// aapt resource value: 0x7f03001e
-			public const int MenuRow = 2130903070;
+			public const int Menu = 2130903070;
 			
 			// aapt resource value: 0x7f03001f
-			public const int notification_media_action = 2130903071;
+			public const int MenuRow = 2130903071;
 			
 			// aapt resource value: 0x7f030020
-			public const int notification_media_cancel_action = 2130903072;
+			public const int notification_media_action = 2130903072;
 			
 			// aapt resource value: 0x7f030021
-			public const int notification_template_big_media = 2130903073;
+			public const int notification_media_cancel_action = 2130903073;
 			
 			// aapt resource value: 0x7f030022
-			public const int notification_template_big_media_narrow = 2130903074;
+			public const int notification_template_big_media = 2130903074;
 			
 			// aapt resource value: 0x7f030023
-			public const int notification_template_lines = 2130903075;
+			public const int notification_template_big_media_narrow = 2130903075;
 			
 			// aapt resource value: 0x7f030024
-			public const int notification_template_media = 2130903076;
+			public const int notification_template_lines = 2130903076;
 			
 			// aapt resource value: 0x7f030025
-			public const int notification_template_part_chronometer = 2130903077;
+			public const int notification_template_media = 2130903077;
 			
 			// aapt resource value: 0x7f030026
-			public const int notification_template_part_time = 2130903078;
+			public const int notification_template_part_chronometer = 2130903078;
 			
 			// aapt resource value: 0x7f030027
-			public const int Register = 2130903079;
+			public const int notification_template_part_time = 2130903079;
 			
 			// aapt resource value: 0x7f030028
-			public const int select_dialog_item_material = 2130903080;
+			public const int Register = 2130903080;
 			
 			// aapt resource value: 0x7f030029
-			public const int select_dialog_multichoice_material = 2130903081;
+			public const int SearchWorkshopsRow = 2130903081;
 			
 			// aapt resource value: 0x7f03002a
-			public const int select_dialog_singlechoice_material = 2130903082;
+			public const int select_dialog_item_material = 2130903082;
 			
 			// aapt resource value: 0x7f03002b
-			public const int support_simple_spinner_dropdown_item = 2130903083;
+			public const int select_dialog_multichoice_material = 2130903083;
+			
+			// aapt resource value: 0x7f03002c
+			public const int select_dialog_singlechoice_material = 2130903084;
+			
+			// aapt resource value: 0x7f03002d
+			public const int support_simple_spinner_dropdown_item = 2130903085;
 			
 			static Layout()
 			{
@@ -2638,9 +2659,6 @@ namespace HELPS
 			
 			// aapt resource value: 0x7f070070
 			public const int Base_Widget_AppCompat_Toolbar_Button_Navigation = 2131165296;
-			
-			// aapt resource value: 0x7f070127
-			public const int Mono_Android_Theme_Splash = 2131165479;
 			
 			// aapt resource value: 0x7f070010
 			public const int Platform_AppCompat = 2131165200;
