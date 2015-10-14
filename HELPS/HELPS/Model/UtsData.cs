@@ -22,7 +22,7 @@ namespace HELPS.Model
         [JsonIgnore]
         public string Passsword { get; set; }
 
-        public string StudentID { get; set; }
+        public string StudentId { get; set; }
 
         public string DateOfBirth { get; set; }
 
@@ -36,9 +36,45 @@ namespace HELPS.Model
 
         public string CountryOrigin { get; set; }
 
-        public string PreferredName { get; set; }
+        public string Background { get; set; }
+
+        public String DegreeDetails { get; set; }
 
         public string AltContact { get; set; }
+
+        public string PreferredName { get; set; }
+
+        public String HSC { get; set; }
+
+        public String HSCMark { get; set; }
+
+        public object IELTS { get; set; }
+
+        public object IELTSMark { get; set; }
+
+        public object TOEFL { get; set; }
+
+        public object TOEFLMark { get; set; }
+
+        public object TAFE { get; set; }
+
+        public object TAFEMark { get; set; }
+
+        public object CULT { get; set; }
+
+        public object CULTMark { get; set; }
+
+        public object InsearchDEEP { get; set; }
+
+        public object InsearchDEEPMark { get; set; }
+
+        public object InsearchDiploma { get; set; }
+
+        public object InsearchDiplomaMark { get; set; }
+
+        public object FoundationCourse { get; set; }
+
+        public object FoundationCourseMark { get; set; }
 
         public string CreatorId { get; set; }
 

@@ -119,10 +119,9 @@ namespace HELPS
                     // Searches for the Student Details.
                     foreach (UtsData data in records)
                     {
-                        if (data.StudentID.Trim().Equals(username.Trim()))
+                        if (data.StudentId.Trim().Equals(username.Trim()))
                         {
                             studentRecord = data;
-
                         }
                     }
 

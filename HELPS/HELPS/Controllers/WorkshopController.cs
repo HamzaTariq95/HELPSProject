@@ -26,8 +26,6 @@ namespace HELPS.Controllers
             request.Headers.Add("Key: AppKey");
             request.Headers.Add("value: 66666");
                    
-              
-
                 
 
         }
