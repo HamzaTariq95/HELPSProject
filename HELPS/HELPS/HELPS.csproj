@@ -110,6 +110,8 @@
     <Compile Include="Views\RegisterActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\SearchViewHolder.cs" />
+    <Compile Include="Views\SearchWorkshopsBaseAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\fonts\din-bold.ttf" />
@@ -140,6 +142,7 @@
     <AndroidResource Include="Resources\layout\Menu.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\BookingsLayout.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\MainLayout.axml" />
@@ -181,6 +184,11 @@
   <ItemGroup>
     <EmbeddedResource Include="utsData.csv" />
     <AndroidResource Include="Resources\layout\MenuRow.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\SearchWorkshopsRow.xml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>
