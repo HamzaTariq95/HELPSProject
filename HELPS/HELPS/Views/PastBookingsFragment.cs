@@ -32,13 +32,13 @@ namespace HELPS.Views
             //Get student data from intent in parent activity
             studentData = JsonConvert.DeserializeObject<StudentData>(this.Activity.Intent.GetStringExtra("student"));
 
-            // Set the "Upcoming Sessions" list view to display (upto) the four closest sessions
-            DisplayUpcomingBookings(view);
+            // Set the "Past Bookings" list view to display (upto) the four closest sessions
+            DisplayPastBookings(view);
 
             return view;
         }
 
-        private void DisplayUpcomingBookings(View view)
+        private void DisplayPastBookings(View view)
         {
             SessionController sessionController = new SessionController();
             SessionBookingData sessionBookingData = sessionController.GetSessionBookingData(studentData.attributes.studentID);

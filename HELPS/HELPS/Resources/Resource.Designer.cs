@@ -2047,19 +2047,22 @@ namespace HELPS
 			public const int Register = 2130903080;
 			
 			// aapt resource value: 0x7f030029
-			public const int SearchWorkshopsRow = 2130903081;
+			public const int SearchLayout = 2130903081;
 			
 			// aapt resource value: 0x7f03002a
-			public const int select_dialog_item_material = 2130903082;
+			public const int SearchWorkshopsRow = 2130903082;
 			
 			// aapt resource value: 0x7f03002b
-			public const int select_dialog_multichoice_material = 2130903083;
+			public const int select_dialog_item_material = 2130903083;
 			
 			// aapt resource value: 0x7f03002c
-			public const int select_dialog_singlechoice_material = 2130903084;
+			public const int select_dialog_multichoice_material = 2130903084;
 			
 			// aapt resource value: 0x7f03002d
-			public const int support_simple_spinner_dropdown_item = 2130903085;
+			public const int select_dialog_singlechoice_material = 2130903085;
+			
+			// aapt resource value: 0x7f03002e
+			public const int support_simple_spinner_dropdown_item = 2130903086;
 			
 			static Layout()
 			{
