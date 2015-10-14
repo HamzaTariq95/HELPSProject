@@ -1438,10 +1438,7 @@ namespace HELPS
 			public const int @lock = 2130837569;
 			
 			// aapt resource value: 0x7f020042
-			public const int monoandroidsplash = 2130837570;
-			
-			// aapt resource value: 0x7f020043
-			public const int notification_template_icon_bg = 2130837571;
+			public const int notification_template_icon_bg = 2130837570;
 			
 			static Drawable()
 			{
@@ -1654,6 +1651,9 @@ namespace HELPS
 			// aapt resource value: 0x7f0b006e
 			public const int line3 = 2131427438;
 			
+			// aapt resource value: 0x7f0b0089
+			public const int listAvailable = 2131427465;
+			
 			// aapt resource value: 0x7f0b0064
 			public const int listMenu = 2131427428;
 			
@@ -1711,23 +1711,23 @@ namespace HELPS
 			// aapt resource value: 0x7f0b0033
 			public const int scrollView = 2131427379;
 			
-			// aapt resource value: 0x7f0b008b
-			public const int searchWorkshopDate = 2131427467;
-			
-			// aapt resource value: 0x7f0b008a
-			public const int searchWorkshopStatus = 2131427466;
-			
 			// aapt resource value: 0x7f0b008c
-			public const int searchWorkshopTarget = 2131427468;
+			public const int searchWorkshopDate = 2131427468;
 			
-			// aapt resource value: 0x7f0b0089
-			public const int searchWorkshopTitle = 2131427465;
+			// aapt resource value: 0x7f0b008b
+			public const int searchWorkshopStatus = 2131427467;
 			
 			// aapt resource value: 0x7f0b008d
-			public const int searchWorkshopTutor = 2131427469;
+			public const int searchWorkshopTarget = 2131427469;
+			
+			// aapt resource value: 0x7f0b008a
+			public const int searchWorkshopTitle = 2131427466;
 			
 			// aapt resource value: 0x7f0b008e
-			public const int searchWorkshopType = 2131427470;
+			public const int searchWorkshopTutor = 2131427470;
+			
+			// aapt resource value: 0x7f0b008f
+			public const int searchWorkshopType = 2131427471;
 			
 			// aapt resource value: 0x7f0b0045
 			public const int search_badge = 2131427397;
@@ -2665,9 +2665,6 @@ namespace HELPS
 			
 			// aapt resource value: 0x7f070070
 			public const int Base_Widget_AppCompat_Toolbar_Button_Navigation = 2131165296;
-			
-			// aapt resource value: 0x7f070127
-			public const int Mono_Android_Theme_Splash = 2131165479;
 			
 			// aapt resource value: 0x7f070010
 			public const int Platform_AppCompat = 2131165200;

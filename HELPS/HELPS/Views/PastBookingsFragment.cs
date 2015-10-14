@@ -38,17 +38,11 @@ namespace HELPS.Views
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             View view = inflater.Inflate(Resource.Layout.BookingsLayout, container, false);
-
-<<<<<<< HEAD
-            // Set the "Upcoming Sessions" list view to display (upto) the four closest sessions
-            DisplayUpcomingBookings(view);
-=======
             //Get student data from intent in parent activity
             studentData = JsonConvert.DeserializeObject<StudentData>(this.Activity.Intent.GetStringExtra("student"));
 
             // Set the "Past Bookings" list view to display (upto) the four closest sessions
             DisplayPastBookings(view);
->>>>>>> origin/Imogen
 
             return view;
         }
