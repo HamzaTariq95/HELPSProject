@@ -25,7 +25,7 @@ namespace HELPS.Controllers
     public class WorkshopController
     {
 
-        public  WorkshopBookingData GetWorkshopBookingData(string studentID)
+        public WorkshopBookingData GetWorkshopBookingData(string studentID)
         {
             // Request Address of the API
             string url = "http://GroupThirteen.cloudapp.net/api/workshop/booking/search?studentId=" + studentID;

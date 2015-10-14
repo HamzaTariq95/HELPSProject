@@ -62,7 +62,7 @@ namespace HELPS
             {
                 addBookingsToList(bookings, sessionBookingData, workshopBookingData);
             }
-         
+
             ListView upcomingList = view.FindViewById<ListView>(Resource.Id.listUpcoming);
             upcomingList.Adapter = new BookingBaseAdapter(Activity, bookings);
         }

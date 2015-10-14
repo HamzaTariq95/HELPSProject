@@ -119,10 +119,9 @@ namespace HELPS
                     // Searches for the Student Details.
                     foreach (UtsData data in records)
                     {
-                        if (data.StudentID.Trim().Equals(username.Trim()))
+                        if (data.StudentId.Trim().Equals(username.Trim()))
                         {
                             studentRecord = data;
-
                         }
                     }
 
@@ -149,7 +148,7 @@ namespace HELPS
         }
 
         // Controls opening the external UTS website where users can change their password
-        void SendToUtsResetPassword()
+        private void SendToUtsResetPassword()
             {
                 Android.Net.Uri uri = Android.Net.Uri.Parse("https://email.itd.uts.edu.au/webapps/myaccount/passwordreset/");
                 Intent intent = Intent.CreateChooser(new Intent(Intent.ActionView, uri), "Open with");
@@ -157,7 +156,7 @@ namespace HELPS
         }
 
         // Controls opening the dialog that displays the "About HELPS" information
-        void ShowAboutHelps()
+        private void ShowAboutHelps()
             {
                 // Creates the alert displaying the "About HELPS" information
                 AlertDialog.Builder aboutHelpsAlert = new AlertDialog.Builder(this);
@@ -170,8 +169,13 @@ namespace HELPS
                 aboutHelpsDialog.Show();
         }
 
+        private void ShowLoadingDialog()
+        {
+            ProgressDialog progressDialog = new ProgressDialog(this);
 
-        static List<string> SplitRow(string Row)
+        }
+
+        private static List<string> SplitRow(string Row)
         {
             List<string> result = new List<string>();
             string[] splitRow = Row.Split(",".ToCharArray());
