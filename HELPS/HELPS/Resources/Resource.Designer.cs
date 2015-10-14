@@ -1708,6 +1708,24 @@ namespace HELPS
 			// aapt resource value: 0x7f0b0033
 			public const int scrollView = 2131427379;
 			
+			// aapt resource value: 0x7f0b008b
+			public const int searchWorkshopDate = 2131427467;
+			
+			// aapt resource value: 0x7f0b008a
+			public const int searchWorkshopStatus = 2131427466;
+			
+			// aapt resource value: 0x7f0b008c
+			public const int searchWorkshopTarget = 2131427468;
+			
+			// aapt resource value: 0x7f0b0089
+			public const int searchWorkshopTitle = 2131427465;
+			
+			// aapt resource value: 0x7f0b008d
+			public const int searchWorkshopTutor = 2131427469;
+			
+			// aapt resource value: 0x7f0b008e
+			public const int searchWorkshopType = 2131427470;
+			
 			// aapt resource value: 0x7f0b0045
 			public const int search_badge = 2131427397;
 			
@@ -2029,16 +2047,19 @@ namespace HELPS
 			public const int Register = 2130903080;
 			
 			// aapt resource value: 0x7f030029
-			public const int select_dialog_item_material = 2130903081;
+			public const int SearchWorkshopsRow = 2130903081;
 			
 			// aapt resource value: 0x7f03002a
-			public const int select_dialog_multichoice_material = 2130903082;
+			public const int select_dialog_item_material = 2130903082;
 			
 			// aapt resource value: 0x7f03002b
-			public const int select_dialog_singlechoice_material = 2130903083;
+			public const int select_dialog_multichoice_material = 2130903083;
 			
 			// aapt resource value: 0x7f03002c
-			public const int support_simple_spinner_dropdown_item = 2130903084;
+			public const int select_dialog_singlechoice_material = 2130903084;
+			
+			// aapt resource value: 0x7f03002d
+			public const int support_simple_spinner_dropdown_item = 2130903085;
 			
 			static Layout()
 			{
