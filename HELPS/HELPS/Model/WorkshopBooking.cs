@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace HELPS.Model
 {
-    class WorkshopBooking :Booking
+    public class WorkshopBooking :Booking
     {
 
         public int BookingId { get; set; }

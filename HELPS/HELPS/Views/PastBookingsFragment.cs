@@ -12,12 +12,22 @@ using Android.Views;
 using Android.Widget;
 using Newtonsoft.Json;
 using HELPS.Model;
+using HELPS.Controllers;
 
 namespace HELPS.Views
 {
     public class PastBookingsFragment : Fragment
     {
         private StudentData studentData;
+        private SessionBookingData sessionBookingData;
+        private WorkshopBookingData workshopBookingData;
+
+        public PastBookingsFragment(SessionBookingData sessionBookingData, WorkshopBookingData workshopBookingData, StudentData studentData)
+        {
+            this.sessionBookingData = sessionBookingData;
+            this.workshopBookingData = workshopBookingData;
+            this.studentData = studentData;
+        }
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -29,9 +39,6 @@ namespace HELPS.Views
         {
             View view = inflater.Inflate(Resource.Layout.MainLayout, container, false);
 
-            //Get student data from intent in parent activity
-            studentData = JsonConvert.DeserializeObject<StudentData>(this.Activity.Intent.GetStringExtra("student"));
-
             // Set the "Upcoming Sessions" list view to display (upto) the four closest sessions
             DisplayUpcomingBookings(view);
 
@@ -42,38 +49,45 @@ namespace HELPS.Views
 
         private void DisplayUpcomingBookings(View view)
         {
-            SessionController sessionController = new SessionController();
-            SessionBookingData sessionBookingData = sessionController.GetSessionBookingData(studentData.attributes.studentID);
             List<Booking> bookings = new List<Booking>();
 
-            if (sessionBookingData == null)
+            if (sessionBookingData == null && workshopBookingData == null)
             {
                 //Display on screen: no bookings found
             }
             else
             {
-                addSessionBookingToList(sessionBookingData, bookings);
+                addBookingsToList(bookings, sessionBookingData, workshopBookingData);
             }
-            // {Architecture} change the code to generate the list view data from the user's data
-
-
-
-            //bookings.Add(new SessionBooking(false, Convert.ToDateTime("01/01/2015"), "B1.05.202", "Mr Tutor", "type"));
-            //bookings.Add(new SessionBooking(false, Convert.ToDateTime("01/01/2015"), "B1.05.202", "Mr Tutor", "type"));
-
-            bookings.Add(new WorkshopBooking(1, Convert.ToDateTime("01/01/2015"), 123, 456));
-            bookings.Add(new WorkshopBooking(1, Convert.ToDateTime("01/01/2015"), 123, 456));
-            bookings.Add(new WorkshopBooking(1, Convert.ToDateTime("01/01/2015"), 123, 456));
 
             ListView upcomingList = view.FindViewById<ListView>(Resource.Id.listUpcoming);
             upcomingList.Adapter = new BookingBaseAdapter(Activity, bookings);
         }
 
-        private void addSessionBookingToList(SessionBookingData sessionBookingData, List<Booking> bookings)
+        private void addBookingsToList(List<Booking> bookings, SessionBookingData sessionBookingData, WorkshopBookingData workshopBookingData)
+        {
+            addSessionBookingsToList(sessionBookingData, bookings);
+            addWorkshopBookingsToList(workshopBookingData, bookings);
+        }
+        private void addWorkshopBookingsToList(WorkshopBookingData workshopBookingData, List<Booking> bookings)
+        {
+            foreach (WorkshopBooking workshopBooking in workshopBookingData.attributes)
+            {
+                if (workshopBooking.starting < DateTime.Now &&
+                    workshopBooking.Status().Equals("Booked") &&
+                    workshopBooking.BookingArchived == null &&
+                    workshopBooking.WorkshopArchived == null)
+                    bookings.Add(workshopBooking);
+            }
+        }
+
+        private void addSessionBookingsToList(SessionBookingData sessionBookingData, List<Booking> bookings)
         {
             foreach (SessionBooking sessionBooking in sessionBookingData.attributes)
             {
-                if (sessionBooking.EndDate < DateTime.Now)
+                if (sessionBooking.StartDate < DateTime.Now &&
+                    sessionBooking.Status().Equals("Booked") &&
+                    sessionBooking.archived == null)
                     bookings.Add(sessionBooking);
             }
         }

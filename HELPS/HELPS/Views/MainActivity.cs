@@ -13,14 +13,17 @@ using HELPS.Model;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 using Android.Support.V7.App;
 using HELPS.Views;
-using Android.Content.PM;
-using Android.Util;
+using HELPS.Controllers;
 
 namespace HELPS
 {
     [Activity(Label = "UTS:HELPS", Icon = "@drawable/icon")]
     public class MainActivity : AppCompatActivity
     {
+        private SessionBookingData sessionBookingData;
+        private WorkshopBookingData workshopBookingData;
+        private StudentData studentData;
+
         private SupportToolbar _Toolbar;
         private int _CurrentViewTitle = Resource.String.applicationName;
         private HelpsAppCompatDrawerToggle _DrawerToggle;
@@ -44,10 +47,13 @@ namespace HELPS
             _DrawerToggle = new HelpsAppCompatDrawerToggle(this, _DrawerLayout, Resource.String.menuTitle, _CurrentViewTitle);
             _DrawerLayout.SetDrawerListener(_DrawerToggle);
 
+            //Fetch booking data
+            FetchBookingData();
+
             // Set up the views
-            _Landing = new LandingFragment();
-            _Future = new FutureBookingsFragment();
-            _Past = new PastBookingsFragment();
+            _Landing = new LandingFragment(sessionBookingData, workshopBookingData, studentData);
+            _Future = new FutureBookingsFragment(sessionBookingData, workshopBookingData, studentData);
+            _Past = new PastBookingsFragment(sessionBookingData, workshopBookingData, studentData);
 
             // Set up the landing page
             SetView(Resource.Id.fragmentContainer, _Landing, false);
@@ -61,12 +67,22 @@ namespace HELPS
             SetUpMenu();
         }
 
+        private void FetchBookingData()
+        {
+            studentData = JsonConvert.DeserializeObject<StudentData>(Intent.GetStringExtra("student"));
+
+            SessionController sessionController = new SessionController();
+            sessionBookingData = sessionController.GetSessionBookingData(studentData.attributes.studentID);
+
+            WorkshopController workshopController = new WorkshopController();
+            workshopBookingData = workshopController.GetWorkshopBookingData(studentData.attributes.studentID);
+        }
+
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             _DrawerToggle.OnOptionsItemSelected(item);
             return base.OnOptionsItemSelected(item);
         }
-            
         protected override void OnSaveInstanceState(Bundle outState)
         {
             if (_DrawerLayout.IsDrawerOpen((int)GravityFlags.Left))

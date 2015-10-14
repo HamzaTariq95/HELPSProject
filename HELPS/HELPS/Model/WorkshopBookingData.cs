@@ -9,10 +9,28 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Newtonsoft.Json;
+using System.Runtime.Serialization;
+using Java.Interop;
 
 namespace HELPS.Model
 {
-    class WorkshopBookingData
+    public class WorkshopBookingData
     {
+        [JsonProperty("Results")]
+        public List<WorkshopBooking> attributes { get; set; }
+
+
+        public bool IsSuccess { get; set; }
+
+
+        public object DisplayMessage { get; set; }
+
+
+
+        public int DescribeContents()
+        {
+            return 0;
+        }
     }
 }
