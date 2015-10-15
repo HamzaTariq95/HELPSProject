@@ -26,8 +26,6 @@ namespace HELPS.Controllers
     class RegisterController
     {
 
-
-       
         public async Task Register(UtsData data)
         {
 
@@ -36,14 +34,8 @@ namespace HELPS.Controllers
 
            // Request Address of the API    
            String url = "http://GroupThirteen.cloudapp.net/api/student/resigter";
-
-           WebClient client = new WebClient();
-           Uri uri = new Uri(url);
-
- 
-
              
-        /*     // Setting Request Properties
+            // Setting Request Properties
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "POST";
             request.ContentType = "application/json";
@@ -73,7 +65,7 @@ namespace HELPS.Controllers
            {
                Log.Info("TEST POST", e.ToString());
            }
-          */
+          
 
           
 

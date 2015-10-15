@@ -70,7 +70,7 @@ namespace HELPS.Controllers
 
                         else
                         {
-                            Log.Info("HELPS:assignType", workshopBookingData.attributes.ElementAt(0).description);
+                            //Log.Info("HELPS:assignType", workshopBookingData.attributes.ElementAt(0).description);
                         }
                     }
 
