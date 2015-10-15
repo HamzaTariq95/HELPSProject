@@ -53,7 +53,7 @@ namespace HELPS
             // Set up the views
             _Landing = new LandingFragment(sessionBookingData, workshopBookingData, studentData);
             _Future = new FutureBookingsFragment(sessionBookingData, workshopBookingData, studentData);
-            _Past = new PastBookingsFragment(sessionBookingData, workshopBookingData, studentData);
+         //   _Past = new PastBookingsFragment(sessionBookingData, workshopBookingData, studentData);
 
             // Set up the landing page
             SetView(Resource.Id.fragmentContainer, _Landing, false);

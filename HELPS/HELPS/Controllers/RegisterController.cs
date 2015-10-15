@@ -18,6 +18,8 @@ using System.IO;
 using System.Threading.Tasks;
 using HELPS.Model;
 using System.Net.Http;
+using System.Collections.Specialized;
+using Newtonsoft.Json.Linq;
 
 
 
@@ -26,9 +28,9 @@ namespace HELPS.Controllers
     class RegisterController
     {
 
-
+      
        
-        public async Task Register(UtsData data)
+        public void Register(UtsData data)
         {
 
             string json = JsonConvert.SerializeObject(data);
@@ -37,16 +39,31 @@ namespace HELPS.Controllers
            // Request Address of the API    
            String url = "http://GroupThirteen.cloudapp.net/api/student/resigter";
 
-           WebClient client = new WebClient();
-           Uri uri = new Uri(url);
+         
+          // client.Headers[HttpRequestHeader.ContentType] = "application/json";
+          /* String result = null;
+        
+               using (WebClient wc = new WebClient())
+               {
+                   wc.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
+                   wc.Headers.Add("AppKey", "66666");
 
- 
 
+                    result = wc.UploadString(url, json);
+                   
+
+                   Log.Info("Register SUCCESS", result);
+
+               } */
+          
+          
+         
+          
              
-        /*     // Setting Request Properties
+            // Setting Request Properties
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "POST";
-            request.ContentType = "application/json";
+            request.ContentType = " application/json; charset=utf-8";
             request.Headers["AppKey"] = "66666";
 
            Log.Info("API CALL TEST", "I am going to call service");
@@ -73,7 +90,7 @@ namespace HELPS.Controllers
            {
                Log.Info("TEST POST", e.ToString());
            }
-          */
+          
 
           
 

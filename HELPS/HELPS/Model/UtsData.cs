@@ -76,7 +76,7 @@ namespace HELPS.Model
 
         public object FoundationCourseMark { get; set; }
 
-        public string CreatorId { get; set; }
+        public object CreatorId { get; set; }
 
         [JsonIgnore]
         public string Faculty { get; set; }

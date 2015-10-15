@@ -114,13 +114,11 @@
     <Compile Include="Model\UtsData.cs" />
     <Compile Include="Model\Workshop.cs" />
     <Compile Include="Model\WorkshopBooking.cs" />
-    <Compile Include="Views\PastBookingsFragment.cs" />
     <Compile Include="Views\RegisterActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\SearchViewHolder.cs" />
     <Compile Include="Views\SearchWorkshopsBaseAdapter.cs" />
-    <Compile Include="Views\SearchWorkshopsFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\fonts\din-bold.ttf" />
