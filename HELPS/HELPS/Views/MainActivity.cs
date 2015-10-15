@@ -153,6 +153,7 @@ namespace HELPS
                     // Profile/Landing page.
                     case 0:
                         _CurrentViewTitle = Resource.String.applicationName;
+                        SetView(Resource.Id.fragmentContainer, _Landing, true);
                         break;
                     // Search workshops.
                     case 1:
@@ -160,14 +161,13 @@ namespace HELPS
                         break;
                     // Future bookings.
                     case 2:
-                        SetView(Resource.Id.fragmentContainer, _Future, true);
-
                         _CurrentViewTitle = Resource.String.futureBookingsTitle;
+                        SetView(Resource.Id.fragmentContainer, _Future, true);
                         break;
                     // Past bookings.
                     case 3:
-                         SetView(Resource.Id.fragmentContainer, _Past, true);
                         _CurrentViewTitle = Resource.String.pastBookingsTitle;
+                        SetView(Resource.Id.fragmentContainer, _Past, true);
                         break;
                     // Record notes.
                     case 4:
@@ -189,6 +189,8 @@ namespace HELPS
 
         private void SetView(int fragmentResource, Fragment view, bool retainView)
         {
+            _DrawerToggle.SetClosedResource(_CurrentViewTitle);
+
             _FragmentManager = FragmentManager.BeginTransaction();
             _FragmentManager.Replace(fragmentResource, view);
 
@@ -200,6 +202,8 @@ namespace HELPS
         }
 
             _FragmentManager.Commit();
+
+            _DrawerLayout.CloseDrawers();
         }
     }
 }
