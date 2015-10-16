@@ -45,13 +45,10 @@ namespace HELPS.Views
             // Set the "Past Bookings" list view to display (upto) the four closest sessions
             DisplayPastBookings(view);
 
-            // Set the "Upcoming Sessions" list view to display (upto) the four closest sessions
-            DisplayUpcomingBookings(view);
-
             return view;
         }
 
-        private void DisplayUpcomingBookings(View view)
+        private void DisplayPastBookings(View view)
         {
             List<Booking> bookings = new List<Booking>();
 
