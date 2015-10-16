@@ -47,7 +47,7 @@ namespace HELPS.Views
             availableList.Adapter = new SearchWorkshopsBaseAdapter(Activity, workshops);
         }
 
-        private void addWorkshopToList(WorkshopBookingData workshopBookingData, List<Workshop> workshops)
+        private void addWorkshopToList(WorkshopData workshopData, List<Workshop> workshops)
         {
 
           //  foreach (WorkshopBooking workshopBooking in WorkshopBookingData.attributes)

@@ -102,6 +102,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\WorkshopController.cs" />
+    <Compile Include="Views\Activities\BookingDetailActivity.cs" />
     <Compile Include="Views\Fragments\SearchWorkshopsFragment.cs" />
     <Compile Include="Views\Activities\LogOnActivity.cs" />
     <Compile Include="Views\Activities\MainActivity.cs" />
@@ -129,13 +130,10 @@
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
-    <AndroidResource Include="Resources\drawable\check.png" />
-    <AndroidResource Include="Resources\drawable\close.png" />
     <AndroidResource Include="Resources\drawable\drawEditText.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\Icon.png" />
-    <AndroidResource Include="Resources\drawable\lock.png" />
     <AndroidResource Include="Resources\layout\LogOn.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
@@ -155,6 +153,7 @@
     <AndroidResource Include="Resources\layout\SearchLayout.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\BookingDetail.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\MainLayout.axml" />
@@ -203,6 +202,15 @@
     <AndroidResource Include="Resources\layout\SearchWorkshopsRow.xml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\lock.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

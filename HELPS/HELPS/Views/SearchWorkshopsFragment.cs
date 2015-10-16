@@ -41,17 +41,15 @@ namespace HELPS.Views
         private void DisplayAvailableWorkshops(View view)
         {
             // {Architecture} inflate list with available workshops
-            List<Workshop> workshops = new List<Workshop>();
+            List<WorkshopBooking> workshops = new List<WorkshopBooking>();
 
             ListView availableList = view.FindViewById<ListView>(Resource.Id.listAvailable);
             availableList.Adapter = new SearchWorkshopsBaseAdapter(Activity, workshops);
         }
 
-        private void addWorkshopToList(WorkshopBookingData workshopBookingData, List<Workshop> workshops)
+        private void addWorkshopToList(WorkshopBookingData workshopBookingData, List<WorkshopBooking> workshops)
         {
-
-
-          //  foreach (WorkshopBooking workshopBooking in WorkshopBookingData.attributes)
+            //foreach (WorkshopBooking workshop in WorkshopBookingData.attributes)
            // {
                 // {Architecture} add available workshops
            // }
