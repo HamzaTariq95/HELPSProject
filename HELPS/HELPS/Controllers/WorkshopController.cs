@@ -27,6 +27,7 @@ namespace HELPS.Controllers
 
         public WorkshopBookingData GetWorkshopBookingData(string studentID)
         {
+
             // Request Address of the API
             string url = "http://GroupThirteen.cloudapp.net/api/workshop/booking/search?studentId=" + studentID;
 
@@ -70,7 +71,7 @@ namespace HELPS.Controllers
 
                         else
                         {
-                            Log.Info("HELPS:assignType", workshopBookingData.attributes.ElementAt(0).description);
+                            //Log.Info("HELPS:assignType", workshopBookingData.attributes.ElementAt(0).description);
                         }
                     }
 
@@ -83,6 +84,50 @@ namespace HELPS.Controllers
             }
             return workshopBookingData;
         }
+
+        public WorkshopData searchWorkshops(String startDate)
+        {
+
+            if(startDate > DateTime.Now.Date)
+            {
+
+            }
+
+            string url = "http://GroupThirteen.cloudapp.net/api/workshop/search?startingDtBegin=" + startDate + "&startingDtEnd=2060-12-20&active=true"; 
+
+
+            // Setting Request Properties
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "GET";
+            request.ContentType = "application/json; charset=utf-8";
+            request.Headers["AppKey"] = "66666";
+
+            WorkshopData workshops = null;
+
+            // Generating JSON Response and Converting it to Student Object.
+            using (WebResponse response = request.GetResponse())
+            {
+                // Get a stream representation of the HTTP web response:
+                using (Stream stream = response.GetResponseStream())
+                {
+                    using (StreamReader sr = new StreamReader(stream))
+                    {
+                        string json = sr.ReadToEnd();
+
+                        // Convert JSON Response to Student Object
+                        workshops = JsonConvert.DeserializeObject<WorkshopData>(json);
+                    }
+                        
+                }
+            }
+
+            Log.Info("Bookings Result", workshops.attributes[0].WorkshopId.ToString());
+
+            return workshops;
+        }
+
+          
+
     }
 }
 

@@ -25,6 +25,8 @@ namespace HELPS
     public class LogOnActivity : Activity
     {
         private TextView _WrongInput;
+        private StudentData studentDataAtHELPS;
+        private UtsData studentDataAtUTS;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -46,7 +48,8 @@ namespace HELPS
             _WrongInput = FindViewById<TextView>(Resource.Id.textWrongInput);
             _WrongInput.Visibility = ViewStates.Gone;
 
-            com.refractored.fab.FloatingActionButton logInButton = FindViewById<com.refractored.fab.FloatingActionButton>(Resource.Id.fabLogIn);
+            com.refractored.fab.FloatingActionButton logInButton =
+                FindViewById<com.refractored.fab.FloatingActionButton>(Resource.Id.fabLogIn);
 
             // Works the "Log-in" button
             logInButton.Click += delegate
@@ -71,80 +74,77 @@ namespace HELPS
         }
 
         // Controls what happens when the user clicks the Log In button
-        void LogIn(String username, String password)
+        void LogIn(string studentID, string password)
         {
-            // {Architecture} replace with log in authentication method
-
-            HomeController homeController = new HomeController();
-
-            StudentData studentData = homeController.login(username, password);
-
-            // {Architecture} replace with method to check if it's user's first log-in.
-            // If first log-in, go to RegisterActivity, else go to MainActivity
-            // If the information doesn't exist in the database, display message to user.
-            if (studentData != null)
+            if (currentUTSStudent(studentID, password))
             {
-                Log.Info("Inside LogOnActvitity", "Student Data is not Null");
-
-                Intent mainActivity = new Intent(Application.Context, typeof(MainActivity));
-                // Passing the Student object to the next Activity
-                mainActivity.PutExtra("student", JsonConvert.SerializeObject(studentData));
-                StartActivity(mainActivity);
-
-            }
-
-            // {Architecture} If case for when it is the user's first log-in
-            // Go to the Register Activity
-            // Need to fetch data from UTSstudentData.csv and pass that on to the next Intent.
-
-            // Else the user's creditials are not in the database or wrong
-            else
-            {
-                Log.Info("Inside LogOnActvitity", "New STUDENT!");
-
-                var assembly = typeof(LogOnActivity).GetTypeInfo().Assembly;
-                Stream stream = assembly.GetManifestResourceStream("HELPS.utsData.csv");
-
-                UtsData studentRecord = null;
-
-                // Extracts data from the utsData.csv
-                using (TextReader reader = new System.IO.StreamReader(stream))
+                if (registeredAtHELPS(studentID))
                 {
-
-                    var csv = new CsvReader(reader);
-                    csv.Configuration.HasHeaderRecord = false;
-
-                    var records = csv.GetRecords<UtsData>().ToList();
-
-                    // Searches for the Student Details.
-                    foreach (UtsData data in records)
-                    {
-                        if (data.StudentId.Trim().Equals(username.Trim()))
-                        {
-                            studentRecord = data;
-                        }
-                    }
-
-                }
-
-                if (studentRecord == null)
-                {
-
-                    // Display Wrong credentials error. 
-                    _WrongInput.Visibility = ViewStates.Visible;
-                
+                    Log.Info("Inside LogOnActvitity", "Student Data is not Null");
+                    Intent mainActivity = new Intent(Application.Context, typeof(MainActivity));
+                    // Passing the Student object to the next Activity
+                    mainActivity.PutExtra("student", JsonConvert.SerializeObject(studentDataAtHELPS));
+                    StartActivity(mainActivity);
                 }
                 else
                 {
-                    // Passing the Student object to the next Activity
-                    Intent registerActivity = new Intent(Application.Context, typeof(RegisterActivity));                  
-                    registerActivity.PutExtra("student", JsonConvert.SerializeObject(studentRecord));
+                    Intent registerActivity = new Intent(Application.Context, typeof(RegisterActivity));
+                    registerActivity.PutExtra("student", JsonConvert.SerializeObject(studentDataAtUTS));
                     StartActivity(registerActivity);
                 }
-
-               
-
             }
+            else
+            {
+                //show wrong id/pass message
+                _WrongInput.Visibility = ViewStates.Visible;
+            }
+          
+        }
+
+        private bool registeredAtHELPS(string studentID)
+        {
+            return (studentDataAtHELPS = new HomeController().login(studentID)) != null;
+        }
+
+        private bool currentUTSStudent(string studentID, string password)
+        {
+            Log.Info("Inside LogOnActvitity", "New STUDENT!");
+
+            if (studentID == null || studentID.Equals(""))
+                return false;
+
+            // Extracts data from the utsData.csv
+            return studentIdFoundInUTSDatabase(studentID, password);
+        }
+
+        private bool studentIdFoundInUTSDatabase(string studentID, string password)
+        {
+            studentDataAtUTS = null;
+
+            var assembly = typeof(LogOnActivity).GetTypeInfo().Assembly;
+            Stream stream = assembly.GetManifestResourceStream("HELPS.utsData.csv");
+
+            using (TextReader reader = new StreamReader(stream))
+            {
+
+                CsvReader csv = new CsvReader(reader);
+                csv.Configuration.HasHeaderRecord = false;
+
+                List<UtsData> records = csv.GetRecords<UtsData>().ToList();
+
+                // Searches for the Student Details.
+                foreach (UtsData data in records)
+                {
+                    //Checking only student id but not password for sake for login feature demonstration purpose only .
+                    //Originally password MUST be checked as well.
+                    if (data.StudentId.Trim().Equals(studentID.Trim()))
+                    {
+                        studentDataAtUTS = data;
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
         // Controls opening the external UTS website where users can change their password

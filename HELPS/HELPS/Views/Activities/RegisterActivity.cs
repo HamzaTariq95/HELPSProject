@@ -92,8 +92,7 @@ namespace HELPS
                 RegisterController registerController = new RegisterController();
                 registerController.Register(studentData);
 
-                //StartActivity(typeof(MainActivity));
-                //Finish();
+                //set student data and go to main activity 
             };
             // Works the cancel button.
             inputCancelButton.Click += delegate

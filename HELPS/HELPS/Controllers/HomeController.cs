@@ -24,7 +24,7 @@ namespace HELPS
 {
     public class HomeController {
 
-        public  StudentData login(String studentID, String password)
+        public  StudentData login(string studentID)
         {       
 
             // Request Address of the API

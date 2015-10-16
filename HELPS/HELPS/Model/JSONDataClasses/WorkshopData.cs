@@ -18,7 +18,7 @@ namespace HELPS.Model
     class WorkshopData
     {
         [JsonProperty("Result")]
-        public Workshop attributes { get; set; }
+        public List<Workshop> attributes { get; set; }
 
 
         public bool IsSuccess { get; set; }
