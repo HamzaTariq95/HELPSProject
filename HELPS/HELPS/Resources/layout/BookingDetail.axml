@@ -39,4 +39,23 @@
             android:background="@color/white"
             android:textColor="@color/red" />
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/notBookedButtons"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:background="@color/red">
+        <Button
+            android:id="@+id/buttonBook"
+            android:text="@string/changeNotification"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="24dp"
+            android:padding="12dp"
+            android:background="@color/white"
+            android:textColor="@color/red" />
+    </LinearLayout>
 </RelativeLayout>
