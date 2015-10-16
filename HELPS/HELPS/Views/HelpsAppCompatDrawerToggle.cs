@@ -46,5 +46,10 @@ namespace HELPS.Views
         {
             base.OnDrawerSlide(drawerView, slideOffset);
         }
+
+        public void SetClosedResource(int resource)
+        {
+            _ClosedResource = resource;
+        }
     }
 }
