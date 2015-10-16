@@ -101,4 +101,7 @@
     <string name="pastBookingsTitle">My Past Bookings</string>
   
     <!-- Booking Detail -->
+    <string name="changeNotification">Change Notifications</string>
+    <string name="cancelBooking">Cancel Booking</string>
+  <string name="areYouSureCancel">Are you sure you want to cancel your booking? This cannot be undone.</string>
 </resources>

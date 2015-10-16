@@ -54,6 +54,7 @@ namespace HELPS
             // Works the "Log-in" button
             logInButton.Click += delegate
             {
+                _WrongInput.Visibility = ViewStates.Gone;
                 LogIn(username.Text, password.Text);
             };
 
