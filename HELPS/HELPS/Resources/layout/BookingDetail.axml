@@ -11,17 +11,4 @@
         android:background="@color/red"
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />
-    <android.support.v4.widget.DrawerLayout
-        android:id="@+id/drawerMain"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-    <!-- Activity content layout -->
-        <FrameLayout
-            android:id="@+id/fragmentContainer"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" />
-    <!-- Menu layout -->
-        <include
-            layout="@layout/Menu" />
-    </android.support.v4.widget.DrawerLayout>
 </LinearLayout>
