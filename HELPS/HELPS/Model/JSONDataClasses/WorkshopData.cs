@@ -15,7 +15,7 @@ using Java.Interop;
 
 namespace HELPS.Model
 {
-    class WorkshopData
+    public class WorkshopData
     {
         [JsonProperty("Result")]
         public List<Workshop> attributes { get; set; }

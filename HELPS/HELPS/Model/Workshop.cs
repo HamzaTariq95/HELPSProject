@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace HELPS.Model
 {
-    class Workshop
+    public class Workshop
     {
         public int WorkshopId { get; set; }
         public string topic { get; set; }
@@ -30,6 +30,8 @@ namespace HELPS.Model
         public string DaysOfWeek { get; set; }
         public int? BookingCount { get; set; }
         public DateTime? archived { get; set; }
+
+    
 
 
     /*

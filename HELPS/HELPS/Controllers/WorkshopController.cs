@@ -88,10 +88,7 @@ namespace HELPS.Controllers
         public WorkshopData searchWorkshops(String startDate)
         {
 
-            if(startDate > DateTime.Now.Date)
-            {
-
-            }
+          
 
             string url = "http://GroupThirteen.cloudapp.net/api/workshop/search?startingDtBegin=" + startDate + "&startingDtEnd=2060-12-20&active=true"; 
 
@@ -99,7 +96,7 @@ namespace HELPS.Controllers
             // Setting Request Properties
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "GET";
-            request.ContentType = "application/json; charset=utf-8";
+            request.ContentType = "application/json; charset=utf-8";    
             request.Headers["AppKey"] = "66666";
 
             WorkshopData workshops = null;

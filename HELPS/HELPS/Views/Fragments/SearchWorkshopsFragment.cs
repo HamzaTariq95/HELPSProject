@@ -50,7 +50,6 @@ namespace HELPS.Views
         private void addWorkshopToList(WorkshopBookingData workshopBookingData, List<Workshop> workshops)
         {
 
-
           //  foreach (WorkshopBooking workshopBooking in WorkshopBookingData.attributes)
            // {
                 // {Architecture} add available workshops
