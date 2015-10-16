@@ -99,4 +99,6 @@
 
     <!-- Past Bookings -->
     <string name="pastBookingsTitle">My Past Bookings</string>
+  
+    <!-- Booking Detail -->
 </resources>
