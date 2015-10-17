@@ -86,12 +86,14 @@ namespace HELPS
                     // Passing the Student object to the next Activity
                     mainActivity.PutExtra("student", JsonConvert.SerializeObject(studentDataAtHELPS));
                     StartActivity(mainActivity);
+                    Finish();
                 }
                 else
                 {
                     Intent registerActivity = new Intent(Application.Context, typeof(RegisterActivity));
                     registerActivity.PutExtra("student", JsonConvert.SerializeObject(studentDataAtUTS));
                     StartActivity(registerActivity);
+                    Finish();
                 }
             }
             else

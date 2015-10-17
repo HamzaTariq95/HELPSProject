@@ -84,7 +84,7 @@ namespace HELPS.Model
         [JsonIgnore]
         public string Course {get; set;}
 
-        [JsonIgnore]    
+        [JsonIgnore]
         public string Email { get; set; }
      }
 }
