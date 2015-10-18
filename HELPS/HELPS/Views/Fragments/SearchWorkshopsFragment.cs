@@ -12,6 +12,7 @@ using Android.Views;
 using Android.Widget;
 using HELPS.Model;
 using Newtonsoft.Json;
+using HELPS.Controllers;
 
 namespace HELPS.Views
 {
@@ -41,10 +42,13 @@ namespace HELPS.Views
         private void DisplayAvailableWorkshops(View view)
         {
             // {Architecture} inflate list with available workshops
-            List<Workshop> workshops = new List<Workshop>();
+            WorkshopController workhopController = new WorkshopController();
+            WorkshopData workshops = workhopController.searchWorkshops("");
+
+
 
             ListView availableList = view.FindViewById<ListView>(Resource.Id.listAvailable);
-            availableList.Adapter = new SearchWorkshopsBaseAdapter(Activity, workshops);
+            availableList.Adapter = new SearchWorkshopsBaseAdapter(Activity, workshops.Results);
         }
 
         private void addWorkshopToList(WorkshopData workshopData, List<Workshop> workshops)

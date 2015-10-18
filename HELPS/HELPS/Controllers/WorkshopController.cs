@@ -88,7 +88,7 @@ namespace HELPS.Controllers
         public WorkshopData searchWorkshops(String startDate)
         {
 
-            string url = "http:GroupThirteen.cloudapp.net/api/workshop/search?startingDtBegin=" + startDate + "&startingDtEnd=2060-12-20&active=true";
+            string url = "http://GroupThirteen.cloudapp.net/api/workshop/search?startingDtBegin=" + startDate + "&startingDtEnd=2060-12-20&active=true";
 
             //Setting Request Properties
            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
@@ -115,7 +115,7 @@ namespace HELPS.Controllers
                 }
             }
 
-            Log.Info("Bookings Result", workshops.Results[0].WorkshopId.ToString());
+            Log.Info("Bookings Result", workshops.Results[1].description);
 
             return workshops;
         }

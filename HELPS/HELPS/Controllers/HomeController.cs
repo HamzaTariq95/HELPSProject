@@ -30,8 +30,6 @@ namespace HELPS
 
 
 
-           Log.Info("Inside Login Controller retriving Workshop", w.Results[0].description);
-
             // Request Address of the API
             String url = "http://GroupThirteen.cloudapp.net/api/student/" + studentID;
 
