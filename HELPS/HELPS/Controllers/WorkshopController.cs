@@ -85,54 +85,40 @@ namespace HELPS.Controllers
             return workshopBookingData;
         }
 
-       public WorkshopData searchWorkshops(String startDate)
-       {
+        public WorkshopData searchWorkshops(String startDate)
+        {
 
+            string url = "http:GroupThirteen.cloudapp.net/api/workshop/search?startingDtBegin=" + startDate + "&startingDtEnd=2060-12-20&active=true";
 
-           string url = "http://groupthirteen.cloudapp.net/api/workshop/search?startingDtBegin=";
-          // string url = "http://GroupThirteen.cloudapp.net/api/workshop/search?startingDtBegin=" + startDate + "&startingDtEnd=2060-12-20&active=true"; 
-
-
-            // Setting Request Properties
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            //Setting Request Properties
+           HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "GET";
             request.ContentType = "application/json; charset=utf-8";
             request.Headers["AppKey"] = "66666";
-           
-           WorkshopData workshops = null;
 
-        // Generating JSON Response and Converting it to Student Object.
+            WorkshopData workshops = null;
+
+            //Generating JSON Response and Converting it to Student Object.
             using (WebResponse response = request.GetResponse())
             {
-              
-                // Get a stream representation of the HTTP web response:
+                //Get a stream representation of the HTTP web response:
                 using (Stream stream = response.GetResponseStream())
                 {
-                  
-                    JsonValue jsonDoc = JsonObject.Load(stream);
-                    
-                    try
+                    using (StreamReader sr = new StreamReader(stream))
                     {
-                       
-                        workshops = JsonConvert.DeserializeObject<WorkshopData>(jsonDoc.ToString());
+                        string json = sr.ReadToEnd();
 
-                        Log.Info("CONVERTED TO OBJECT!", workshops.DisplayMessage.ToString());
+                        //Convert JSON Response to Student Object
+                        workshops = JsonConvert.DeserializeObject<WorkshopData>(json);
                     }
 
-                    catch(Exception e)
-                    {
-                        Log.Info("CANNOT CONVERT TO OBJECT", e.ToString());
-                    }
-                    
-                                        
                 }
             }
 
-       return workshops;
+            Log.Info("Bookings Result", workshops.Results[0].WorkshopId.ToString());
+
+            return workshops;
         }
-
-          
-
     }
 }
 
