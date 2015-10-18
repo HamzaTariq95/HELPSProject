@@ -75,6 +75,12 @@ namespace HELPS.Views.Activities
             // }
         }
 
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            OnBackPressed();
+            return base.OnOptionsItemSelected(item);
+        }
+
         // Sends the user to the notification settings
         private void DisplayNotificationSettings()
         {
