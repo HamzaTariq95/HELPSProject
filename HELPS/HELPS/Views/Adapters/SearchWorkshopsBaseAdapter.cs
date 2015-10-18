@@ -83,7 +83,7 @@ namespace HELPS
             holder.searchWorkshopType.Text = _Workshops[position].Type(); */
 
             holder.searchWorkshopTitle.Text = _Workshops[position].topic;
-            DateTime? date = _Workshops[position].StartDate;
+            string date = (string)_Workshops[position].StartDate;
             holder.searchWorkshopDate.Text = (date == null) ? "Not available" : date.ToString();
             // holder.searchWorkshopTarget.Text = _Workshops[position].Target();
           
