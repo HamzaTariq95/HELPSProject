@@ -14,8 +14,8 @@ using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace HELPS.Views.Activities
 {
-    [Activity(Label = "AboutActivity")]
-    public class AboutActivity : AppCompatActivity
+    [Activity(Label = "NotificationActivity")]
+    public class NotificationActivity : AppCompatActivity
     {
         private SupportToolbar _Toolbar;
 
@@ -23,12 +23,12 @@ namespace HELPS.Views.Activities
         {
             base.OnCreate(bundle);
 
-            SetContentView(Resource.Layout.About);
+            SetContentView(Resource.Layout.Notification);
 
             // Set the toolbar
             _Toolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
             SetSupportActionBar(_Toolbar);
-            SupportActionBar.Title = GetString(Resource.String.whatHelps);
+            SupportActionBar.Title = GetString(Resource.String.notificationTitle);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
         }
 
