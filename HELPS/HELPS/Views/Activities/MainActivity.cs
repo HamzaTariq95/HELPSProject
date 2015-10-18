@@ -31,7 +31,7 @@ namespace HELPS
         private ArrayAdapter _MenuAdapter;
         private ListView _Menu;
         private FragmentTransaction _FragmentManager;
-        private Fragment _Landing, _Future, _Past;
+        private Fragment _Landing, _Future, _Past, _Search;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -53,7 +53,7 @@ namespace HELPS
             // Set up the views
             _Landing = new LandingFragment(sessionBookingData, workshopBookingData, studentData);
             _Future = new FutureBookingsFragment(sessionBookingData, workshopBookingData, studentData);
-         //   _Past = new PastBookingsFragment(sessionBookingData, workshopBookingData, studentData);
+            _Past = new PastBookingsFragment(sessionBookingData, workshopBookingData, studentData);
 
             // Set up the landing page
             SetView(Resource.Id.fragmentContainer, _Landing, false);
@@ -157,6 +157,7 @@ namespace HELPS
                         break;
                     // Search workshops.
                     case 1:
+                         //FetchAvailableWorkshopsData
                         _CurrentViewTitle = Resource.String.searchTitle;
                         break;
                     // Future bookings.

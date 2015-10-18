@@ -16,12 +16,12 @@ using HELPS.Model;
 
 namespace HELPS
 {
-    class SearchWorkshopsBaseAdapter : BaseAdapter<WorkshopBooking>
+    class SearchWorkshopsBaseAdapter : BaseAdapter<Workshop>
     {
         private Activity _Context;
-        private List<WorkshopBooking> _Workshops;
+        private List<Workshop> _Workshops;
 
-        public SearchWorkshopsBaseAdapter(Activity context, List<WorkshopBooking> workshops)
+        public SearchWorkshopsBaseAdapter(Activity context, List<Workshop> workshops)
         {
             _Context = context;
             _Workshops = workshops;
@@ -35,7 +35,7 @@ namespace HELPS
             }
         }
 
-        public override WorkshopBooking this[int position]
+        public override Workshop this[int position]
         {
             get
             {
@@ -74,13 +74,19 @@ namespace HELPS
             }
 
             // Sets the list row to display the session data.
-            holder.searchWorkshopTitle.Text = _Workshops[position].Title();
+        /*    holder.searchWorkshopTitle.Text = _Workshops[position].Title();
             holder.searchWorkshopStatus.Text = _Workshops[position].Status();
             DateTime? date = _Workshops[position].Date();
             holder.searchWorkshopDate.Text = (date == null) ? "Not available" : date.ToString();
             // holder.searchWorkshopTarget.Text = _Workshops[position].Target();
             holder.searchWorkshopTutor.Text = _Workshops[position].Tutor();
-            holder.searchWorkshopType.Text = _Workshops[position].Type();
+            holder.searchWorkshopType.Text = _Workshops[position].Type(); */
+
+            holder.searchWorkshopTitle.Text = _Workshops[position].topic;
+            string date = (string)_Workshops[position].StartDate;
+            holder.searchWorkshopDate.Text = (date == null) ? "Not available" : date.ToString();
+            // holder.searchWorkshopTarget.Text = _Workshops[position].Target();
+          
 
             return view;
         }

@@ -38,7 +38,6 @@ namespace HELPS
             com.refractored.fab.FloatingActionButton checkOkButton = FindViewById<com.refractored.fab.FloatingActionButton>(Resource.Id.fabCheckOk);
             com.refractored.fab.FloatingActionButton checkCancelButton = FindViewById<com.refractored.fab.FloatingActionButton>(Resource.Id.fabCheckCancel);
 
-
             // Receives the Student object from Login Activity
             var studentData = JsonConvert.DeserializeObject<UtsData>(Intent.GetStringExtra("student"));
 
@@ -51,7 +50,6 @@ namespace HELPS
             TextView phoneNumber = FindViewById<TextView>(Resource.Id.textCheckHomePhone);
             TextView Mobile = FindViewById<TextView>(Resource.Id.textCheckMobile);
 
-
             textDOB.Text = "DOB: " + studentData.DateOfBirth;
             name.Text = "Name: " + studentData.PreferredName;
             faculty.Text = "Faculty: " + studentData.Faculty;
@@ -59,11 +57,7 @@ namespace HELPS
             email.Text = "Email: " + studentData.Email;
             phoneNumber.Text += studentData.AltContact;
             Mobile.Text += studentData.AltContact;
-         
-
-
-
-
+ 
             // Works the "OK" button
             checkOkButton.Click += delegate
             {
@@ -92,7 +86,8 @@ namespace HELPS
                 RegisterController registerController = new RegisterController();
                 registerController.Register(studentData);
 
-                //set student data and go to main activity 
+                //set student data and go to main activity
+                ShowLandingPage(studentData.StudentId); 
             };
             // Works the cancel button.
             inputCancelButton.Click += delegate
@@ -102,10 +97,21 @@ namespace HELPS
             };
         }
 
+        private void ShowLandingPage(string studentId)
+        {
+            StudentData studentDataAtHELPS = new HomeController().login(studentId);
+
+            Intent mainActivity = new Intent(Application.Context, typeof(MainActivity));
+            // Passing the Student object to the next Activity
+            mainActivity.PutExtra("student", JsonConvert.SerializeObject(studentDataAtHELPS));
+            StartActivity(mainActivity);
+            Finish();
+        }
+
         // Controls sending the user back to the "Log On" activity.
         void Cancel()
         {
-                StartActivity(typeof(LogOnActivity));
+            StartActivity(typeof(LogOnActivity));
             Finish();
         }
     }
