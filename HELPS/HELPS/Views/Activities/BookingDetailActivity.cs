@@ -9,9 +9,9 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Android.Support.V7.App;
 using AlertDialog = Android.Support.V7.App.AlertDialog;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
-using Android.Support.V7.App;
 
 namespace HELPS.Views.Activities
 {
