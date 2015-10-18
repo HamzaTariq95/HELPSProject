@@ -17,7 +17,7 @@ using Android.Util;
 using Newtonsoft.Json;
 using System.IO;
 using CsvHelper;
-
+using HELPS.Views.Activities;
 
 namespace HELPS
 {
@@ -161,15 +161,9 @@ namespace HELPS
         // Controls opening the dialog that displays the "About HELPS" information
         private void ShowAboutHelps()
             {
-                // Creates the alert displaying the "About HELPS" information
-                AlertDialog.Builder aboutHelpsAlert = new AlertDialog.Builder(this);
-
-                aboutHelpsAlert.SetTitle(GetString(Resource.String.whatHelps));
-                aboutHelpsAlert.SetMessage(GetString(Resource.String.aboutHelps));
-                aboutHelpsAlert.SetNeutralButton("OK", delegate { });
-
-                Dialog aboutHelpsDialog = aboutHelpsAlert.Create(); ;
-                aboutHelpsDialog.Show();
+            // Displays the About UTS:HELPS view
+            Intent aboutActivity = new Intent(Application.Context, typeof(AboutActivity));
+            StartActivity(aboutActivity);
         }
 
         private void ShowLoadingDialog()

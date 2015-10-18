@@ -185,8 +185,6 @@ namespace HELPS
                         break;
                 }
             };
-
-        
         }
 
         private void SetView(int fragmentResource, Fragment view, bool retainView)
