@@ -57,10 +57,10 @@ namespace HELPS.Views
 
         private void addWorkshopToList(WorkshopData workshopData, List<Workshop> workshops)
         {
-            foreach (Workshop workshop in WorkshopData.Results)
+            foreach (Workshop workshop in workshopData.Results)
             {
-                if (cutoff == null && archived == null)
-                    workshops.add(workshop);
+                if (workshop.cutoff == null && workshop.archived == null)
+                    workshops.Add(workshop);
             }
         }
     }
