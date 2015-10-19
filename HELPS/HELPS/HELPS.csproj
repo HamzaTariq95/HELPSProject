@@ -109,7 +109,6 @@
     <Compile Include="Views\Activities\LogOnActivity.cs" />
     <Compile Include="Views\Activities\MainActivity.cs" />
     <Compile Include="Views\Activities\RegisterActivity.cs" />
-    <Compile Include="Views\Adapters\BookedSessionsBaseAdapter.cs" />
     <Compile Include="Views\Adapters\BookingBaseAdapter.cs" />
     <Compile Include="Views\Fragments\FutureBookingsFragment.cs" />
     <Compile Include="Views\Fragments\LandingFragment.cs" />
