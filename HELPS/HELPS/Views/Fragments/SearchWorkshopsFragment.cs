@@ -16,9 +16,15 @@ using HELPS.Controllers;
 
 namespace HELPS.Views
 {
+
     public class SearchWorkshopsFragment : Fragment
     {
-        private StudentData studentData;
+        private WorkshopData workshopData;
+
+        public SearchWorkshopsFragment(WorkshopData workshopData)
+        {
+            this.workshopData = workshopData;
+        }
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -31,7 +37,7 @@ namespace HELPS.Views
             View view = inflater.Inflate(Resource.Layout.SearchLayout, container, false);
 
             //Get student data from intent in parent activity
-            studentData = JsonConvert.DeserializeObject<StudentData>(this.Activity.Intent.GetStringExtra("student"));
+            //studentData = JsonConvert.DeserializeObject<StudentData>(this.Activity.Intent.GetStringExtra("student"));
 
             // Set the "Upcoming Sessions" list view to display (upto) the four closest sessions
             DisplayAvailableWorkshops(view);
@@ -42,22 +48,20 @@ namespace HELPS.Views
         private void DisplayAvailableWorkshops(View view)
         {
             // {Architecture} inflate list with available workshops
-            WorkshopController workhopController = new WorkshopController();
-            WorkshopData workshops = workhopController.searchWorkshops("");
-
-
+            List<Workshop> workshops = new List<Workshop>();
+            addWorkshopToList(workshopData, workshops);
 
             ListView availableList = view.FindViewById<ListView>(Resource.Id.listAvailable);
-            availableList.Adapter = new SearchWorkshopsBaseAdapter(Activity, workshops.Results);
+            availableList.Adapter = new SearchWorkshopsBaseAdapter(Activity, workshops);
         }
 
         private void addWorkshopToList(WorkshopData workshopData, List<Workshop> workshops)
         {
-
-          //  foreach (WorkshopBooking workshopBooking in WorkshopBookingData.attributes)
-           // {
-                // {Architecture} add available workshops
-           // }
+            foreach (Workshop workshop in WorkshopData.Results)
+            {
+                if (cutoff == null && archived == null)
+                    workshops.add(workshop);
+            }
         }
     }
 }
