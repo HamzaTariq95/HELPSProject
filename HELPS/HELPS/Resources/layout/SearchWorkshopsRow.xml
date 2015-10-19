@@ -7,10 +7,11 @@
     android:paddingBottom="12dp" >
     <TextView
         android:id="@+id/searchWorkshopTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="290dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:text="asdsdssadsd adasdasdas drerwerw dwdwd dwqdewed "
         android:textSize="18dp"
         android:textColor="@color/charcoal" />
     <TextView
@@ -19,43 +20,42 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
+        android:text="Waitlist"
+        android:textStyle="bold"
         android:textSize="18dp"
         android:textColor="@color/charcoal" />
-  <LinearLayout
-      android:layout_height="wrap_content"
-      android:layout_width="match_parent"
-      android:orientation="horizontal"
-      android:layout_below="@+id/searchWorkshopTitle" >
-      <TextView
-          android:id="@+id/searchWorkshopDate"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_weight="1"
-          android:layout_marginTop="6dp"
-          android:textSize="14dp"
-          android:textColor="@color/charcoal" />
-      <TextView
-          android:id="@+id/searchWorkshopTarget"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_weight="1"
-          android:layout_marginTop="6dp"
-          android:textSize="14dp"
-          android:textColor="@color/charcoal" />
-      <TextView
-          android:id="@+id/searchWorkshopTutor"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_weight="1"
-          android:layout_marginTop="6dp"
-          android:textSize="14dp"
-          android:textColor="@color/charcoal" />
-      <TextView
-          android:id="@+id/searchWorkshopType"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_marginTop="6dp"
-          android:textSize="14dp"
-          android:textColor="@color/charcoal" />
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_below="@+id/searchWorkshopTitle" >
+        <TextView
+            android:id="@+id/searchWorkshopDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="6dp"
+            android:text="31/31/2015 12:00:00 PM"
+            android:textStyle="bold"
+            android:textSize="14dp"
+            android:textColor="@color/charcoal" />
+        <TextView
+            android:id="@+id/searchWorkshopTarget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:layout_marginTop="6dp"
+            android:text="asd"
+            android:textSize="14dp"
+            android:textColor="@color/charcoal" />
+
+        <TextView
+            android:id="@+id/searchWorkshopType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:textSize="14dp"
+            android:textColor="@color/charcoal" />
     </LinearLayout>
 </RelativeLayout>

@@ -67,24 +67,24 @@ namespace HELPS
                 holder.searchWorkshopStatus = view.FindViewById<TextView>(Resource.Id.searchWorkshopStatus);
                 holder.searchWorkshopDate = view.FindViewById<TextView>(Resource.Id.searchWorkshopDate);
                 holder.searchWorkshopTarget = view.FindViewById<TextView>(Resource.Id.searchWorkshopTarget);
-                holder.searchWorkshopTutor = view.FindViewById<TextView>(Resource.Id.searchWorkshopTutor);
+                //holder.searchWorkshopTutor = view.FindViewById<TextView>(Resource.Id.searchWorkshopTutor);
                 holder.searchWorkshopType = view.FindViewById<TextView>(Resource.Id.searchWorkshopType);
 
                 view.Tag = holder;
             }
 
             // Sets the list row to display the session data.
-        /*    holder.searchWorkshopTitle.Text = _Workshops[position].Title();
+            holder.searchWorkshopTitle.Text = _Workshops[position].Title();
             holder.searchWorkshopStatus.Text = _Workshops[position].Status();
             DateTime? date = _Workshops[position].Date();
             holder.searchWorkshopDate.Text = (date == null) ? "Not available" : date.ToString();
-            // holder.searchWorkshopTarget.Text = _Workshops[position].Target();
-            holder.searchWorkshopTutor.Text = _Workshops[position].Tutor();
-            holder.searchWorkshopType.Text = _Workshops[position].Type(); */
+            holder.searchWorkshopTarget.Text = _Workshops[position].Target();
+            //holder.searchWorkshopTutor.Text = _Workshops[position].Tutor();
+            holder.searchWorkshopType.Text = _Workshops[position].Type(); 
 
-            holder.searchWorkshopTitle.Text = _Workshops[position].topic;
-            string date = (string)_Workshops[position].StartDate;
-            holder.searchWorkshopDate.Text = (date == null) ? "Not available" : date.ToString();
+            holder.searchWorkshopTitle.Text = _Workshops[position].Topic();
+            //string date = (string)_Workshops[position].StartDate;
+            //holder.searchWorkshopDate.Text = (date == null) ? "Not available" : date.ToString();
             // holder.searchWorkshopTarget.Text = _Workshops[position].Target();
           
 

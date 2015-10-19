@@ -1745,10 +1745,7 @@ namespace HELPS
 			public const int searchWorkshopTitle = 2131427472;
 			
 			// aapt resource value: 0x7f0b0094
-			public const int searchWorkshopTutor = 2131427476;
-			
-			// aapt resource value: 0x7f0b0095
-			public const int searchWorkshopType = 2131427477;
+			public const int searchWorkshopType = 2131427476;
 			
 			// aapt resource value: 0x7f0b0045
 			public const int search_badge = 2131427397;
