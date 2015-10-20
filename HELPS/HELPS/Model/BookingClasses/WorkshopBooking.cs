@@ -53,7 +53,7 @@ namespace HELPS.Model
         {
             if (starting > DateTime.Now && canceled == null && WorkshopArchived == null)
                 return "Booked";
-            if (starting < DateTime.Now && canceled == null && WorkshopArchived == null && attended == null)
+            if (ending < DateTime.Now && canceled == null && attended == null)
                 return "Did not attend";
             if (attended != null)
                 return "Attended";
@@ -61,7 +61,7 @@ namespace HELPS.Model
                 return "Canceled booking";
             if (starting > DateTime.Now && WorkshopArchived != null)
                 return "Canceled";
-            return "Canceled";
+            return "";
         }
 
         public override DateTime? Date()
@@ -71,7 +71,7 @@ namespace HELPS.Model
 
         public override string Location()
         {
-            return "" + campusID; //TO DO: get campus name from db
+            return Constants.CAMPUSES.Where(x => x.id == campusID).First().campus;
         }
 
         public override string Tutor()

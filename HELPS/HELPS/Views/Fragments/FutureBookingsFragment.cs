@@ -14,6 +14,7 @@ using Newtonsoft.Json;
 using HELPS.Model;
 using HELPS.Controllers;
 using HELPS.Views.Activities;
+using HELPS.Model.JSONDataClasses;
 
 namespace HELPS.Views
 {
@@ -23,6 +24,7 @@ namespace HELPS.Views
         private SessionBookingData sessionBookingData;
         private WorkshopBookingData workshopBookingData;
         private List<Booking> bookings;
+        //private CampusData campusData;
 
         public FutureBookingsFragment(SessionBookingData sessionBookingData, WorkshopBookingData workshopBookingData, StudentData studentData)
         {
