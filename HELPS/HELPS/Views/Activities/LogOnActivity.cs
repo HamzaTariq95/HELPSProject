@@ -42,7 +42,6 @@ namespace HELPS
 
             EditText username = FindViewById<EditText>(Resource.Id.editUtsId);
             EditText password = FindViewById<EditText>(Resource.Id.editPassword);
-            
             com.refractored.fab.FloatingActionButton logInButton =
                 FindViewById<com.refractored.fab.FloatingActionButton>(Resource.Id.fabLogIn);
 
