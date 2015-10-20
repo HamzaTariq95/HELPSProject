@@ -108,7 +108,7 @@ namespace HELPS
         private bool currentUTSStudent(string studentID, string password)
         {
             Log.Info("Inside LogOnActvitity", "New STUDENT!");
-
+            ShowProgressDialog();
             if (studentID == null || studentID.Equals(""))
                 return false;
 
@@ -162,10 +162,15 @@ namespace HELPS
             StartActivity(aboutActivity);
         }
 
-        private void ShowLoadingDialog()
+        private void ShowProgressDialog()
         {
             ProgressDialog progressDialog = new ProgressDialog(this);
 
+            progressDialog.Indeterminate = true;
+            progressDialog.SetProgressStyle(ProgressDialogStyle.Spinner);
+            progressDialog.SetMessage("Logging in. Please wait...");
+            progressDialog.SetCancelable(false);
+            progressDialog.Show();
         }
 
         private static List<string> SplitRow(string Row)
