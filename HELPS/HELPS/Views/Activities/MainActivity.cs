@@ -81,8 +81,17 @@ namespace HELPS
 
             WorkshopController workshopController = new WorkshopController();
             workshopBookingData = workshopController.GetWorkshopBookingData(studentData.attributes.studentID);
-            if (workshopBookingData.attributes.Count > 0) FetchCampusData();
+            if (workshopBookingData.attributes.Count > 0)
+            {
+                FetchCampusData();
+                FetchWorkshopSetData();
+            }
                 
+        }
+
+        private void FetchWorkshopSetData()
+        {
+            
         }
 
         private void FetchCampusData()
@@ -90,6 +99,9 @@ namespace HELPS
             WorkshopController workshopController = new WorkshopController();
             campusData = (CampusData)workshopController.GetCampusData();
             Constants.CAMPUSES = campusData.attributes;
+
+            WorkshopSetData workshopSetData = (WorkshopSetData)workshopController.GetWorkshopSetData();
+            Constants.WORKSHOP_SETS = workshopSetData.attributes;
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)

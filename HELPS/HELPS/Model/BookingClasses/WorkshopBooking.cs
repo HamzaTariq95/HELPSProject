@@ -76,12 +76,12 @@ namespace HELPS.Model
 
         public override string Tutor()
         {
-            return "N/A"; //No tutor data available in workshop related tables
+            return ""; //No tutor data available in workshop related tables
         }
 
         public override string Type()
         {
-            return "" + WorkShopSetID; //TO DO: get type from workshopset db
+            return Constants.WORKSHOP_SETS.Where(x => x.id == WorkShopSetID).First().name;
         }
 
         public override string Description()

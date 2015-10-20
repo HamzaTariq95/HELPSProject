@@ -121,6 +121,56 @@ namespace HELPS.Controllers
             return workshops;
         }
 
+        internal WorkshopSetData GetWorkshopSetData()
+        {
+            // Request Address of the API
+            string url = "http://groupthirteen.cloudapp.net/api/workshop/workshopSets?active=true";
+
+            // Get student data using web request
+            return getWorkshopSetData(getRequest(url));
+        }
+
+        private WorkshopSetData getWorkshopSetData(HttpWebRequest request)
+        {
+            WorkshopSetData workshopSetData = null;
+
+            // Generating JSON Response and Converting it to Student Object.
+            using (WebResponse response = request.GetResponse())
+            {
+                // Get a stream representation of the HTTP web response:
+                using (Stream stream = response.GetResponseStream())
+                {
+                    using (StreamReader sr = new StreamReader(stream))
+                    {
+                        string json = sr.ReadToEnd();
+
+                        // Convert JSON Response to Student Object
+                        workshopSetData = JsonConvert.DeserializeObject<WorkshopSetData>(json);
+                    }
+
+                    try
+                    {
+                        if (workshopSetData == null)
+                        {
+                            Log.Info("HELPS", "No bookings found");
+                        }
+
+                        else
+                        {
+                            //Log.Info("HELPS:assignType", workshopBookingData.attributes.ElementAt(0).description);
+                        }
+                    }
+
+                    catch (NullReferenceException ex)
+                    {
+                        Log.Info("HELPS", "Exception: No bookings found");
+                        workshopSetData = null;
+                    }
+                }
+            }
+            return workshopSetData;
+        }
+
         internal CampusData GetCampusData()
         {
             // Request Address of the API

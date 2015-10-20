@@ -12,9 +12,11 @@ using Android.Widget;
 
 namespace HELPS.Model
 {
-    class Constants
+    class WorkshopSet
     {
-        public static List<Campus> CAMPUSES = null;
-        public static List<WorkshopSet> WORKSHOP_SETS = null;
+        public int id { get; set; }
+        public string name { get; set; }
+        public DateTime? archived { get; set; }
+
     }
 }

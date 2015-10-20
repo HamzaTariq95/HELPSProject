@@ -105,6 +105,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\WorkshopController.cs" />
+    <Compile Include="Model\JSONDataClasses\WorkshopSetData.cs" />
+    <Compile Include="Model\WorkshopSet.cs" />
     <Compile Include="Views\Activities\AboutActivity.cs" />
     <Compile Include="Views\Activities\BookingDetailActivity.cs" />
     <Compile Include="Views\Activities\NotificationActivity.cs" />
