@@ -42,7 +42,6 @@ namespace HELPS
 
             EditText username = FindViewById<EditText>(Resource.Id.editUtsId);
             EditText password = FindViewById<EditText>(Resource.Id.editPassword);
-
             com.refractored.fab.FloatingActionButton logInButton =
                 FindViewById<com.refractored.fab.FloatingActionButton>(Resource.Id.fabLogIn);
 
@@ -92,10 +91,11 @@ namespace HELPS
             }
             else
             {
-                var loginAlert = new AlertDialog.Builder(this);
-                loginAlert.SetMessage(GetString(Resource.String.wrongInformation));
-                loginAlert.SetNeutralButton("OK", delegate { });
-                loginAlert.Show();
+                //show wrong id/pass message
+                var logInFailAlert = new AlertDialog.Builder(this);
+                logInFailAlert.SetMessage(GetString(Resource.String.wrongInformation));
+                logInFailAlert.SetNeutralButton("OK", delegate { });
+                logInFailAlert.Show();
             }
           
         }
