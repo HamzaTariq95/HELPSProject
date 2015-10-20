@@ -115,7 +115,7 @@ namespace HELPS.Controllers
                 }
             }
 
-            //Log.Info("Bookings Result", workshops.Results[0].WorkshopId);
+            //Log.Info("Bookings Result", workshops.Results[1].description);
 
             return workshops;
         }

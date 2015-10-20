@@ -59,7 +59,7 @@ namespace HELPS.Views
         {
             foreach (Workshop workshop in workshopData.Results)
             {
-                if (workshop.cutoff == null && workshop.archived == null)
+                if (workshop.archived == null)
                     workshops.Add(workshop);
             }
         }
