@@ -21,10 +21,9 @@ using HELPS.Views.Activities;
 
 namespace HELPS
 {
-    [Activity(Label = "UTS:HELPS", MainLauncher = true, ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait, Theme = "@style/helpsFullscreenTheme")]
+    [Activity(Label = "UTS:HELPS", MainLauncher = true, ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class LogOnActivity : Activity
     {
-        private TextView _WrongInput;
         private StudentData studentDataAtHELPS;
         private UtsData studentDataAtUTS;
 
@@ -44,17 +43,12 @@ namespace HELPS
             EditText username = FindViewById<EditText>(Resource.Id.editUtsId);
             EditText password = FindViewById<EditText>(Resource.Id.editPassword);
 
-            // Sets the text telling the user that their information is incorrect to invisible
-            _WrongInput = FindViewById<TextView>(Resource.Id.textWrongInput);
-            _WrongInput.Visibility = ViewStates.Gone;
-
             com.refractored.fab.FloatingActionButton logInButton =
                 FindViewById<com.refractored.fab.FloatingActionButton>(Resource.Id.fabLogIn);
 
             // Works the "Log-in" button
             logInButton.Click += delegate
             {
-                _WrongInput.Visibility = ViewStates.Gone;
                 LogIn(username.Text, password.Text);
             };
 
@@ -98,8 +92,10 @@ namespace HELPS
             }
             else
             {
-                //show wrong id/pass message
-                _WrongInput.Visibility = ViewStates.Visible;
+                var loginAlert = new AlertDialog.Builder(this);
+                loginAlert.SetMessage(GetString(Resource.String.wrongInformation));
+                loginAlert.SetNeutralButton("OK", delegate { });
+                loginAlert.Show();
             }
           
         }
