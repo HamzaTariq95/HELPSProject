@@ -51,9 +51,16 @@ namespace HELPS.Model
 
         public override string Status()
         {
-            if (canceled != null)
+            if (starting > DateTime.Now && canceled == null && WorkshopArchived == null)
                 return "Booked";
-
+            if (starting < DateTime.Now && canceled == null && WorkshopArchived == null && attended == null)
+                return "Did not attend";
+            if (attended != null)
+                return "Attended";
+            if (canceled != null)
+                return "Canceled booking";
+            if (WorkshopArchived != null)
+                return "Canceled";
             return "Canceled";
         }
 

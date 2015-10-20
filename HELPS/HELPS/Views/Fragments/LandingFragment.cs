@@ -22,10 +22,7 @@ namespace HELPS
         private StudentData studentData;
         private SessionBookingData sessionBookingData;
         private WorkshopBookingData workshopBookingData;
-        private int maxBookings = 0;
-        private int sessionBookings = 0;
-        private int workShopBookings = 0;
-
+       
         public LandingFragment(SessionBookingData sessionBookingData, WorkshopBookingData workshopBookingData, StudentData studentData)
         {
             this.sessionBookingData = sessionBookingData;
@@ -56,7 +53,7 @@ namespace HELPS
 
             if (sessionBookingData == null && workshopBookingData == null)
             {
-                //Display on screen: no bookings found
+                //show message
             }
             else
             {
@@ -64,23 +61,23 @@ namespace HELPS
             }
 
             ListView upcomingList = view.FindViewById<ListView>(Resource.Id.listUpcoming);
-            upcomingList.Adapter = new BookingBaseAdapter(Activity, bookings);
+            upcomingList.Adapter = new BookingBaseAdapter(Activity, bookings.Take(4).ToList());
         }
 
         private void addBookingsToList(List<Booking> bookings, SessionBookingData sessionBookingData, WorkshopBookingData workshopBookingData)
         {
             addSessionBookingsToList(sessionBookingData, bookings);
             addWorkshopBookingsToList(workshopBookingData, bookings);
+
+            //Sort bookings by date
+            bookings.Sort((a, b) => a.Date().ToString().CompareTo(b.Date().ToString()));
         }
 
         private void addWorkshopBookingsToList(WorkshopBookingData workshopBookingData,  List<Booking> bookings)
         {
             foreach (WorkshopBooking workshopBooking in workshopBookingData.attributes)
             {
-                if (workshopBooking.starting > DateTime.Now && 
-                    workshopBooking.Status().Equals("Booked") &&
-                    workshopBooking.BookingArchived == null &&
-                    workshopBooking.WorkshopArchived == null)
+                if (workshopBooking.starting > DateTime.Now)
                     bookings.Add(workshopBooking);
             }
         }
@@ -89,9 +86,7 @@ namespace HELPS
         {
             foreach (SessionBooking sessionBooking in sessionBookingData.attributes)
             {
-                if (sessionBooking.StartDate > DateTime.Now && 
-                    sessionBooking.Status().Equals("Booked") &&
-                    sessionBooking.archived == null)
+                if (sessionBooking.StartDate > DateTime.Now)
                     bookings.Add(sessionBooking);
             }
         }

@@ -72,10 +72,7 @@ namespace HELPS.Views
         {
             foreach (WorkshopBooking workshopBooking in workshopBookingData.attributes)
             {
-                if (workshopBooking.starting > DateTime.Now &&
-                    workshopBooking.Status().Equals("Booked") &&
-                    workshopBooking.BookingArchived == null &&
-                    workshopBooking.WorkshopArchived == null)
+                if (workshopBooking.starting > DateTime.Now)
                     bookings.Add(workshopBooking);
             }
         }
@@ -84,9 +81,7 @@ namespace HELPS.Views
         {
             foreach (SessionBooking sessionBooking in sessionBookingData.attributes)
             {
-                if (sessionBooking.StartDate > DateTime.Now &&
-                    sessionBooking.Status().Equals("Booked") &&
-                    sessionBooking.archived == null)
+                if (sessionBooking.StartDate > DateTime.Now)
                     bookings.Add(sessionBooking);
             }
         }
