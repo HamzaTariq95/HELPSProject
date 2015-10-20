@@ -19,6 +19,15 @@ namespace HELPS.Model
      */
     class UtsData
     {
+        
+        public string Faculty { get; set; }
+
+        
+        public string Course { get; set; }
+
+        
+        public string Email { get; set; }
+
         [JsonIgnore]
         public string Passsword { get; set; }
 
@@ -78,13 +87,6 @@ namespace HELPS.Model
 
         public object CreatorId { get; set; }
 
-        [JsonIgnore]
-        public string Faculty { get; set; }
-
-        [JsonIgnore]
-        public string Course {get; set;}
-
-        [JsonIgnore]
-        public string Email { get; set; }
+       
      }
 }
