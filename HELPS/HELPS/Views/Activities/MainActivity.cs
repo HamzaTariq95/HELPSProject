@@ -76,6 +76,7 @@ namespace HELPS
 
             SessionController sessionController = new SessionController();
             sessionBookingData = sessionController.GetSessionBookingData(studentData.attributes.studentID);
+            
 
             WorkshopController workshopController = new WorkshopController();
             workshopBookingData = workshopController.GetWorkshopBookingData(studentData.attributes.studentID);

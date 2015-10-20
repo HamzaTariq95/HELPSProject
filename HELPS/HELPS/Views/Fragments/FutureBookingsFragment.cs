@@ -81,9 +81,7 @@ namespace HELPS.Views
         {
             foreach (SessionBooking sessionBooking in sessionBookingData.attributes)
             {
-                if (sessionBooking.StartDate > DateTime.Now &&
-                    sessionBooking.Status().Equals("Booked") &&
-                    sessionBooking.archived == null)
+                if (sessionBooking.StartDate > DateTime.Now)
                     bookings.Add(sessionBooking);
             }
         }
