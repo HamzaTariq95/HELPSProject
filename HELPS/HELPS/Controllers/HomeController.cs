@@ -28,8 +28,7 @@ namespace HELPS
         public  StudentData login(string studentID)
         {
 
-
-
+            
             // Request Address of the API
             String url = "http://GroupThirteen.cloudapp.net/api/student/" + studentID;
 

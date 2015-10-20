@@ -11,4 +11,7 @@
         android:background="@color/red"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
 </LinearLayout>
