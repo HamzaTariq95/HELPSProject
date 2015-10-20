@@ -12,7 +12,18 @@ using Android.Widget;
 using Android.Support.V7.App;
 using AlertDialog = Android.Support.V7.App.AlertDialog;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
+/*
+*   IMPORTANT: Do something like:
+                 if (requestType(get if from intent) == "showAvailableWorkshop") 
+                        workshop = serialize "workshop"(get it from intent);
+                 else if (requestType == "showBooking") {
+                      if (bookingType(get if from intent) == "Session")
+                          sessionBooking = serialize "booking"(get it from intent);
+                      else  workshopBooking = serialize "booking"(get it from intent);
+                 }
 
+    to convert string into object, use : JsonConvert.DeserializeObject<appropriate class>(this.Activity.Intent.GetStringExtra(approriate string));
+*/
 namespace HELPS.Views.Activities
 {
     [Activity(Label = "BookingDetailActivity")]

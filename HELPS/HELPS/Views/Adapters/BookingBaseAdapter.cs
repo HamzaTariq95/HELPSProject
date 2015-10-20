@@ -59,7 +59,7 @@ namespace HELPS.Views
             {
                 holder = new BookingViewHolder();
                 view = _Context.LayoutInflater.Inflate(Resource.Layout.BookedSessionsRow, null);
-
+                
                 holder.bookedSessionTitle = view.FindViewById<TextView>(Resource.Id.bookedSessionTitle);
                 holder.bookedSessionStatus = view.FindViewById<TextView>(Resource.Id.bookedSessionStatus);
                 holder.bookedSessionDate = view.FindViewById<TextView>(Resource.Id.bookedSessionDate);

@@ -13,14 +13,15 @@ using Android.Widget;
 using HELPS.Model;
 using Newtonsoft.Json;
 using HELPS.Controllers;
+using HELPS.Views.Activities;
 
 namespace HELPS.Views
 {
 
-    public class SearchWorkshopsFragment : Fragment
+    public class SearchWorkshopsFragment : Fragment, AdapterView.IOnItemClickListener
     {
         private WorkshopData workshopData;
-
+        private List<Workshop> workshops;
         public SearchWorkshopsFragment(WorkshopData workshopData)
         {
             this.workshopData = workshopData;
@@ -48,10 +49,11 @@ namespace HELPS.Views
         private void DisplayAvailableWorkshops(View view)
         {
             // {Architecture} inflate list with available workshops
-            List<Workshop> workshops = new List<Workshop>();
+            workshops = new List<Workshop>();
             addWorkshopToList(workshopData, workshops);
 
             ListView availableList = view.FindViewById<ListView>(Resource.Id.listAvailable);
+            availableList.OnItemClickListener = this;
             availableList.Adapter = new SearchWorkshopsBaseAdapter(Activity, workshops);
         }
 
@@ -62,6 +64,18 @@ namespace HELPS.Views
                 if (workshop.archived == null)
                     workshops.Add(workshop);
             }
+        }
+
+        public void OnItemClick(AdapterView parent, View view, int position, long id)
+        {
+            Workshop workshop = workshops[position];
+
+            string workshopString = JsonConvert.SerializeObject(workshop);
+
+            Intent intent = new Intent(Application.Context, typeof(BookingDetailActivity));
+            intent.PutExtra("requestType", "showAvailableWorkshop");
+            intent.PutExtra("workshop", workshopString);
+            StartActivity(intent);
         }
     }
 }

@@ -40,6 +40,7 @@ namespace HELPS
 
             // Receives the Student object from Login Activity
             var studentData = JsonConvert.DeserializeObject<UtsData>(Intent.GetStringExtra("student"));
+            
 
             TextView textDOB = FindViewById<TextView>(Resource.Id.textCheckDOB);
             TextView contact = FindViewById<TextView>(Resource.Id.textHelloUser);
