@@ -6,11 +6,6 @@
       <item name="android:colorAccent">@color/redDark</item>
       <item name="drawerArrowStyle">@style/helpsDrawerArrowStyle</item>
     </style>
-  
-    <!-- Style for fullscreen activities in the application. Inherits from the light AppCompat theme -->
-    <style name="helpsFullscreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:background">@color/red</item>
-    </style>
 
     <style name="helpsDrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
         <item name="color">@color/white</item>

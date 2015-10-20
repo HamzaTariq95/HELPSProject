@@ -18,7 +18,7 @@ using Android.Content.PM;
 
 namespace HELPS
 {
-    [Activity(Label = "RegisterActivity", ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait, Icon = "@drawable/icon", Theme = "@style/helpsFullscreenTheme")]
+    [Activity(Label = "RegisterActivity", ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait, Icon = "@drawable/icon")]
     public class RegisterActivity : Activity
     {
         protected override void OnCreate(Bundle bundle)

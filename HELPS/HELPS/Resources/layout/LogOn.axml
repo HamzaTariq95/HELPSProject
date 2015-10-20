@@ -5,7 +5,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:minWidth="25px"
-    android:minHeight="25px">
+    android:minHeight="25px"
+    android:background="@color/red">
 <!-- Application Title -->
     <TextView
         android:id="@+id/textUtsHelps"
@@ -58,18 +59,6 @@
         android:paddingBottom="4dp"
         android:paddingRight="8dp"
         android:paddingLeft="8dp" />
-<!-- Text providing log-in instructions for users -->
-    <TextView
-        android:id="@+id/textWrongInput"
-        android:text="@string/wrongInformation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:maxWidth="290dp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textSize="16dp"
-        android:textColor="@color/white"
-        android:paddingBottom="12dp" />
 <!-- Log-in button -->
     <com.refractored.fab.FloatingActionButton
         android:id="@+id/fabLogIn"
