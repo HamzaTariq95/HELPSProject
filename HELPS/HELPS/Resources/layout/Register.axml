@@ -208,6 +208,52 @@
                 android:paddingBottom="4dp"
                 android:paddingRight="8dp"
                 android:paddingLeft="8dp" />
+            <TextView
+                android:id="@+id/textLanguage"
+                android:text="@string/inputLanguage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textColor="@color/white"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp" />
+            <Spinner
+                android:id="@+id/spinnerLanguage"
+                android:prompt="@string/promptLanguage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/charcoal"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="6dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:paddingRight="8dp"
+                android:paddingLeft="8dp" />
+            <TextView
+                android:id="@+id/textCountry"
+                android:text="@string/inputCountry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textColor="@color/white"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp" />
+            <Spinner
+                android:id="@+id/spinnerCountry"
+                android:prompt="@string/promptCountry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/charcoal"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="6dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:paddingRight="8dp"
+                android:paddingLeft="8dp" />
             <LinearLayout
                 android:id="@+id/inputButtons"
                 android:layout_width="fill_parent"

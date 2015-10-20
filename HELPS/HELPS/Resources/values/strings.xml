@@ -68,12 +68,35 @@
     </string>
     <string name="male">Male</string>
     <string name="female">Female</string>
-    <string name="other">Other</string>
+    <string name="other">X (indeterminate/unspecified/intersex)</string>
     <string name="inputDegree">
         <b>Degree*:</b>
     </string>
     <string name="undergrad">Undergrad</string>
     <string name="postgrad">Postgrad</string>
+    <string name="inputStatus">
+        <b>Citizenship status*:</b>
+    </string>
+    <string name="permanent">Permanent</string>
+    <string name="international">International</string>
+    <string name="inputLanguage">
+        <b>First Language*:</b>
+    </string>
+    <string name="inputCountry">
+        <b>Country of origin*:</b>
+    </string>
+    <string name="inputEducation">
+        <b>Educational background:</b>
+    </string>
+    <string name="hsc">HSC</string>
+    <string name="ielts">IELTS</string>
+    <string name="toefl">TOEFL</string>
+    <string name="tafe">TAFE</string>
+    <string name="cult">CULT</string>
+    <string name="deep">Insearch DEEP</string>
+    <string name="diploma">Insearch diploma</string>
+    <string name="foundation">Foundation Course</string>
+    <string name="other">Other:</string>
 
     <!-- Menu -->
     <string name="menuTitle">Menu</string>
@@ -502,5 +525,4 @@
         <item>Zhuang</item>
         <item>Zulu</item>
     </string-array>
-  
 </resources>
