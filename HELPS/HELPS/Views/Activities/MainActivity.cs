@@ -17,12 +17,14 @@ using HELPS.Controllers;
 
 namespace HELPS
 {
-    [Activity(Label = "UTS:HELPS", Icon = "@drawable/icon")]
+    
+[Activity(Label = "UTS:HELPS", Icon = "@drawable/icon")]
     public class MainActivity : AppCompatActivity
     {
         private SessionBookingData sessionBookingData;
         private WorkshopBookingData workshopBookingData;
         private StudentData studentData;
+        private WorkshopData workshopData;
 
         private SupportToolbar _Toolbar;
         private int _CurrentViewTitle = Resource.String.applicationName;
@@ -54,6 +56,7 @@ namespace HELPS
             _Landing = new LandingFragment(sessionBookingData, workshopBookingData, studentData);
             _Future = new FutureBookingsFragment(sessionBookingData, workshopBookingData, studentData);
             _Past = new PastBookingsFragment(sessionBookingData, workshopBookingData, studentData);
+            //_Search = new SearchWorkshopsFragment();
 
             // Set up the landing page
             SetView(Resource.Id.fragmentContainer, _Landing, false);
@@ -157,8 +160,11 @@ namespace HELPS
                         break;
                     // Search workshops.
                     case 1:
-                         //FetchAvailableWorkshopsData
+                         //Fetch workshop data for available workshops
+                        FetchAvailableWorkshops();
+                        _Search = new SearchWorkshopsFragment(workshopData); 
                         _CurrentViewTitle = Resource.String.searchTitle;
+                        SetView(Resource.Id.fragmentContainer, _Search, true);
                         break;
                     // Future bookings.
                     case 2:
@@ -186,6 +192,12 @@ namespace HELPS
             };
         }
 
+private void FetchAvailableWorkshops()
+{
+ 	WorkshopController workshopController = new WorkshopController();
+            workshopData = workshopController.searchWorkshops(DateTime.Now.ToString("yyyy-MM-dd"));
+}
+
         private void SetView(int fragmentResource, Fragment view, bool retainView)
         {
             _DrawerToggle.SetClosedResource(_CurrentViewTitle);
@@ -206,3 +218,5 @@ namespace HELPS
         }
     }
 }
+
+
