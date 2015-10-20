@@ -59,7 +59,7 @@ namespace HELPS.Model
                 return "Attended";
             if (canceled != null)
                 return "Canceled booking";
-            if (WorkshopArchived != null)
+            if (starting > DateTime.Now && WorkshopArchived != null)
                 return "Canceled";
             return "Canceled";
         }
@@ -82,6 +82,11 @@ namespace HELPS.Model
         public override string Type()
         {
             return "" + WorkShopSetID; //TO DO: get type from workshopset db
+        }
+
+        public override string Description()
+        {
+            return description;
         }
     }
 }

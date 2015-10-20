@@ -69,7 +69,7 @@ namespace HELPS.Model
                 return "Attended";
             if (Cancel)
                 return "Canceled booking";
-            if (archived != null)
+            if (StartDate > DateTime.Now && archived != null)
                 return "Canceled";
             return "Canceled";
         }
@@ -92,6 +92,11 @@ namespace HELPS.Model
         public override string Type()
         {
             return SessionTypeAbb;
+        }
+
+        public override string Description()
+        {
+            return Subject;
         }
     }
 }

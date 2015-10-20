@@ -14,15 +14,17 @@ using HELPS.Model;
 using Newtonsoft.Json;
 using HELPS.Views;
 using HELPS.Controllers;
+using HELPS.Views.Activities;
 
 namespace HELPS
 {
-    public class LandingFragment : Fragment
+    public class LandingFragment : Fragment, AdapterView.IOnItemClickListener
     {
         private StudentData studentData;
         private SessionBookingData sessionBookingData;
         private WorkshopBookingData workshopBookingData;
-       
+        private List<Booking> bookings;
+
         public LandingFragment(SessionBookingData sessionBookingData, WorkshopBookingData workshopBookingData, StudentData studentData)
         {
             this.sessionBookingData = sessionBookingData;
@@ -49,7 +51,7 @@ namespace HELPS
 
         private void DisplayUpcomingBookings(View view)
         {
-            List<Booking> bookings = new List<Booking>();
+            bookings = new List<Booking>();
 
             if (sessionBookingData == null && workshopBookingData == null)
             {
@@ -61,7 +63,9 @@ namespace HELPS
             }
 
             ListView upcomingList = view.FindViewById<ListView>(Resource.Id.listUpcoming);
-            upcomingList.Adapter = new BookingBaseAdapter(Activity, bookings.Take(4).ToList());
+            upcomingList.OnItemClickListener = this;
+            
+            upcomingList.Adapter = new BookingBaseAdapter(Activity, bookings);
         }
 
         private void addBookingsToList(List<Booking> bookings, SessionBookingData sessionBookingData, WorkshopBookingData workshopBookingData)
@@ -71,13 +75,16 @@ namespace HELPS
 
             //Sort bookings by date
             bookings.Sort((a, b) => a.Date().ToString().CompareTo(b.Date().ToString()));
+
+            //Select first four bookings
+            bookings = bookings.Take(4).ToList();
         }
 
         private void addWorkshopBookingsToList(WorkshopBookingData workshopBookingData,  List<Booking> bookings)
         {
             foreach (WorkshopBooking workshopBooking in workshopBookingData.attributes)
             {
-                if (workshopBooking.starting > DateTime.Now)
+                if (workshopBooking.starting > DateTime.Now && !workshopBooking.Status().Equals("Canceled booking"))
                     bookings.Add(workshopBooking);
             }
         }
@@ -86,7 +93,7 @@ namespace HELPS
         {
             foreach (SessionBooking sessionBooking in sessionBookingData.attributes)
             {
-                if (sessionBooking.StartDate > DateTime.Now)
+                if (sessionBooking.StartDate > DateTime.Now && !sessionBooking.Status().Equals("Canceled booking"))
                     bookings.Add(sessionBooking);
             }
         }
@@ -98,6 +105,24 @@ namespace HELPS
             TextView helloUserText = view.FindViewById<TextView>(Resource.Id.textHelloUser);
 
             helloUserText.Text = helloUser;
+        }
+
+        public void OnItemClick(AdapterView parent, View view, int position, long id)
+        {
+            Booking booking = bookings[position];
+
+            string bookingString = JsonConvert.SerializeObject(booking);
+
+            string bookingType;
+
+            if (booking.Title().Equals("Session")) bookingType = "Session";
+            else bookingType = "Workshop";
+
+            Intent intent = new Intent(Application.Context, typeof(BookingDetailActivity));
+            intent.PutExtra("requestType", "showBooking");
+            intent.PutExtra("bookingType", bookingType);
+            intent.PutExtra("booking", bookingString);
+            StartActivity(intent);
         }
     }
 }

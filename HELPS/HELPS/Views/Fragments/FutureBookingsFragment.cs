@@ -13,14 +13,16 @@ using Android.Widget;
 using Newtonsoft.Json;
 using HELPS.Model;
 using HELPS.Controllers;
+using HELPS.Views.Activities;
 
 namespace HELPS.Views
 {
-    public class FutureBookingsFragment : Fragment
+    public class FutureBookingsFragment : Fragment, AdapterView.IOnItemClickListener
     {
         private StudentData studentData;
         private SessionBookingData sessionBookingData;
         private WorkshopBookingData workshopBookingData;
+        private List<Booking> bookings;
 
         public FutureBookingsFragment(SessionBookingData sessionBookingData, WorkshopBookingData workshopBookingData, StudentData studentData)
         {
@@ -47,7 +49,7 @@ namespace HELPS.Views
 
         private void DisplayUpcomingBookings(View view)
         {
-            List<Booking> bookings = new List<Booking>();
+            bookings = new List<Booking>();
 
             if (sessionBookingData == null && workshopBookingData == null)
             {
@@ -59,6 +61,7 @@ namespace HELPS.Views
             }
 
             ListView upcomingList = view.FindViewById<ListView>(Resource.Id.listUpcoming);
+            upcomingList.OnItemClickListener = this;
             upcomingList.Adapter = new BookingBaseAdapter(Activity, bookings);
         }
 
@@ -72,7 +75,7 @@ namespace HELPS.Views
         {
             foreach (WorkshopBooking workshopBooking in workshopBookingData.attributes)
             {
-                if (workshopBooking.starting > DateTime.Now)
+                if (workshopBooking.starting > DateTime.Now && !workshopBooking.Status().Equals("Canceled booking"))
                     bookings.Add(workshopBooking);
             }
         }
@@ -81,9 +84,29 @@ namespace HELPS.Views
         {
             foreach (SessionBooking sessionBooking in sessionBookingData.attributes)
             {
-                if (sessionBooking.StartDate > DateTime.Now)
+                if (sessionBooking.StartDate > DateTime.Now && !sessionBooking.Status().Equals("Canceled booking"))
                     bookings.Add(sessionBooking);
             }
         }
+
+        
+            public void OnItemClick(AdapterView parent, View view, int position, long id)
+        {
+            Booking booking = bookings[position];
+
+            string bookingString = JsonConvert.SerializeObject(booking);
+
+            string bookingType;
+
+            if (booking.Title().Equals("Session")) bookingType = "Session";
+            else bookingType = "Workshop";
+
+            Intent intent = new Intent(Application.Context, typeof(BookingDetailActivity));
+            intent.PutExtra("requestType", "showBooking");
+            intent.PutExtra("bookingType", bookingType);
+            intent.PutExtra("booking", bookingString);
+            StartActivity(intent);
+        }
+    
     }
 }

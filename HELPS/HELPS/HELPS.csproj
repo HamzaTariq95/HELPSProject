@@ -121,7 +121,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchViewHolder.cs" />
     <Compile Include="Views\Adapters\SearchWorkshopsBaseAdapter.cs" />
-    <Compile Include="Views\ViewHolders\BookedSessionsViewHolder.cs" />
     <Compile Include="Views\ViewHolders\BookingViewHolder.cs" />
   </ItemGroup>
   <ItemGroup>
