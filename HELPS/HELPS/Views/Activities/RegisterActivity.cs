@@ -73,6 +73,18 @@ namespace HELPS
                 Cancel();
             };
 
+            // Set up the spinners
+            Spinner languages = FindViewById<Spinner>(Resource.Id.spinnerLanguage);
+            Spinner countries = FindViewById<Spinner>(Resource.Id.spinnerCountry);
+
+            ArrayAdapter languageAdapter = ArrayAdapter.CreateFromResource(this, Resource.Array.languages, Android.Resource.Layout.SimpleSpinnerItem);
+            languageAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            languages.Adapter = languageAdapter;
+
+            ArrayAdapter countryAdapter = ArrayAdapter.CreateFromResource(this, Resource.Array.countries, Android.Resource.Layout.SimpleSpinnerItem);
+            countryAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            countries.Adapter = countryAdapter;
+
             // Works the buttons on the "Input" view.
             com.refractored.fab.FloatingActionButton inputOkButton = FindViewById<com.refractored.fab.FloatingActionButton>(Resource.Id.fabInputOk);
             com.refractored.fab.FloatingActionButton inputCancelButton = FindViewById<com.refractored.fab.FloatingActionButton>(Resource.Id.fabInputCancel);

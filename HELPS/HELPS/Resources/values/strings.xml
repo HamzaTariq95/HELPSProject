@@ -132,7 +132,7 @@
     <string name="notificationTitle">Notification Settings</string>
 
     <!-- Countries -->
-    <string name="promptLanguage">Country of origin...</string>
+    <string name="promptCountry">Country of origin...</string>
     <string-array name="countries">
         <item>Afghanistan</item>
         <item>Albania</item>
@@ -195,7 +195,7 @@
         <item>Diego Garcia</item>
         <item>Dominica</item>
         <item>Dominican Republic</item>
-        <item>D'Jibouti</item>
+        <item>D\'Jibouti</item>
         <item>Easter Island</item>
         <item>Ecuador</item>
         <item>Egypt</item>
