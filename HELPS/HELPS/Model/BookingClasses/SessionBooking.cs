@@ -63,7 +63,7 @@ namespace HELPS.Model
         {
             if (StartDate > DateTime.Now && !Cancel && archived == null)
                 return "Booked";
-            if (StartDate < DateTime.Now && !Cancel && archived == null && Attended == null)
+            if (EndDate < DateTime.Now && !Cancel && Attended == null)
                 return "Did not attend";
             if (Attended != null)
                 return "Attended";

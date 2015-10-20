@@ -95,6 +95,9 @@
     <Compile Include="Model\BookingClasses\Booking.cs" />
     <Compile Include="Model\BookingClasses\SessionBooking.cs" />
     <Compile Include="Model\BookingClasses\WorkshopBooking.cs" />
+    <Compile Include="Model\Campus.cs" />
+    <Compile Include="Model\Constants.cs" />
+    <Compile Include="Model\JSONDataClasses\CampusData.cs" />
     <Compile Include="Model\JSONDataClasses\SessionBookingData.cs" />
     <Compile Include="Model\JSONDataClasses\StudentData.cs" />
     <Compile Include="Model\JSONDataClasses\WorkshopBookingData.cs" />
@@ -102,6 +105,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\WorkshopController.cs" />
+    <Compile Include="Model\JSONDataClasses\WorkshopSetData.cs" />
+    <Compile Include="Model\WorkshopSet.cs" />
     <Compile Include="Views\Activities\AboutActivity.cs" />
     <Compile Include="Views\Activities\BookingDetailActivity.cs" />
     <Compile Include="Views\Activities\NotificationActivity.cs" />

@@ -14,6 +14,7 @@ using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 using Android.Support.V7.App;
 using HELPS.Views;
 using HELPS.Controllers;
+using HELPS.Model.JSONDataClasses;
 
 namespace HELPS
 {
@@ -25,6 +26,7 @@ namespace HELPS
         private WorkshopBookingData workshopBookingData;
         private StudentData studentData;
         private WorkshopData workshopData;
+        private CampusData campusData = null;
 
         private SupportToolbar _Toolbar;
         private int _CurrentViewTitle = Resource.String.applicationName;
@@ -79,6 +81,27 @@ namespace HELPS
 
             WorkshopController workshopController = new WorkshopController();
             workshopBookingData = workshopController.GetWorkshopBookingData(studentData.attributes.studentID);
+            if (workshopBookingData.attributes.Count > 0)
+            {
+                FetchCampusData();
+                FetchWorkshopSetData();
+            }
+                
+        }
+
+        private void FetchWorkshopSetData()
+        {
+            
+        }
+
+        private void FetchCampusData()
+        {
+            WorkshopController workshopController = new WorkshopController();
+            campusData = (CampusData)workshopController.GetCampusData();
+            Constants.CAMPUSES = campusData.attributes;
+
+            WorkshopSetData workshopSetData = (WorkshopSetData)workshopController.GetWorkshopSetData();
+            Constants.WORKSHOP_SETS = workshopSetData.attributes;
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
