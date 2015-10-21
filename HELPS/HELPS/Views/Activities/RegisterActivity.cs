@@ -96,7 +96,7 @@ namespace HELPS
                 
                 if (languages.SelectedItem.ToString()  == "First Language...")
                 {
-                    ShowFailedAlert("You must choose your country of origin.");
+                    ShowFailedAlert("You must choose your first language.");
                 }
                 else if (countries.SelectedItem.ToString() == "Country of origin...")
                 {
