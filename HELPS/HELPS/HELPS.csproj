@@ -220,7 +220,6 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\close.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-mdpi\ic_lock.png" />
   </ItemGroup>
