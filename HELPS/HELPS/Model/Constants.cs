@@ -16,5 +16,6 @@ namespace HELPS.Model
     {
         public static List<Campus> CAMPUSES = null;
         public static List<WorkshopSet> WORKSHOP_SETS = null;
+        public static string CURRENT_STUDENT_ID = null;
     }
 }

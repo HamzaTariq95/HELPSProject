@@ -71,7 +71,17 @@ namespace HELPS.Model
 
         public override string Location()
         {
-            return Constants.CAMPUSES.Where(x => x.id == campusID).First().campus;
+            string campus;
+            try
+            {
+                campus = Constants.CAMPUSES.Where(x => x.id == campusID).First().campus;
+            }
+            catch (InvalidOperationException e)
+            {
+                return "TBA";
+            }
+
+            return campus;
         }
 
         public override string Tutor()
@@ -81,7 +91,19 @@ namespace HELPS.Model
 
         public override string Type()
         {
-            return Constants.WORKSHOP_SETS.Where(x => x.id == WorkShopSetID).First().name;
+            /* string workshop;
+             try
+             {
+                 workshop = Constants.WORKSHOP_SETS.Where(x => x.id == WorkShopSetID).First().name;
+             }
+             catch (InvalidOperationException e)
+             {
+                 return "TBA";
+             }
+
+             return workshop;
+             */
+            return type;
         }
 
         public override string Description()

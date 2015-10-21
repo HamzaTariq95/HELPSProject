@@ -7,7 +7,7 @@
     android:paddingBottom="12dp" >
     <TextView
         android:id="@+id/searchWorkshopTitle"
-        android:layout_width="290dp"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"

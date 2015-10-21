@@ -73,6 +73,7 @@ namespace HELPS
             if (currentUTSStudent(studentID, password))
             {
                 ShowProgressDialog();
+                Constants.CURRENT_STUDENT_ID = studentID;
 
                 if (registeredAtHELPS(studentID))
                 {

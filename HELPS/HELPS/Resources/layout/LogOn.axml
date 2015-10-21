@@ -38,6 +38,7 @@
         android:background="@drawable/drawEditText"
         android:textColorHint="@color/charcoalLight"
         android:textColor="@color/charcoal"
+        android:inputType="number"
         android:layout_marginBottom="6dp"
         android:paddingTop="4dp"
         android:paddingBottom="4dp"

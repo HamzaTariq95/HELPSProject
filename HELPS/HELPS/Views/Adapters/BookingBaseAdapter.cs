@@ -63,8 +63,8 @@ namespace HELPS.Views
                 holder.bookedSessionTitle = view.FindViewById<TextView>(Resource.Id.bookedSessionTitle);
                 holder.bookedSessionStatus = view.FindViewById<TextView>(Resource.Id.bookedSessionStatus);
                 holder.bookedSessionDate = view.FindViewById<TextView>(Resource.Id.bookedSessionDate);
-                holder.bookedSessionLocation = view.FindViewById<TextView>(Resource.Id.bookedSessionLocation);
-                holder.bookedSessionTutor = view.FindViewById<TextView>(Resource.Id.bookedSessionTutor);
+                //holder.bookedSessionLocation = view.FindViewById<TextView>(Resource.Id.bookedSessionLocation);
+                //holder.bookedSessionTutor = view.FindViewById<TextView>(Resource.Id.bookedSessionTutor);
                 holder.bookedSessionType = view.FindViewById<TextView>(Resource.Id.bookedSessionType);
 
                 view.Tag = holder;
@@ -75,8 +75,8 @@ namespace HELPS.Views
             holder.bookedSessionStatus.Text = _Bookings[position].Status();
             DateTime? date = _Bookings[position].Date();
             holder.bookedSessionDate.Text = (date == null) ? "Not available":date.ToString();
-            holder.bookedSessionLocation.Text = _Bookings[position].Location();
-            holder.bookedSessionTutor.Text = _Bookings[position].Tutor();
+            //holder.bookedSessionLocation.Text = _Bookings[position].Location();
+            //holder.bookedSessionTutor.Text = _Bookings[position].Tutor();
             holder.bookedSessionType.Text = _Bookings[position].Type();
 
             return view;
