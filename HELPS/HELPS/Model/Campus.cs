@@ -16,9 +16,7 @@ namespace HELPS.Model
     {
         public int id { get; set; }
         public string campus { get; set; }
-        public DateTime? archived
-        {
-            get;
-        }
+        public DateTime? archived { get; set; }
+        
     }
 }

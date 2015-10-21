@@ -34,7 +34,7 @@ namespace HELPS.Model
 
         public string Title()
         {
-            return WorkShopSetID; //TO DO: get title from set using id
+            return WorkShopSetID;
         }
 
         public string Status()
