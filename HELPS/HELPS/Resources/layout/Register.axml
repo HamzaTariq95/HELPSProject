@@ -209,6 +209,168 @@
                 android:paddingBottom="4dp"
                 android:paddingRight="8dp"
                 android:paddingLeft="8dp" />
+            <TextView
+                android:id="@+id/textGender"
+                android:text="@string/inputGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textColor="@color/white"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp" />
+            <RadioGroup
+                android:id="@+id/gender"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/radioMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/male"
+                    android:onClick="onRadioButtonClicked" />
+                <RadioButton
+                    android:id="@+id/radioFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/female"
+                    android:onClick="onRadioButtonClicked" />
+                <RadioButton
+                    android:id="@+id/radioOther"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/other"
+                    android:onClick="onRadioButtonClicked" />
+            </RadioGroup>
+            <TextView
+                android:id="@+id/textStatus"
+                android:text="@string/inputStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textColor="@color/white"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp" />
+            <RadioGroup
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/radioPermanent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/male"
+                    android:onClick="onRadioButtonClicked" />
+                <RadioButton
+                    android:id="@+id/radioInternational"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/female"
+                    android:onClick="onRadioButtonClicked" />
+            </RadioGroup>
+            <TextView
+                android:id="@+id/textLanguage"
+                android:text="@string/inputLanguage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textColor="@color/white"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp" />
+            <Spinner
+                android:id="@+id/spinnerLanguage"
+                android:prompt="@string/promptLanguage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/charcoal"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="6dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:paddingRight="8dp"
+                android:paddingLeft="8dp" />
+            <TextView
+                android:id="@+id/textCountry"
+                android:text="@string/inputCountry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textColor="@color/white"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp" />
+            <Spinner
+                android:id="@+id/spinnerCountry"
+                android:prompt="@string/promptCountry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/charcoal"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="6dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:paddingRight="8dp"
+                android:paddingLeft="8dp" />
+            <TextView
+                android:id="@+id/textEducation"
+                android:text="@string/inputEducation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textColor="@color/white"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <CheckBox
+                    android:id="@+id/checkHsc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hsc" />
+                <CheckBox
+                    android:id="@+id/checkIelts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ielts" />
+                <CheckBox
+                    android:id="@+id/checkToefl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/toefl" />
+                <CheckBox
+                    android:id="@+id/checkTafe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tafe" />
+                <CheckBox
+                    android:id="@+id/checkCult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cult" />
+                <CheckBox
+                    android:id="@+id/checkDeep"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/deep" />
+                <CheckBox
+                    android:id="@+id/checkDiploma"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/diploma" />
+                <CheckBox
+                    android:id="@+id/checkFoundation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/foundation" />
+            </LinearLayout>
             <LinearLayout
                 android:id="@+id/inputButtons"
                 android:layout_width="fill_parent"

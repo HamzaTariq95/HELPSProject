@@ -51,6 +51,10 @@ namespace HELPS
             TextView phoneNumber = FindViewById<TextView>(Resource.Id.textCheckHomePhone);
             TextView Mobile = FindViewById<TextView>(Resource.Id.textCheckMobile);
 
+            EditText preferredName = FindViewById<EditText>(Resource.Id.editPreferredName);
+            EditText preferredNumber = FindViewById<EditText>(Resource.Id.editPreferredNumber);
+
+
             textDOB.Text = "DOB: " + studentData.DateOfBirth;
             name.Text = "Name: " + studentData.PreferredName;
             faculty.Text = "Faculty: " + studentData.Faculty;
@@ -73,6 +77,18 @@ namespace HELPS
                 Cancel();
             };
 
+            // Set up the spinners
+            Spinner languages = FindViewById<Spinner>(Resource.Id.spinnerLanguage);
+            Spinner countries = FindViewById<Spinner>(Resource.Id.spinnerCountry);
+
+            ArrayAdapter languageAdapter = ArrayAdapter.CreateFromResource(this, Resource.Array.languages, Android.Resource.Layout.SimpleSpinnerItem);
+            languageAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            languages.Adapter = languageAdapter;
+
+            ArrayAdapter countryAdapter = ArrayAdapter.CreateFromResource(this, Resource.Array.countries, Android.Resource.Layout.SimpleSpinnerItem);
+            countryAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            countries.Adapter = countryAdapter;
+
             // Works the buttons on the "Input" view.
             com.refractored.fab.FloatingActionButton inputOkButton = FindViewById<com.refractored.fab.FloatingActionButton>(Resource.Id.fabInputOk);
             com.refractored.fab.FloatingActionButton inputCancelButton = FindViewById<com.refractored.fab.FloatingActionButton>(Resource.Id.fabInputCancel);
@@ -83,7 +99,11 @@ namespace HELPS
                 // {Architecture} Save user input to the database and change user to registered.
                 // Sends user to the landing page.
                 // Stops user from re-entering the register page with the back button.
-                
+
+                studentData.PreferredName = preferredName.Text;
+                studentData.AltContact = preferredNumber.Text;
+
+
                 RegisterController registerController = new RegisterController();
                 registerController.Register(studentData);
 

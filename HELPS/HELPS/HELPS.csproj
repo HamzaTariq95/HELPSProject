@@ -107,6 +107,7 @@
     <Compile Include="Controllers\WorkshopController.cs" />
     <Compile Include="Model\JSONDataClasses\WorkshopSetData.cs" />
     <Compile Include="Model\WorkshopSet.cs" />
+    <Compile Include="Server.cs" />
     <Compile Include="Views\Activities\AboutActivity.cs" />
     <Compile Include="Views\Activities\BookingDetailActivity.cs" />
     <Compile Include="Views\Activities\NotificationActivity.cs" />
@@ -220,7 +221,6 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\close.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-mdpi\ic_lock.png" />
   </ItemGroup>

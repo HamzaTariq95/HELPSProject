@@ -30,8 +30,8 @@ namespace HELPS
 
             
             // Request Address of the API
-            String url = "http://GroupThirteen.cloudapp.net/api/student/" + studentID;
-
+            // String url = "http://GroupThirteen.cloudapp.net/api/student/" + studentID;
+            String url = Server.url + "api/student/" + studentID;
 
             // Setting Request Properties
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
