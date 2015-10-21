@@ -75,7 +75,7 @@
     <string name="undergrad">Undergrad</string>
     <string name="postgrad">Postgrad</string>
     <string name="inputStatus">
-        <b>Citizenship status*:</b>
+        <b>Residency status*:</b>
     </string>
     <string name="permanent">Permanent</string>
     <string name="international">International</string>

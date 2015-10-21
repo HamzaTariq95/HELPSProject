@@ -71,6 +71,10 @@ namespace HELPS
             EditText preferredName = FindViewById<EditText>(Resource.Id.editPreferredName);
             EditText preferredNumber = FindViewById<EditText>(Resource.Id.editPreferredNumber);
 
+            // Set up the radio buttons
+            RadioGroup gender = FindViewById<RadioGroup>(Resource.Id.radioGender);
+            RadioGroup status = FindViewById<RadioGroup>(Resource.Id.radioStatus);
+            
             // Set up the spinners
             Spinner languages = FindViewById<Spinner>(Resource.Id.spinnerLanguage);
             Spinner countries = FindViewById<Spinner>(Resource.Id.spinnerCountry);
@@ -93,8 +97,15 @@ namespace HELPS
                 // {Architecture} Save user input to the database and change user to registered.
                 // Sends user to the landing page.
                 // Stops user from re-entering the register page with the back button.
-                
-                if (languages.SelectedItem.ToString()  == "First Language...")
+                RadioButton statusChecked = FindViewById<RadioButton>(status.CheckedRadioButtonId);
+                RadioButton genderChecked = FindViewById<RadioButton>(gender.CheckedRadioButtonId);
+
+                if (status.CheckedRadioButtonId == -1)
+                {
+                    ShowFailedAlert("You must select your residency status.");
+                }
+
+                else if (languages.SelectedItem.ToString()  == "First language...")
                 {
                     ShowFailedAlert("You must choose your first language.");
                 }
@@ -104,8 +115,15 @@ namespace HELPS
                 }
                 else
                 {
+                    ShowProgressDialog();
+
                     studentData.PreferredName = preferredName.Text;
                     studentData.AltContact = preferredNumber.Text;
+                    if (gender.CheckedRadioButtonId == -1)
+                    {
+                        studentData.Gender = genderChecked.Text;
+                    }
+                    studentData.Status = statusChecked.Text;
                     studentData.FirstLanguage = languages.SelectedItem.ToString();
                     studentData.CountryOrigin = countries.SelectedItem.ToString();
 
@@ -115,6 +133,7 @@ namespace HELPS
                     //set student data and go to main activity
                     ShowLandingPage(studentData.StudentId);
                 }
+                
             };
             // Works the cancel button.
             inputCancelButton.Click += delegate
@@ -130,6 +149,17 @@ namespace HELPS
             registerFailAlert.SetMessage(msg);
             registerFailAlert.SetNeutralButton("OK", delegate { });
             registerFailAlert.Show();
+        }
+
+        private void ShowProgressDialog()
+        {
+            ProgressDialog progressDialog = new ProgressDialog(this);
+
+            progressDialog.Indeterminate = true;
+            progressDialog.SetProgressStyle(ProgressDialogStyle.Spinner);
+            progressDialog.SetMessage("Registering. Please wait...");
+            progressDialog.SetCancelable(false);
+            progressDialog.Show();
         }
 
         private void ShowLandingPage(string studentId)
