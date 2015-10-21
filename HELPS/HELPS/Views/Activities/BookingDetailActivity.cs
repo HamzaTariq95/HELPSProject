@@ -12,17 +12,19 @@ using Android.Widget;
 using Android.Support.V7.App;
 using AlertDialog = Android.Support.V7.App.AlertDialog;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
+using HELPS.Model;
+using Newtonsoft.Json;
 /*
 *   IMPORTANT: Do something like:
-                 if (requestType(get if from intent) == "showAvailableWorkshop") 
-                        workshop = serialize "workshop"(get it from intent);
-                 else if (requestType == "showBooking") {
-                      if (bookingType(get if from intent) == "Session")
-                          sessionBooking = serialize "booking"(get it from intent);
-                      else  workshopBooking = serialize "booking"(get it from intent);
-                 }
+if (requestType(get if from intent) == "showAvailableWorkshop") 
+workshop = serialize "workshop"(get it from intent);
+else if (requestType == "showBooking") {
+if (bookingType(get if from intent) == "Session")
+sessionBooking = serialize "booking"(get it from intent);
+else  workshopBooking = serialize "booking"(get it from intent);
+}
 
-    to convert string into object, use : JsonConvert.DeserializeObject<appropriate class>(this.Activity.Intent.GetStringExtra(approriate string));
+to convert string into object, use : JsonConvert.DeserializeObject<appropriate class>(this.Activity.Intent.GetStringExtra(approriate string));
 */
 namespace HELPS.Views.Activities
 {
@@ -32,10 +34,15 @@ namespace HELPS.Views.Activities
         private SupportToolbar _Toolbar;
         private LinearLayout _Booked;
         private LinearLayout _NotBooked;
+        private Booking _Booking;
+        private Workshop _Workshop;
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+
+            //Check request type and set appropriate variables
+            SetVariables();
 
             // Set our view from the "BookingDetail" layout resource.
             SetContentView(Resource.Layout.BookingDetail);
@@ -56,34 +63,70 @@ namespace HELPS.Views.Activities
             _NotBooked.Visibility = ViewStates.Gone;
 
             // Send an intent that tells the activity if the session is booked by the student or not.
-            // if (booked)
-            // {
-                    // _Booked.Visibility = ViewStates.Visible        
+            if (_Booking != null)
+            {
+                SetBookingView();
+            }
+            else // _worshop != null
+            {
+                SetWorkshopView();
+            }
+        }
 
-                    // Set up notification button
-                    Button changeNotificationButton = FindViewById<Button>(Resource.Id.buttonChangeNotification);
-                    changeNotificationButton.Click += delegate
-                    {
-                        DisplayNotificationSettings();
-                    };
-
-                    //Set up cancel button
-                    Button cancelButton = FindViewById<Button>(Resource.Id.buttonCancelBooking);
-                    cancelButton.Click += delegate
-                    {
-                        CancelBooking();
-                    };
-            // }
-            // else
-            // {
+        private void SetWorkshopView()
+        {
             // Display the booking button
-                    // _NotBooked.Visibility = ViewStates.Visible 
-                    // Button bookButton = FindViewById<Button>(Resource.Id.buttonBook)
-                    // bookButton.Click += delegate
-                    // {
-                    //      Book();
-                    // }
-            // }
+            _NotBooked.Visibility = ViewStates.Visible;
+            Button bookButton = FindViewById<Button>(Resource.Id.buttonBook);
+            bookButton.Click += delegate
+            {
+                Book();
+            };
+        }
+
+        private void SetBookingView()
+        {
+            _Booked.Visibility = ViewStates.Visible;
+
+            // Set up notification button
+            Button changeNotificationButton = FindViewById<Button>(Resource.Id.buttonChangeNotification);
+            changeNotificationButton.Click += delegate
+            {
+                DisplayNotificationSettings();
+            };
+
+            //Set up cancel button
+            Button cancelButton = FindViewById<Button>(Resource.Id.buttonCancelBooking);
+            cancelButton.Click += delegate
+            {
+                CancelBooking();
+            };
+        }
+
+        private void SetVariables()
+        {
+            string requestType = Intent.GetStringExtra("requestType");
+
+            if (requestType == "showAvailableWorkshop")
+            {
+                _Workshop = JsonConvert.DeserializeObject<Workshop>(Intent.GetStringExtra("workshop"));
+            }
+            else // requestType == "showBooking"
+            {
+                string bookingType = Intent.GetStringExtra("bookingType");
+                string bookingString = Intent.GetStringExtra("booking");
+
+                if (bookingType == "Session")
+                {
+                    SessionBooking sessionBooking = JsonConvert.DeserializeObject<SessionBooking>(bookingString);
+                    _Booking = sessionBooking;
+                }
+                else // bookingType == "Workshop"
+                {
+                    WorkshopBooking workshopBooking = JsonConvert.DeserializeObject<WorkshopBooking>(bookingString);
+                    _Booking = workshopBooking;
+                }
+            }
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)

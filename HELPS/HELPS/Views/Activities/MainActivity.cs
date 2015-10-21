@@ -86,13 +86,14 @@ namespace HELPS
             {
                 FetchCampusData();
                 FetchWorkshopSetData();
-            }
-                
+            }       
         }
 
         private void FetchWorkshopSetData()
         {
-            
+            WorkshopController workshopController = new WorkshopController();
+            WorkshopSetData workshopSetData = (WorkshopSetData)workshopController.GetWorkshopSetData();
+            Constants.WORKSHOP_SETS = workshopSetData.attributes;
         }
 
         private void FetchCampusData()
@@ -100,9 +101,6 @@ namespace HELPS
             WorkshopController workshopController = new WorkshopController();
             campusData = (CampusData)workshopController.GetCampusData();
             Constants.CAMPUSES = campusData.attributes;
-
-            WorkshopSetData workshopSetData = (WorkshopSetData)workshopController.GetWorkshopSetData();
-            Constants.WORKSHOP_SETS = workshopSetData.attributes;
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
