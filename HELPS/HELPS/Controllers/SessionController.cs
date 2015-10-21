@@ -28,7 +28,8 @@ namespace HELPS.Controllers
         public SessionBookingData GetSessionBookingData(string studentID)
         {
             // Request Address of the API
-            string url = "http://GroupThirteen.cloudapp.net/api/session/booking/search?studentId=" + studentID;
+            //string url = "http://GroupThirteen.cloudapp.net/api/session/booking/search?studentId=" + studentID;
+            string url = Server.url + "api/session/booking/search?studentId=" + studentID;
 
             // Get student data using web request
             return getSessionBookingData(getRequest(url));

@@ -51,6 +51,10 @@ namespace HELPS
             TextView phoneNumber = FindViewById<TextView>(Resource.Id.textCheckHomePhone);
             TextView Mobile = FindViewById<TextView>(Resource.Id.textCheckMobile);
 
+            EditText preferredName = FindViewById<EditText>(Resource.Id.editPreferredName);
+            EditText preferredNumber = FindViewById<EditText>(Resource.Id.editPreferredNumber);
+
+
             textDOB.Text = "DOB: " + studentData.DateOfBirth;
             name.Text = "Name: " + studentData.PreferredName;
             faculty.Text = "Faculty: " + studentData.Faculty;
@@ -83,7 +87,11 @@ namespace HELPS
                 // {Architecture} Save user input to the database and change user to registered.
                 // Sends user to the landing page.
                 // Stops user from re-entering the register page with the back button.
-                
+
+                studentData.PreferredName = preferredName.Text;
+                studentData.AltContact = preferredNumber.Text;
+
+
                 RegisterController registerController = new RegisterController();
                 registerController.Register(studentData);
 

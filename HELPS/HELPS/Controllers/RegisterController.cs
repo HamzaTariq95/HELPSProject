@@ -37,7 +37,8 @@ namespace HELPS.Controllers
             Log.Info("Register", json);
 
            // Request Address of the API    
-            string url = "http://groupthirteen.cloudapp.net/api/student/register";
+           //string url = "http://groupthirteen.cloudapp.net/api/student/register";
+            string url = Server.url + "api/student/register";
 
            String result = null;
         
