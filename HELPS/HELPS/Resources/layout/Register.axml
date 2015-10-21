@@ -168,6 +168,165 @@
                 android:paddingBottom="12dp" />
             <ScrollView
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/drawEditText"
+                android:textColorHint="@color/charcoalLight"
+                android:textColor="@color/charcoal"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="6dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:paddingRight="8dp"
+                android:paddingLeft="8dp" />
+            <TextView
+                android:id="@+id/textPreferredNumber"
+                android:text="@string/inputPreferredNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:inputType="number"
+                android:textColor="@color/white"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp" />
+            <EditText
+                android:id="@+id/editPreferredNumber"
+                android:hint="@string/hintPreferredNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/drawEditText"
+                android:textColorHint="@color/charcoalLight"
+                android:textColor="@color/charcoal"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="6dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:paddingRight="8dp"
+                android:paddingLeft="8dp" />
+            <TextView
+                android:id="@+id/textGender"
+                android:text="@string/inputGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textColor="@color/white"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp" />
+            <RadioGroup
+                android:id="@+id/gender"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/radioMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/male"
+                    android:onClick="onRadioButtonClicked" />
+                <RadioButton
+                    android:id="@+id/radioFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/female"
+                    android:onClick="onRadioButtonClicked" />
+                <RadioButton
+                    android:id="@+id/radioOther"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/other"
+                    android:onClick="onRadioButtonClicked" />
+            </RadioGroup>
+            <TextView
+                android:id="@+id/textStatus"
+                android:text="@string/inputStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textColor="@color/white"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp" />
+            <RadioGroup
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/radioPermanent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/male"
+                    android:onClick="onRadioButtonClicked" />
+                <RadioButton
+                    android:id="@+id/radioInternational"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/female"
+                    android:onClick="onRadioButtonClicked" />
+            </RadioGroup>
+            <TextView
+                android:id="@+id/textLanguage"
+                android:text="@string/inputLanguage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textColor="@color/white"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp" />
+            <Spinner
+                android:id="@+id/spinnerLanguage"
+                android:prompt="@string/promptLanguage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/charcoal"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="6dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:paddingRight="8dp"
+                android:paddingLeft="8dp" />
+            <TextView
+                android:id="@+id/textCountry"
+                android:text="@string/inputCountry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textColor="@color/white"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp" />
+            <Spinner
+                android:id="@+id/spinnerCountry"
+                android:prompt="@string/promptCountry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/charcoal"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="6dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:paddingRight="8dp"
+                android:paddingLeft="8dp" />
+            <TextView
+                android:id="@+id/textEducation"
+                android:text="@string/inputEducation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textColor="@color/white"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
                 <LinearLayout
                     android:orientation="vertical"

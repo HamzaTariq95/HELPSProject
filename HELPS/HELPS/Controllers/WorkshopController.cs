@@ -174,6 +174,39 @@ namespace HELPS.Controllers
             return workshopSetData;
         }
 
+        internal bool Book(string workshopId)
+        {
+            string url = "http://groupthirteen.cloudapp.net/api/workshop/booking/create?workshopId=" + 
+                workshopId + "&studentId=" + Constants.CURRENT_STUDENT_ID + "&userId=12345";
+
+            //Setting Request Properties
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "POST";
+            request.ContentType = "application/json; charset=utf-8";
+            request.Headers["AppKey"] = "66666";
+
+            //WorkshopData workshops = null;
+            string json;
+
+            //Generating JSON Response and Converting it to Student Object.
+            using (WebResponse response = request.GetResponse())
+            {
+                //Get a stream representation of the HTTP web response:
+                using (Stream stream = response.GetResponseStream())
+                {
+                    using (StreamReader sr = new StreamReader(stream))
+                    {
+                        json = sr.ReadToEnd();
+                            
+                        //Convert JSON Response to Student Object
+                        //workshops = JsonConvert.DeserializeObject<WorkshopData>(json);
+                    }
+
+                }
+            }
+            return json.Contains("true");
+        }
+
         internal CampusData GetCampusData()
         {
             // Request Address of the API

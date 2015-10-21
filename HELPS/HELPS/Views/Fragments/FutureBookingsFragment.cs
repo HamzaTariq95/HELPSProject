@@ -107,6 +107,7 @@ namespace HELPS.Views
             intent.PutExtra("requestType", "showBooking");
             intent.PutExtra("bookingType", bookingType);
             intent.PutExtra("booking", bookingString);
+            //intent.PutExtra("studentId", studentData.attributes.);
             StartActivity(intent);
         }
     

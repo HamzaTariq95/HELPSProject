@@ -82,7 +82,7 @@ namespace HELPS
             //holder.searchWorkshopTutor.Text = _Workshops[position].Tutor();
             holder.searchWorkshopType.Text = _Workshops[position].Type(); 
 
-            holder.searchWorkshopTitle.Text = _Workshops[position].Topic();
+            //holder.searchWorkshopTitle.Text = _Workshops[position].Topic();
             //string date = (string)_Workshops[position].StartDate;
             //holder.searchWorkshopDate.Text = (date == null) ? "Not available" : date.ToString();
             // holder.searchWorkshopTarget.Text = _Workshops[position].Target();

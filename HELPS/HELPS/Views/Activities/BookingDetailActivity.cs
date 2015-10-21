@@ -14,6 +14,7 @@ using AlertDialog = Android.Support.V7.App.AlertDialog;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 using HELPS.Model;
 using Newtonsoft.Json;
+using HELPS.Controllers;
 /*
 *   IMPORTANT: Do something like:
 if (requestType(get if from intent) == "showAvailableWorkshop") 
@@ -36,6 +37,7 @@ namespace HELPS.Views.Activities
         private LinearLayout _NotBooked;
         private Booking _Booking;
         private Workshop _Workshop;
+        //private string studentId;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -105,6 +107,7 @@ namespace HELPS.Views.Activities
 
         private void SetVariables()
         {
+            //studentId = Intent.GetStringExtra("studentId");
             string requestType = Intent.GetStringExtra("requestType");
 
             if (requestType == "showAvailableWorkshop")
@@ -160,6 +163,14 @@ namespace HELPS.Views.Activities
         private void Book()
         {
             // Code to book the workshop
+            WorkshopController workshopController = new WorkshopController();
+            if (!workshopController.Book(_Workshop.WorkshopId))
+            {
+                //show error , stay on page;
+            }
+            else
+            { //show dialog saying booked and return}
+            }
         }
     }
 }

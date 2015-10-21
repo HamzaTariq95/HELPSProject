@@ -7,7 +7,7 @@
     android:paddingBottom="12dp" >
     <TextView
         android:id="@+id/bookedSessionTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="290dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
@@ -33,14 +33,16 @@
           android:layout_weight="1"
           android:layout_marginTop="6dp"
           android:textSize="14dp"
+          android:textStyle="bold"
           android:textColor="@color/charcoal" />
-      <TextView
+      <!--<TextView
           android:id="@+id/bookedSessionLocation"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:layout_marginTop="6dp"
           android:textSize="14dp"
+          android:gravity="right"
           android:textColor="@color/charcoal" />
       <TextView
           android:id="@+id/bookedSessionTutor"
@@ -49,13 +51,14 @@
           android:layout_weight="1"
           android:layout_marginTop="6dp"
           android:textSize="14dp"
-          android:textColor="@color/charcoal" />
+          android:textColor="@color/charcoal" />-->
       <TextView
           android:id="@+id/bookedSessionType"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginTop="6dp"
           android:textSize="14dp"
+          android:gravity="right"
           android:textColor="@color/charcoal" />
     </LinearLayout>
 </RelativeLayout>
