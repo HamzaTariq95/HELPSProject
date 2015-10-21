@@ -117,6 +117,7 @@ namespace HELPS
                 {
                     ShowProgressDialog();
 
+                    // Populate the student data fields
                     studentData.PreferredName = preferredName.Text;
                     studentData.AltContact = preferredNumber.Text;
                     if (gender.CheckedRadioButtonId == -1)
@@ -126,6 +127,7 @@ namespace HELPS
                     studentData.Status = statusChecked.Text;
                     studentData.FirstLanguage = languages.SelectedItem.ToString();
                     studentData.CountryOrigin = countries.SelectedItem.ToString();
+                    
 
                     RegisterController registerController = new RegisterController();
                     registerController.Register(studentData);
