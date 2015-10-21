@@ -1444,7 +1444,10 @@ namespace HELPS
 			public const int Icon = 2130837569;
 			
 			// aapt resource value: 0x7f020042
-			public const int notification_template_icon_bg = 2130837570;
+			public const int monoandroidsplash = 2130837570;
+			
+			// aapt resource value: 0x7f020043
+			public const int notification_template_icon_bg = 2130837571;
 			
 			static Drawable()
 			{
@@ -2818,6 +2821,9 @@ namespace HELPS
 			
 			// aapt resource value: 0x7f070070
 			public const int Base_Widget_AppCompat_Toolbar_Button_Navigation = 2131165296;
+			
+			// aapt resource value: 0x7f070126
+			public const int Mono_Android_Theme_Splash = 2131165478;
 			
 			// aapt resource value: 0x7f070010
 			public const int Platform_AppCompat = 2131165200;
