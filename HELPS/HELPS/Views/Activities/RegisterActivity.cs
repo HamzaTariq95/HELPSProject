@@ -87,6 +87,16 @@ namespace HELPS
             countryAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
             countries.Adapter = countryAdapter;
 
+            // Set up the Check Boxes
+            CheckBox hsc = FindViewById<CheckBox>(Resource.Id.checkHsc);
+            CheckBox ielts = FindViewById<CheckBox>(Resource.Id.checkIelts);
+            CheckBox toefl = FindViewById<CheckBox>(Resource.Id.checkToefl);
+            CheckBox tafe = FindViewById<CheckBox>(Resource.Id.checkTafe);
+            CheckBox cult = FindViewById<CheckBox>(Resource.Id.checkCult);
+            CheckBox deep = FindViewById<CheckBox>(Resource.Id.checkDeep);
+            CheckBox diploma = FindViewById<CheckBox>(Resource.Id.checkDiploma);
+            CheckBox foundation = FindViewById<CheckBox>(Resource.Id.checkFoundation);
+
             // Works the buttons on the "Input" view.
             com.refractored.fab.FloatingActionButton inputOkButton = FindViewById<com.refractored.fab.FloatingActionButton>(Resource.Id.fabInputOk);
             com.refractored.fab.FloatingActionButton inputCancelButton = FindViewById<com.refractored.fab.FloatingActionButton>(Resource.Id.fabInputCancel);
@@ -98,7 +108,6 @@ namespace HELPS
                 // Sends user to the landing page.
                 // Stops user from re-entering the register page with the back button.
                 RadioButton statusChecked = FindViewById<RadioButton>(status.CheckedRadioButtonId);
-                RadioButton genderChecked = FindViewById<RadioButton>(gender.CheckedRadioButtonId);
 
                 if (status.CheckedRadioButtonId == -1)
                 {
@@ -120,14 +129,29 @@ namespace HELPS
                     // Populate the student data fields
                     studentData.PreferredName = preferredName.Text;
                     studentData.AltContact = preferredNumber.Text;
-                    if (gender.CheckedRadioButtonId == -1)
+                    if (gender.CheckedRadioButtonId == Resource.Id.radioMale)
                     {
-                        studentData.Gender = genderChecked.Text;
+                        studentData.Gender = "M";
+                    }
+                    else if (gender.CheckedRadioButtonId == Resource.Id.radioFemale)
+                    {
+                        studentData.Gender = "F";
+                    }
+                    else if (gender.CheckedRadioButtonId == Resource.Id.radioOther)
+                    {
+                        studentData.Gender = "X";
                     }
                     studentData.Status = statusChecked.Text;
                     studentData.FirstLanguage = languages.SelectedItem.ToString();
                     studentData.CountryOrigin = countries.SelectedItem.ToString();
-                    
+                    studentData.HSC = hsc.Checked.ToString();
+                    studentData.IELTS = ielts.Checked;
+                    studentData.TOEFL = toefl.Checked;
+                    studentData.TAFE = tafe.Checked;
+                    studentData.CULT = cult.Checked;
+                    studentData.InsearchDEEP = deep.Checked;
+                    studentData.InsearchDiploma = diploma.Checked;
+                    studentData.FoundationCourse = foundation.Checked;
 
                     RegisterController registerController = new RegisterController();
                     registerController.Register(studentData);
