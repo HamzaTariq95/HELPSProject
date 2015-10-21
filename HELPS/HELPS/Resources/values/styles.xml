@@ -3,7 +3,7 @@
     <!-- Main style for the application. Inherits from the light AppCompat theme -->
     <style name="helpsTheme" parent="Theme.AppCompat.Light.NoActionBar">
       <item name="android:colorPrimary">@color/red</item>
-      <item name="android:colorAccent">@color/redDark</item>
+      <item name="android:colorAccent">@color/white</item>
       <item name="drawerArrowStyle">@style/helpsDrawerArrowStyle</item>
     </style>
 

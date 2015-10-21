@@ -40,28 +40,18 @@ namespace HELPS
 
             // Receives the Student object from Login Activity
             var studentData = JsonConvert.DeserializeObject<UtsData>(Intent.GetStringExtra("student"));
-            
 
+            // The text views for the check student data
+            TextView email = FindViewById<TextView>(Resource.Id.textCheckEmail);
             TextView textDOB = FindViewById<TextView>(Resource.Id.textCheckDOB);
-            TextView contact = FindViewById<TextView>(Resource.Id.textHelloUser);
-            TextView name = FindViewById<TextView>(Resource.Id.textCheckName);
             TextView faculty = FindViewById<TextView>(Resource.Id.textCheckFaculty);
             TextView course = FindViewById<TextView>(Resource.Id.textCheckCourse);
-            TextView email = FindViewById<TextView>(Resource.Id.textCheckEmail);
-            TextView phoneNumber = FindViewById<TextView>(Resource.Id.textCheckHomePhone);
-            TextView Mobile = FindViewById<TextView>(Resource.Id.textCheckMobile);
 
-            EditText preferredName = FindViewById<EditText>(Resource.Id.editPreferredName);
-            EditText preferredNumber = FindViewById<EditText>(Resource.Id.editPreferredNumber);
-
-
-            textDOB.Text = "DOB: " + studentData.DateOfBirth;
-            name.Text = "Name: " + studentData.PreferredName;
-            faculty.Text = "Faculty: " + studentData.Faculty;
-            course.Text = "Course: " + studentData.Course;
-            email.Text = "Email: " + studentData.Email;
-            phoneNumber.Text += studentData.AltContact;
-            Mobile.Text += studentData.AltContact;
+            // Display student information for them to check it
+            email.Text = GetString(Resource.String.checkEmail) + studentData.Email;
+            textDOB.Text = GetString(Resource.String.checkDOB) + studentData.DateOfBirth;
+            faculty.Text = GetString(Resource.String.checkFaculty) + studentData.Faculty;
+            course.Text = GetString(Resource.String.checkCourse) + studentData.Course;
  
             // Works the "OK" button
             checkOkButton.Click += delegate
@@ -76,6 +66,10 @@ namespace HELPS
                 // Returns user to the "Log On" activity
                 Cancel();
             };
+
+            // Set up the EditTexts
+            EditText preferredName = FindViewById<EditText>(Resource.Id.editPreferredName);
+            EditText preferredNumber = FindViewById<EditText>(Resource.Id.editPreferredNumber);
 
             // Set up the spinners
             Spinner languages = FindViewById<Spinner>(Resource.Id.spinnerLanguage);
@@ -99,16 +93,28 @@ namespace HELPS
                 // {Architecture} Save user input to the database and change user to registered.
                 // Sends user to the landing page.
                 // Stops user from re-entering the register page with the back button.
+                
+                if (languages.SelectedItem.ToString()  == "First Language...")
+                {
+                    ShowFailedAlert("You must choose your country of origin.");
+                }
+                else if (countries.SelectedItem.ToString() == "Country of origin...")
+                {
+                    ShowFailedAlert("You must choose your country of origin.");
+                }
+                else
+                {
+                    studentData.PreferredName = preferredName.Text;
+                    studentData.AltContact = preferredNumber.Text;
+                    studentData.FirstLanguage = languages.SelectedItem.ToString();
+                    studentData.CountryOrigin = countries.SelectedItem.ToString();
 
-                studentData.PreferredName = preferredName.Text;
-                studentData.AltContact = preferredNumber.Text;
+                    RegisterController registerController = new RegisterController();
+                    registerController.Register(studentData);
 
-
-                RegisterController registerController = new RegisterController();
-                registerController.Register(studentData);
-
-                //set student data and go to main activity
-                ShowLandingPage(studentData.StudentId); 
+                    //set student data and go to main activity
+                    ShowLandingPage(studentData.StudentId);
+                }
             };
             // Works the cancel button.
             inputCancelButton.Click += delegate
@@ -116,6 +122,14 @@ namespace HELPS
                 // Returns user to the "Log On" activity.
                 Cancel();
             };
+        }
+
+        private void ShowFailedAlert(string msg)
+        {
+            var registerFailAlert = new AlertDialog.Builder(this);
+            registerFailAlert.SetMessage(msg);
+            registerFailAlert.SetNeutralButton("OK", delegate { });
+            registerFailAlert.Show();
         }
 
         private void ShowLandingPage(string studentId)

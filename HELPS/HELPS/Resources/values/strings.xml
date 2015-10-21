@@ -34,22 +34,22 @@
         <b>Student Name:</b>
     </string>
     <string name="checkFaculty">
-        <b>Faculty:</b>
+        <b>Faculty: </b>
     </string>
     <string name="checkCourse">
-        <b>Course:</b>
+        <b>Course: </b>
     </string>
     <string name="checkEmail">
-        <b>Email:</b>
+        <b>Email: </b>
     </string>
     <string name="checkHomePhone">
-        <b>Home Phone:</b>
+        <b>Home Phone: </b>
     </string>
     <string name="checkMobile">
-        <b>Mobile Phone:</b>
+        <b>Mobile Phone: </b>
     </string>
     <string name="checkDOB">
-        <b>D.O.B.:</b>
+        <b>D.O.B.: </b>
     </string>
     <string name="contactInformation">Information incorrect? Please contact UTS administration.</string>
   
@@ -60,7 +60,7 @@
     </string>
     <string name="hintPreferredName">Preferred first name</string>
     <string name="inputPreferredNumber">
-        <b>Preferred contact number*:</b>
+        <b>Preferred contact number:</b>
     </string>
     <string name="hintPreferredNumber">Preferred contact number</string>
     <string name="inputGender">
@@ -132,8 +132,8 @@
     <string name="notificationTitle">Notification Settings</string>
 
     <!-- Countries -->
-    <string name="promptCountry">Country of origin...</string>
     <string-array name="countries">
+        <item>Country of origin...</item>
         <item>Afghanistan</item>
         <item>Albania</item>
         <item>Algeria</item>
@@ -376,10 +376,9 @@
         <item>Zimbawe</item>
     </string-array>
   
-  
     <!-- Languages -->
-    <string name="promptLanguage">First language...</string>
     <string-array name="languages">
+        <item>First language...</item>
         <item>Abkhazian</item>
         <item>Afar</item>
         <item>Afrikaans</item>
