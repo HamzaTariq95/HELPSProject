@@ -72,6 +72,7 @@ namespace HELPS
         {
             if (currentUTSStudent(studentID, password))
             {
+                ShowProgressDialog();
                 if (registeredAtHELPS(studentID))
                 {
                     Log.Info("Inside LogOnActvitity", "Student Data is not Null");
@@ -108,7 +109,6 @@ namespace HELPS
         private bool currentUTSStudent(string studentID, string password)
         {
             Log.Info("Inside LogOnActvitity", "New STUDENT!");
-            ShowProgressDialog();
             if (studentID == null || studentID.Equals(""))
                 return false;
 
