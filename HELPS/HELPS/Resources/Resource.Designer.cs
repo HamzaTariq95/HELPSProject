@@ -1456,7 +1456,10 @@ namespace HELPS
 			public const int Icon = 2130837573;
 			
 			// aapt resource value: 0x7f020046
-			public const int notification_template_icon_bg = 2130837574;
+			public const int monoandroidsplash = 2130837574;
+			
+			// aapt resource value: 0x7f020047
+			public const int notification_template_icon_bg = 2130837575;
 			
 			static Drawable()
 			{
@@ -1674,9 +1677,6 @@ namespace HELPS
 			
 			// aapt resource value: 0x7f0b0065
 			public const int fragmentContainer = 2131427429;
-			
-			// aapt resource value: 0x7f0b008b
-			public const int gender = 2131427467;
 			
 			// aapt resource value: 0x7f0b0004
 			public const int home = 2131427332;
@@ -1915,8 +1915,8 @@ namespace HELPS
 			// aapt resource value: 0x7f0b0087
 			public const int textGender = 2131427463;
 			
-			// aapt resource value: 0x7f0b0094
-			public const int textCountry = 2131427476;
+			// aapt resource value: 0x7f0b0066
+			public const int textHelloUser = 2131427430;
 			
 			// aapt resource value: 0x7f0b0090
 			public const int textLanguage = 2131427472;
@@ -2368,12 +2368,6 @@ namespace HELPS
 			// aapt resource value: 0x7f050030
 			public const int postgrad = 2131034160;
 			
-			// aapt resource value: 0x7f05004a
-			public const int promptCountry = 2131034186;
-			
-			// aapt resource value: 0x7f05004b
-			public const int promptLanguage = 2131034187;
-			
 			// aapt resource value: 0x7f05001b
 			public const int registerTitle = 2131034139;
 			
@@ -2824,6 +2818,9 @@ namespace HELPS
 			
 			// aapt resource value: 0x7f070070
 			public const int Base_Widget_AppCompat_Toolbar_Button_Navigation = 2131165296;
+			
+			// aapt resource value: 0x7f070126
+			public const int Mono_Android_Theme_Splash = 2131165478;
 			
 			// aapt resource value: 0x7f070010
 			public const int Platform_AppCompat = 2131165200;
