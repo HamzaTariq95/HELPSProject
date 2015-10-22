@@ -127,6 +127,7 @@
     <string name="changeNotification">Change Notifications</string>
     <string name="cancelBooking">Cancel Booking</string>
     <string name="areYouSureCancel">Are you sure you want to cancel your booking? This cannot be undone.</string>
+    <string name="book">Book</string>
 
     <!-- Settings -->
     <string name="notificationTitle">Notification Settings</string>

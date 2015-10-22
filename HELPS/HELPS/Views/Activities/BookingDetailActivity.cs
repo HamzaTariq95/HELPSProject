@@ -15,18 +15,7 @@ using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 using HELPS.Model;
 using Newtonsoft.Json;
 using HELPS.Controllers;
-/*
-*   IMPORTANT: Do something like:
-if (requestType(get if from intent) == "showAvailableWorkshop") 
-workshop = serialize "workshop"(get it from intent);
-else if (requestType == "showBooking") {
-if (bookingType(get if from intent) == "Session")
-sessionBooking = serialize "booking"(get it from intent);
-else  workshopBooking = serialize "booking"(get it from intent);
-}
 
-to convert string into object, use : JsonConvert.DeserializeObject<appropriate class>(this.Activity.Intent.GetStringExtra(approriate string));
-*/
 namespace HELPS.Views.Activities
 {
     [Activity(Label = "BookingDetailActivity")]
@@ -83,6 +72,8 @@ namespace HELPS.Views.Activities
             bookButton.Click += delegate
             {
                 Book();
+                Server.workshopBookingsAltered = true;
+                Finish();
             };
         }
 
