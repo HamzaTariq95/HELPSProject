@@ -155,6 +155,18 @@ namespace HELPS.Views.Activities
             cancelAlert.SetPositiveButton("YES", delegate
             {
                 // Code to cancel booking.
+                WorkshopController workshopController = new WorkshopController();
+
+                if(!workshopController.CancelBooking(_Workshop.WorkshopId))
+                {
+                    //show error, stay on page;
+                }
+
+                else
+                {
+                    //show dialog saying booked and return
+                }
+
             });
             cancelAlert.SetNegativeButton("NO", delegate { });
             cancelAlert.Show();
