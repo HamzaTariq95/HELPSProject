@@ -176,7 +176,7 @@ namespace HELPS.Controllers
 
         internal bool CancelBooking(string workshopId)
         {
-            string url = Server.url + "api/workshop/booking/cancel";
+            string url = Server.url + "api/workshop/booking/cancel?workshopId=" + workshopId + "&studentId=" + Constants.CURRENT_STUDENT_ID + "&userId=12345";
 
             //Setting Request Properties
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
@@ -187,18 +187,17 @@ namespace HELPS.Controllers
             //WorkshopData workshops = null;
             string json;
 
-            using (WebResponse response = request.GetResponse())
+            using (WebClient wc = new WebClient())
             {
-                //Get a stream representation of the HTTP web response:
-                using (Stream stream = response.GetResponseStream())
-                {
-                    using (StreamReader sr = new StreamReader(stream))
-                    {
-                        json = sr.ReadToEnd();         
-                    }
+                wc.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
+                wc.Headers.Add("AppKey", "66666");
 
-                }
+                json = wc.UploadString(url, "");
+
+                Log.Info("Register SUCCESS", json);
+
             }
+
             return json.Contains("true");
         }
 

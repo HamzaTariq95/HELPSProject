@@ -1916,7 +1916,7 @@ namespace HELPS
 			public const int textGender = 2131427463;
 			
 			// aapt resource value: 0x7f0b0094
-			public const int textCountry = 2131427476;
+			//public const int textCountry = 2131427476;
 			// aapt resource value: 0x7f0b0094
 			//public const int textCountry = 2131427476;
 

@@ -15,6 +15,7 @@ using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 using HELPS.Model;
 using Newtonsoft.Json;
 using HELPS.Controllers;
+using Android.Util;
 
 namespace HELPS.Views.Activities
 {
@@ -26,6 +27,7 @@ namespace HELPS.Views.Activities
         private LinearLayout _NotBooked;
         private Booking _Booking;
         private Workshop _Workshop;
+        private WorkshopBooking _WorkshopBooking;
         //private string studentId;
 
         protected override void OnCreate(Bundle bundle)
@@ -55,6 +57,10 @@ namespace HELPS.Views.Activities
 
             // Send an intent that tells the activity if the session is booked by the student or not.
             if (_Booking != null)
+            {
+                SetBookingView();
+            }
+            else if(_WorkshopBooking !=null)
             {
                 SetBookingView();
             }
@@ -104,7 +110,9 @@ namespace HELPS.Views.Activities
             if (requestType == "showAvailableWorkshop")
             {
                 _Workshop = JsonConvert.DeserializeObject<Workshop>(Intent.GetStringExtra("workshop"));
+                
             }
+               
             else // requestType == "showBooking"
             {
                 string bookingType = Intent.GetStringExtra("bookingType");
@@ -118,7 +126,7 @@ namespace HELPS.Views.Activities
                 else // bookingType == "Workshop"
                 {
                     WorkshopBooking workshopBooking = JsonConvert.DeserializeObject<WorkshopBooking>(bookingString);
-                    _Booking = workshopBooking;
+                    _WorkshopBooking = workshopBooking;
                 }
             }
         }
@@ -148,14 +156,18 @@ namespace HELPS.Views.Activities
                 // Code to cancel booking.
                 WorkshopController workshopController = new WorkshopController();
 
-                if(!workshopController.CancelBooking(_Workshop.WorkshopId))
+                if(!workshopController.CancelBooking(_WorkshopBooking.workshopID.ToString()))
                 {
                     //show error, stay on page;
                 }
 
                 else
                 {
-                    //show dialog saying booked and return
+                    //show dialog saying cancled
+                    var SuccesDialog = new AlertDialog.Builder(this);
+                    SuccesDialog.SetMessage("Booking has been Cancled!");
+                    SuccesDialog.SetNeutralButton("OK", delegate { });
+                    SuccesDialog.Show();
                 }
 
             });
