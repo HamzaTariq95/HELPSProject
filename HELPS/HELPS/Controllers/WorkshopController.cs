@@ -174,6 +174,33 @@ namespace HELPS.Controllers
             return workshopSetData;
         }
 
+        internal bool CancelBooking(string workshopId)
+        {
+            string url = Server.url + "api/workshop/booking/cancel?workshopId=" + workshopId + "&studentId=" + Constants.CURRENT_STUDENT_ID + "&userId=12345";
+
+            //Setting Request Properties
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "POST";
+            request.ContentType = "application/json; charset=utf-8";
+            request.Headers["AppKey"] = "66666";
+
+            //WorkshopData workshops = null;
+            string json;
+
+            using (WebClient wc = new WebClient())
+            {
+                wc.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
+                wc.Headers.Add("AppKey", "66666");
+
+                json = wc.UploadString(url, "");
+
+                Log.Info("Register SUCCESS", json);
+
+            }
+
+            return json.Contains("true");
+        }
+
         internal bool Book(string workshopId)
         {
             string url = "http://groupthirteen.cloudapp.net/api/workshop/booking/create?workshopId=" + 
