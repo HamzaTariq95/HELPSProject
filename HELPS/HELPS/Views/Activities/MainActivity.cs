@@ -81,7 +81,7 @@ namespace HELPS
 
             WorkshopController workshopController = new WorkshopController();
             workshopBookingData = workshopController.GetWorkshopBookingData(studentData.attributes.studentID);
-            if (workshopBookingData.attributes.Count > 0)
+            if (workshopBookingData != null && workshopBookingData.attributes.Count > 0)
             {
                 FetchCampusData();
                 FetchWorkshopSetData();

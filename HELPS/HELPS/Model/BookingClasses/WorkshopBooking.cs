@@ -51,16 +51,16 @@ namespace HELPS.Model
 
         public override string Status()
         {
-            if (starting > DateTime.Now && canceled == null && WorkshopArchived == null)
+            if (starting > DateTime.Now && BookingArchived == null && WorkshopArchived == null)
                 return "Booked";
-            if (ending < DateTime.Now && canceled == null && attended == null)
-                return "Did not attend";
-            if (attended != null)
-                return "Attended";
-            if (canceled != null)
+            if (BookingArchived != null)
                 return "Canceled booking";
-            if (starting > DateTime.Now && WorkshopArchived != null)
+            if (WorkshopArchived != null)
                 return "Canceled";
+            //if (ending < DateTime.Now && canceled == null && attended == null && BookingArchived == null)
+              //  return "Did not attend";
+            //if (attended != null && BookingArchived == null && ending < DateTime.Now && canceled != null)
+              //  return "Attended";
             return "";
         }
 
@@ -109,6 +109,11 @@ namespace HELPS.Model
         public override string Description()
         {
             return description;
+        }
+
+        public override string ID()
+        {
+            return workshopID.ToString();
         }
     }
 }

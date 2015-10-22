@@ -27,7 +27,7 @@ namespace HELPS.Views.Activities
         private TextView _Title, _Date, _Description;
         private Booking _Booking;
         private Workshop _Workshop;
-        private WorkshopBooking _WorkshopBooking;
+        //private WorkshopBooking _WorkshopBooking;
         //private string studentId;
 
         protected override void OnCreate(Bundle bundle)
@@ -62,11 +62,11 @@ namespace HELPS.Views.Activities
             {
                 SetBookingView();
             }
-            else if(_WorkshopBooking !=null)
-            {
-                SetBookingView();
-            }
-            else // _worshop != null
+            //else if(_WorkshopBooking !=null)
+            //{
+              //  SetBookingView();
+            //}
+            else // _workshop != null
             {
                 SetWorkshopView();
             }
@@ -99,7 +99,7 @@ namespace HELPS.Views.Activities
 
             // Set up the title
             SupportActionBar.Title = "View Booking";
-
+            _Booking.Title();
             // Populate TextViews
             _Title.Text = _Booking.Title();
             DateTime? date = _Booking.Date();
@@ -138,7 +138,7 @@ namespace HELPS.Views.Activities
                 else // bookingType == "Workshop"
                 {
                     WorkshopBooking workshopBooking = JsonConvert.DeserializeObject<WorkshopBooking>(bookingString);
-                    _WorkshopBooking = workshopBooking;
+                    _Booking = workshopBooking;
                 }
             }
         }
@@ -168,7 +168,7 @@ namespace HELPS.Views.Activities
                 // Code to cancel booking.
                 WorkshopController workshopController = new WorkshopController();
 
-                if(!workshopController.CancelBooking(_WorkshopBooking.workshopID.ToString()))
+                if(!workshopController.CancelBooking(_Booking.ID()))
                 {
                     //show error, stay on page;
                 }

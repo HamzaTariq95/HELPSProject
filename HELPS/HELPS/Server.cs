@@ -18,6 +18,6 @@ namespace HELPS
         public static string url = "http://groupthirteen.cloudapp.net/";
         public static bool workshopBookingsAltered = false;
         public static bool sessionBookingsAltered = false;
-        public static List<WorkshopBooking> futureBookings = new List<WorkshopBooking>();
+        //public static List<WorkshopBooking> futureBookings = new List<WorkshopBooking>();
     }
 }
