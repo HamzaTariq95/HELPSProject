@@ -15,6 +15,7 @@ using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 using HELPS.Model;
 using Newtonsoft.Json;
 using HELPS.Controllers;
+using Android.Util;
 /*
 *   IMPORTANT: Do something like:
 if (requestType(get if from intent) == "showAvailableWorkshop") 
