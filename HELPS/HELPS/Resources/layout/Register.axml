@@ -34,9 +34,31 @@
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
                 android:paddingBottom="12dp" />
+        <!-- Add when able to get student full name 
             <TextView
                 android:id="@+id/textCheckName"
                 android:text="@string/checkName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textColor="@color/white"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp" />
+            -->
+            <TextView
+                android:id="@+id/textCheckEmail"
+                android:text="@string/checkEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textColor="@color/white"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp" />
+            <TextView
+                android:id="@+id/textCheckDOB"
+                android:text="@string/checkDOB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
@@ -64,16 +86,7 @@
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
                 android:paddingBottom="6dp" />
-            <TextView
-                android:id="@+id/textCheckEmail"
-                android:text="@string/checkEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:textColor="@color/white"
-                android:paddingLeft="12dp"
-                android:paddingRight="12dp"
-                android:paddingBottom="6dp" />
+        <!-- Add when able to get student phone numbers 
             <TextView
                 android:id="@+id/textCheckHomePhone"
                 android:text="@string/checkHomePhone"
@@ -94,36 +107,33 @@
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
                 android:paddingBottom="6dp" />
-            <TextView
-                android:id="@+id/textCheckDOB"
-                android:text="@string/checkDOB"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:textColor="@color/white"
-                android:paddingLeft="12dp"
-                android:paddingRight="12dp"
-                android:paddingBottom="6dp" />
+            -->
             <LinearLayout
                 android:id="@+id/checkButtons"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center">
                 <com.refractored.fab.FloatingActionButton
-                    android:id="@+id/fabCheckOk"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="24dp"
-                    android:src="@drawable/check"
-                    fab:fab_colorNormal="@color/white"
-                    fab:fab_colorPressed="@color/whiteDark"
-                    fab:fab_colorRipple="@color/redDark" />
-                <com.refractored.fab.FloatingActionButton
                     android:id="@+id/fabCheckCancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="24dp"
-                    android:src="@drawable/close"
+                    android:src="@drawable/ic_clear"
+                    android:tint="@color/red"
+                    android:padding="24dp"
+                    android:scaleType="fitCenter"
+                    fab:fab_colorNormal="@color/white"
+                    fab:fab_colorPressed="@color/whiteDark"
+                    fab:fab_colorRipple="@color/redDark" />
+                <com.refractored.fab.FloatingActionButton
+                    android:id="@+id/fabCheckOk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="24dp"
+                    android:src="@drawable/ic_done"
+                    android:tint="@color/red"
+                    android:padding="24dp"
+                    android:scaleType="fitCenter"
                     fab:fab_colorNormal="@color/white"
                     fab:fab_colorPressed="@color/whiteDark"
                     fab:fab_colorRipple="@color/redDark" />
@@ -156,245 +166,308 @@
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
                 android:paddingBottom="12dp" />
-            <TextView
-                android:id="@+id/textPreferredName"
-                android:text="@string/inputPreferredName"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:textColor="@color/white"
-                android:paddingLeft="12dp"
-                android:paddingRight="12dp"
-                android:paddingBottom="6dp" />
-            <EditText
-                android:id="@+id/editPreferredName"
-                android:hint="@string/hintPreferredName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@drawable/drawEditText"
-                android:textColorHint="@color/charcoalLight"
-                android:textColor="@color/charcoal"
-                android:layout_marginLeft="12dp"
-                android:layout_marginRight="12dp"
-                android:layout_marginBottom="6dp"
-                android:paddingTop="4dp"
-                android:paddingBottom="4dp"
-                android:paddingRight="8dp"
-                android:paddingLeft="8dp" />
-            <TextView
-                android:id="@+id/textPreferredNumber"
-                android:text="@string/inputPreferredNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:inputType="number"
-                android:textColor="@color/white"
-                android:paddingLeft="12dp"
-                android:paddingRight="12dp"
-                android:paddingBottom="6dp" />
-            <EditText
-                android:id="@+id/editPreferredNumber"
-                android:hint="@string/hintPreferredNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@drawable/drawEditText"
-                android:textColorHint="@color/charcoalLight"
-                android:textColor="@color/charcoal"
-                android:layout_marginLeft="12dp"
-                android:layout_marginRight="12dp"
-                android:layout_marginBottom="6dp"
-                android:paddingTop="4dp"
-                android:paddingBottom="4dp"
-                android:paddingRight="8dp"
-                android:paddingLeft="8dp" />
-            <TextView
-                android:id="@+id/textGender"
-                android:text="@string/inputGender"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:textColor="@color/white"
-                android:paddingLeft="12dp"
-                android:paddingRight="12dp"
-                android:paddingBottom="6dp" />
-            <RadioGroup
-                android:id="@+id/gender"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton
-                    android:id="@+id/radioMale"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/male"
-                    android:onClick="onRadioButtonClicked" />
-                <RadioButton
-                    android:id="@+id/radioFemale"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/female"
-                    android:onClick="onRadioButtonClicked" />
-                <RadioButton
-                    android:id="@+id/radioOther"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/other"
-                    android:onClick="onRadioButtonClicked" />
-            </RadioGroup>
-            <TextView
-                android:id="@+id/textStatus"
-                android:text="@string/inputStatus"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:textColor="@color/white"
-                android:paddingLeft="12dp"
-                android:paddingRight="12dp"
-                android:paddingBottom="6dp" />
-            <RadioGroup
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton
-                    android:id="@+id/radioPermanent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/male"
-                    android:onClick="onRadioButtonClicked" />
-                <RadioButton
-                    android:id="@+id/radioInternational"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/female"
-                    android:onClick="onRadioButtonClicked" />
-            </RadioGroup>
-            <TextView
-                android:id="@+id/textLanguage"
-                android:text="@string/inputLanguage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:textColor="@color/white"
-                android:paddingLeft="12dp"
-                android:paddingRight="12dp"
-                android:paddingBottom="6dp" />
-            <Spinner
-                android:id="@+id/spinnerLanguage"
-                android:prompt="@string/promptLanguage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/charcoal"
-                android:layout_marginLeft="12dp"
-                android:layout_marginRight="12dp"
-                android:layout_marginBottom="6dp"
-                android:paddingTop="4dp"
-                android:paddingBottom="4dp"
-                android:paddingRight="8dp"
-                android:paddingLeft="8dp" />
-            <TextView
-                android:id="@+id/textCountry"
-                android:text="@string/inputCountry"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:textColor="@color/white"
-                android:paddingLeft="12dp"
-                android:paddingRight="12dp"
-                android:paddingBottom="6dp" />
-            <Spinner
-                android:id="@+id/spinnerCountry"
-                android:prompt="@string/promptCountry"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/charcoal"
-                android:layout_marginLeft="12dp"
-                android:layout_marginRight="12dp"
-                android:layout_marginBottom="6dp"
-                android:paddingTop="4dp"
-                android:paddingBottom="4dp"
-                android:paddingRight="8dp"
-                android:paddingLeft="8dp" />
-            <TextView
-                android:id="@+id/textEducation"
-                android:text="@string/inputEducation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:textColor="@color/white"
-                android:paddingLeft="12dp"
-                android:paddingRight="12dp"
-                android:paddingBottom="6dp" />
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
-                <CheckBox
-                    android:id="@+id/checkHsc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/hsc" />
-                <CheckBox
-                    android:id="@+id/checkIelts"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/ielts" />
-                <CheckBox
-                    android:id="@+id/checkToefl"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/toefl" />
-                <CheckBox
-                    android:id="@+id/checkTafe"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tafe" />
-                <CheckBox
-                    android:id="@+id/checkCult"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/cult" />
-                <CheckBox
-                    android:id="@+id/checkDeep"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/deep" />
-                <CheckBox
-                    android:id="@+id/checkDiploma"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/diploma" />
-                <CheckBox
-                    android:id="@+id/checkFoundation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/foundation" />
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/inputButtons"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
-                <com.refractored.fab.FloatingActionButton
-                    android:id="@+id/fabInputOk"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="24dp"
-                    android:src="@drawable/check"
-                    fab:fab_colorNormal="@color/white"
-                    fab:fab_colorPressed="@color/whiteDark"
-                    fab:fab_colorRipple="@color/redDark" />
-                <com.refractored.fab.FloatingActionButton
-                    android:id="@+id/fabInputCancel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="24dp"
-                    android:src="@drawable/close"
-                    fab:fab_colorNormal="@color/white"
-                    fab:fab_colorPressed="@color/whiteDark"
-                    fab:fab_colorRipple="@color/redDark" />
-            </LinearLayout>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/textPreferredName"
+                        android:text="@string/inputPreferredName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:textColor="@color/white"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="12dp"
+                        android:paddingBottom="6dp" />
+                    <EditText
+                        android:id="@+id/editPreferredName"
+                        android:hint="@string/hintPreferredName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/drawEditText"
+                        android:textColorHint="@color/charcoalLight"
+                        android:textColor="@color/charcoal"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginRight="12dp"
+                        android:layout_marginBottom="6dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:paddingRight="8dp"
+                        android:paddingLeft="8dp" />
+                    <TextView
+                        android:id="@+id/textPreferredNumber"
+                        android:text="@string/inputPreferredNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:textColor="@color/white"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="12dp"
+                        android:paddingBottom="6dp" />
+                    <EditText
+                        android:id="@+id/editPreferredNumber"
+                        android:hint="@string/hintPreferredNumber"
+                        android:inputType="number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/drawEditText"
+                        android:textColorHint="@color/charcoalLight"
+                        android:textColor="@color/charcoal"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginRight="12dp"
+                        android:layout_marginBottom="6dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:paddingRight="8dp"
+                        android:paddingLeft="8dp" />
+                    <TextView
+                        android:id="@+id/textGender"
+                        android:text="@string/inputGender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:textColor="@color/white"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="12dp"
+                        android:paddingBottom="6dp" />
+                    <RadioGroup
+                        android:id="@+id/radioGender"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="12dp"
+                        android:paddingBottom="6dp">
+                        <RadioButton
+                            android:id="@+id/radioMale"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/male"
+                            android:textColor="@color/white"
+                            android:buttonTint="@color/white" />
+                        <RadioButton
+                            android:id="@+id/radioFemale"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/female"
+                            android:textColor="@color/white"
+                            android:buttonTint="@color/white" />
+                        <RadioButton
+                            android:id="@+id/radioOther"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/other"
+                            android:textColor="@color/white"
+                            android:buttonTint="@color/white" />
+                    </RadioGroup>
+                    <TextView
+                        android:id="@+id/textStatus"
+                        android:text="@string/inputStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:textColor="@color/white"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="12dp"
+                        android:paddingBottom="6dp" />
+                    <RadioGroup
+                        android:id="@+id/radioStatus"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="12dp"
+                        android:paddingBottom="6dp">
+                        <RadioButton
+                            android:id="@+id/radioPermanent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/permanent"
+                            android:textColor="@color/white"
+                            android:buttonTint="@color/white" />
+                        <RadioButton
+                            android:id="@+id/radioInternational"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/international"
+                            android:textColor="@color/white"
+                            android:buttonTint="@color/white" />
+                    </RadioGroup>
+                    <TextView
+                        android:id="@+id/textLanguage"
+                        android:text="@string/inputLanguage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:textColor="@color/white"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="12dp"
+                        android:paddingBottom="6dp" />
+                    <Spinner
+                        android:id="@+id/spinnerLanguage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginRight="12dp"
+                        android:layout_marginBottom="6dp"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="12dp"
+                        android:paddingBottom="6dp" />
+                    <TextView
+                        android:id="@+id/textCountry"
+                        android:text="@string/inputCountry"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:textColor="@color/white"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="12dp"
+                        android:paddingBottom="6dp" />
+                    <Spinner
+                        android:id="@+id/spinnerCountry"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginRight="12dp"
+                        android:layout_marginBottom="6dp"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="12dp"
+                        android:paddingBottom="6dp" />
+                    <TextView
+                        android:id="@+id/textEducation"
+                        android:text="@string/inputEducation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:textColor="@color/white"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="12dp"
+                        android:paddingBottom="6dp" />
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="12dp"
+                        android:paddingBottom="6dp">
+                        <CheckBox
+                            android:id="@+id/checkHsc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/hsc"
+                            android:textColor="@color/white" />
+                        <CheckBox
+                            android:id="@+id/checkIelts"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/ielts"
+                            android:textColor="@color/white" />
+                        <CheckBox
+                            android:id="@+id/checkToefl"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/toefl"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="12dp"
+                        android:paddingBottom="6dp">
+                        <CheckBox
+                            android:id="@+id/checkTafe"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/tafe"
+                            android:textColor="@color/white"
+                            android:paddingRight="12dp" />
+                        <CheckBox
+                            android:id="@+id/checkCult"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/cult"
+                            android:textColor="@color/white"
+                            android:paddingRight="12dp" />
+                        <CheckBox
+                            android:id="@+id/checkDeep"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/deep"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="12dp"
+                        android:paddingBottom="6dp">
+                        <CheckBox
+                            android:id="@+id/checkDiploma"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/diploma"
+                            android:textColor="@color/white"
+                            android:paddingRight="12dp" />
+                        <CheckBox
+                            android:id="@+id/checkFoundation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/foundation"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/inputButtons"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="center">
+                        <com.refractored.fab.FloatingActionButton
+                            android:id="@+id/fabInputCancel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="24dp"
+                            android:src="@drawable/ic_clear"
+                            android:tint="@color/red"
+                            android:padding="24dp"
+                            android:scaleType="fitCenter"
+                            fab:fab_colorNormal="@color/white"
+                            fab:fab_colorPressed="@color/whiteDark"
+                            fab:fab_colorRipple="@color/redDark" />
+                        <com.refractored.fab.FloatingActionButton
+                            android:id="@+id/fabInputOk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="24dp"
+                            android:src="@drawable/ic_person_add"
+                            android:tint="@color/red"
+                            android:padding="24dp"
+                            android:scaleType="fitCenter"
+                            fab:fab_colorNormal="@color/white"
+                            fab:fab_colorPressed="@color/whiteDark"
+                            fab:fab_colorRipple="@color/redDark" />
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
         </LinearLayout>
     </ViewSwitcher>
 </LinearLayout>
