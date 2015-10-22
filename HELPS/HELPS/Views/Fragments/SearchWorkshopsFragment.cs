@@ -32,7 +32,7 @@ namespace HELPS.Views
 
             // Create your fragment here
         }
-
+        
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             View view = inflater.Inflate(Resource.Layout.SearchLayout, container, false);
@@ -41,20 +41,37 @@ namespace HELPS.Views
             //studentData = JsonConvert.DeserializeObject<StudentData>(this.Activity.Intent.GetStringExtra("student"));
 
             // Set the "Upcoming Sessions" list view to display (upto) the four closest sessions
-            DisplayAvailableWorkshops(view);
+            FetchAvailableWorkshops();
+            SelectUnBookedWorkshops();
+            DisplayWorkshops(view);
 
             return view;
         }
 
-        private void DisplayAvailableWorkshops(View view)
+        private void DisplayWorkshops(View view)
+        {
+
+            ListView availableList = view.FindViewById<ListView>(Resource.Id.listAvailable);
+            availableList.OnItemClickListener = this;
+
+            //Sort bookings by date
+            // workshops.Sort((a, b) => a.Date().ToString().CompareTo(b.Date().ToString()));
+            workshops.Sort((a, b) => DateTime.Compare(a.Date() ?? DateTime.MaxValue, b.Date() ?? DateTime.MaxValue));
+
+            availableList.Adapter = new SearchWorkshopsBaseAdapter(Activity, workshops);
+        }
+
+        private void SelectUnBookedWorkshops()
+        {
+            
+            //workshops = workshops.Where(x => x.Equals())
+        }
+
+        private void FetchAvailableWorkshops()
         {
             // {Architecture} inflate list with available workshops
             workshops = new List<Workshop>();
             addWorkshopToList(workshopData, workshops);
-
-            ListView availableList = view.FindViewById<ListView>(Resource.Id.listAvailable);
-            availableList.OnItemClickListener = this;
-            availableList.Adapter = new SearchWorkshopsBaseAdapter(Activity, workshops);
         }
 
         private void addWorkshopToList(WorkshopData workshopData, List<Workshop> workshops)

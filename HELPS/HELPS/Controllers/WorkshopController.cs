@@ -87,9 +87,9 @@ namespace HELPS.Controllers
             return workshopBookingData;
         }
 
-        public WorkshopData searchWorkshops(String startDate)
+        public WorkshopData searchWorkshops(string startDate)
         {
-
+            Console.WriteLine("date---------->" + startDate);
             //string url = "http://GroupThirteen.cloudapp.net/api/workshop/search?startingDtBegin=" + startDate + "&startingDtEnd=2060-12-20&active=true";
             string url = Server.url + "api/workshop/search?startingDtBegin=" + startDate + "&startingDtEnd=2060-12-20&active=true";
 
@@ -207,32 +207,33 @@ namespace HELPS.Controllers
             string url = "http://groupthirteen.cloudapp.net/api/workshop/booking/create?workshopId=" + 
                 workshopId + "&studentId=" + Constants.CURRENT_STUDENT_ID + "&userId=12345";
 
-            //Setting Request Properties
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = "POST";
-            request.ContentType = "application/json; charset=utf-8";
-            request.Headers["AppKey"] = "66666";
 
-            //WorkshopData workshops = null;
-            string json;
+            //string json = JsonConvert.SerializeObject(data);
 
-            //Generating JSON Response and Converting it to Student Object.
-            using (WebResponse response = request.GetResponse())
+            //Log.Info("Register", json);
+
+            // Request Address of the API    
+            //string url = "http://groupthirteen.cloudapp.net/api/student/register";
+            //string url = Server.url + "api/student/register";
+
+            string result = null;
+
+            using (WebClient wc = new WebClient())
             {
-                //Get a stream representation of the HTTP web response:
-                using (Stream stream = response.GetResponseStream())
-                {
-                    using (StreamReader sr = new StreamReader(stream))
-                    {
-                        json = sr.ReadToEnd();
-                            
-                        //Convert JSON Response to Student Object
-                        //workshops = JsonConvert.DeserializeObject<WorkshopData>(json);
-                    }
+                wc.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
+                wc.Headers.Add("AppKey", "66666");
 
-                }
+
+                result = wc.UploadString(url, "");
+
+
+                Log.Info("Register SUCCESS", result);
+
             }
-            return json.Contains("true");
+
+
+
+            return result.Contains("true");
         }
 
         internal CampusData GetCampusData()

@@ -9,11 +9,15 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using HELPS.Model;
 
 namespace HELPS
 {
     public static class Server
     {
-        public static String url = "http://groupthirteen.cloudapp.net/";
+        public static string url = "http://groupthirteen.cloudapp.net/";
+        public static bool workshopBookingsAltered = false;
+        public static bool sessionBookingsAltered = false;
+        public static List<WorkshopBooking> futureBookings = new List<WorkshopBooking>();
     }
 }

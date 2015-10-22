@@ -37,6 +37,7 @@ namespace HELPS.Views
             base.OnCreate(savedInstanceState);
 
             // Create your fragment here
+            Server.futureBookings.Clear();
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -51,8 +52,8 @@ namespace HELPS.Views
 
         private void DisplayUpcomingBookings(View view)
         {
-            bookings = new List<Booking>();
-
+            //Server.futureBookings.Clear();
+            List<Booking> bookings = new List<Booking>();
             if (sessionBookingData == null && workshopBookingData == null)
             {
                 //Display on screen: no bookings found
@@ -64,6 +65,11 @@ namespace HELPS.Views
 
             ListView upcomingList = view.FindViewById<ListView>(Resource.Id.listUpcoming);
             upcomingList.OnItemClickListener = this;
+
+            //Sort bookings by date
+            //bookings.Sort((a, b) => a.Date().ToString().CompareTo(b.Date().ToString()));
+            bookings.Sort((a, b) => DateTime.Compare(a.Date() ?? DateTime.MaxValue, b.Date() ?? DateTime.MaxValue));
+
             upcomingList.Adapter = new BookingBaseAdapter(Activity, bookings);
         }
 
@@ -78,7 +84,10 @@ namespace HELPS.Views
             foreach (WorkshopBooking workshopBooking in workshopBookingData.attributes)
             {
                 if (workshopBooking.starting > DateTime.Now && !workshopBooking.Status().Equals("Canceled booking"))
+                {
                     bookings.Add(workshopBooking);
+                    Server.futureBookings.Add(workshopBooking);
+                }
             }
         }
 

@@ -1675,6 +1675,9 @@ namespace HELPS
 			// aapt resource value: 0x7f0b0065
 			public const int fragmentContainer = 2131427429;
 			
+			// aapt resource value: 0x7f0b008b
+			public const int gender = 2131427467;
+			
 			// aapt resource value: 0x7f0b0004
 			public const int home = 2131427332;
 			
@@ -1912,6 +1915,8 @@ namespace HELPS
 			// aapt resource value: 0x7f0b0087
 			public const int textGender = 2131427463;
 			
+			// aapt resource value: 0x7f0b0094
+			public const int textCountry = 2131427476;
 			// aapt resource value: 0x7f0b0094
 			//public const int textCountry = 2131427476;
 
@@ -2235,6 +2240,9 @@ namespace HELPS
 			// aapt resource value: 0x7f050047
 			public const int areYouSureCancel = 2131034183;
 			
+			// aapt resource value: 0x7f050048
+			public const int book = 2131034184;
+			
 			// aapt resource value: 0x7f050046
 			public const int cancelBooking = 2131034182;
 			
@@ -2346,8 +2354,8 @@ namespace HELPS
 			// aapt resource value: 0x7f05003f
 			public const int menuTitle = 2131034175;
 			
-			// aapt resource value: 0x7f050048
-			public const int notificationTitle = 2131034184;
+			// aapt resource value: 0x7f050049
+			public const int notificationTitle = 2131034185;
 			
 			// aapt resource value: 0x7f05002d
 			public const int other = 2131034157;
@@ -2363,6 +2371,12 @@ namespace HELPS
 			
 			// aapt resource value: 0x7f050030
 			public const int postgrad = 2131034160;
+			
+			// aapt resource value: 0x7f05004a
+			public const int promptCountry = 2131034186;
+			
+			// aapt resource value: 0x7f05004b
+			public const int promptLanguage = 2131034187;
 			
 			// aapt resource value: 0x7f05001b
 			public const int registerTitle = 2131034139;
