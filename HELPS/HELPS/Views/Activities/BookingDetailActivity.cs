@@ -22,8 +22,8 @@ namespace HELPS.Views.Activities
     public class BookingDetailActivity : AppCompatActivity
     {
         private SupportToolbar _Toolbar;
-        private LinearLayout _Booked;
-        private LinearLayout _NotBooked;
+        private LinearLayout _Booked, _NotBooked;
+        private TextView _Title, _Date, _Description;
         private Booking _Booking;
         private Workshop _Workshop;
         //private string studentId;
@@ -42,10 +42,12 @@ namespace HELPS.Views.Activities
             _Toolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
             SetSupportActionBar(_Toolbar);
 
-            // {Architecture} Pass the workshop title as the toolbar title
-            // SupportActionBar.Title(<pass here>)
-
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+
+            // Set up the TextViews
+            _Title = FindViewById<TextView>(Resource.Id.detailTitle);
+            _Date = FindViewById<TextView>(Resource.Id.detailDate);
+            _Description = FindViewById<TextView>(Resource.Id.detailDescription);
 
             _Booked = FindViewById<LinearLayout>(Resource.Id.bookedButtons);
             _Booked.Visibility = ViewStates.Gone;
@@ -68,6 +70,14 @@ namespace HELPS.Views.Activities
         {
             // Display the booking button
             _NotBooked.Visibility = ViewStates.Visible;
+
+            // Populate the TextViews
+            SupportActionBar.Title = "Book Workshop";
+            _Title.Text = _Workshop.Title();
+            DateTime? date = _Workshop.Date();
+            _Date.Text = (date == null) ? "Not available" : date.ToString();
+            _Description.Text = _Workshop.description;
+
             Button bookButton = FindViewById<Button>(Resource.Id.buttonBook);
             bookButton.Click += delegate
             {
@@ -81,12 +91,14 @@ namespace HELPS.Views.Activities
         {
             _Booked.Visibility = ViewStates.Visible;
 
-            // Set up notification button
-            Button changeNotificationButton = FindViewById<Button>(Resource.Id.buttonChangeNotification);
-            changeNotificationButton.Click += delegate
-            {
-                DisplayNotificationSettings();
-            };
+            // Set up the title
+            SupportActionBar.Title = "View Booking";
+
+            // Populate TextViews
+            _Title.Text = _Booking.Title();
+            DateTime? date = _Booking.Date();
+            _Date.Text = (date == null) ? "Not available" : date.ToString();
+            _Description.Text = _Booking.Description();
 
             //Set up cancel button
             Button cancelButton = FindViewById<Button>(Resource.Id.buttonCancelBooking);
