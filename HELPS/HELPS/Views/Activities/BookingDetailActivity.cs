@@ -15,6 +15,7 @@ using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 using HELPS.Model;
 using Newtonsoft.Json;
 using HELPS.Controllers;
+using Android.Util;
 
 namespace HELPS.Views.Activities
 {
@@ -22,10 +23,11 @@ namespace HELPS.Views.Activities
     public class BookingDetailActivity : AppCompatActivity
     {
         private SupportToolbar _Toolbar;
-        private LinearLayout _Booked;
-        private LinearLayout _NotBooked;
+        private LinearLayout _Booked, _NotBooked;
+        private TextView _Title, _Date, _Description;
         private Booking _Booking;
         private Workshop _Workshop;
+        private WorkshopBooking _WorkshopBooking;
         //private string studentId;
 
         protected override void OnCreate(Bundle bundle)
@@ -42,10 +44,12 @@ namespace HELPS.Views.Activities
             _Toolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
             SetSupportActionBar(_Toolbar);
 
-            // {Architecture} Pass the workshop title as the toolbar title
-            // SupportActionBar.Title(<pass here>)
-
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+
+            // Set up the TextViews
+            _Title = FindViewById<TextView>(Resource.Id.detailTitle);
+            _Date = FindViewById<TextView>(Resource.Id.detailDate);
+            _Description = FindViewById<TextView>(Resource.Id.detailDescription);
 
             _Booked = FindViewById<LinearLayout>(Resource.Id.bookedButtons);
             _Booked.Visibility = ViewStates.Gone;
@@ -55,6 +59,10 @@ namespace HELPS.Views.Activities
 
             // Send an intent that tells the activity if the session is booked by the student or not.
             if (_Booking != null)
+            {
+                SetBookingView();
+            }
+            else if(_WorkshopBooking !=null)
             {
                 SetBookingView();
             }
@@ -68,6 +76,14 @@ namespace HELPS.Views.Activities
         {
             // Display the booking button
             _NotBooked.Visibility = ViewStates.Visible;
+
+            // Populate the TextViews
+            SupportActionBar.Title = "Book Workshop";
+            _Title.Text = _Workshop.Title();
+            DateTime? date = _Workshop.Date();
+            _Date.Text = (date == null) ? "Not available" : date.ToString();
+            _Description.Text = _Workshop.description;
+
             Button bookButton = FindViewById<Button>(Resource.Id.buttonBook);
             bookButton.Click += delegate
             {
@@ -81,12 +97,14 @@ namespace HELPS.Views.Activities
         {
             _Booked.Visibility = ViewStates.Visible;
 
-            // Set up notification button
-            Button changeNotificationButton = FindViewById<Button>(Resource.Id.buttonChangeNotification);
-            changeNotificationButton.Click += delegate
-            {
-                DisplayNotificationSettings();
-            };
+            // Set up the title
+            SupportActionBar.Title = "View Booking";
+
+            // Populate TextViews
+            _Title.Text = _Booking.Title();
+            DateTime? date = _Booking.Date();
+            _Date.Text = (date == null) ? "Not available" : date.ToString();
+            _Description.Text = _Booking.Description();
 
             //Set up cancel button
             Button cancelButton = FindViewById<Button>(Resource.Id.buttonCancelBooking);
@@ -104,7 +122,9 @@ namespace HELPS.Views.Activities
             if (requestType == "showAvailableWorkshop")
             {
                 _Workshop = JsonConvert.DeserializeObject<Workshop>(Intent.GetStringExtra("workshop"));
+                
             }
+               
             else // requestType == "showBooking"
             {
                 string bookingType = Intent.GetStringExtra("bookingType");
@@ -118,7 +138,7 @@ namespace HELPS.Views.Activities
                 else // bookingType == "Workshop"
                 {
                     WorkshopBooking workshopBooking = JsonConvert.DeserializeObject<WorkshopBooking>(bookingString);
-                    _Booking = workshopBooking;
+                    _WorkshopBooking = workshopBooking;
                 }
             }
         }
@@ -146,6 +166,22 @@ namespace HELPS.Views.Activities
             cancelAlert.SetPositiveButton("YES", delegate
             {
                 // Code to cancel booking.
+                WorkshopController workshopController = new WorkshopController();
+
+                if(!workshopController.CancelBooking(_WorkshopBooking.workshopID.ToString()))
+                {
+                    //show error, stay on page;
+                }
+
+                else
+                {
+                    //show dialog saying cancled
+                    var SuccesDialog = new AlertDialog.Builder(this);
+                    SuccesDialog.SetMessage("Booking has been Cancled!");
+                    SuccesDialog.SetNeutralButton("OK", delegate { });
+                    SuccesDialog.Show();
+                }
+
             });
             cancelAlert.SetNegativeButton("NO", delegate { });
             cancelAlert.Show();
