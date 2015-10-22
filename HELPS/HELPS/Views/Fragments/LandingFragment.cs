@@ -64,7 +64,15 @@ namespace HELPS
 
             ListView upcomingList = view.FindViewById<ListView>(Resource.Id.listUpcoming);
             upcomingList.OnItemClickListener = this;
-            
+
+            //Sort bookings by date
+             //bookings.Sort((a, b) => a.Date().ToString().CompareTo(b.Date().ToString()));
+            bookings.Sort((a, b) => DateTime.Compare(a.Date() ?? DateTime.MaxValue, b.Date() ?? DateTime.MaxValue));
+
+
+            //Select first four bookings
+            bookings = bookings.Take(4).ToList();
+
             upcomingList.Adapter = new BookingBaseAdapter(Activity, bookings);
         }
 
@@ -72,12 +80,6 @@ namespace HELPS
         {
             addSessionBookingsToList(sessionBookingData, bookings);
             addWorkshopBookingsToList(workshopBookingData, bookings);
-
-            //Sort bookings by date
-            bookings.Sort((a, b) => a.Date().ToString().CompareTo(b.Date().ToString()));
-
-            //Select first four bookings
-            bookings = bookings.Take(4).ToList();
         }
 
         private void addWorkshopBookingsToList(WorkshopBookingData workshopBookingData,  List<Booking> bookings)

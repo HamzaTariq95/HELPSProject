@@ -58,8 +58,7 @@ namespace HELPS
             _Landing = new LandingFragment(sessionBookingData, workshopBookingData, studentData);
             _Future = new FutureBookingsFragment(sessionBookingData, workshopBookingData, studentData);
             _Past = new PastBookingsFragment(sessionBookingData, workshopBookingData, studentData);
-            _Search = new SearchWorkshopsFragment(workshopData);
-
+            
             // Set up the landing page
             SetView(Resource.Id.fragmentContainer, _Landing, false);
 
@@ -217,8 +216,12 @@ namespace HELPS
 private void FetchAvailableWorkshops()
 {
  	WorkshopController workshopController = new WorkshopController();
-            workshopData = workshopController.searchWorkshops(DateTime.Now.ToString("yyyy-MM-dd"));
+            workshopData = workshopController.searchWorkshops(DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
 }
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+        }
 
         private void SetView(int fragmentResource, Fragment view, bool retainView)
         {

@@ -71,5 +71,17 @@ namespace HELPS.Model
             return targetingGroup;
         }
 
+        public override bool Equals(Object obj)
+        {
+            // Check for null values and compare run-time types.
+            if (obj != null && obj.GetType() == typeof(WorkshopBooking))
+            {
+                WorkshopBooking workshopBooking = (WorkshopBooking)obj;
+                return (WorkshopId.Equals(workshopBooking.workshopID));
+            }
+
+            return false;
+        }
+
     }
 }

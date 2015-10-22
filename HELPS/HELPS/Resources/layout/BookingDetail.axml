@@ -49,7 +49,7 @@
         android:background="@color/red">
         <Button
             android:id="@+id/buttonBook"
-            android:text="@string/changeNotification"
+            android:text="@string/book"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"

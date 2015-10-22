@@ -66,6 +66,11 @@ namespace HELPS.Views
 
             ListView upcomingList = view.FindViewById<ListView>(Resource.Id.listUpcoming);
             upcomingList.OnItemClickListener = this;
+
+            //Sort bookings by date
+            //bookings.Sort((b, a) => a.Date().ToString().CompareTo(b.Date().ToString()));
+            bookings.Sort((b, a) => DateTime.Compare(a.Date() ?? DateTime.MaxValue, b.Date() ?? DateTime.MaxValue));
+
             upcomingList.Adapter = new BookingBaseAdapter(Activity, bookings);
         }
            
