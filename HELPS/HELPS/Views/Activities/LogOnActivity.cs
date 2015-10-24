@@ -18,6 +18,7 @@ using Newtonsoft.Json;
 using System.IO;
 using CsvHelper;
 using HELPS.Views.Activities;
+using Java.Lang;
 
 namespace HELPS
 {
@@ -103,6 +104,16 @@ namespace HELPS
           
         }
 
+        private void ShowProgressDialog()
+        {
+            ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.Indeterminate = true;
+            progressDialog.SetProgressStyle(ProgressDialogStyle.Spinner);
+            progressDialog.SetMessage("Logging in. Please wait...");
+            progressDialog.SetCancelable(false);
+            progressDialog.Show();
+        }
+
         private bool registeredAtHELPS(string studentID)
         {
             return (studentDataAtHELPS = new HomeController().login(studentID)) != null;
@@ -165,17 +176,6 @@ namespace HELPS
             StartActivity(aboutActivity);
         }
 
-        private void ShowProgressDialog()
-        {
-            ProgressDialog progressDialog = new ProgressDialog(this);
-
-            progressDialog.Indeterminate = true;
-            progressDialog.SetProgressStyle(ProgressDialogStyle.Spinner);
-            progressDialog.SetMessage("Logging in. Please wait...");
-            progressDialog.SetCancelable(false);
-            progressDialog.Show();
-        }
-
         private static List<string> SplitRow(string Row)
         {
             List<string> result = new List<string>();
@@ -184,4 +184,6 @@ namespace HELPS
             return result;
         }
     }
+
+   
 }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           

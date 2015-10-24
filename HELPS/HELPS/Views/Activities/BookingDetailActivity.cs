@@ -87,12 +87,32 @@ namespace HELPS.Views.Activities
             _Description.Text = _Workshop.description;
 
             Button bookButton = FindViewById<Button>(Resource.Id.buttonBook);
+            Button waitlistButton = FindViewById<Button>(Resource.Id.buttonWaitlist);
+
             bookButton.Click += delegate
             {
                 Book();
                 Server.workshopBookingsAltered = true;
                 Finish();
             };
+
+            waitlistButton.Click += delegate
+            {
+                Waitlist();
+                //Server.workshopBookingsAltered = true;
+                Finish();
+            };
+
+            if (_Workshop.BookingCount < _Workshop.cutoff)
+                waitlistButton.Visibility = ViewStates.Gone;
+            else
+                bookButton.Visibility = ViewStates.Gone;
+        }
+
+        private void Waitlist()
+        {
+            WorkshopController workshopController = new WorkshopController();
+            workshopController.Waitlist(_Workshop.WorkshopId);
         }
 
         private void SetBookingView()
@@ -112,7 +132,6 @@ namespace HELPS.Views.Activities
             cancelButton.Click += delegate
             {
                 CancelBooking();
-
 
             };
             if (date < DateTime.Now)
