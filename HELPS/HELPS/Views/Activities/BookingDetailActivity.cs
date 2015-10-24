@@ -191,26 +191,57 @@ namespace HELPS.Views.Activities
             cancelAlert.SetMessage(GetString(Resource.String.areYouSureCancel));
             cancelAlert.SetPositiveButton("YES", delegate
             {
-                // Code to cancel booking.
-                WorkshopController workshopController = new WorkshopController();
 
-                if(!workshopController.CancelBooking(_Booking.ID()))
+                if(_Booking.GetType() == typeof(SessionBooking))
                 {
-                    //show error, stay on page;
+                    SessionController sessionController = new SessionController();
+
+                    if (!sessionController.CancelSession(_Booking.ID()))
+                    {
+                        //show error, stay on page;
+                    }
+
+                    else
+                    {
+                        //show dialog saying cancled
+                        var SuccesDialog = new AlertDialog.Builder(this);
+                        SuccesDialog.SetMessage("Booking has been Cancled!");
+                        SuccesDialog.SetNeutralButton("OK", delegate { Finish(); });
+                        SuccesDialog.Show();
+
+                        if (bookingType.Equals("Session"))
+                            Server.sessionBookingsAltered = true;
+                        else
+                            Server.workshopBookingsAltered = true;
+                    }
+
+                    
                 }
 
-                else
+                else if (_Booking.GetType() == typeof(WorkshopBooking))
                 {
-                    //show dialog saying cancled
-                    var SuccesDialog = new AlertDialog.Builder(this);
-                    SuccesDialog.SetMessage("Booking has been Cancled!");
-                    SuccesDialog.SetNeutralButton("OK", delegate { Finish(); });
-                    SuccesDialog.Show();
+                    // Code to cancel booking.
+                    WorkshopController workshopController = new WorkshopController();
 
-                    if (bookingType.Equals("Session"))
-                        Server.sessionBookingsAltered = true;
+                    if (!workshopController.CancelBooking(_Booking.ID()))
+                    {
+                        //show error, stay on page;
+                    }
+
                     else
-                        Server.workshopBookingsAltered = true;
+                    {
+                        //show dialog saying cancled
+                        var SuccesDialog = new AlertDialog.Builder(this);
+                        SuccesDialog.SetMessage("Booking has been Cancled!");
+                        SuccesDialog.SetNeutralButton("OK", delegate { Finish(); });
+                        SuccesDialog.Show();
+
+                        if (bookingType.Equals("Session"))
+                            Server.sessionBookingsAltered = true;
+                        else
+                            Server.workshopBookingsAltered = true;
+                    }
+
                 }
 
             });
