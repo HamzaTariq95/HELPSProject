@@ -44,6 +44,9 @@ namespace HELPS.Views
             //Get student data from intent in parent activity
             studentData = JsonConvert.DeserializeObject<StudentData>(this.Activity.Intent.GetStringExtra("student"));
 
+            sessionBookingData = Server.currentSessionBookingData;
+            workshopBookingData = Server.currentWorkshopBookingData;
+
             // Set the "Past Bookings" list view to display (upto) the four closest sessions
             DisplayPastBookings(view);
 

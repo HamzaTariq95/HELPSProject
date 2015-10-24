@@ -24,6 +24,9 @@ namespace HELPS.Views
         private SessionBookingData sessionBookingData;
         private WorkshopBookingData workshopBookingData;
         private List<Booking> bookings;
+        private ListView upcomingList;
+        private BookingBaseAdapter adapter;
+
         //private CampusData campusData;
 
         public FutureBookingsFragment(SessionBookingData sessionBookingData, WorkshopBookingData workshopBookingData, StudentData studentData)
@@ -44,6 +47,9 @@ namespace HELPS.Views
         {
             View view = inflater.Inflate(Resource.Layout.BookingsLayout, container, false);
 
+            sessionBookingData = Server.currentSessionBookingData;
+            workshopBookingData = Server.currentWorkshopBookingData;
+
             // Set the "Upcoming Sessions" list view to display (upto) the four closest sessions
             DisplayUpcomingBookings(view);
 
@@ -63,16 +69,17 @@ namespace HELPS.Views
                 addBookingsToList(bookings, sessionBookingData, workshopBookingData);
             }
 
-            ListView upcomingList = view.FindViewById<ListView>(Resource.Id.listUpcoming);
+            upcomingList = view.FindViewById<ListView>(Resource.Id.listUpcoming);
             upcomingList.OnItemClickListener = this;
 
             //Sort bookings by date
             //bookings.Sort((a, b) => a.Date().ToString().CompareTo(b.Date().ToString()));
             bookings.Sort((a, b) => DateTime.Compare(a.Date() ?? DateTime.MaxValue, b.Date() ?? DateTime.MaxValue));
-
-            upcomingList.Adapter = new BookingBaseAdapter(Activity, bookings);
-        }
-
+            adapter = new BookingBaseAdapter(Activity, bookings);
+            upcomingList.Adapter = adapter;
+            //upcomingList.Adapter.RegisterDataSetObserver();
+          
+    }
         private void addBookingsToList(List<Booking> bookings, SessionBookingData sessionBookingData, WorkshopBookingData workshopBookingData)
         {
             addSessionBookingsToList(sessionBookingData, bookings);
@@ -121,6 +128,5 @@ namespace HELPS.Views
             //intent.PutExtra("studentId", studentData.attributes.);
             StartActivity(intent);
         }
-    
     }
 }

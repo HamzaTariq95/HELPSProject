@@ -40,6 +40,9 @@ namespace HELPS
         {
             View view = inflater.Inflate(Resource.Layout.MainLayout, container, false);
 
+            sessionBookingData = Server.currentSessionBookingData;
+            workshopBookingData = Server.currentWorkshopBookingData;
+
             // Set the "Hello User" text view to display the user's name
             DisplayUserName(view);
 

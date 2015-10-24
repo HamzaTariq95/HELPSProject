@@ -27,6 +27,8 @@ namespace HELPS.Views.Activities
         private TextView _Title, _Date, _Description;
         private Booking _Booking;
         private Workshop _Workshop;
+        private string bookingType;
+
         //private WorkshopBooking _WorkshopBooking;
         //private string studentId;
 
@@ -106,12 +108,17 @@ namespace HELPS.Views.Activities
             _Date.Text = (date == null) ? "Not available" : date.ToString();
             _Description.Text = _Booking.Description();
 
-            //Set up cancel button
             Button cancelButton = FindViewById<Button>(Resource.Id.buttonCancelBooking);
             cancelButton.Click += delegate
             {
                 CancelBooking();
+
+
             };
+            if (date < DateTime.Now)
+                cancelButton.Visibility = ViewStates.Gone;
+            
+            
         }
 
         private void SetVariables()
@@ -127,7 +134,7 @@ namespace HELPS.Views.Activities
                
             else // requestType == "showBooking"
             {
-                string bookingType = Intent.GetStringExtra("bookingType");
+                bookingType = Intent.GetStringExtra("bookingType");
                 string bookingString = Intent.GetStringExtra("booking");
 
                 if (bookingType == "Session")
@@ -178,8 +185,13 @@ namespace HELPS.Views.Activities
                     //show dialog saying cancled
                     var SuccesDialog = new AlertDialog.Builder(this);
                     SuccesDialog.SetMessage("Booking has been Cancled!");
-                    SuccesDialog.SetNeutralButton("OK", delegate { });
+                    SuccesDialog.SetNeutralButton("OK", delegate { Finish(); });
                     SuccesDialog.Show();
+
+                    if (bookingType.Equals("Session"))
+                        Server.sessionBookingsAltered = true;
+                    else
+                        Server.workshopBookingsAltered = true;
                 }
 
             });
