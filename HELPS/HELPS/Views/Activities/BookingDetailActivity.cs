@@ -24,7 +24,7 @@ namespace HELPS.Views.Activities
     {
         private SupportToolbar _Toolbar;
         private LinearLayout _Booked, _NotBooked;
-        private TextView _Title, _Date, _Description;
+        private TextView _Title, _Date, _Location, _Tutor, _Type, _Description;
         private Booking _Booking;
         private Workshop _Workshop;
         private string bookingType;
@@ -51,6 +51,9 @@ namespace HELPS.Views.Activities
             // Set up the TextViews
             _Title = FindViewById<TextView>(Resource.Id.detailTitle);
             _Date = FindViewById<TextView>(Resource.Id.detailDate);
+            _Location = FindViewById<TextView>(Resource.Id.detailLocation);
+            _Tutor = FindViewById<TextView>(Resource.Id.detailTutor);
+            _Type = FindViewById<TextView>(Resource.Id.detailType);
             _Description = FindViewById<TextView>(Resource.Id.detailDescription);
 
             _Booked = FindViewById<LinearLayout>(Resource.Id.bookedButtons);
@@ -83,8 +86,11 @@ namespace HELPS.Views.Activities
             SupportActionBar.Title = "Book Workshop";
             _Title.Text = _Workshop.Title();
             DateTime? date = _Workshop.Date();
-            _Date.Text = (date == null) ? "Not available" : date.ToString();
-            _Description.Text = _Workshop.description;
+            _Date.Text = "Date: " + ((date == null) ? "Not available" : date.ToString());
+            _Location.Text = "Location: " + _Workshop.Location();
+            _Tutor.Text = "Tutor: " + _Workshop.Tutor();
+            _Type.Text = "Type: " + _Workshop.Type();
+            _Description.Text = _Workshop.Description();
 
             Button bookButton = FindViewById<Button>(Resource.Id.buttonBook);
             Button waitlistButton = FindViewById<Button>(Resource.Id.buttonWaitlist);
@@ -125,7 +131,10 @@ namespace HELPS.Views.Activities
             // Populate TextViews
             _Title.Text = _Booking.Title();
             DateTime? date = _Booking.Date();
-            _Date.Text = (date == null) ? "Not available" : date.ToString();
+            _Date.Text = "Date: " + ((date == null) ? "Not available" : date.ToString());
+            _Location.Text = "Location: " + _Booking.Location();
+            _Tutor.Text = "Tutor: " + _Booking.Tutor();
+            _Type.Text = "Type: " + _Booking.Type();
             _Description.Text = _Booking.Description();
 
             Button cancelButton = FindViewById<Button>(Resource.Id.buttonCancelBooking);
