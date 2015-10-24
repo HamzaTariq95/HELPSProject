@@ -44,6 +44,9 @@ namespace HELPS.Views
             //Get student data from intent in parent activity
             studentData = JsonConvert.DeserializeObject<StudentData>(this.Activity.Intent.GetStringExtra("student"));
 
+            sessionBookingData = Server.currentSessionBookingData;
+            workshopBookingData = Server.currentWorkshopBookingData;
+
             // Set the "Past Bookings" list view to display (upto) the four closest sessions
             DisplayPastBookings(view);
 
@@ -70,6 +73,9 @@ namespace HELPS.Views
             //Sort bookings by date
             //bookings.Sort((b, a) => a.Date().ToString().CompareTo(b.Date().ToString()));
             bookings.Sort((b, a) => DateTime.Compare(a.Date() ?? DateTime.MaxValue, b.Date() ?? DateTime.MaxValue));
+
+            //show last 10 bookings
+            bookings = bookings.Take(10).ToList();
 
             upcomingList.Adapter = new BookingBaseAdapter(Activity, bookings);
         }

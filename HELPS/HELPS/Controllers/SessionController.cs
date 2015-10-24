@@ -44,6 +44,25 @@ namespace HELPS.Controllers
             return request;
         }
 
+        public bool CancelSession(string sessionID)
+        {
+            string url = Server.url + "api/session/booking/search?SessionId=" + sessionID;
+
+           string json;
+
+            using (WebClient wc = new WebClient())
+            {
+                wc.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
+                wc.Headers.Add("AppKey", "66666");
+
+                json = wc.UploadString(url, "");
+                Log.Info("Cancel Session", json);
+
+            }
+
+            return json.Contains("true");
+        }
+
         private SessionBookingData getSessionBookingData(HttpWebRequest request)
         {
             SessionBookingData sessionBookingData = null;

@@ -24,7 +24,7 @@ namespace HELPS.Model
         public DateTime? EndDate { get; set; }
         public int maximum { get; set; }
         public string WorkShopSetID { get; set; }
-        public object cutoff { get; set; }
+        public int? cutoff { get; set; }
         public string type { get; set; }
         public int reminder_num { get; set; }
         public int reminder_sent { get; set; }
@@ -39,7 +39,7 @@ namespace HELPS.Model
 
         public string Status()
         {
-            if (BookingCount < maximum)
+            if (BookingCount < cutoff)
                 return "Book";
 
             return "Waitlist";
@@ -71,7 +71,7 @@ namespace HELPS.Model
             return targetingGroup;
         }
 
-        public override bool Equals(Object obj)
+       /* public override bool Equals(Object obj)
         {
             // Check for null values and compare run-time types.
             if (obj != null && obj.GetType() == typeof(WorkshopBooking))
@@ -81,7 +81,7 @@ namespace HELPS.Model
             }
 
             return false;
-        }
+        }*/
 
     }
 }

@@ -27,7 +27,9 @@ namespace HELPS.Views.Activities
         private TextView _Title, _Date, _Description;
         private Booking _Booking;
         private Workshop _Workshop;
-        private WorkshopBooking _WorkshopBooking;
+        private string bookingType;
+
+        //private WorkshopBooking _WorkshopBooking;
         //private string studentId;
 
         protected override void OnCreate(Bundle bundle)
@@ -62,11 +64,11 @@ namespace HELPS.Views.Activities
             {
                 SetBookingView();
             }
-            else if(_WorkshopBooking !=null)
-            {
-                SetBookingView();
-            }
-            else // _worshop != null
+            //else if(_WorkshopBooking !=null)
+            //{
+              //  SetBookingView();
+            //}
+            else // _workshop != null
             {
                 SetWorkshopView();
             }
@@ -85,12 +87,32 @@ namespace HELPS.Views.Activities
             _Description.Text = _Workshop.description;
 
             Button bookButton = FindViewById<Button>(Resource.Id.buttonBook);
+            Button waitlistButton = FindViewById<Button>(Resource.Id.buttonWaitlist);
+
             bookButton.Click += delegate
             {
                 Book();
                 Server.workshopBookingsAltered = true;
                 Finish();
             };
+
+            waitlistButton.Click += delegate
+            {
+                Waitlist();
+                //Server.workshopBookingsAltered = true;
+                Finish();
+            };
+
+            if (_Workshop.BookingCount < _Workshop.cutoff)
+                waitlistButton.Visibility = ViewStates.Gone;
+            else
+                bookButton.Visibility = ViewStates.Gone;
+        }
+
+        private void Waitlist()
+        {
+            WorkshopController workshopController = new WorkshopController();
+            workshopController.Waitlist(_Workshop.WorkshopId);
         }
 
         private void SetBookingView()
@@ -99,19 +121,23 @@ namespace HELPS.Views.Activities
 
             // Set up the title
             SupportActionBar.Title = "View Booking";
-
+            _Booking.Title();
             // Populate TextViews
             _Title.Text = _Booking.Title();
             DateTime? date = _Booking.Date();
             _Date.Text = (date == null) ? "Not available" : date.ToString();
             _Description.Text = _Booking.Description();
 
-            //Set up cancel button
             Button cancelButton = FindViewById<Button>(Resource.Id.buttonCancelBooking);
             cancelButton.Click += delegate
             {
                 CancelBooking();
+
             };
+            if (date < DateTime.Now)
+                cancelButton.Visibility = ViewStates.Gone;
+            
+            
         }
 
         private void SetVariables()
@@ -127,7 +153,7 @@ namespace HELPS.Views.Activities
                
             else // requestType == "showBooking"
             {
-                string bookingType = Intent.GetStringExtra("bookingType");
+                bookingType = Intent.GetStringExtra("bookingType");
                 string bookingString = Intent.GetStringExtra("booking");
 
                 if (bookingType == "Session")
@@ -138,7 +164,7 @@ namespace HELPS.Views.Activities
                 else // bookingType == "Workshop"
                 {
                     WorkshopBooking workshopBooking = JsonConvert.DeserializeObject<WorkshopBooking>(bookingString);
-                    _WorkshopBooking = workshopBooking;
+                    _Booking = workshopBooking;
                 }
             }
         }
@@ -165,21 +191,57 @@ namespace HELPS.Views.Activities
             cancelAlert.SetMessage(GetString(Resource.String.areYouSureCancel));
             cancelAlert.SetPositiveButton("YES", delegate
             {
-                // Code to cancel booking.
-                WorkshopController workshopController = new WorkshopController();
 
-                if(!workshopController.CancelBooking(_WorkshopBooking.workshopID.ToString()))
+                if(_Booking.GetType() == typeof(SessionBooking))
                 {
-                    //show error, stay on page;
+                    SessionController sessionController = new SessionController();
+
+                    if (!sessionController.CancelSession(_Booking.ID()))
+                    {
+                        //show error, stay on page;
+                    }
+
+                    else
+                    {
+                        //show dialog saying cancled
+                        var SuccesDialog = new AlertDialog.Builder(this);
+                        SuccesDialog.SetMessage("Booking has been Cancled!");
+                        SuccesDialog.SetNeutralButton("OK", delegate { Finish(); });
+                        SuccesDialog.Show();
+
+                        if (bookingType.Equals("Session"))
+                            Server.sessionBookingsAltered = true;
+                        else
+                            Server.workshopBookingsAltered = true;
+                    }
+
+                    
                 }
 
-                else
+                else if (_Booking.GetType() == typeof(WorkshopBooking))
                 {
-                    //show dialog saying cancled
-                    var SuccesDialog = new AlertDialog.Builder(this);
-                    SuccesDialog.SetMessage("Booking has been Cancled!");
-                    SuccesDialog.SetNeutralButton("OK", delegate { });
-                    SuccesDialog.Show();
+                    // Code to cancel booking.
+                    WorkshopController workshopController = new WorkshopController();
+
+                    if (!workshopController.CancelBooking(_Booking.ID()))
+                    {
+                        //show error, stay on page;
+                    }
+
+                    else
+                    {
+                        //show dialog saying cancled
+                        var SuccesDialog = new AlertDialog.Builder(this);
+                        SuccesDialog.SetMessage("Booking has been Cancled!");
+                        SuccesDialog.SetNeutralButton("OK", delegate { Finish(); });
+                        SuccesDialog.Show();
+
+                        if (bookingType.Equals("Session"))
+                            Server.sessionBookingsAltered = true;
+                        else
+                            Server.workshopBookingsAltered = true;
+                    }
+
                 }
 
             });

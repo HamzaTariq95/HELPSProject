@@ -61,17 +61,19 @@ namespace HELPS.Model
 
         public override string Status()
         {
-            if (StartDate > DateTime.Now && !Cancel && archived == null)
+            if (StartDate > DateTime.Now && archived == null) 
                 return "Booked";
-            if (EndDate < DateTime.Now && !Cancel && Attended == null)
+            if (archived != null)
+                return "Canceled booking";
+            if (Cancel)
+                return "Canceled";
+            /*if (EndDate < DateTime.Now && !Cancel && Attended == null && archived == null)
                 return "Did not attend";
             if (Attended != null)
-                return "Attended";
-            if (Cancel)
-                return "Canceled booking";
-            if (StartDate > DateTime.Now && archived != null)
-                return "Canceled";
-            return "Canceled";
+                return "Attended";*/
+           
+            
+            return "";
         }
 
         public override DateTime? Date()
@@ -97,6 +99,11 @@ namespace HELPS.Model
         public override string Description()
         {
             return Subject;
+        }
+
+        public override string ID()
+        {
+            return SessionId.ToString();
         }
     }
 }

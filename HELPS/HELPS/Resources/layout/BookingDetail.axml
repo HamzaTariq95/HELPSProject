@@ -82,5 +82,15 @@
             android:padding="12dp"
             android:background="@color/white"
             android:textColor="@color/red" />
+        <Button
+            android:id="@+id/buttonWaitlist"
+            android:text="@string/waitlist"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="24dp"
+            android:padding="12dp"
+            android:background="@color/white"
+            android:textColor="@color/red" />
     </LinearLayout>
 </RelativeLayout>

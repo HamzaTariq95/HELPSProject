@@ -123,6 +123,40 @@ namespace HELPS.Controllers
             return workshops;
         }
 
+        internal bool Waitlist(string workshopId)
+        {
+            string url = "http://groupthirteen.cloudapp.net/api/workshop/wait/create?workshopId=" +
+                workshopId + "&studentId=" + Constants.CURRENT_STUDENT_ID + "&userId=12345";
+
+
+            //string json = JsonConvert.SerializeObject(data);
+
+            //Log.Info("Register", json);
+
+            // Request Address of the API    
+            //string url = "http://groupthirteen.cloudapp.net/api/student/register";
+            //string url = Server.url + "api/student/register";
+
+            string result = null;
+
+            using (WebClient wc = new WebClient())
+            {
+                wc.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
+                wc.Headers.Add("AppKey", "66666");
+
+
+                result = wc.UploadString(url, "");
+
+
+                Log.Info("Waitlist SUCCESS", result);
+
+            }
+
+
+
+            return result.Contains("true");
+        }
+
         internal WorkshopSetData GetWorkshopSetData()
         {
             // Request Address of the API

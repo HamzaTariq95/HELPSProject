@@ -21,5 +21,6 @@ namespace HELPS.Model
         public abstract string Tutor();
         public abstract string Type();
         public abstract string Description();
+        public abstract string ID();
     }
 }

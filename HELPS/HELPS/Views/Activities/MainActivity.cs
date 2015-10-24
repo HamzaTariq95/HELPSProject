@@ -52,7 +52,8 @@ namespace HELPS
             _DrawerLayout.SetDrawerListener(_DrawerToggle);
 
             //Fetch booking data
-            FetchBookingData();
+            FetchWorkshopBookingData();
+            FetchSessionBookingData();
             
             // Set up the views
             _Landing = new LandingFragment(sessionBookingData, workshopBookingData, studentData);
@@ -71,21 +72,28 @@ namespace HELPS
             SetUpMenu();
         }
 
-        private void FetchBookingData()
+        private void FetchWorkshopBookingData()
         {
             studentData = JsonConvert.DeserializeObject<StudentData>(Intent.GetStringExtra("student"));
 
-            SessionController sessionController = new SessionController();
-            sessionBookingData = sessionController.GetSessionBookingData(studentData.attributes.studentID);
+            
             
 
             WorkshopController workshopController = new WorkshopController();
             workshopBookingData = workshopController.GetWorkshopBookingData(studentData.attributes.studentID);
-            if (workshopBookingData.attributes.Count > 0)
+            Server.currentWorkshopBookingData = workshopBookingData;
+            if (workshopBookingData != null && workshopBookingData.attributes.Count > 0)
             {
                 FetchCampusData();
                 FetchWorkshopSetData();
             }       
+        }
+
+        private void FetchSessionBookingData()
+        {
+            SessionController sessionController = new SessionController();
+            sessionBookingData = sessionController.GetSessionBookingData(studentData.attributes.studentID);
+            Server.currentSessionBookingData = sessionBookingData;
         }
 
         private void FetchWorkshopSetData()
@@ -240,6 +248,52 @@ private void FetchAvailableWorkshops()
             _FragmentManager.Commit();
 
             _DrawerLayout.CloseDrawers();
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+
+            if (Server.workshopBookingsAltered)
+            {
+                FetchWorkshopBookingData();
+                Server.workshopBookingsAltered = false;
+            }
+
+            if (Server.sessionBookingsAltered)
+            {
+                FetchSessionBookingData();
+                Server.sessionBookingsAltered = false;
+            }
+
+            SetCurrentFragment();
+        }
+
+        private void SetCurrentFragment()
+        {
+            switch (_CurrentViewTitle)
+            {
+                case Resource.String.applicationName :
+                    _Landing = new LandingFragment(sessionBookingData, workshopBookingData,studentData);
+                    SetView(Resource.Id.fragmentContainer, _Landing, true);
+                    break;
+                case Resource.String.searchTitle:
+                    //Fetch workshop data for available workshops
+                    FetchAvailableWorkshops();
+                    _Search = new SearchWorkshopsFragment(workshopData); 
+                    SetView(Resource.Id.fragmentContainer, _Search, true);
+                    break;
+                // Future bookings.
+                case Resource.String.futureBookingsTitle:
+                    _Future = new FutureBookingsFragment(sessionBookingData, workshopBookingData, studentData);
+                    SetView(Resource.Id.fragmentContainer, _Future, true);
+                    break;
+                // Past bookings.
+                case Resource.String.pastBookingsTitle:
+                    _Past = new PastBookingsFragment(sessionBookingData, workshopBookingData, studentData);
+                    SetView(Resource.Id.fragmentContainer, _Past, true);
+                    break;
+            }
         }
     }
 }

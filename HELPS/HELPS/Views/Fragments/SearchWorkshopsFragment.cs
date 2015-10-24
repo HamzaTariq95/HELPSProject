@@ -63,8 +63,10 @@ namespace HELPS.Views
 
         private void SelectUnBookedWorkshops()
         {
-            
-            //workshops = workshops.Where(x => x.Equals())
+            List<string> bookedWorkshopIDs = Server.currentWorkshopBookingData.attributes.
+                Select(y => y.BookingArchived != null ? "" : y.workshopID.ToString()).ToList();
+
+            workshops = workshops.Where(w => !bookedWorkshopIDs.Contains(w.WorkshopId.ToString())).ToList();
         }
 
         private void FetchAvailableWorkshops()
@@ -78,6 +80,8 @@ namespace HELPS.Views
         {
             foreach (Workshop workshop in workshopData.Results)
             {
+                
+                 
                 if (workshop.archived == null)
                     workshops.Add(workshop);
             }
