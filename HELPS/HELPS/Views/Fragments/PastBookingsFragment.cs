@@ -74,6 +74,9 @@ namespace HELPS.Views
             //bookings.Sort((b, a) => a.Date().ToString().CompareTo(b.Date().ToString()));
             bookings.Sort((b, a) => DateTime.Compare(a.Date() ?? DateTime.MaxValue, b.Date() ?? DateTime.MaxValue));
 
+            //show last 10 bookings
+            bookings = bookings.Take(10).ToList();
+
             upcomingList.Adapter = new BookingBaseAdapter(Activity, bookings);
         }
            
