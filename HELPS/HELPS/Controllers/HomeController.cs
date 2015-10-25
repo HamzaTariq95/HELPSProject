@@ -68,7 +68,7 @@ namespace HELPS
                         }
                     }
 
-                catch (NullReferenceException ex)
+                    catch (NullReferenceException ex)
                     {
                         Log.Info("HELPS", "Exception: This student does not exist");
                         studentData = null;

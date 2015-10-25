@@ -86,7 +86,7 @@ namespace HELPS.Model
 
         public override string Tutor()
         {
-            return ""; //No tutor data available in workshop related tables
+            return "N/A"; //No tutor data available in workshop related tables
         }
 
         public override string Type()

@@ -60,6 +60,10 @@ namespace HELPS.Model
             return type;
         }
 
+        public string Location()
+        {
+            return campus;
+        }
 
         public string Topic()
         {
@@ -71,17 +75,22 @@ namespace HELPS.Model
             return targetingGroup;
         }
 
-       /* public override bool Equals(Object obj)
+        public string Description()
         {
-            // Check for null values and compare run-time types.
-            if (obj != null && obj.GetType() == typeof(WorkshopBooking))
-            {
-                WorkshopBooking workshopBooking = (WorkshopBooking)obj;
-                return (WorkshopId.Equals(workshopBooking.workshopID));
-            }
+            return description;
+        }
 
-            return false;
-        }*/
+        /* public override bool Equals(Object obj)
+         {
+             // Check for null values and compare run-time types.
+             if (obj != null && obj.GetType() == typeof(WorkshopBooking))
+             {
+                 WorkshopBooking workshopBooking = (WorkshopBooking)obj;
+                 return (WorkshopId.Equals(workshopBooking.workshopID));
+             }
+
+             return false;
+         }*/
 
     }
 }

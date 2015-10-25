@@ -36,6 +36,36 @@
             android:paddingRight="12dp"
             android:paddingBottom="24dp" />
         <TextView
+            android:id="@+id/detailLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:textColor="@color/charcoal"
+            android:paddingTop="6dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingBottom="24dp" />
+        <TextView
+            android:id="@+id/detailTutor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:textColor="@color/charcoal"
+            android:paddingTop="6dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingBottom="24dp" />
+        <TextView
+            android:id="@+id/detailType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:textColor="@color/charcoal"
+            android:paddingTop="6dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingBottom="24dp" />
+        <TextView
             android:id="@+id/detailDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
