@@ -22,5 +22,6 @@ namespace HELPS.Model
         public abstract string Type();
         public abstract string Description();
         public abstract string ID();
+        public abstract string Topic();
     }
 }
