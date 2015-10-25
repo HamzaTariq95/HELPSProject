@@ -111,6 +111,7 @@
     <Compile Include="Views\Activities\AboutActivity.cs" />
     <Compile Include="Views\Activities\BookingDetailActivity.cs" />
     <Compile Include="Views\Activities\NotificationActivity.cs" />
+    <Compile Include="Views\Activities\PastDetailActivity.cs" />
     <Compile Include="Views\Fragments\SearchWorkshopsFragment.cs" />
     <Compile Include="Views\Activities\LogOnActivity.cs" />
     <Compile Include="Views\Activities\MainActivity.cs" />
@@ -164,6 +165,9 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\Notification.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\PastDetail.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>
