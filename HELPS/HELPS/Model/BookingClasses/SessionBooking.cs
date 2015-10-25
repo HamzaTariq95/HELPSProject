@@ -105,5 +105,10 @@ namespace HELPS.Model
         {
             return SessionId.ToString();
         }
+
+        public override string Topic()
+        {
+            return Reason;
+        }
     }
 }

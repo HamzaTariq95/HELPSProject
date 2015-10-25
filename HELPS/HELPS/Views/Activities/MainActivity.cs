@@ -15,6 +15,7 @@ using Android.Support.V7.App;
 using HELPS.Views;
 using HELPS.Controllers;
 using HELPS.Model.JSONDataClasses;
+using System.Threading.Tasks;
 
 namespace HELPS
 {
@@ -36,6 +37,8 @@ namespace HELPS
         private ListView _Menu;
         private FragmentTransaction _FragmentManager;
         private Fragment _Landing, _Future, _Past, _Search;
+        private ProgressDialog progressDialog;
+
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -51,18 +54,6 @@ namespace HELPS
             _DrawerToggle = new HelpsAppCompatDrawerToggle(this, _DrawerLayout, Resource.String.menuTitle, _CurrentViewTitle);
             _DrawerLayout.SetDrawerListener(_DrawerToggle);
 
-            //Fetch booking data
-            FetchWorkshopBookingData();
-            FetchSessionBookingData();
-            
-            // Set up the views
-            _Landing = new LandingFragment(sessionBookingData, workshopBookingData, studentData);
-            _Future = new FutureBookingsFragment(sessionBookingData, workshopBookingData, studentData);
-            _Past = new PastBookingsFragment(sessionBookingData, workshopBookingData, studentData);
-            
-            // Set up the landing page
-            SetView(Resource.Id.fragmentContainer, _Landing, false);
-
             // Set up action bar
             SetUpSupportActionBar(bundle);
             
@@ -70,30 +61,75 @@ namespace HELPS
 
             // Set up the menu layout.
             SetUpMenu();
+            
+            //Fetch booking data
+            FetchBookingData();
         }
 
-        private void FetchWorkshopBookingData()
+        private void ShowProgressDialog(ProgressDialog progressDialog, string message, bool show)
+        {
+            if (show)
+            {
+                progressDialog.Indeterminate = true;
+                progressDialog.SetProgressStyle(ProgressDialogStyle.Spinner);
+                progressDialog.SetMessage(message);
+                progressDialog.SetCancelable(false);
+                progressDialog.Show();
+            }
+            else
+                progressDialog.Hide();
+        }
+
+        private async void FetchBookingData()
+        {
+            progressDialog = new ProgressDialog(this);
+
+            await FetchWorkshopBookingData();
+            await FetchSessionBookingData();
+
+            progressDialog.Hide();
+
+            // Set up the views
+            _Landing = new LandingFragment(sessionBookingData, workshopBookingData, studentData);
+            _Future = new FutureBookingsFragment(sessionBookingData, workshopBookingData, studentData);
+            _Past = new PastBookingsFragment(sessionBookingData, workshopBookingData, studentData);
+
+            // Set up the landing page
+            SetView(Resource.Id.fragmentContainer, _Landing, false);
+
+            string helloUser = GetString(Resource.String.hello) + " " + studentData.attributes.studentID + "!";
+            TextView helloUserText = FindViewById<TextView>(Resource.Id.textHelloUser);
+
+            helloUserText.Text = helloUser;
+        }
+
+        private async Task FetchWorkshopBookingData()
         {
             studentData = JsonConvert.DeserializeObject<StudentData>(Intent.GetStringExtra("student"));
 
-            
-            
+            ShowProgressDialog(progressDialog, "Fetching bookings. Please wait...", true);
 
             WorkshopController workshopController = new WorkshopController();
-            workshopBookingData = workshopController.GetWorkshopBookingData(studentData.attributes.studentID);
+            workshopBookingData = await workshopController.GetWorkshopBookingData(studentData.attributes.studentID);
             Server.currentWorkshopBookingData = workshopBookingData;
             if (workshopBookingData != null && workshopBookingData.attributes.Count > 0)
             {
                 FetchCampusData();
                 FetchWorkshopSetData();
-            }       
+            }
+
+            ShowProgressDialog(progressDialog, "Fetching bookings. Please wait...", false);
         }
 
-        private void FetchSessionBookingData()
+        private async Task FetchSessionBookingData()
         {
+            ShowProgressDialog(progressDialog, "Fetching bookings. Please wait...", true);
+
             SessionController sessionController = new SessionController();
-            sessionBookingData = sessionController.GetSessionBookingData(studentData.attributes.studentID);
+            sessionBookingData = await sessionController.GetSessionBookingData(studentData.attributes.studentID);
             Server.currentSessionBookingData = sessionBookingData;
+
+            ShowProgressDialog(progressDialog, "Fetching bookings. Please wait...", false);
         }
 
         private void FetchWorkshopSetData()
@@ -134,11 +170,11 @@ namespace HELPS
             base.OnPostCreate(savedInstanceState);
 
 
-            StudentData studentData = JsonConvert.DeserializeObject<StudentData>(Intent.GetStringExtra("student"));
-            string helloUser = GetString(Resource.String.hello) + " " + studentData.attributes.studentID + "!";
+            //StudentData studentData = JsonConvert.DeserializeObject<StudentData>(Intent.GetStringExtra("student"));
+            /*string helloUser = GetString(Resource.String.hello) + " " + studentData.attributes.studentID + "!";
             TextView helloUserText = FindViewById<TextView>(Resource.Id.textHelloUser);
 
-            helloUserText.Text = helloUser;
+            helloUserText.Text = helloUser;*/
 
 
             // Set the "Hello User" text view to display the user's name
@@ -178,7 +214,7 @@ namespace HELPS
             _MenuAdapter = ArrayAdapter<string>.CreateFromResource(this, Resource.Array.menu, Resource.Layout.MenuRow);
             _Menu.Adapter = _MenuAdapter;
 
-            _Menu.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) =>
+            _Menu.ItemClick += async (object sender, AdapterView.ItemClickEventArgs e) =>
             {
                 switch (e.Position)
                 {
@@ -189,9 +225,9 @@ namespace HELPS
                         break;
                     // Search workshops.
                     case 1:
-                         //Fetch workshop data for available workshops
-                        FetchAvailableWorkshops();
-                        _Search = new SearchWorkshopsFragment(workshopData); 
+                        //Fetch workshop data for available workshops
+                        await FetchAvailableWorkshops();
+                        _Search = new SearchWorkshopsFragment(workshopData);
                         _CurrentViewTitle = Resource.String.searchTitle;
                         SetView(Resource.Id.fragmentContainer, _Search, true);
                         break;
@@ -221,11 +257,15 @@ namespace HELPS
             };
         }
 
-private void FetchAvailableWorkshops()
+private async Task FetchAvailableWorkshops()
 {
+            ShowProgressDialog(progressDialog, "Fetching available workshops. Please wait...", true);
+
  	WorkshopController workshopController = new WorkshopController();
-            workshopData = workshopController.searchWorkshops(DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
-}
+            workshopData = await workshopController.searchWorkshops(DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
+
+            ShowProgressDialog(progressDialog, "Fetching available workshops. Please wait...", false);
+        }
         protected override void OnDestroy()
         {
             base.OnDestroy();
@@ -250,22 +290,24 @@ private void FetchAvailableWorkshops()
             _DrawerLayout.CloseDrawers();
         }
 
-        protected override void OnResume()
+        protected override async void OnResume()
         {
             base.OnResume();
 
             if (Server.workshopBookingsAltered)
             {
-                FetchWorkshopBookingData();
+                await FetchWorkshopBookingData();
                 Server.workshopBookingsAltered = false;
             }
 
             if (Server.sessionBookingsAltered)
             {
-                FetchSessionBookingData();
+                await FetchSessionBookingData();
                 Server.sessionBookingsAltered = false;
             }
 
+            if (_CurrentViewTitle.Equals(Resource.String.searchTitle))
+                await FetchAvailableWorkshops();
             SetCurrentFragment();
         }
 
@@ -279,7 +321,7 @@ private void FetchAvailableWorkshops()
                     break;
                 case Resource.String.searchTitle:
                     //Fetch workshop data for available workshops
-                    FetchAvailableWorkshops();
+                    //FetchAvailableWorkshops();
                     _Search = new SearchWorkshopsFragment(workshopData); 
                     SetView(Resource.Id.fragmentContainer, _Search, true);
                     break;

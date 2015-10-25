@@ -25,14 +25,14 @@ namespace HELPS.Controllers
     public class SessionController
     {
 
-        public SessionBookingData GetSessionBookingData(string studentID)
+        public async Task<SessionBookingData> GetSessionBookingData(string studentID)
         {
             // Request Address of the API
             //string url = "http://GroupThirteen.cloudapp.net/api/session/booking/search?studentId=" + studentID;
             string url = Server.url + "api/session/booking/search?studentId=" + studentID;
 
             // Get student data using web request
-            return getSessionBookingData(getRequest(url));
+            return await getSessionBookingData(getRequest(url));
         }
 
         private HttpWebRequest getRequest(string url)
@@ -63,12 +63,12 @@ namespace HELPS.Controllers
             return json.Contains("true");
         }
 
-        private SessionBookingData getSessionBookingData(HttpWebRequest request)
+        private async Task<SessionBookingData> getSessionBookingData(HttpWebRequest request)
         {
             SessionBookingData sessionBookingData = null;
 
             // Generating JSON Response and Converting it to Student Object.
-            using (WebResponse response = request.GetResponse())
+            using (WebResponse response = await request.GetResponseAsync())
             {
                 // Get a stream representation of the HTTP web response:
                 using (Stream stream = response.GetResponseStream())
