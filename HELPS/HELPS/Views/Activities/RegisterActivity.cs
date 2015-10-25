@@ -46,7 +46,7 @@ namespace HELPS
             TextView textDOB = FindViewById<TextView>(Resource.Id.textCheckDOB);
             TextView faculty = FindViewById<TextView>(Resource.Id.textCheckFaculty);
             TextView course = FindViewById<TextView>(Resource.Id.textCheckCourse);
-
+           
             // Display student information for them to check it
             email.Text = GetString(Resource.String.checkEmail) + studentData.Email;
             textDOB.Text = GetString(Resource.String.checkDOB) + studentData.DateOfBirth;
@@ -188,9 +188,9 @@ namespace HELPS
             progressDialog.Show();
         }
 
-        private void ShowLandingPage(string studentId)
+        private async void ShowLandingPage(string studentId)
         {
-            StudentData studentDataAtHELPS = new HomeController().login(studentId);
+            StudentData studentDataAtHELPS = await new HomeController().login(studentId);
 
             Intent mainActivity = new Intent(Application.Context, typeof(MainActivity));
             // Passing the Student object to the next Activity
