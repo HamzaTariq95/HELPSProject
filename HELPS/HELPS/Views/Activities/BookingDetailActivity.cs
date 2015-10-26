@@ -90,7 +90,7 @@ namespace HELPS.Views.Activities
 
             // Display the filled bar
             _Full.Visibility = ViewStates.Visible;
-            _Full.Max = _Workshop.maximum;
+            _Full.Max = _Workshop.maximum - 1;
             _Full.Progress = _Workshop.BookingCount;
 
             // Populate the TextViews
