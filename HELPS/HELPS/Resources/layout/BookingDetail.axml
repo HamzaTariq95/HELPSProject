@@ -76,16 +76,28 @@
                 android:textColor="@color/charcoal"
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
-                android:paddingBottom="6dp" />
+                android:paddingBottom="24dp" />
+            <TextView
+                android:id="@+id/detailFilled"
+                android:text="Class spots filled:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textColor="@color/charcoal"
+                android:paddingTop="3dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="3dp" />
             <ProgressBar
                 android:id="@+id/fullBar"
                 style="@android:style/Widget.ProgressBar.Horizontal"
-                android:layout_width="wrap_content"
+                android:progressDrawable="@drawable/drawProgress"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="24dp"
-                android:layout_marginRight="24dp"
-                android:layout_marginBottom="24dp" />
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="12dp" />
         </LinearLayout>
     </ScrollView>
     <LinearLayout
