@@ -288,7 +288,9 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_add_circle.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\drawProgress.xml" />
+  </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_clear.png" />
   </ItemGroup>

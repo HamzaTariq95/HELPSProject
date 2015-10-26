@@ -242,13 +242,13 @@ namespace HELPS
                         SetView(Resource.Id.fragmentContainer, _Past, true);
                         break;
                     // Record notes.
-                    case 4:
+                    //case 4:
                     // Settings.
-                    case 5:
-                        Console.WriteLine("Not implemented");
-                        break;
+                    //case 5:
+                    //    Console.WriteLine("Not implemented");
+                    //    break;
                     // Log out.
-                    case 6:
+                    case 4:
                         // {Architecture} Log Out function
                         StartActivity(typeof(LogOnActivity));
                         Finish();

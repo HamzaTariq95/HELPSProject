@@ -104,9 +104,10 @@
         <item name="menuSearch">Search Workshops</item>
         <item name="menuFuture">My Future Bookings</item>
         <item name="menuPast">My Past Bookings</item>
-        <item name="menuNotes">Record Notes</item>
-        <item name="menuSettings">Settings</item>
-        <item name="menuLogOut">Log Out</item>
+      <!-- 
+      <item name="menuNotes">Record Notes</item>
+        <item name="menuSettings">Settings</item> -->
+      <item name="menuLogOut">Log Out</item>
     </string-array>
   
     <!-- Home (landing) screen -->
