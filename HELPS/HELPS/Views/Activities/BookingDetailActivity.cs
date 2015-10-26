@@ -165,7 +165,7 @@ namespace HELPS.Views.Activities
             _Date.Text = "Date: " + ((date == null) ? "Not available" : date.ToString());
             _Location.Text = "Location: " + _Booking.Location();
             _Tutor.Text = "Tutor: " + _Booking.Tutor();
-            _Type.Text = "Type: " + _Booking.Type();
+            _Type.Text = "For: " + _Booking.Type();
             _Description.Text = _Booking.Description();
 
             Button cancelButton = FindViewById<Button>(Resource.Id.buttonCancelBooking);
