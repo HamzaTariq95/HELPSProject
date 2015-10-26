@@ -24,7 +24,7 @@ namespace HELPS.Views.Activities
     public class BookingDetailActivity : AppCompatActivity
     {
         private SupportToolbar _Toolbar;
-        private LinearLayout _Booked, _NotBooked;
+        private LinearLayout _Booked, _NotBooked, _DisplayBar;
         private TextView _Title, _Date, _Location, _Tutor, _Type, _Description;
         private ProgressBar _Full;
         private Booking _Booking;
@@ -60,7 +60,9 @@ namespace HELPS.Views.Activities
             _Description = FindViewById<TextView>(Resource.Id.detailDescription);
 
             _Full = FindViewById<ProgressBar>(Resource.Id.fullBar);
-            _Full.Visibility = ViewStates.Gone;
+
+            _DisplayBar = FindViewById<LinearLayout>(Resource.Id.filledLayout);
+            _DisplayBar.Visibility = ViewStates.Gone;
 
             _Booked = FindViewById<LinearLayout>(Resource.Id.bookedButtons);
             _Booked.Visibility = ViewStates.Gone;
@@ -89,7 +91,7 @@ namespace HELPS.Views.Activities
             _NotBooked.Visibility = ViewStates.Visible;
 
             // Display the filled bar
-            _Full.Visibility = ViewStates.Visible;
+            _DisplayBar.Visibility = ViewStates.Visible;
             _Full.Max = _Workshop.maximum - 1;
             _Full.Progress = _Workshop.BookingCount;
 
