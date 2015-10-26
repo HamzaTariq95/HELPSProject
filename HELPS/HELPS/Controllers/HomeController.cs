@@ -25,7 +25,7 @@ namespace HELPS
 {
     public class HomeController {
 
-        public  StudentData login(string studentID)
+        public async Task<StudentData> login(string studentID)
         {
 
             // Request Address of the API
@@ -42,7 +42,7 @@ namespace HELPS
             
 
             // Generating JSON Response and Converting it to Student Object.
-            using (WebResponse response = request.GetResponse())
+            using (WebResponse response = await request.GetResponseAsync())
             {
                 // Get a stream representation of the HTTP web response:
                 using (Stream stream = response.GetResponseStream())

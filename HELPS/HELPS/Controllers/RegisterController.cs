@@ -30,7 +30,7 @@ namespace HELPS.Controllers
 
       
        
-        public void Register(UtsData data)
+        public async void Register(UtsData data)
         {
             string json = JsonConvert.SerializeObject(data);
    
@@ -48,15 +48,16 @@ namespace HELPS.Controllers
                    wc.Headers.Add("AppKey", "66666");
 
 
-                    result = wc.UploadString(url, json);
+                    result = await wc.UploadStringTaskAsync(new Uri(url), json);
                    
 
                    Log.Info("Register SUCCESS", result);
+                HomeController loginController = new HomeController();
+                await loginController.login(data.StudentId);
 
-               }
+            }
 
-               HomeController loginController = new HomeController();
-               loginController.login(data.StudentId);
+              
 
         }
     }

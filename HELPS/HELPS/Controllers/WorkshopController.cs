@@ -26,7 +26,7 @@ namespace HELPS.Controllers
     public class WorkshopController
     {
 
-        public WorkshopBookingData GetWorkshopBookingData(string studentID)
+        public async Task<WorkshopBookingData> GetWorkshopBookingData(string studentID)
         {
 
             // Request Address of the API
@@ -34,7 +34,7 @@ namespace HELPS.Controllers
             string url = Server.url + "api/workshop/booking/search?studentId=" + studentID;
 
             // Get student data using web request
-            return getWorkshopBookingData(getRequest(url));
+            return await getWorkshopBookingData(getRequest(url));
         }
 
         private HttpWebRequest getRequest(string url)
@@ -46,12 +46,12 @@ namespace HELPS.Controllers
             return request;
         }
 
-        private WorkshopBookingData getWorkshopBookingData(HttpWebRequest request)
+        private async Task<WorkshopBookingData> getWorkshopBookingData(HttpWebRequest request)
         {
             WorkshopBookingData workshopBookingData = null;
 
             // Generating JSON Response and Converting it to Student Object.
-            using (WebResponse response = request.GetResponse())
+            using (WebResponse response = await request.GetResponseAsync())
             {
                 // Get a stream representation of the HTTP web response:
                 using (Stream stream = response.GetResponseStream())
@@ -87,7 +87,7 @@ namespace HELPS.Controllers
             return workshopBookingData;
         }
 
-        public WorkshopData searchWorkshops(string startDate)
+        public async Task<WorkshopData> searchWorkshops(string startDate)
         {
             Console.WriteLine("date---------->" + startDate);
             //string url = "http://GroupThirteen.cloudapp.net/api/workshop/search?startingDtBegin=" + startDate + "&startingDtEnd=2060-12-20&active=true";
@@ -102,7 +102,7 @@ namespace HELPS.Controllers
             WorkshopData workshops = null;
 
             //Generating JSON Response and Converting it to Student Object.
-            using (WebResponse response = request.GetResponse())
+            using (WebResponse response = await request.GetResponseAsync())
             {
                 //Get a stream representation of the HTTP web response:
                 using (Stream stream = response.GetResponseStream())
@@ -123,19 +123,10 @@ namespace HELPS.Controllers
             return workshops;
         }
 
-        internal bool Waitlist(string workshopId)
+        internal async Task<bool> Waitlist(string workshopId)
         {
             string url = "http://groupthirteen.cloudapp.net/api/workshop/wait/create?workshopId=" +
                 workshopId + "&studentId=" + Constants.CURRENT_STUDENT_ID + "&userId=12345";
-
-
-            //string json = JsonConvert.SerializeObject(data);
-
-            //Log.Info("Register", json);
-
-            // Request Address of the API    
-            //string url = "http://groupthirteen.cloudapp.net/api/student/register";
-            //string url = Server.url + "api/student/register";
 
             string result = null;
 
@@ -145,7 +136,7 @@ namespace HELPS.Controllers
                 wc.Headers.Add("AppKey", "66666");
 
 
-                result = wc.UploadString(url, "");
+                result = await wc.UploadStringTaskAsync(new Uri(url), "");
 
 
                 Log.Info("Waitlist SUCCESS", result);
@@ -235,7 +226,7 @@ namespace HELPS.Controllers
             return json.Contains("true");
         }
 
-        internal bool Book(string workshopId)
+        internal async Task<bool> Book(string workshopId)
         {
             string url = "http://groupthirteen.cloudapp.net/api/workshop/booking/create?workshopId=" + 
                 workshopId + "&studentId=" + Constants.CURRENT_STUDENT_ID + "&userId=12345";
@@ -257,7 +248,7 @@ namespace HELPS.Controllers
                 wc.Headers.Add("AppKey", "66666");
 
 
-                result = wc.UploadString(url, "");
+                result = await wc.UploadStringTaskAsync(new Uri(url), "");
 
 
                 Log.Info("Register SUCCESS", result);

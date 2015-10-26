@@ -19,6 +19,7 @@ using System.IO;
 using CsvHelper;
 using HELPS.Views.Activities;
 using Java.Lang;
+using System.Threading.Tasks;
 
 namespace HELPS
 {
@@ -27,6 +28,7 @@ namespace HELPS
     {
         private StudentData studentDataAtHELPS;
         private UtsData studentDataAtUTS;
+        private ProgressDialog progressDialog;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -47,9 +49,24 @@ namespace HELPS
                 FindViewById<com.refractored.fab.FloatingActionButton>(Resource.Id.fabLogIn);
 
             // Works the "Log-in" button
-            logInButton.Click += delegate
+            logInButton.Click += async delegate
             {
-                LogIn(username.Text, password.Text);
+                try
+                {
+                    progressDialog = new ProgressDialog(this);
+                    ShowProgressDialog(progressDialog, true);
+                    await LogIn(username.Text, password.Text);
+                    ShowProgressDialog(progressDialog, false);
+                }
+                catch(System.Net.WebException e)
+                {
+                    var logInFailAlert = new AlertDialog.Builder(this);
+                    logInFailAlert.SetMessage("Server is not responding");
+                    logInFailAlert.SetNeutralButton("OK", delegate { });
+                    ShowProgressDialog(progressDialog, false);
+                    logInFailAlert.Show();              
+                }
+                
             };
 
             // Works the "Forgotten Password" button
@@ -69,14 +86,13 @@ namespace HELPS
         }
 
         // Controls what happens when the user clicks the Log In button
-        void LogIn(string studentID, string password)
+        async Task LogIn(string studentID, string password)
         {
             if (currentUTSStudent(studentID, password))
             {
-                ShowProgressDialog();
                 Constants.CURRENT_STUDENT_ID = studentID;
-
-                if (registeredAtHELPS(studentID))
+                
+                if (await registeredAtHELPS(studentID))
                 {
                     Log.Info("Inside LogOnActvitity", "Student Data is not Null");
                     Intent mainActivity = new Intent(Application.Context, typeof(MainActivity));
@@ -104,19 +120,23 @@ namespace HELPS
           
         }
 
-        private void ShowProgressDialog()
+        private void ShowProgressDialog(ProgressDialog progressDialog, bool show)
         {
-            ProgressDialog progressDialog = new ProgressDialog(this);
-            progressDialog.Indeterminate = true;
-            progressDialog.SetProgressStyle(ProgressDialogStyle.Spinner);
-            progressDialog.SetMessage("Logging in. Please wait...");
-            progressDialog.SetCancelable(false);
-            progressDialog.Show();
+            if (show)
+            {
+                progressDialog.Indeterminate = true;
+                progressDialog.SetProgressStyle(ProgressDialogStyle.Spinner);
+                progressDialog.SetMessage("Logging in. Please wait...");
+                progressDialog.SetCancelable(false);
+                progressDialog.Show();
+            }
+            else
+                progressDialog.Hide();
         }
 
-        private bool registeredAtHELPS(string studentID)
+        private async Task<bool> registeredAtHELPS(string studentID)
         {
-            return (studentDataAtHELPS = new HomeController().login(studentID)) != null;
+            return (studentDataAtHELPS = await new HomeController().login(studentID)) != null;
         }
 
         private bool currentUTSStudent(string studentID, string password)

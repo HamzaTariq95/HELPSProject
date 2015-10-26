@@ -115,5 +115,10 @@ namespace HELPS.Model
         {
             return workshopID.ToString();
         }
+
+        public override string Topic()
+        {
+            return topic;
+        }
     }
 }

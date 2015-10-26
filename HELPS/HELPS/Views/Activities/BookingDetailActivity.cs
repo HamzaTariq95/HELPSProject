@@ -16,6 +16,7 @@ using HELPS.Model;
 using Newtonsoft.Json;
 using HELPS.Controllers;
 using Android.Util;
+using System.Threading.Tasks;
 
 namespace HELPS.Views.Activities
 {
@@ -29,6 +30,7 @@ namespace HELPS.Views.Activities
         private Booking _Booking;
         private Workshop _Workshop;
         private string bookingType;
+        private ProgressDialog progressDialog;
 
         //private WorkshopBooking _WorkshopBooking;
         //private string studentId;
@@ -104,17 +106,23 @@ namespace HELPS.Views.Activities
             Button bookButton = FindViewById<Button>(Resource.Id.buttonBook);
             Button waitlistButton = FindViewById<Button>(Resource.Id.buttonWaitlist);
 
-            bookButton.Click += delegate
+            bookButton.Click += async delegate
             {
-                Book();
+                ShowProgressDialog(progressDialog, "Booking. Please wait...", true);
+                await Book();
                 Server.workshopBookingsAltered = true;
+
+                ShowProgressDialog(progressDialog, "Booking. Please wait...", false);
                 Finish();
             };
 
-            waitlistButton.Click += delegate
+            waitlistButton.Click += async delegate
             {
-                Waitlist();
-                //Server.workshopBookingsAltered = true;
+                ShowProgressDialog(progressDialog, "Waitlisting. Please wait...", true);
+                await Waitlist();
+                Server.workshopBookingsAltered = true;
+
+                ShowProgressDialog(progressDialog, "Waitlisting. Please wait...", false);
                 Finish();
             };
 
@@ -124,10 +132,24 @@ namespace HELPS.Views.Activities
                 bookButton.Visibility = ViewStates.Gone;
         }
 
-        private void Waitlist()
+        private void ShowProgressDialog(ProgressDialog progressDialog, string message, bool show)
+        {
+            if (show)
+            {
+                progressDialog.Indeterminate = true;
+                progressDialog.SetProgressStyle(ProgressDialogStyle.Spinner);
+                progressDialog.SetMessage(message);
+                progressDialog.SetCancelable(false);
+                progressDialog.Show();
+            }
+            else
+                progressDialog.Hide();
+        }
+
+        private async Task Waitlist()
         {
             WorkshopController workshopController = new WorkshopController();
-            workshopController.Waitlist(_Workshop.WorkshopId);
+            await workshopController.Waitlist(_Workshop.WorkshopId);
         }
 
         private void SetBookingView()
@@ -158,7 +180,8 @@ namespace HELPS.Views.Activities
 
         private void SetVariables()
         {
-            //studentId = Intent.GetStringExtra("studentId");
+            progressDialog = new ProgressDialog(this);
+
             string requestType = Intent.GetStringExtra("requestType");
 
             if (requestType == "showAvailableWorkshop")
@@ -263,11 +286,11 @@ namespace HELPS.Views.Activities
             cancelAlert.Show();
         }
 
-        private void Book()
+        private async Task Book()
         {
             // Code to book the workshop
             WorkshopController workshopController = new WorkshopController();
-            if (!workshopController.Book(_Workshop.WorkshopId))
+            if (! await workshopController.Book(_Workshop.WorkshopId))
             {
                 //show error , stay on page;
             }
