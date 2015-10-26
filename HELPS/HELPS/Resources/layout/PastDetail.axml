@@ -76,76 +76,7 @@
                 android:textColor="@color/charcoal"
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
-                android:paddingBottom="24dp" />
-            <TextView
-                android:id="@+id/detailFilled"
-                android:text="Class spots filled:"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:textColor="@color/charcoal"
-                android:paddingTop="3dp"
-                android:paddingLeft="12dp"
-                android:paddingRight="12dp"
-                android:paddingBottom="3dp" />
-            <ProgressBar
-                android:id="@+id/fullBar"
-                style="@android:style/Widget.ProgressBar.Horizontal"
-                android:progressDrawable="@drawable/drawProgress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="12dp"
-                android:layout_marginRight="12dp"
-                android:layout_marginBottom="12dp" />
+                android:paddingBottom="6dp" />
         </LinearLayout>
     </ScrollView>
-    <LinearLayout
-        android:id="@+id/bookedButtons"
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:gravity="center"
-        android:background="@color/red">
-        <Button
-            android:id="@+id/buttonCancelBooking"
-            android:text="@string/cancelBooking"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="24dp"
-            android:padding="12dp"
-            android:background="@color/white"
-            android:textColor="@color/red" />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/notBookedButtons"
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:gravity="center"
-        android:background="@color/red">
-        <Button
-            android:id="@+id/buttonBook"
-            android:text="@string/book"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="24dp"
-            android:padding="12dp"
-            android:background="@color/white"
-            android:textColor="@color/red" />
-        <Button
-            android:id="@+id/buttonWaitlist"
-            android:text="@string/waitlist"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="24dp"
-            android:padding="12dp"
-            android:background="@color/white"
-            android:textColor="@color/red" />
-    </LinearLayout>
 </RelativeLayout>

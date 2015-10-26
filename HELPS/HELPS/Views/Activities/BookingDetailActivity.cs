@@ -26,6 +26,7 @@ namespace HELPS.Views.Activities
         private SupportToolbar _Toolbar;
         private LinearLayout _Booked, _NotBooked;
         private TextView _Title, _Date, _Location, _Tutor, _Type, _Description;
+        private ProgressBar _Full;
         private Booking _Booking;
         private Workshop _Workshop;
         private string bookingType;
@@ -58,6 +59,9 @@ namespace HELPS.Views.Activities
             _Type = FindViewById<TextView>(Resource.Id.detailType);
             _Description = FindViewById<TextView>(Resource.Id.detailDescription);
 
+            _Full = FindViewById<ProgressBar>(Resource.Id.fullBar);
+            _Full.Visibility = ViewStates.Gone;
+
             _Booked = FindViewById<LinearLayout>(Resource.Id.bookedButtons);
             _Booked.Visibility = ViewStates.Gone;
 
@@ -83,6 +87,11 @@ namespace HELPS.Views.Activities
         {
             // Display the booking button
             _NotBooked.Visibility = ViewStates.Visible;
+
+            // Display the filled bar
+            _Full.Visibility = ViewStates.Visible;
+            _Full.Max = _Workshop.maximum;
+            _Full.Progress = _Workshop.BookingCount;
 
             // Populate the TextViews
             SupportActionBar.Title = "Book Workshop";
@@ -156,7 +165,7 @@ namespace HELPS.Views.Activities
             _Date.Text = "Date: " + ((date == null) ? "Not available" : date.ToString());
             _Location.Text = "Location: " + _Booking.Location();
             _Tutor.Text = "Tutor: " + _Booking.Tutor();
-            _Type.Text = "Type: " + _Booking.Type();
+            _Type.Text = "For: " + _Booking.Type();
             _Description.Text = _Booking.Description();
 
             Button cancelButton = FindViewById<Button>(Resource.Id.buttonCancelBooking);
@@ -167,8 +176,6 @@ namespace HELPS.Views.Activities
             };
             if (date < DateTime.Now)
                 cancelButton.Visibility = ViewStates.Gone;
-            
-            
         }
 
         private void SetVariables()
@@ -246,8 +253,6 @@ namespace HELPS.Views.Activities
                         else
                             Server.workshopBookingsAltered = true;
                     }
-
-                    
                 }
 
                 else if (_Booking.GetType() == typeof(WorkshopBooking))
