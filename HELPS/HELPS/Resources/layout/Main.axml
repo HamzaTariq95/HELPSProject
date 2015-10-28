@@ -5,6 +5,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:id="@+id/linearFramework_main">
+<!-- Displays the toolbar. -->
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="fill_parent"
@@ -12,11 +13,12 @@
         android:background="@color/red"
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />
+<!-- Framework for the sliding menu and fragment container. -->
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawerMain"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
-    <!-- Activity content layout -->
+    <!-- Activity content layout. -->
         <FrameLayout
             android:id="@+id/fragmentContainer"
             android:layout_width="fill_parent"

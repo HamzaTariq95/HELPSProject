@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Custom layout for the search ListView-->
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:paddingTop="12dp"
     android:paddingBottom="12dp" >
+    <!-- Workshop's topic. -->
     <TextView
         android:id="@+id/searchWorkshopTitle"
         android:layout_width="280dp"
@@ -14,6 +16,7 @@
         android:text="asdsdssadsd adasdasdas drerwerw dwdwd dwqdewed "
         android:textSize="18dp"
         android:textColor="@color/charcoal" />
+    <!-- Book/Waitlist status -->
     <TextView
         android:id="@+id/searchWorkshopStatus"
         android:layout_width="wrap_content"
@@ -24,11 +27,13 @@
         android:textStyle="bold"
         android:textSize="18dp"
         android:textColor="@color/charcoal" />
+    <!-- Second line. -->
     <LinearLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:layout_below="@+id/searchWorkshopTitle" >
+        <!-- Workshop date. -->
         <TextView
             android:id="@+id/searchWorkshopDate"
             android:layout_width="wrap_content"
@@ -39,6 +44,7 @@
             android:textStyle="bold"
             android:textSize="14dp"
             android:textColor="@color/charcoal" />
+        <!-- Workshop target group. -->
         <TextView
             android:id="@+id/searchWorkshopTarget"
             android:layout_width="wrap_content"
@@ -46,10 +52,9 @@
             android:layout_weight="1"
             android:gravity="right"
             android:layout_marginTop="6dp"
-            android:text="asd"
             android:textSize="14dp"
             android:textColor="@color/charcoal" />
-
+        <!-- Workshop type. -->
         <TextView
             android:id="@+id/searchWorkshopType"
             android:layout_width="wrap_content"
