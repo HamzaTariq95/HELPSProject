@@ -23,6 +23,16 @@
         android:paddingRight="12dp"
         android:paddingLeft="12dp"
         android:paddingBottom="12dp" />
+    <TextView
+        android:id="@+id/textNoBooking"
+        android:text="@string/noDisplay"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="12dp"
+        android:paddingLeft="12dp"
+        android:paddingBottom="12dp"
+        android:textSize="16dp"
+        android:textColor="@color/charcoal" />
 <!-- ListView displaying close bookings. -->
     <ListView
         android:id="@+id/listUpcoming"

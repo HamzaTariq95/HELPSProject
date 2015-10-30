@@ -38,6 +38,7 @@ namespace HELPS
         private FragmentTransaction _FragmentManager;
         private Fragment _Landing, _Future, _Past, _Search;
         private ProgressDialog progressDialog;
+        private TextView _NoDisplay;
 
 
         protected override void OnCreate(Bundle bundle)
@@ -53,6 +54,8 @@ namespace HELPS
 
             _DrawerToggle = new HelpsAppCompatDrawerToggle(this, _DrawerLayout, Resource.String.menuTitle, _CurrentViewTitle);
             _DrawerLayout.SetDrawerListener(_DrawerToggle);
+
+            _NoDisplay = FindViewById<TextView>(Resource.Id.textNoBooking);
 
             // Set up action bar
             SetUpSupportActionBar(bundle);
@@ -339,5 +342,3 @@ private async Task FetchAvailableWorkshops()
         }
     }
 }
-
-
