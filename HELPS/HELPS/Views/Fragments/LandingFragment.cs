@@ -106,7 +106,7 @@ namespace HELPS
         private void DisplayUserName(View view)
         {
             // {Architecture} Get from the database.
-            string helloUser = GetString(Resource.String.hello) + " " + studentData.attributes.studentID + "!";
+            string helloUser = "Hello " + studentData.attributes.studentID + "!";
             TextView helloUserText = view.FindViewById<TextView>(Resource.Id.textHelloUser);
 
             helloUserText.Text = helloUser;

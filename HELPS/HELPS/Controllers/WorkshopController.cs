@@ -30,7 +30,6 @@ namespace HELPS.Controllers
         {
 
             // Request Address of the API
-            //string url = "http://GroupThirteen.cloudapp.net/api/workshop/booking/search?studentId=" + studentID;
             string url = Server.url + "api/workshop/booking/search?studentId=" + studentID;
 
             // Get student data using web request
@@ -90,7 +89,6 @@ namespace HELPS.Controllers
         public async Task<WorkshopData> searchWorkshops(string startDate)
         {
             Console.WriteLine("date---------->" + startDate);
-            //string url = "http://GroupThirteen.cloudapp.net/api/workshop/search?startingDtBegin=" + startDate + "&startingDtEnd=2060-12-20&active=true";
             string url = Server.url + "api/workshop/search?startingDtBegin=" + startDate + "&startingDtEnd=2060-12-20&active=true";
 
             //Setting Request Properties
@@ -151,7 +149,6 @@ namespace HELPS.Controllers
         internal WorkshopSetData GetWorkshopSetData()
         {
             // Request Address of the API
-            //string url = "http://groupthirteen.cloudapp.net/api/workshop/workshopSets?active=true";
             string url = Server.url + "api/workshop/workshopSets?active=true";
 
             // Get student data using web request
@@ -263,7 +260,6 @@ namespace HELPS.Controllers
         internal CampusData GetCampusData()
         {
             // Request Address of the API
-            //string url = "http://groupthirteen.cloudapp.net/api/misc/campus?active=true";
             string url = Server.url + "api/misc/campus?active=true";
 
             // Get student data using web request
