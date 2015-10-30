@@ -19,16 +19,17 @@ namespace HELPS.Views
 {
     public class PastBookingsFragment : Fragment, AdapterView.IOnItemClickListener
     {
-        private StudentData studentData;
-        private SessionBookingData sessionBookingData;
-        private WorkshopBookingData workshopBookingData;
-        private List<Booking> bookings;
+        private StudentData _StudentData;
+        private SessionBookingData _SessionBookingData;
+        private WorkshopBookingData _WorkshopBookingData;
+        private List<Booking> _Bookings;
+        private TextView _NoDisplay;
 
         public PastBookingsFragment(SessionBookingData sessionBookingData, WorkshopBookingData workshopBookingData, StudentData studentData)
         {
-            this.sessionBookingData = sessionBookingData;
-            this.workshopBookingData = workshopBookingData;
-            this.studentData = studentData;
+            this._SessionBookingData = sessionBookingData;
+            this._WorkshopBookingData = workshopBookingData;
+            this._StudentData = studentData;
         }
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -42,11 +43,13 @@ namespace HELPS.Views
             View view = inflater.Inflate(Resource.Layout.BookingsLayout, container, false);
 
             //Get student data from intent in parent activity
-            studentData = JsonConvert.DeserializeObject<StudentData>(this.Activity.Intent.GetStringExtra("student"));
+            _StudentData = JsonConvert.DeserializeObject<StudentData>(this.Activity.Intent.GetStringExtra("student"));
 
-            sessionBookingData = Server.currentSessionBookingData;
-            workshopBookingData = Server.currentWorkshopBookingData;
+            _SessionBookingData = Server.currentSessionBookingData;
+            _WorkshopBookingData = Server.currentWorkshopBookingData;
 
+            _NoDisplay = view.FindViewById<TextView>(Resource.Id.textNoBooking);
+            _NoDisplay.Visibility = ViewStates.Gone;
             // Set the "Past Bookings" list view to display (upto) the four closest sessions
             DisplayPastBookings(view);
 
@@ -55,16 +58,16 @@ namespace HELPS.Views
 
         private void DisplayPastBookings(View view)
         {
-            bookings = new List<Booking>();
+            _Bookings = new List<Booking>();
 
-            if (sessionBookingData == null && workshopBookingData == null)
+            if (_SessionBookingData == null && _WorkshopBookingData == null)
             {
                 //Display on screen: no bookings found          
-
+                _NoDisplay.Visibility = ViewStates.Visible;
             }
             else
             {
-                addBookingsToList(bookings, sessionBookingData, workshopBookingData);
+                addBookingsToList(_Bookings, _SessionBookingData, _WorkshopBookingData);
             }
 
             ListView upcomingList = view.FindViewById<ListView>(Resource.Id.listUpcoming);
@@ -72,32 +75,32 @@ namespace HELPS.Views
 
             //Sort bookings by date
             //bookings.Sort((b, a) => a.Date().ToString().CompareTo(b.Date().ToString()));
-            bookings.Sort((b, a) => DateTime.Compare(a.Date() ?? DateTime.MaxValue, b.Date() ?? DateTime.MaxValue));
+            _Bookings.Sort((b, a) => DateTime.Compare(a.Date() ?? DateTime.MaxValue, b.Date() ?? DateTime.MaxValue));
 
             //show last 10 bookings
-            bookings = bookings.Take(10).ToList();
+            _Bookings = _Bookings.Take(10).ToList();
 
-            upcomingList.Adapter = new BookingBaseAdapter(Activity, bookings);
+            upcomingList.Adapter = new BookingBaseAdapter(Activity, _Bookings);
         }
            
 
-        private void addBookingsToList(List<Booking> bookings, SessionBookingData sessionBookingData, WorkshopBookingData workshopBookingData)
+        private void addBookingsToList(List<Booking> bookings, SessionBookingData _SessionBookingData, WorkshopBookingData _WorkshopBookingData)
         {
-            addSessionBookingsToList(sessionBookingData, bookings);
-            addWorkshopBookingsToList(workshopBookingData, bookings);
+            addSessionBookingsToList(_SessionBookingData, bookings);
+            addWorkshopBookingsToList(_WorkshopBookingData, bookings);
         }
-        private void addWorkshopBookingsToList(WorkshopBookingData workshopBookingData, List<Booking> bookings)
+        private void addWorkshopBookingsToList(WorkshopBookingData _WorkshopBookingData, List<Booking> bookings)
         {
-            foreach (WorkshopBooking workshopBooking in workshopBookingData.attributes)
+            foreach (WorkshopBooking workshopBooking in _WorkshopBookingData.attributes)
             {
                 if (workshopBooking.starting < DateTime.Now)
                     bookings.Add(workshopBooking);
             }
         }
 
-        private void addSessionBookingsToList(SessionBookingData sessionBookingData, List<Booking> bookings)
+        private void addSessionBookingsToList(SessionBookingData _SessionBookingData, List<Booking> bookings)
         {
-            foreach (SessionBooking sessionBooking in sessionBookingData.attributes)
+            foreach (SessionBooking sessionBooking in _SessionBookingData.attributes)
             {
                 if (sessionBooking.StartDate < DateTime.Now)
                     bookings.Add(sessionBooking);
@@ -106,7 +109,7 @@ namespace HELPS.Views
 
         public void OnItemClick(AdapterView parent, View view, int position, long id)
         {
-            Booking booking = bookings[position];
+            Booking booking = _Bookings[position];
             
             string bookingString = JsonConvert.SerializeObject(booking);
             

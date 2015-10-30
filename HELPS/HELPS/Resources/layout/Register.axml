@@ -5,6 +5,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/red">
+<!-- Registration title. -->
     <TextView
         android:id="@+id/textRegisterTitle"
         android:text="@string/registerTitle"
@@ -14,15 +15,18 @@
         android:textColor="@color/white"
         android:gravity="center"
         android:padding="12dp" />
+<!-- Switches between the layouts. -->
     <ViewSwitcher
         android:id="@+id/resourceSwitch"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
+    <!-- Check layout. -->
         <LinearLayout
             android:id="@+id/registerView1"
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
+        <!-- Tells users to check this data. -->
             <TextView
                 android:id="@+id/textCheckInformation"
                 android:text="@string/checkInformation"
@@ -46,6 +50,7 @@
                 android:paddingRight="12dp"
                 android:paddingBottom="6dp" />
             -->
+        <!-- Displays the user's UTS email. -->
             <TextView
                 android:id="@+id/textCheckEmail"
                 android:text="@string/checkEmail"
@@ -56,6 +61,7 @@
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
                 android:paddingBottom="6dp" />
+        <!-- Displays the user's date of birth. -->
             <TextView
                 android:id="@+id/textCheckDOB"
                 android:text="@string/checkDOB"
@@ -66,6 +72,7 @@
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
                 android:paddingBottom="6dp" />
+        <!-- Displays the user's faculty. -->
             <TextView
                 android:id="@+id/textCheckFaculty"
                 android:text="@string/checkFaculty"
@@ -76,6 +83,7 @@
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
                 android:paddingBottom="6dp" />
+        <!-- Dispalys the user's course. -->
             <TextView
                 android:id="@+id/textCheckCourse"
                 android:text="@string/checkCourse"
@@ -108,11 +116,13 @@
                 android:paddingRight="12dp"
                 android:paddingBottom="6dp" />
             -->
+        <!-- Display the cancel/continue buttons. -->
             <LinearLayout
                 android:id="@+id/checkButtons"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center">
+            <!-- Returns to the Log In activity. -->
                 <com.refractored.fab.FloatingActionButton
                     android:id="@+id/fabCheckCancel"
                     android:layout_width="wrap_content"
@@ -125,6 +135,7 @@
                     fab:fab_colorNormal="@color/white"
                     fab:fab_colorPressed="@color/whiteDark"
                     fab:fab_colorRipple="@color/redDark" />
+            <!-- Switches to the input layout. -->
                 <com.refractored.fab.FloatingActionButton
                     android:id="@+id/fabCheckOk"
                     android:layout_width="wrap_content"
@@ -138,6 +149,7 @@
                     fab:fab_colorPressed="@color/whiteDark"
                     fab:fab_colorRipple="@color/redDark" />
             </LinearLayout>
+        <!-- Tells the user what to do when the information is wrong. -->
             <TextView
                 android:id="@+id/textContactInformation"
                 android:text="@string/contactInformation"
@@ -150,11 +162,13 @@
                 android:paddingRight="12dp"
                 android:paddingTop="12dp" />
         </LinearLayout>
+    <!-- Input layout -->
         <LinearLayout
             android:id="@+id/registerView1"
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
+        <!-- Tells the user that there/what are the compulsary. -->
             <TextView
                 android:id="@+id/textCompulsory"
                 android:text="@string/inputCompulsory"
@@ -173,6 +187,7 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+                <!-- Preferred name input. -->
                     <TextView
                         android:id="@+id/textPreferredName"
                         android:text="@string/inputPreferredName"
@@ -199,6 +214,7 @@
                         android:paddingBottom="4dp"
                         android:paddingRight="8dp"
                         android:paddingLeft="8dp" />
+                <!-- Preferred number input. -->
                     <TextView
                         android:id="@+id/textPreferredNumber"
                         android:text="@string/inputPreferredNumber"
@@ -226,6 +242,7 @@
                         android:paddingBottom="4dp"
                         android:paddingRight="8dp"
                         android:paddingLeft="8dp" />
+                <!-- Gender input. -->
                     <TextView
                         android:id="@+id/textGender"
                         android:text="@string/inputGender"
@@ -267,6 +284,7 @@
                             android:textColor="@color/white"
                             android:buttonTint="@color/white" />
                     </RadioGroup>
+                <!-- Residency status input. -->
                     <TextView
                         android:id="@+id/textStatus"
                         android:text="@string/inputStatus"
@@ -300,6 +318,7 @@
                             android:textColor="@color/white"
                             android:buttonTint="@color/white" />
                     </RadioGroup>
+                <!-- Language input. -->
                     <TextView
                         android:id="@+id/textLanguage"
                         android:text="@string/inputLanguage"
@@ -321,6 +340,7 @@
                         android:paddingLeft="12dp"
                         android:paddingRight="12dp"
                         android:paddingBottom="6dp" />
+                <!--  Country input. -->
                     <TextView
                         android:id="@+id/textCountry"
                         android:text="@string/inputCountry"
@@ -342,6 +362,7 @@
                         android:paddingLeft="12dp"
                         android:paddingRight="12dp"
                         android:paddingBottom="6dp" />
+                <!-- Education input. -->
                     <TextView
                         android:id="@+id/textEducation"
                         android:text="@string/inputEducation"
@@ -441,6 +462,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
                         android:gravity="center">
+                    <!-- Returns user to the Log In activity. -->
                         <com.refractored.fab.FloatingActionButton
                             android:id="@+id/fabInputCancel"
                             android:layout_width="wrap_content"
@@ -453,6 +475,7 @@
                             fab:fab_colorNormal="@color/white"
                             fab:fab_colorPressed="@color/whiteDark"
                             fab:fab_colorRipple="@color/redDark" />
+                    <!-- Creates the HELPS account. -->
                         <com.refractored.fab.FloatingActionButton
                             android:id="@+id/fabInputOk"
                             android:layout_width="wrap_content"

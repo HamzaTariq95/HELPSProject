@@ -100,7 +100,7 @@
     <!-- Menu -->
     <string name="menuTitle">Menu</string>
     <string-array name="menu">
-        <item name="menuProfile">My HELPS Profile</item>
+        <item name="menuProfile">UTS:HELPS Home</item>
         <item name="menuSearch">Search Workshops</item>
         <item name="menuFuture">My Future Bookings</item>
         <item name="menuPast">My Past Bookings</item>
@@ -119,6 +119,7 @@
   
     <!-- Future Bookings -->
     <string name="futureBookingsTitle">My Future Bookings</string>
+    <string name="noDisplay">There are no bookings to display.</string>
 
     <!-- Past Bookings -->
     <string name="pastBookingsTitle">My Past Bookings</string>
