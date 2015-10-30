@@ -1825,20 +1825,23 @@ namespace HELPS
 			// aapt resource value: 0x7f0b0033
 			public const int scrollView = 2131427379;
 			
-			// aapt resource value: 0x7f0b00ae
-			public const int searchWorkshopDate = 2131427502;
-			
-			// aapt resource value: 0x7f0b00ad
-			public const int searchWorkshopStatus = 2131427501;
+			// aapt resource value: 0x7f0b00ac
+			public const int searchLineOne = 2131427500;
 			
 			// aapt resource value: 0x7f0b00af
-			public const int searchWorkshopTarget = 2131427503;
+			public const int searchWorkshopDate = 2131427503;
 			
-			// aapt resource value: 0x7f0b00ac
-			public const int searchWorkshopTitle = 2131427500;
+			// aapt resource value: 0x7f0b00ae
+			public const int searchWorkshopStatus = 2131427502;
 			
 			// aapt resource value: 0x7f0b00b0
-			public const int searchWorkshopType = 2131427504;
+			public const int searchWorkshopTarget = 2131427504;
+			
+			// aapt resource value: 0x7f0b00ad
+			public const int searchWorkshopTitle = 2131427501;
+			
+			// aapt resource value: 0x7f0b00b1
+			public const int searchWorkshopType = 2131427505;
 			
 			// aapt resource value: 0x7f0b0045
 			public const int search_badge = 2131427397;
