@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Controls the display of the booked sessions/workshop ListView -->
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:paddingTop="12dp"
     android:paddingBottom="12dp" >
+    <!-- Workshop/session name -->
     <TextView
         android:id="@+id/bookedSessionTitle"
         android:layout_width="290dp"
@@ -13,6 +15,7 @@
         android:layout_alignParentTop="true"
         android:textSize="18dp"
         android:textColor="@color/charcoal" />
+    <!-- Status of booking -->
     <TextView
         android:id="@+id/bookedSessionStatus"
         android:layout_width="wrap_content"
@@ -21,44 +24,49 @@
         android:layout_alignParentTop="true"
         android:textSize="18dp"
         android:textColor="@color/charcoal" />
-  <LinearLayout
-      android:layout_height="wrap_content"
-      android:layout_width="match_parent"
-      android:orientation="horizontal"
-      android:layout_below="@+id/bookedSessionTitle" >
-      <TextView
-          android:id="@+id/bookedSessionDate"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_weight="1"
-          android:layout_marginTop="6dp"
-          android:textSize="14dp"
-          android:textStyle="bold"
-          android:textColor="@color/charcoal" />
-      <!--<TextView
-          android:id="@+id/bookedSessionLocation"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_weight="1"
-          android:layout_marginTop="6dp"
-          android:textSize="14dp"
-          android:gravity="right"
-          android:textColor="@color/charcoal" />
-      <TextView
-          android:id="@+id/bookedSessionTutor"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_weight="1"
-          android:layout_marginTop="6dp"
-          android:textSize="14dp"
-          android:textColor="@color/charcoal" />-->
-      <TextView
-          android:id="@+id/bookedSessionType"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_marginTop="6dp"
-          android:textSize="14dp"
-          android:gravity="right"
-          android:textColor="@color/charcoal" />
+    <!-- Second line of information -->
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_below="@+id/bookedSessionTitle" >
+        <!-- Date of workshop/session -->
+        <TextView
+            android:id="@+id/bookedSessionDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="6dp"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:textColor="@color/charcoal" />
+        <!-- Display when implemented
+        <TextView
+            android:id="@+id/bookedSessionLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="6dp"
+            android:textSize="14dp"
+            android:gravity="right"
+            android:textColor="@color/charcoal" />
+        <TextView
+            android:id="@+id/bookedSessionTutor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="6dp"
+            android:textSize="14dp"
+            android:textColor="@color/charcoal" />
+            -->
+        <!-- Type of booking -->
+        <TextView
+            android:id="@+id/bookedSessionType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:textSize="14dp"
+            android:gravity="right"
+            android:textColor="@color/charcoal" />
     </LinearLayout>
 </RelativeLayout>

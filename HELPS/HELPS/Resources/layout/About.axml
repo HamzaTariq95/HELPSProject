@@ -4,6 +4,7 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
+<!-- Displays the toolbar -->
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="fill_parent"
@@ -11,6 +12,7 @@
         android:background="@color/red"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />
+<!-- TextView containing the "About HELPS" information -->
     <TextView
         android:id="@+id/aboutHelpsText"
         android:text="@string/aboutHelps"
