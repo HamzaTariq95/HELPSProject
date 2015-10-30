@@ -26,6 +26,7 @@ namespace HELPS.Views
         private List<Booking> bookings;
         private ListView upcomingList;
         private BookingBaseAdapter adapter;
+        private TextView _NoDisplay;
 
         //private CampusData campusData;
 
@@ -50,6 +51,8 @@ namespace HELPS.Views
             sessionBookingData = Server.currentSessionBookingData;
             workshopBookingData = Server.currentWorkshopBookingData;
 
+            _NoDisplay = view.FindViewById<TextView>(Resource.Id.textNoBooking);
+            
             // Set the "Upcoming Sessions" list view to display (upto) the four closest sessions
             DisplayUpcomingBookings(view);
 
@@ -63,9 +66,11 @@ namespace HELPS.Views
             if (sessionBookingData == null && workshopBookingData == null)
             {
                 //Display on screen: no bookings found
+               // _NoDisplay.Visibility = ViewStates.Visible;
             }
             else
             {
+                //_NoDisplay.Visibility = ViewStates.Gone;
                 addBookingsToList(bookings, sessionBookingData, workshopBookingData);
             }
 

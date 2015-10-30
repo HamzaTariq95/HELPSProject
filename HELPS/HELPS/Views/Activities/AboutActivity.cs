@@ -11,10 +11,12 @@ using Android.Views;
 using Android.Widget;
 using Android.Support.V7.App;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
+using Android.Content.PM;
 
 namespace HELPS.Views.Activities
 {
-    [Activity(Label = "AboutActivity")]
+    // Displays the information about UTS:HELPS
+    [Activity(Label = "AboutActivity", ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class AboutActivity : AppCompatActivity
     {
         private SupportToolbar _Toolbar;
@@ -34,6 +36,7 @@ namespace HELPS.Views.Activities
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
+            // Sets the toolbar back button to act like a back press.
             OnBackPressed();
             return base.OnOptionsItemSelected(item);
         }
