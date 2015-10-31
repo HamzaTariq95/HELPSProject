@@ -97,7 +97,7 @@ namespace HELPS.Views.Activities
 
             // Populate the TextViews
             SupportActionBar.Title = "Book Workshop";
-            _Title.Text = _Workshop.Title();
+            _Title.Text = _Workshop.Topic();
             DateTime? date = _Workshop.Date();
             _Date.Text = "Date: " + ((date == null) ? "Not available" : date.ToString());
             _Location.Text = "Location: " + _Workshop.Location();
@@ -166,7 +166,7 @@ namespace HELPS.Views.Activities
             SupportActionBar.Title = "View Booking";
             _Booking.Title();
             // Populate TextViews
-            _Title.Text = _Booking.Title();
+            _Title.Text = _Booking.Topic();
             DateTime? date = _Booking.Date();
             _Date.Text = "Date: " + ((date == null) ? "Not available" : date.ToString());
             _Location.Text = "Location: " + _Booking.Location();

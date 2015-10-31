@@ -74,7 +74,7 @@ namespace HELPS
             }
 
             // Sets the list row to display the session data.
-            holder.searchWorkshopTitle.Text = _Workshops[position].Title();
+            holder.searchWorkshopTitle.Text = _Workshops[position].Topic();
             holder.searchWorkshopStatus.Text = _Workshops[position].Status();
             DateTime? date = _Workshops[position].Date();
             holder.searchWorkshopDate.Text = (date == null) ? "Not available" : date.ToString();
