@@ -115,7 +115,6 @@ namespace HELPS.Views.Activities
                 Server.workshopBookingsAltered = true;
 
                 ShowProgressDialog(progressDialog, "Booking. Please wait...", false);
-                Finish();
             };
 
             waitlistButton.Click += async delegate
@@ -125,7 +124,6 @@ namespace HELPS.Views.Activities
                 Server.workshopBookingsAltered = true;
 
                 ShowProgressDialog(progressDialog, "Waitlisting. Please wait...", false);
-                Finish();
             };
 
             if (_Workshop.BookingCount < _Workshop.cutoff)
@@ -152,6 +150,12 @@ namespace HELPS.Views.Activities
         {
             WorkshopController workshopController = new WorkshopController();
             await workshopController.Waitlist(_Workshop.WorkshopId);
+
+            //show dialog saying canceled
+            var SuccesDialog = new AlertDialog.Builder(this);
+            SuccesDialog.SetMessage("You have successfully been waitlisted!");
+            SuccesDialog.SetNeutralButton("OK", delegate { Finish(); });
+            SuccesDialog.Show();
         }
 
         private void SetBookingView()
@@ -239,14 +243,14 @@ namespace HELPS.Views.Activities
 
                     if (!sessionController.CancelSession(_Booking.ID()))
                     {
-                        //show error, stay on page;
+                        //show error, stay on page
                     }
 
                     else
                     {
-                        //show dialog saying cancled
+                        //show dialog saying canceled
                         var SuccesDialog = new AlertDialog.Builder(this);
-                        SuccesDialog.SetMessage("Booking has been Cancled!");
+                        SuccesDialog.SetMessage("Booking has been Canceled!");
                         SuccesDialog.SetNeutralButton("OK", delegate { Finish(); });
                         SuccesDialog.Show();
 
@@ -271,7 +275,7 @@ namespace HELPS.Views.Activities
                     {
                         //show dialog saying cancled
                         var SuccesDialog = new AlertDialog.Builder(this);
-                        SuccesDialog.SetMessage("Booking has been Cancled!");
+                        SuccesDialog.SetMessage("Booking has been Canceled!");
                         SuccesDialog.SetNeutralButton("OK", delegate { Finish(); });
                         SuccesDialog.Show();
 
@@ -297,7 +301,12 @@ namespace HELPS.Views.Activities
                 //show error , stay on page;
             }
             else
-            { //show dialog saying booked and return}
+            {
+                //show dialog saying booked
+                var SuccesDialog = new AlertDialog.Builder(this);
+                SuccesDialog.SetMessage("You have successfully been booked!");
+                SuccesDialog.SetNeutralButton("OK", delegate { Finish(); });
+                SuccesDialog.Show();
             }
         }
     }

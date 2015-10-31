@@ -10,7 +10,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
         android:textSize="16dp"
-        android:textColor="@color/charcoal" />
+        android:textColor="@color/charcoal"
+        android:visibility="gone" />
     <ListView
         android:id="@+id/listUpcoming"
         android:minHeight="24dp"

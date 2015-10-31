@@ -55,8 +55,6 @@ namespace HELPS
             _DrawerToggle = new HelpsAppCompatDrawerToggle(this, _DrawerLayout, Resource.String.menuTitle, _CurrentViewTitle);
             _DrawerLayout.SetDrawerListener(_DrawerToggle);
 
-            _NoDisplay = FindViewById<TextView>(Resource.Id.textNoBooking);
-
             // Set up action bar
             SetUpSupportActionBar(bundle);
             
@@ -67,6 +65,7 @@ namespace HELPS
             
             //Fetch booking data
             FetchBookingData();
+
         }
 
         private void ShowProgressDialog(ProgressDialog progressDialog, string message, bool show)

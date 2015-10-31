@@ -32,7 +32,8 @@
         android:paddingLeft="12dp"
         android:paddingBottom="12dp"
         android:textSize="16dp"
-        android:textColor="@color/charcoal" />
+        android:textColor="@color/charcoal"
+        android:visibility="gone" />
 <!-- ListView displaying close bookings. -->
     <ListView
         android:id="@+id/listUpcoming"

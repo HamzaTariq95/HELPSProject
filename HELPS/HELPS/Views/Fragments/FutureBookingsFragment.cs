@@ -56,6 +56,9 @@ namespace HELPS.Views
             // Set the "Upcoming Sessions" list view to display (upto) the four closest sessions
             DisplayUpcomingBookings(view);
 
+            if (bookings.Count < 1)
+                _NoDisplay.Visibility = ViewStates.Visible;
+
             return view;
         }
 

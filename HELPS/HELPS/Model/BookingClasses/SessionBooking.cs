@@ -14,7 +14,7 @@ namespace HELPS.Model
 {
     public class SessionBooking : Booking
     {
-
+        
         public string LecturerFirstName { get; set; }
         public string LecturerLastName { get; set; }
         public string LecturerEmail { get; set; }
