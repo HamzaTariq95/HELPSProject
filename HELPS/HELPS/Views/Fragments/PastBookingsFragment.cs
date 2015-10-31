@@ -50,8 +50,12 @@ namespace HELPS.Views
 
             _NoDisplay = view.FindViewById<TextView>(Resource.Id.textNoBooking);
             _NoDisplay.Visibility = ViewStates.Gone;
+
             // Set the "Past Bookings" list view to display (upto) the four closest sessions
             DisplayPastBookings(view);
+
+            if (_Bookings.Count < 1)
+                _NoDisplay.Visibility = ViewStates.Visible;
 
             return view;
         }

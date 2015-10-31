@@ -24,6 +24,7 @@ namespace HELPS
         private SessionBookingData sessionBookingData;
         private WorkshopBookingData workshopBookingData;
         private List<Booking> bookings;
+        private TextView _NoDisplay;
 
         public LandingFragment(SessionBookingData sessionBookingData, WorkshopBookingData workshopBookingData, StudentData studentData)
         {
@@ -43,11 +44,16 @@ namespace HELPS
             sessionBookingData = Server.currentSessionBookingData;
             workshopBookingData = Server.currentWorkshopBookingData;
 
+            _NoDisplay = view.FindViewById<TextView>(Resource.Id.textNoBooking);
+
             // Set the "Hello User" text view to display the user's name
             DisplayUserName(view);
 
             // Set the "Upcoming Sessions" list view to display (upto) the four closest sessions
             DisplayUpcomingBookings(view);
+
+            if (bookings.Count < 1)
+                _NoDisplay.Visibility = ViewStates.Visible;
 
             return view;
         }
@@ -106,7 +112,7 @@ namespace HELPS
         private void DisplayUserName(View view)
         {
             // {Architecture} Get from the database.
-            string helloUser = GetString(Resource.String.hello) + " " + studentData.attributes.studentID + "!";
+            string helloUser = "Hello " + studentData.attributes.studentID + "!";
             TextView helloUserText = view.FindViewById<TextView>(Resource.Id.textHelloUser);
 
             helloUserText.Text = helloUser;

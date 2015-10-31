@@ -30,8 +30,7 @@ namespace HELPS.Controllers
         {
 
             // Request Address of the API
-            //string url = "http://GroupThirteen.cloudapp.net/api/workshop/booking/search?studentId=" + studentID;
-            string url = Server.url + "api/workshop/booking/search?studentId=" + studentID;
+            string url = Server.url + "api/workshop/booking/search?studentId=" + studentID + "&pageSize=1000";
 
             // Get student data using web request
             return await getWorkshopBookingData(getRequest(url));
@@ -90,8 +89,7 @@ namespace HELPS.Controllers
         public async Task<WorkshopData> searchWorkshops(string startDate)
         {
             Console.WriteLine("date---------->" + startDate);
-            //string url = "http://GroupThirteen.cloudapp.net/api/workshop/search?startingDtBegin=" + startDate + "&startingDtEnd=2060-12-20&active=true";
-            string url = Server.url + "api/workshop/search?startingDtBegin=" + startDate + "&startingDtEnd=2060-12-20&active=true";
+            string url = Server.url + "api/workshop/search?startingDtBegin=" + startDate + "&startingDtEnd=2060-12-20&active=true&pageSize=1000";
 
             //Setting Request Properties
            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
@@ -151,8 +149,7 @@ namespace HELPS.Controllers
         internal WorkshopSetData GetWorkshopSetData()
         {
             // Request Address of the API
-            //string url = "http://groupthirteen.cloudapp.net/api/workshop/workshopSets?active=true";
-            string url = Server.url + "api/workshop/workshopSets?active=true";
+            string url = Server.url + "api/workshop/workshopSets?active=true&pageSize=1000";
 
             // Get student data using web request
             return getWorkshopSetData(getRequest(url));
@@ -263,8 +260,7 @@ namespace HELPS.Controllers
         internal CampusData GetCampusData()
         {
             // Request Address of the API
-            //string url = "http://groupthirteen.cloudapp.net/api/misc/campus?active=true";
-            string url = Server.url + "api/misc/campus?active=true";
+            string url = Server.url + "api/misc/campus?active=true&pageSize=1000";
 
             // Get student data using web request
             return getCampusData(getRequest(url));

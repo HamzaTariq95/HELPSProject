@@ -71,12 +71,10 @@ namespace HELPS.Views
             }
 
             // Sets the list row to display the session data.
-            holder.bookedSessionTitle.Text = _Bookings[position].Topic();
+            holder.bookedSessionTitle.Text = _Bookings[position].Title();
             holder.bookedSessionStatus.Text = _Bookings[position].Status();
             DateTime? date = _Bookings[position].Date();
             holder.bookedSessionDate.Text = (date == null) ? "Not available":date.ToString();
-            //holder.bookedSessionLocation.Text = _Bookings[position].Location();
-            //holder.bookedSessionTutor.Text = _Bookings[position].Tutor();
             holder.bookedSessionType.Text = _Bookings[position].Type();
 
             return view;

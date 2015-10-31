@@ -37,21 +37,21 @@ namespace HELPS.Controllers
             Log.Info("Register", json);
 
            // Request Address of the API    
-           //string url = "http://groupthirteen.cloudapp.net/api/student/register";
             string url = Server.url + "api/student/register";
 
            String result = null;
         
                using (WebClient wc = new WebClient())
                {
-                   wc.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-                   wc.Headers.Add("AppKey", "66666");
+                
+                wc.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
+                wc.Headers.Add("AppKey", "66666");
 
 
-                    result = await wc.UploadStringTaskAsync(new Uri(url), json);
+                result = await wc.UploadStringTaskAsync(new Uri(url), json);
                    
 
-                   Log.Info("Register SUCCESS", result);
+                Log.Info("Register SUCCESS", result);
                 HomeController loginController = new HomeController();
                 await loginController.login(data.StudentId);
 
