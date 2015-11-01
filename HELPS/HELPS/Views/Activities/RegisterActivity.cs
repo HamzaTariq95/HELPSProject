@@ -15,7 +15,7 @@ using Android.Views;
 
 namespace HELPS
 {
-    [Activity(Label = "RegisterActivity", ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait, Icon = "@drawable/icon")]
+    [Activity(ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait, Icon = "@drawable/icon")]
     public class RegisterActivity : AppCompatActivity
     {
         private SupportToolbar _Toolbar;
@@ -33,6 +33,7 @@ namespace HELPS
             // Set up action bar
             SetSupportActionBar(_Toolbar);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+            SupportActionBar.Title = GetString(Resource.String.registerTitle);
 
             // Works the buttons on the "Check" view
             com.refractored.fab.FloatingActionButton checkOkButton = FindViewById<com.refractored.fab.FloatingActionButton>(Resource.Id.fabCheckOk);
