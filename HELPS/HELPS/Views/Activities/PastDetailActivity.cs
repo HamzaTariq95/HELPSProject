@@ -4,22 +4,17 @@ using System.Linq;
 using System.Text;
 
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.Support.V7.App;
-using AlertDialog = Android.Support.V7.App.AlertDialog;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 using HELPS.Model;
-using Newtonsoft.Json;
-using HELPS.Controllers;
-using Android.Util;
+using Android.Content.PM;
 
 namespace HELPS.Views.Activities
 {
-    [Activity(Label = "PastDetailActivity")]
+    [Activity(Label = "PastDetailActivity", ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait, Icon = "@drawable/icon")]
     public class PastDetailActivity : AppCompatActivity
     {
         private SupportToolbar _Toolbar;

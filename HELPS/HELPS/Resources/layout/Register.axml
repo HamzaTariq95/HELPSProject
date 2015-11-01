@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@color/red">
-<!-- Registration title. -->
-    <TextView
-        android:id="@+id/textRegisterTitle"
+    android:layout_height="fill_parent">
+<!-- Displays the toolbar. -->
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:text="@string/registerTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:textColor="@color/white"
-        android:gravity="center"
-        android:padding="12dp" />
+        android:layout_width="fill_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/red"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />
+<!-- Registration title. -->
 <!-- Switches between the layouts. -->
     <ViewSwitcher
         android:id="@+id/resourceSwitch"
@@ -34,10 +33,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textSize="16dp"
-                android:textColor="@color/white"
-                android:paddingLeft="12dp"
-                android:paddingRight="12dp"
-                android:paddingBottom="12dp" />
+                android:textColor="@color/charcoal"
+                android:padding="12dp" />
         <!-- Add when able to get student full name 
             <TextView
                 android:id="@+id/textCheckName"
@@ -45,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
-                android:textColor="@color/white"
+                android:textColor="@color/charcoal"
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
                 android:paddingBottom="6dp" />
@@ -57,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
-                android:textColor="@color/white"
+                android:textColor="@color/charcoal"
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
                 android:paddingBottom="6dp" />
@@ -68,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
-                android:textColor="@color/white"
+                android:textColor="@color/charcoal"
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
                 android:paddingBottom="6dp" />
@@ -79,7 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
-                android:textColor="@color/white"
+                android:textColor="@color/charcoal"
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
                 android:paddingBottom="6dp" />
@@ -90,7 +87,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
-                android:textColor="@color/white"
+                android:textColor="@color/charcoal"
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
                 android:paddingBottom="6dp" />
@@ -101,7 +98,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
-                android:textColor="@color/white"
+                android:textColor="@color/charcoal"
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
                 android:paddingBottom="6dp" />
@@ -111,7 +108,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
-                android:textColor="@color/white"
+                android:textColor="@color/charcoal"
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
                 android:paddingBottom="6dp" />
@@ -129,12 +126,12 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="24dp"
                     android:src="@drawable/ic_clear"
-                    android:tint="@color/red"
+                    android:tint="@color/white"
                     android:padding="24dp"
                     android:scaleType="fitCenter"
-                    fab:fab_colorNormal="@color/white"
-                    fab:fab_colorPressed="@color/whiteDark"
-                    fab:fab_colorRipple="@color/redDark" />
+                    app:fab_colorNormal="@color/red"
+                    app:fab_colorPressed="@color/redDark"
+                    app:fab_colorRipple="@color/redDark" />
             <!-- Switches to the input layout. -->
                 <com.refractored.fab.FloatingActionButton
                     android:id="@+id/fabCheckOk"
@@ -142,12 +139,12 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="24dp"
                     android:src="@drawable/ic_done"
-                    android:tint="@color/red"
+                    android:tint="@color/white"
                     android:padding="24dp"
                     android:scaleType="fitCenter"
-                    fab:fab_colorNormal="@color/white"
-                    fab:fab_colorPressed="@color/whiteDark"
-                    fab:fab_colorRipple="@color/redDark" />
+                    app:fab_colorNormal="@color/red"
+                    app:fab_colorPressed="@color/redDark"
+                    app:fab_colorRipple="@color/redDark" />
             </LinearLayout>
         <!-- Tells the user what to do when the information is wrong. -->
             <TextView
@@ -157,7 +154,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textSize="16dp"
-                android:textColor="@color/white"
+                android:textColor="@color/charcoal"
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
                 android:paddingTop="12dp" />
@@ -176,10 +173,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textSize="16dp"
-                android:textColor="@color/white"
-                android:paddingLeft="12dp"
-                android:paddingRight="12dp"
-                android:paddingBottom="12dp" />
+                android:textColor="@color/charcoal"
+                android:padding="12dp"/>
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -194,7 +189,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="16dp"
-                        android:textColor="@color/white"
+                        android:textColor="@color/charcoal"
                         android:paddingLeft="12dp"
                         android:paddingRight="12dp"
                         android:paddingBottom="6dp" />
@@ -221,7 +216,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="16dp"
-                        android:textColor="@color/white"
+                        android:textColor="@color/charcoal"
                         android:paddingLeft="12dp"
                         android:paddingRight="12dp"
                         android:paddingBottom="6dp" />
@@ -249,7 +244,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="16dp"
-                        android:textColor="@color/white"
+                        android:textColor="@color/charcoal"
                         android:paddingLeft="12dp"
                         android:paddingRight="12dp"
                         android:paddingBottom="6dp" />
@@ -267,22 +262,22 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/male"
-                            android:textColor="@color/white"
-                            android:buttonTint="@color/white" />
+                            android:textColor="@color/charcoal"
+                            android:buttonTint="@color/charcoal" />
                         <RadioButton
                             android:id="@+id/radioFemale"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/female"
-                            android:textColor="@color/white"
-                            android:buttonTint="@color/white" />
+                            android:textColor="@color/charcoal"
+                            android:buttonTint="@color/charcoal" />
                         <RadioButton
                             android:id="@+id/radioOther"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/other"
-                            android:textColor="@color/white"
-                            android:buttonTint="@color/white" />
+                            android:textColor="@color/charcoal"
+                            android:buttonTint="@color/charcoal" />
                     </RadioGroup>
                 <!-- Residency status input. -->
                     <TextView
@@ -291,7 +286,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="16dp"
-                        android:textColor="@color/white"
+                        android:textColor="@color/charcoal"
                         android:paddingLeft="12dp"
                         android:paddingRight="12dp"
                         android:paddingBottom="6dp" />
@@ -308,15 +303,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/permanent"
-                            android:textColor="@color/white"
-                            android:buttonTint="@color/white" />
+                            android:textColor="@color/charcoal"
+                            android:buttonTint="@color/charcoal" />
                         <RadioButton
                             android:id="@+id/radioInternational"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/international"
-                            android:textColor="@color/white"
-                            android:buttonTint="@color/white" />
+                            android:textColor="@color/charcoal"
+                            android:buttonTint="@color/charcoal" />
                     </RadioGroup>
                 <!-- Language input. -->
                     <TextView
@@ -325,7 +320,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="16dp"
-                        android:textColor="@color/white"
+                        android:textColor="@color/charcoal"
                         android:paddingLeft="12dp"
                         android:paddingRight="12dp"
                         android:paddingBottom="6dp" />
@@ -333,7 +328,7 @@
                         android:id="@+id/spinnerLanguage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white"
+                        android:textColor="@color/charcoal"
                         android:layout_marginLeft="12dp"
                         android:layout_marginRight="12dp"
                         android:layout_marginBottom="6dp"
@@ -347,7 +342,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="16dp"
-                        android:textColor="@color/white"
+                        android:textColor="@color/charcoal"
                         android:paddingLeft="12dp"
                         android:paddingRight="12dp"
                         android:paddingBottom="6dp" />
@@ -355,7 +350,7 @@
                         android:id="@+id/spinnerCountry"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white"
+                        android:textColor="@color/charcoal"
                         android:layout_marginLeft="12dp"
                         android:layout_marginRight="12dp"
                         android:layout_marginBottom="6dp"
@@ -369,7 +364,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="16dp"
-                        android:textColor="@color/white"
+                        android:textColor="@color/charcoal"
                         android:paddingLeft="12dp"
                         android:paddingRight="12dp"
                         android:paddingBottom="6dp" />
@@ -386,21 +381,21 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/hsc"
-                            android:textColor="@color/white" />
+                            android:textColor="@color/charcoal" />
                         <CheckBox
                             android:id="@+id/checkIelts"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/ielts"
-                            android:textColor="@color/white" />
+                            android:textColor="@color/charcoal" />
                         <CheckBox
                             android:id="@+id/checkToefl"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/toefl"
-                            android:textColor="@color/white" />
+                            android:textColor="@color/charcoal" />
                     </LinearLayout>
                     <LinearLayout
                         android:orientation="horizontal"
@@ -415,7 +410,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/tafe"
-                            android:textColor="@color/white"
+                            android:textColor="@color/charcoal"
                             android:paddingRight="12dp" />
                         <CheckBox
                             android:id="@+id/checkCult"
@@ -423,7 +418,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/cult"
-                            android:textColor="@color/white"
+                            android:textColor="@color/charcoal"
                             android:paddingRight="12dp" />
                         <CheckBox
                             android:id="@+id/checkDeep"
@@ -431,7 +426,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/deep"
-                            android:textColor="@color/white" />
+                            android:textColor="@color/charcoal" />
                     </LinearLayout>
                     <LinearLayout
                         android:orientation="horizontal"
@@ -446,7 +441,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/diploma"
-                            android:textColor="@color/white"
+                            android:textColor="@color/charcoal"
                             android:paddingRight="12dp" />
                         <CheckBox
                             android:id="@+id/checkFoundation"
@@ -454,7 +449,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/foundation"
-                            android:textColor="@color/white" />
+                            android:textColor="@color/charcoal" />
                     </LinearLayout>
                     <LinearLayout
                         android:id="@+id/inputButtons"
@@ -469,12 +464,12 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="24dp"
                             android:src="@drawable/ic_clear"
-                            android:tint="@color/red"
+                            android:tint="@color/white"
                             android:padding="24dp"
                             android:scaleType="fitCenter"
-                            fab:fab_colorNormal="@color/white"
-                            fab:fab_colorPressed="@color/whiteDark"
-                            fab:fab_colorRipple="@color/redDark" />
+                            app:fab_colorNormal="@color/red"
+                            app:fab_colorPressed="@color/redDark"
+                            app:fab_colorRipple="@color/redDark" />
                     <!-- Creates the HELPS account. -->
                         <com.refractored.fab.FloatingActionButton
                             android:id="@+id/fabInputOk"
@@ -482,12 +477,12 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="24dp"
                             android:src="@drawable/ic_person_add"
-                            android:tint="@color/red"
+                            android:tint="@color/white"
                             android:padding="24dp"
                             android:scaleType="fitCenter"
-                            fab:fab_colorNormal="@color/white"
-                            fab:fab_colorPressed="@color/whiteDark"
-                            fab:fab_colorRipple="@color/redDark" />
+                            app:fab_colorNormal="@color/red"
+                            app:fab_colorPressed="@color/redDark"
+                            app:fab_colorRipple="@color/redDark" />
                     </LinearLayout>
                 </LinearLayout>
             </ScrollView>

@@ -1,26 +1,25 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
 using Android.Widget;
-using Android.Graphics;
 using Newtonsoft.Json;
 using HELPS.Model;
-using Android.Util;
 using HELPS.Controllers;
 using Android.Content.PM;
+using SupportAlert = Android.Support.V7.App.AlertDialog;
+using SupportToolbar = Android.Support.V7.Widget.Toolbar;
+using Android.Support.V7.App;
+using Android.Views;
 
 namespace HELPS
 {
     [Activity(Label = "RegisterActivity", ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait, Icon = "@drawable/icon")]
-    public class RegisterActivity : Activity
+    public class RegisterActivity : AppCompatActivity
     {
+        private SupportToolbar _Toolbar;
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -28,11 +27,12 @@ namespace HELPS
             // Sets the layout to the "Register Check" layout
             SetContentView(Resource.Layout.Register);
 
-            // Sets the font for the title to Din Regular
-            TextView title = FindViewById<TextView>(Resource.Id.textRegisterTitle);
-            Typeface titleFont = Typeface.CreateFromAsset(this.Assets, "fonts/din-regular.ttf");
+            // Set the toolbar
+            _Toolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
 
-            title.SetTypeface(titleFont, TypefaceStyle.Normal);
+            // Set up action bar
+            SetSupportActionBar(_Toolbar);
+            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 
             // Works the buttons on the "Check" view
             com.refractored.fab.FloatingActionButton checkOkButton = FindViewById<com.refractored.fab.FloatingActionButton>(Resource.Id.fabCheckOk);
@@ -169,9 +169,15 @@ namespace HELPS
             };
         }
 
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            OnBackPressed();
+            return base.OnOptionsItemSelected(item);
+        }
+
         private void ShowFailedAlert(string msg)
         {
-            var registerFailAlert = new AlertDialog.Builder(this);
+            var registerFailAlert = new SupportAlert.Builder(this);
             registerFailAlert.SetMessage(msg);
             registerFailAlert.SetNeutralButton("OK", delegate { });
             registerFailAlert.Show();
@@ -202,8 +208,7 @@ namespace HELPS
         // Controls sending the user back to the "Log On" activity.
         void Cancel()
         {
-            StartActivity(typeof(LogOnActivity));
-            Finish();
+            OnBackPressed();
         }
     }
 }

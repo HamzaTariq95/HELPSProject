@@ -51,7 +51,7 @@
     <string name="checkDOB">
         <b>D.O.B.: </b>
     </string>
-    <string name="contactInformation">Information incorrect? Please contact UTS administration.</string>
+    <string name="contactInformation">Information wrong? Please contact UTS administration.</string>
   
     <!-- Register: Input screen -->
     <string name="inputCompulsory">Fields marked with an asterisk (*) are compulsory.</string>

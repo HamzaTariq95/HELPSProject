@@ -1,12 +1,9 @@
 ﻿using System;
 using Android.App;
 using Android.Content;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
-using Java.Util;
-using System.Collections.Generic;
 using Android.Support.V4.Widget;
 using Newtonsoft.Json;
 using HELPS.Model;
@@ -16,11 +13,12 @@ using HELPS.Views;
 using HELPS.Controllers;
 using HELPS.Model.JSONDataClasses;
 using System.Threading.Tasks;
+using Android.Content.PM;
 
 namespace HELPS
 {
     
-[Activity(Label = "UTS:HELPS", Icon = "@drawable/icon")]
+[Activity(Label = "UTS:HELPS", Icon = "@drawable/icon", ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : AppCompatActivity
     {
         private SessionBookingData sessionBookingData;

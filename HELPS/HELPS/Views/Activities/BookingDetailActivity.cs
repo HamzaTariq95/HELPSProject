@@ -17,10 +17,11 @@ using Newtonsoft.Json;
 using HELPS.Controllers;
 using Android.Util;
 using System.Threading.Tasks;
+using Android.Content.PM;
 
 namespace HELPS.Views.Activities
 {
-    [Activity(Label = "BookingDetailActivity")]
+    [Activity(Label = "BookingDetailActivity", ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class BookingDetailActivity : AppCompatActivity
     {
         private SupportToolbar _Toolbar;

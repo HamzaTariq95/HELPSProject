@@ -11,10 +11,11 @@ using Android.Views;
 using Android.Widget;
 using Android.Support.V7.App;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
+using Android.Content.PM;
 
 namespace HELPS.Views.Activities
 {
-    [Activity(Label = "NotificationActivity")]
+    [Activity(Label = "NotificationActivity", ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class NotificationActivity : AppCompatActivity
     {
         private SupportToolbar _Toolbar;

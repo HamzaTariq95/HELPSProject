@@ -106,7 +106,6 @@ namespace HELPS
                     Intent registerActivity = new Intent(Application.Context, typeof(RegisterActivity));
                     registerActivity.PutExtra("student", JsonConvert.SerializeObject(studentDataAtUTS));
                     StartActivity(registerActivity);
-                    Finish();
                 }
             }
             else
