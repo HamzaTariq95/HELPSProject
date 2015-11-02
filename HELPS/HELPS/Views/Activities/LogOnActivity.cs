@@ -91,7 +91,16 @@ namespace HELPS
             if (currentUTSStudent(studentID, password))
             {
                 Constants.CURRENT_STUDENT_ID = studentID;
-                
+                if (!(studentDataAtUTS.Password == password))
+                {
+                    ShowProgressDialog(progressDialog, false);
+
+                    var logInFailAlert = new AlertDialog.Builder(this);
+                    logInFailAlert.SetMessage(GetString(Resource.String.wrongInformation));
+                    logInFailAlert.SetNeutralButton("OK", delegate { });
+                    logInFailAlert.Show();
+                }
+
                 if (await registeredAtHELPS(studentID))
                 {
                     Log.Info("Inside LogOnActvitity", "Student Data is not Null");
@@ -106,6 +115,7 @@ namespace HELPS
                     Intent registerActivity = new Intent(Application.Context, typeof(RegisterActivity));
                     registerActivity.PutExtra("student", JsonConvert.SerializeObject(studentDataAtUTS));
                     StartActivity(registerActivity);
+                    Finish();
                 }
             }
             else
@@ -116,8 +126,8 @@ namespace HELPS
                 logInFailAlert.SetNeutralButton("OK", delegate { });
                 logInFailAlert.Show();
             }
-          
-        }
+
+    }
 
         private void ShowProgressDialog(ProgressDialog progressDialog, bool show)
         {

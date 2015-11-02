@@ -29,7 +29,7 @@ namespace HELPS.Model
         public string Email { get; set; }
 
         [JsonIgnore]
-        public string Passsword { get; set; }
+        public string Password { get; set; }
 
         public string StudentId { get; set; }
 
