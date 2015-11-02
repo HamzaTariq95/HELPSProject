@@ -91,14 +91,12 @@ namespace HELPS
             if (currentUTSStudent(studentID, password))
             {
                 Constants.CURRENT_STUDENT_ID = studentID;
-                if (!(studentDataAtUTS.Password == password))
+                if (!(studentDataAtUTS.Password.Equals(password)))
                 {
                     ShowProgressDialog(progressDialog, false);
+                    ShowFailAlert();
 
-                    var logInFailAlert = new AlertDialog.Builder(this);
-                    logInFailAlert.SetMessage(GetString(Resource.String.wrongInformation));
-                    logInFailAlert.SetNeutralButton("OK", delegate { });
-                    logInFailAlert.Show();
+                    return;
                 }
 
                 if (await registeredAtHELPS(studentID))
@@ -115,19 +113,23 @@ namespace HELPS
                     Intent registerActivity = new Intent(Application.Context, typeof(RegisterActivity));
                     registerActivity.PutExtra("student", JsonConvert.SerializeObject(studentDataAtUTS));
                     StartActivity(registerActivity);
-                    Finish();
                 }
             }
             else
             {
                 //show wrong id/pass message
-                var logInFailAlert = new AlertDialog.Builder(this);
-                logInFailAlert.SetMessage(GetString(Resource.String.wrongInformation));
-                logInFailAlert.SetNeutralButton("OK", delegate { });
-                logInFailAlert.Show();
+                ShowFailAlert();
             }
 
-    }
+        }
+
+        private void ShowFailAlert()
+        {
+            var logInFailAlert = new AlertDialog.Builder(this);
+            logInFailAlert.SetMessage(GetString(Resource.String.wrongInformation));
+            logInFailAlert.SetNeutralButton("OK", delegate { });
+            logInFailAlert.Show();
+        }
 
         private void ShowProgressDialog(ProgressDialog progressDialog, bool show)
         {
